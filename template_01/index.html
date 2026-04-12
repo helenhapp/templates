@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Матеріали заняття з веб-розробки" />
+    
+    <!-- ❗️ Назва на вкладці -->
+    <title>Тема #</title>
+
+    <!-- Фавіконка -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
+
+    <!-- Скрипт перемикання теми -->
+    <script>
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <!-- Підключення шрифтів (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" />
+
+    <!-- Підсвітка коду (Highlight.js) -->
+    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- Інтерактивний код (Klipse) -->
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css" />
+    <script>window.klipse_settings = {selector_eval_js: ".language-klipse-js", eval_idle_msec: 200,};</script>
+    <script defer src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+
+    <!-- Власні стилі та скрипти -->
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+
+  <body>
+    <!-- "Завіса", яка плавно зникає при завантаженні сторінки -->
+    <div class="transition-curtain"></div>
+
+    <!-- Хедер з назвою теми та посиланнями -->
+    <header>
+      <div class="links">
+        <a href="#" class="link-prev">← Тема #</a>
+        <a href="#" class="link-all">Всі теми</a>
+        <a href="#" class="link-next">Тема # →</a>
+      </div>
+
+      <h1>Тема #</h1>
+      <p class="topic">Назва теми</p>
+
+      <button id="theme-toggle">🌙 Темна тема</button>
+    </header>
+
+    <!-- Основний контент -->
+    <main>
+      <hr />
+
+      <!-- Короткий опис теми і мети заняття -->
+      <section class="soft-callout objective">
+        <p><span class="accent">На цьому занятті ти навчишся:</span> ...</p>
+      </section>
+
+      <!-- 🧩 ЧАСТИНА 1 -->
+
+      <section class="accordion">
+        <!-- Якщо дати всім тегам details однаковий name="", можна буде розгортати тільки одну вкладку за раз, а інші автоматично згортатимуться  -->
+
+        <!-- 📚 Теорія 1 -->
+        <details class="accordion__item" name="accordion">
+          <summary class="accordion__header">
+            <div>
+              <span class="star">✧</span> Теорія:
+              <span class="accent">Підтема 1</span>
+            </div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <!-- 1 -->
+            <h3>Чому ми це вчимо?</h3>
+            <p>Тут пояснення і приклади де конкретно це використовується в додатках та іграх.</p>
+
+            <hr />
+
+            <!-- 2 -->
+            <h3>Приклад HTML коду</h3>
+            <p>
+              Тут <span class="accent">пояснення</span> матеріалу.
+              <span class="accent">Так</span> виглядають <span class="accent">акценти</span>.
+            </p>
+
+            <pre><code class="language-html">&lt;!-- приклад HTML коду --&gt;
+&lt;h1&gt;Hello, world!&lt;/h1&gt;</code></pre>
+
+            <p>Так виглядають картинки (мають максимальну висоту 350px). Зазвичай тут має бути скріншот з результатом коду, або ілюстрація/схема для пояснення теми:</p>
+           
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="замініть картинку на скріншот результату коду"
+            />
+
+            <hr />
+
+            <h3>Приклад CSS коду</h3>
+
+            <p>
+              Для правильної підсвітки коду бажано додавати до тегу code класи:
+              <span class="accent">language-html</span>, <span class="accent">language-css</span> або
+              <span class="accent">language-javascript</span>.
+            </p>
+
+            <pre><code class="language-css">/* приклад CSS коду */
+* { 
+  box-sizing: border-box; 
+}</code></pre>
+
+            <hr />
+
+            <h3>Приклад JS коду</h3>
+
+            <p>Якщо дадати до тегу code клас <span class="accent">nocopy</span>, код не можна буде виділити і скопіювати (щоб учні переписували його самі).</p>
+
+            <pre><code class="nocopy language-javascript">// приклад JS коду
+console.log("Hello, world!");</code></pre>
+
+            <p class="soft-callout"><b>Важливо</b>: Так можна наголосити на важливій інформації до цієї частини теми.</p>
+
+            <p class="soft-callout"><i>Примітка</i>: Так можна написати додаткову інформацію до цієї частини теми.</p>
+
+            <hr />
+
+            <h3>Тести</h3>
+
+            <div class="soft-callout">
+              <h4>🧩 Перевір свої знання</h4>
+              <p>1. Яким буде резутьтат цього коду?</p>
+              <pre><code class="language-javascript">console.log("Привіт");</code></pre>
+              <details class="answer">
+                <summary>Відповідь</summary>
+                <p class="accent">Виведеться слово "Привіт" в консолі.</p>
+              </details>
+
+              <p>2. Чому цей код не працює?</p>
+              <pre><code class="language-javascript">document.body.backgroundColor = "blue";</code></pre>
+              <details class="answer">
+                <summary>Відповідь</summary>
+                <p class="accent">Пропущено .style перед .backgroundColor.</p>
+              </details>
+            </div>
+
+            <hr>
+
+            <h3>Завдання</h3>
+
+            <div class="soft-callout">
+              <p>Зроби замість обчислення суми — множення:</p>
+              <pre><code class="nohighlight language-klipse-js">const numbers = [1, 3, 5];
+let result = 0;
+for (let number of numbers) {
+  result += number;
+}
+console.log(`Результат: ${result}`);</code></pre>         
+            </div>
+          </div>
+        </details>
+
+        <!-- 📝 Завдання 1 -->
+        <details class="accordion__item" name="accordion">
+          <summary class="accordion__header">
+            <div>
+              <span class="star">✦</span> Практика:
+              <span class="accent">Тематика практики 1</span>
+            </div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>Тематика практики</h3>
+            <p>
+              Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").
+            </p>
+
+            <hr />
+
+            <h4>Завдання 1</h4>
+            <ol>
+              <li>Виведи в консоль: <span class="accent-string">Так виглядає текст, який треба/можна скопіювати для завдання</span>.</li>
+              <li>Зроби...</li>
+              <li>Напиши...</li>
+              <li>Зміни...</li>
+            </ol>
+
+            <h4>Завдання 2</h4>
+            <ol>
+              <li>Створи...</li>
+              <li>Обчисли...</li>
+              <li>Додай...</li>
+            </ol>
+
+            <hr />
+
+            <h3>Очікуваний результат:</h3>
+
+            <p>Тут мають бути скріншоти з результатами завдання (що має бути в консолі або на сторінці), щоб діти могли порівняти.</p>
+
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="заміни це на скріншот результатів виконаного завдання"
+            />
+          </div>
+        </details>
+      </section>
+
+      <!-- 🧩 ЧАСТИНА 2 -->
+
+      <section class="accordion">
+        <!-- 📚 Теорія 2 -->
+        <details class="accordion__item" name="accordion">
+          <summary class="accordion__header">
+            <div>
+              <span class="star">✧</span> Теорія:
+              <span class="accent">Підтема 2</span>
+            </div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <!-- 1 -->
+            <h3>Чому ми це вчимо?</h3>
+            <p>Тут пояснення і приклади де конкретно це використовується в додатках та іграх.</p>
+
+            <hr />
+
+            <!-- 2 -->
+            <h3>Lorem, ipsum.</h3>
+            <p>Тут <span class="accent">пояснення</span> матеріалу.</p>
+
+            <pre><code class="nocopy language-javascript">console.log("Hello, world!");</code></pre>
+
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="замініть картинку на скріншот результату коду"
+            />
+
+            <hr />
+
+            <h3>Тести</h3>
+
+            <div class="soft-callout">
+              <h4>🧩 Перевір свої знання</h4>
+              <p>1. Чому...?</p>
+              <pre><code class="language-javascript">// код</code></pre>
+              <details class="answer">
+                <summary>Відповідь</summary>
+                <p class="accent">...</p>
+              </details>
+            </div>
+          </div>
+        </details>
+
+        <!-- 📝 Завдання 2 -->
+        <details class="accordion__item" name="accordion">
+          <summary class="accordion__header">
+            <div>
+              <span class="star">✦</span> Практика:
+              <span class="accent">Тематика практики 2</span>
+            </div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>Тематика практики</h3>
+            <p>Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").</p>
+
+            <hr />
+
+            <h4>Завдання</h4>
+            <ol>
+              <li>Зроби...</li>
+            </ol>
+
+            <hr />
+
+            <h3>Очікуваний результат:</h3>
+
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="заміни це на скріншот результатів виконаного завдання"
+            />
+          </div>
+        </details>
+      </section>
+
+      <!-- 🧩 ЧАСТИНА 3 -->
+
+      <section class="accordion">
+        <!-- 📚 Теорія 3 -->
+        <details class="accordion__item" name="accordion">
+          <summary class="accordion__header">
+            <div>
+              <span class="star">✧</span> Теорія:
+              <span class="accent">Підтема 3</span>
+            </div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <!-- 1 -->
+            <h3>Чому ми це вчимо?</h3>
+            <p>Тут пояснення і приклади де конкретно це використовується в додатках та іграх.</p>
+
+            <hr />
+
+            <!-- 2 -->
+            <h3>Lorem, ipsum.</h3>
+            <p>Тут <span class="accent">пояснення</span> матеріалу.</p>
+
+            <pre><code class="nocopy language-javascript">console.log("Hello, world!");</code></pre>
+
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="замініть картинку на скріншот результату коду"
+            />
+
+            <hr />
+
+            <h3>Тести</h3>
+
+            <div class="soft-callout">
+              <h4>🧩 Перевір свої знання</h4>
+              <p>1. Чому...?</p>
+              <pre><code class="language-javascript">// код</code></pre>
+              <details class="answer">
+                <summary>Відповідь</summary>
+                <p class="accent">...</p>
+              </details>
+            </div>
+          </div>
+        </details>
+
+        <!-- 📝 Завдання 3 -->
+        <details class="accordion__item" name="accordion">
+          <summary class="accordion__header">
+            <div>
+              <span class="star">✦</span> Практика:
+              <span class="accent">Тематика практики 3</span>
+            </div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>Тематика практики</h3>
+            <p>Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").</p>
+
+            <hr />
+
+            <h4>Завдання</h4>
+            <ol>
+              <li>Зроби...</li>
+            </ol>
+
+            <hr />
+
+            <h3>Очікуваний результат:</h3>
+
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="заміни це на скріншот результатів виконаного завдання"
+            />
+          </div>
+        </details>
+      </section>
+
+      <section class="accordion">
+        <!-- ТАБЛИЦЯ -->
+        <details class="accordion__item">
+          <summary class="accordion__header">
+            <div>Таблиця</div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <div class="tablecontainer">
+              <p>Таблиця з підсумками теми. На телефоні її можна гортати вправо/вліво.</p>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Поняття</th>
+                    <th>Опис</th>
+                    <th>Приклад</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="accent">script</span> та
+                      <span class="accent">defer</span>
+                    </td>
+                    <td>
+                      Підключення JS-файлу до HTML. <b>defer</b> означає, що
+                      скрипт чекає на завантаження сторінки.
+                    </td>
+                    <td>
+                      <pre><code class="language-html">&lt;head&gt;
+  ...
+  &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <!-- Кнопка для повернення на початок сторінки -->
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Повернутися нагору">🛸</button>
+  </body>
+</html>

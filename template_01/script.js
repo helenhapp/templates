@@ -1,0 +1,97 @@
+/* 🪐 1. ПІДСВІТКА СИНТАКСИСУ */
+
+hljs.highlightAll();
+
+/* ✨ 2. ЛОГІКА ПЕРЕМИКАННЯ ТЕМИ */
+
+const themeToggleBtn = document.getElementById("theme-toggle");
+const hljsThemeLink = document.getElementById("hljs-theme");
+let currentTheme = localStorage.getItem("theme") || "light";
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  if (theme === "light") {
+    hljsThemeLink.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+    themeToggleBtn.textContent = "🌙 Темна тема";
+  } else {
+    hljsThemeLink.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css";
+    themeToggleBtn.textContent = "☀️ Світла тема";
+  }
+  localStorage.setItem("theme", theme);
+}
+
+applyTheme(currentTheme);
+themeToggleBtn.addEventListener("click", () => {
+  currentTheme = currentTheme === "dark" ? "light" : "dark";
+  applyTheme(currentTheme);
+});
+
+/* ☀️ 3. ПЛАВНІ ПЕРЕХОДИ МІЖ СТОРІНКАМИ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.fonts.ready.then(() => document.body.classList.add("is-loaded"));
+  const links = document.querySelectorAll("a");
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (link.target === "_blank" || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || link.origin !== window.location.origin || link.hash) return;
+      e.preventDefault();
+      const destination = link.href;
+      document.body.classList.add("is-leaving");
+      setTimeout(() => window.location.href = destination, 1000);
+    });
+  });
+});
+
+window.addEventListener("pageshow", (e) => {
+  if (e.persisted) {
+    document.body.classList.remove("is-leaving");
+    document.body.classList.add("is-loaded");
+  }
+});
+
+/* 🌙 4. КНОПКА "ПОВЕРНУТИСЯ НАГОРУ" */
+
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) scrollToTopBtn.classList.add("show");
+  else scrollToTopBtn.classList.remove("show");
+});
+scrollToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+/* 🍕 5. ПРИХОВУВАННЯ "UNDEFINED" В KLIPSE */
+
+const hideUndefinedObserver = new MutationObserver(() => {
+  document.querySelectorAll(".klipse-result").forEach((resultBox) => {
+    const lines = resultBox.querySelectorAll(".CodeMirror-line");
+    if (lines.length > 0) {
+      const lastLine = lines[lines.length - 1];
+      if (lastLine.textContent.trim() === "undefined")   lastLine.style.display = "none";
+    }
+  });
+});
+hideUndefinedObserver.observe(document.body, { childList: true, subtree: true });
+
+/* 🍿 6. КНОПКА "СКОПІЮВАТИ" ДЛЯ КОДУ */
+
+document.querySelectorAll("pre code").forEach((codeBlock) => {
+  if (codeBlock.classList.contains("nocopy") || codeBlock.classList.contains("language-klipse-js")) return;
+  const pre = codeBlock.parentNode;
+  const wrapper = document.createElement("div");
+  wrapper.className = "code-wrapper";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "copy-btn";
+  copyBtn.textContent = "Копіювати";
+  wrapper.appendChild(copyBtn);
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+      copyBtn.textContent = "Скопійовано";
+      copyBtn.classList.add("copied");
+      setTimeout(() => {
+        copyBtn.textContent = "Копіювати";
+        copyBtn.classList.remove("copied");
+      }, 2000);
+    }).catch((err) => console.error("Помилка копіювання: ", err));
+  });
+});
