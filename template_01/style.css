@@ -226,6 +226,42 @@ button:active { transform: scale(0.97); }
   border: none;
 }
 
+/* Кнопка  🛸, що повертає на початок сторінки */
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 50%;
+  background-color: var(--panel-alt);
+  border: 2px solid var(--accent);
+  box-shadow: var(--accordion-shadow);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  user-select: none;
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  background-color: var(--hover-bg);
+  transform: translateY(-5px);
+}
+
 /* 🌻 7. СПИСКИ */
 
 ul, ol {
@@ -432,41 +468,6 @@ hr {
 }
 
 .accordion__content hr { width: 90%; }
-
-/* Кнопка  🛸, що повертає на початок сторінки */
-
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
-  border-radius: 50%;
-  background-color: var(--panel-alt);
-  border: 2px solid var(--accent);
-  box-shadow: var(--accordion-shadow);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.scroll-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.scroll-to-top:hover {
-  background-color: var(--hover-bg);
-  transform: translateY(-5px);
-}
 
 /* "Завіса" для переходу між сторінками */
 
