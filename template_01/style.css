@@ -625,6 +625,11 @@ code {
   transform: scale(1.05);
 }
 
+.run-btn:active {
+  background: transparent;
+  transform: scale(0.95);
+}
+
 .custom-editor-input {
   width: 100%;
   min-height: 150px;
