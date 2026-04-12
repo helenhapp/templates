@@ -28,7 +28,18 @@
 
     <!-- Інтерактивний код (Klipse) -->
     <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css" />
-    <script>window.klipse_settings = {selector_eval_js: ".language-klipse-js", eval_idle_msec: 200,};</script>
+    <script>
+      window.klipse_settings = {
+        selector_eval_js: ".language-klipse-js",
+        eval_idle_msec: 1000, 
+        codemirror_options_in: {
+          inputStyle: "textarea", 
+          spellcheck: false,      
+          autocorrect: false,    
+          autocapitalize: false   
+        }
+      };
+    </script>   
     <script defer src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
 
     <!-- Власні стилі та скрипти -->
