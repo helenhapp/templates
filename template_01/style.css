@@ -608,23 +608,21 @@ code {
 
 .editor-title {
   font-family: "Press Start 2P", cursive;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-soft);
 }
 
 .run-btn {
   margin: 0;
-  padding: 8px 12px;
-  font-size: 10px;
-  background-color: var(--accent-pop);
-  color: #fff;
-  border: 2px solid var(--accent-pop);
+  padding: 0;
+  font-size: 27px;
+  background: transparent;
+  border: none;
 }
 
 .run-btn:hover {
-  background-color: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background: transparent;
+  transform: scale(1.05);
 }
 
 .custom-editor-input {
@@ -644,12 +642,8 @@ code {
   line-height: 1.5;
 }
 
-.custom-editor-input:focus {
-  box-shadow: inset 0 0 10px var(--shadow-accent);
-}
-
 .custom-editor-output {
-  background: var(--output-bg);
+  background: var(--panel-alt);
   color: var(--text-main);
   border-top: 2px dashed var(--accent);
   margin: 0;
