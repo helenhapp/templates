@@ -165,6 +165,8 @@ p.topic {
 .accent-string {
   color: var(--text-soft);
   font-style: italic;
+  background-color: var(--panel-alt);
+  padding: 2px 4px;
 }
 
 /* 🌺 5. ПОСИЛАННЯ ТА ЗОБРАЖЕННЯ */
