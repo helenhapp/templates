@@ -553,29 +553,6 @@ code {
   pointer-events: none;
 }
 
-/* Стилі Klipse  */
-
-.CodeMirror {
-  background: var(--code-bg) !important;
-  color: var(--text-main) !important;
-  border: none;
-  font-family: "Fira Code", monospace;
-}
-
-.CodeMirror-lines { padding: 15px !important; }
-
-.klipse-snippet {
-  margin-top: 15px;
-  border: 2px solid var(--accent);
-}
-
-.klipse-result {
-  user-select: none !important;
-  margin-bottom: 15px;
-  border: 2px solid var(--accent);
-  border-top: none;
-}
-
 /* 💐 11. АДАПТИВНІСТЬ */
 
 @media (max-width: 649px) {
@@ -608,15 +585,78 @@ code {
   .soft-callout { padding: 10px 15px; }
 }
 
-/* Перевизначення синтаксису Klipse для темної теми */
-[data-theme="dark"] .CodeMirror .cm-keyword { color: #ff7b72 !important; } 
-[data-theme="dark"] .CodeMirror .cm-string { color: #a5d6ff !important; } 
-[data-theme="dark"] .CodeMirror .cm-number { color: #79c0ff !important; } 
-[data-theme="dark"] .CodeMirror .cm-def { color: #d2a8ff !important; } 
-[data-theme="dark"] .CodeMirror .cm-variable { color: #c9d1d9 !important; } 
-[data-theme="dark"] .CodeMirror .cm-property { color: #79c0ff !important; } 
-[data-theme="dark"] .CodeMirror .cm-operator { color: #ff7b72 !important; } 
-[data-theme="dark"] .CodeMirror .cm-comment { color: #8b949e !important; } 
-[data-theme="dark"] .klipse-result, [data-theme="dark"] .klipse-result * { color: var(--text-main) !important; }
-[data-theme="dark"] .CodeMirror-cursor { border-left-color: var(--text-main) !important; }
-[data-theme="dark"] .CodeMirror { caret-color: var(--text-main) !important; }
+/* 12. Власний редактор коду для завдань */
+
+.custom-editor-wrapper {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--code-shadow);
+  border: 2px solid var(--accent);
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel-alt);
+  padding: 8px 15px;
+  border-bottom: 2px dashed var(--accent);
+}
+
+.editor-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  color: var(--text-soft);
+}
+
+.run-btn {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 10px;
+  background-color: var(--accent-pop);
+  color: #fff;
+  border: 2px solid var(--accent-pop);
+}
+
+.run-btn:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.custom-editor-input {
+  width: 100%;
+  min-height: 150px;
+  background: var(--code-bg);
+  color: var(--text-main);
+  border: none;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  padding: 15px;
+  resize: vertical; 
+  white-space: pre; 
+  overflow-wrap: normal;
+  overflow-x: auto;
+  outline: none;
+  line-height: 1.5;
+}
+
+.custom-editor-input:focus {
+  box-shadow: inset 0 0 10px var(--shadow-accent);
+}
+
+.custom-editor-output {
+  background: var(--output-bg);
+  color: var(--text-main);
+  border-top: 2px dashed var(--accent);
+  margin: 0;
+  padding: 15px;
+  font-family: monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  border-radius: 0; 
+}

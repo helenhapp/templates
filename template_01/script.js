@@ -95,3 +95,36 @@ document.querySelectorAll("pre code").forEach((codeBlock) => {
     }).catch((err) => console.error("Помилка копіювання: ", err));
   });
 });
+
+
+/* 7. CUSTOM EDITOR */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const editors = document.querySelectorAll(".custom-editor-wrapper");
+  editors.forEach((wrapper) => {
+    const runBtn = wrapper.querySelector(".run-btn");
+    const codeInput = wrapper.querySelector(".custom-editor-input");
+    const outputDisplay = wrapper.querySelector(".custom-editor-output");
+    runBtn.addEventListener("click", () => {
+      const codeToRun = codeInput.value;
+      let simulatedOutput = "";
+      const originalConsoleLog = console.log;
+      console.log = function (...args) {
+        const logString = args.map(arg => {
+          if (typeof arg === 'object') return JSON.stringify(arg, null, 2);
+          return String(arg);
+        }).join(" ");
+        simulatedOutput += logString + "\n";
+      };
+
+      try {
+        const executeCode = new Function(codeToRun);
+        executeCode();
+        if (simulatedOutput === "") simulatedOutput = "Код виконано (немає виводу в консоль)";
+      } catch (error) {simulatedOutput = "Помилка: " + error.message;}
+      
+      console.log = originalConsoleLog;
+      outputDisplay.textContent = simulatedOutput.trim();
+    });
+  });
+});
