@@ -165,9 +165,10 @@ p.topic {
 
 .accent-string {
   color: var(--text-soft);
-  font-style: italic;
   background-color: var(--panel-alt);
-  padding: 2px 4px;
+  padding: 5px 7px;
+  border-radius: 3px;
+  font-size: .9rem;
 }
 
 /* 🌺 5. ПОСИЛАННЯ ТА ЗОБРАЖЕННЯ */
@@ -588,6 +589,8 @@ code {
 
 /* Код, який не можна копіюватм */
 .nocopy {
+  -webkit-user-select: none; 
+  -ms-user-select: none;
   user-select: none;
   pointer-events: none;
 }
