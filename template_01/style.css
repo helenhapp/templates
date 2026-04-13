@@ -486,6 +486,8 @@ details.answer[open] summary::before, details.task[open] summary::before { trans
 
 .answer summary:hover, .task summary:hover { color: var(--accent-pop); }
 
+.scroll-to-top, .answer summary, .task summary, button { -webkit-tap-highlight-color: transparent; }
+
 /* Вставки та розділювачі */
 
 .soft-callout {
