@@ -58,23 +58,10 @@ window.addEventListener("scroll", () => {
 });
 scrollToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-/* 🍕 5. ПРИХОВУВАННЯ "UNDEFINED" В KLIPSE */
-
-const hideUndefinedObserver = new MutationObserver(() => {
-  document.querySelectorAll(".klipse-result").forEach((resultBox) => {
-    const lines = resultBox.querySelectorAll(".CodeMirror-line");
-    if (lines.length > 0) {
-      const lastLine = lines[lines.length - 1];
-      if (lastLine.textContent.trim() === "undefined")   lastLine.style.display = "none";
-    }
-  });
-});
-hideUndefinedObserver.observe(document.body, { childList: true, subtree: true });
-
-/* 🍿 6. КНОПКА "СКОПІЮВАТИ" ДЛЯ КОДУ */
+/* 🍿 5. КНОПКА "СКОПІЮВАТИ" ДЛЯ КОДУ */
 
 document.querySelectorAll("pre code").forEach((codeBlock) => {
-  if (codeBlock.classList.contains("nocopy") || codeBlock.classList.contains("language-klipse-js")) return;
+  if (codeBlock.classList.contains("nocopy")) return;
   const pre = codeBlock.parentNode;
   const wrapper = document.createElement("div");
   wrapper.className = "code-wrapper";
@@ -97,7 +84,7 @@ document.querySelectorAll("pre code").forEach((codeBlock) => {
 });
 
 
-/* 7. CUSTOM EDITOR */
+/* 🍕 6. CUSTOM EDITOR */
 
 document.addEventListener("DOMContentLoaded", () => {
   const editors = document.querySelectorAll(".custom-editor-wrapper");

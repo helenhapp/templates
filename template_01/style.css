@@ -687,7 +687,7 @@ code {
   overflow-wrap: normal;
   border: none;
   padding: 15px 0 15px 15px; 
-  border-right: 15px solid var(--code-bg); 
+  border-right: 15px solid transparent; 
   background-clip: padding-box; 
   overflow-y: hidden; 
   overflow-x: auto;
