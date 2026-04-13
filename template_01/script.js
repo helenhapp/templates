@@ -12,10 +12,10 @@ function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
   if (theme === "light") {
     hljsThemeLink.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
-    themeToggleBtn.textContent = "🌙 Темна тема";
+    themeToggleBtn.textContent = "Темна тема";
   } else {
     hljsThemeLink.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css";
-    themeToggleBtn.textContent = "☀️ Світла тема";
+    themeToggleBtn.textContent = "Світла тема";
   }
   localStorage.setItem("theme", theme);
 }
