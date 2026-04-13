@@ -314,6 +314,9 @@ th, td {
   border: 2px solid var(--accent);
   text-align: left;
   line-height: 1.6;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  min-width: 150px;
 }
 
 th {
