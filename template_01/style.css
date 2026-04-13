@@ -169,6 +169,8 @@ p.topic {
   padding: 5px 7px;
   border-radius: 3px;
   font-size: .9rem;
+  white-space: pre-wrap; 
+  word-wrap: break-word;
 }
 
 /* 🌺 5. ПОСИЛАННЯ ТА ЗОБРАЖЕННЯ */
@@ -592,7 +594,6 @@ code {
   -webkit-user-select: none; 
   -ms-user-select: none;
   user-select: none;
-  pointer-events: none;
 }
 
 /* 💐 11. АДАПТИВНІСТЬ */
