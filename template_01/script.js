@@ -105,6 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const runBtn = wrapper.querySelector(".run-btn");
     const codeInput = wrapper.querySelector(".custom-editor-input");
     const outputDisplay = wrapper.querySelector(".custom-editor-output");
+    const adjustHeight = () => {
+      codeInput.style.height = "auto"; 
+      codeInput.style.height = codeInput.scrollHeight + "px"; 
+    };
+    codeInput.addEventListener("input", adjustHeight);
+    setTimeout(adjustHeight, 0);
     runBtn.addEventListener("click", () => {
       const codeToRun = codeInput.value;
       let simulatedOutput = "";

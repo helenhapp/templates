@@ -670,18 +670,19 @@ code {
 .custom-editor-input {
   width: 100%;
   min-height: 150px;
+  /* height: auto; */
   background: var(--code-bg);
   color: var(--text-main);
   border: none;
   font-family: "Fira Code", monospace;
   font-size: 16px;
   padding: 16px;
-  resize: vertical; 
   white-space: pre; 
-  overflow-wrap: normal;
   overflow-x: auto;
   outline: none;
   line-height: 1.5;
+  resize: none; 
+  overflow: hidden;
 }
 
 .custom-editor-output {
