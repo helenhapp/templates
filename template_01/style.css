@@ -632,6 +632,7 @@ code {
   overflow: hidden;
   box-shadow: var(--code-shadow);
   border: 2px solid var(--accent);
+  background: var(--code-bg);
 }
 
 .editor-header {
@@ -670,19 +671,23 @@ code {
 .custom-editor-input {
   width: 100%;
   min-height: 150px;
-  /* height: auto; */
   background: var(--code-bg);
   color: var(--text-main);
-  border: none;
   font-family: "Fira Code", monospace;
-  font-size: 16px;
-  padding: 16px;
-  white-space: pre; 
-  overflow-x: auto;
+  font-size: 14px;
   outline: none;
   line-height: 1.5;
   resize: none; 
-  overflow: hidden;
+  white-space: pre; 
+  overflow-wrap: normal;
+  border: none;
+  padding: 15px 0 15px 15px; 
+  border-right: 15px solid var(--code-bg); 
+  background-clip: padding-box; 
+  overflow-y: hidden; 
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+  overscroll-behavior-x: contain;
 }
 
 .custom-editor-output {
