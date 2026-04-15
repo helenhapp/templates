@@ -510,8 +510,6 @@ hr {
   border: none;
   border-top: 3px dashed var(--accent);
   margin: 30px auto;
-  /* max-width: 850px; */
-  /* width: 100%; */
   opacity: 0.75;
 }
 
@@ -612,7 +610,6 @@ code.nocopy {
 @media (max-width: 649px) {
   body { padding: 10px 0; }
   img { max-width: 100%; }
-  /* h1 { font-size: 37px; } */
   code { padding: 10px; }
 
   header {
