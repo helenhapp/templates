@@ -117,7 +117,7 @@ h1 {
   text-shadow: var(--h1-shadow);
   line-height: 1.5;
   letter-spacing: 3px;
-  font-size: clamp(1.6rem, 7vw, 3.5rem);
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
   overflow-wrap: anywhere;
   hyphens: auto;
 }
