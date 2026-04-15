@@ -605,39 +605,7 @@ code.nocopy {
   border-radius: 6px 0;
 }
 
-/* 💐 11. АДАПТИВНІСТЬ */
-
-@media (max-width: 649px) {
-  body { padding: 10px 0; }
-  img { max-width: 100%; }
-  code { padding: 10px; }
-
-  header {
-    width: 100%;
-    border-radius: 0;
-    box-shadow: none;
-    margin-top: 0;
-    background-position: center;
-  }
-
-  .scroll-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 449px) {
-  main { width: 94%; }
-  p, li { text-align: left; }
-  .objective { line-height: 1.5; }
-  .soft-callout { padding: 10px 15px; }
-  .accordion__item { margin-bottom: 10px; }
-}
-
-/* 12. Власний редактор коду для завдань */
+/* 🍙 11. Власний редактор коду для завдань */
 
 .custom-editor-wrapper {
   margin: 20px auto;
@@ -716,4 +684,36 @@ code.nocopy {
   white-space: pre-wrap;
   word-break: break-all;
   border-radius: 0; 
+}
+
+/* 💐 12. АДАПТИВНІСТЬ */
+
+@media (max-width: 649px) {
+  body { padding: 10px 0; }
+  img { max-width: 100%; }
+  code { padding: 10px; }
+
+  header {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0;
+    background-position: center;
+  }
+
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 449px) {
+  main { width: 94%; }
+  p, li { text-align: left; }
+  .objective { line-height: 1.5; }
+  .soft-callout { padding: 10px 15px; }
+  .accordion__item { margin-bottom: 12px; }
 }
