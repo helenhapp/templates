@@ -10,7 +10,7 @@
   --hover-bg: #d2bdfb;
   --code-bg: #ffffff;
   --soft-callout: rgba(255, 255, 255, 0.7);
-  --link-bg: rgba(210, 189, 251, 0.125);
+  --link-bg: rgba(210, 189, 251, 0.15);
 
   /* Текст і посилання */
   --text-main: #121709;
@@ -43,7 +43,7 @@
   --hover-bg: #16327b;
   --code-bg: #0e1a4d;
   --soft-callout: rgba(16, 33, 89, 0.6);
-  --link-bg: rgba(150, 150, 150, 0.04);;
+  --link-bg: rgba(150, 150, 150, 0.05);;
 
   /* Текст та посилання */
   --text-main: #d6ecff;
