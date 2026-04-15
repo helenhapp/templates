@@ -592,11 +592,16 @@ code {
   border-color: var(--accent-pop);
 }
 
-/* Код, який не можна копіюватм */
+/* Для коду, який не можна копіювати */
+
 .nocopy {
   -webkit-user-select: none; 
   -ms-user-select: none;
   user-select: none;
+}
+
+code.nocopy {
+  border-radius: 6px 0;
 }
 
 /* 💐 11. АДАПТИВНІСТЬ */
