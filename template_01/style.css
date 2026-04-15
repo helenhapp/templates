@@ -111,17 +111,19 @@ body, h1, h2, h3, hr, b, .accent, header a {
 /* 🍀 4. ТЕКСТ */
 
 h1 {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
   margin: 15px 0;
   color: var(--title);
   text-shadow: var(--h1-shadow);
   line-height: 1.5;
   letter-spacing: 3px;
-  font-size: 48px;
+  font-size: clamp(1.6rem, 7vw, 3.5rem);
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 h2, h3 {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
   font-optical-sizing: auto;
   color: var(--accent);
   margin-bottom: 10px;
@@ -153,7 +155,7 @@ p.topic {
   text-align: center;
   font-size: 12px;
   margin: 0;
-  /* padding: 8px; */
+  line-height: 1.4;
 }
 
 .accent { 
@@ -208,7 +210,7 @@ button {
   border: 2px solid var(--accent);
   border-radius: 6px;
   padding: 10px 16px;
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -322,7 +324,7 @@ th, td {
 th {
   background-color: var(--panel-alt);
   color: var(--text-soft);
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
   font-size: 11px;
 }
 
@@ -343,7 +345,7 @@ td code {
 header {
   width: 90%;
   text-align: center;
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
   font-optical-sizing: auto;
   margin: 0 auto;
   max-width: 850px;
@@ -396,7 +398,7 @@ header a {
 .accordion p { margin: 10px 0; }
 
 .accordion__item {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   background: var(--panel);
   transition: all 0.4s ease;
   position: relative; 
@@ -432,7 +434,7 @@ header a {
   padding: 18px;
   background: var(--panel-alt);
   color: var(--text-soft);
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
   font-size: 13px;
   cursor: pointer;
   display: flex;
@@ -492,7 +494,7 @@ details.answer[open] summary::before, details.task[open] summary::before { trans
 
 .answer summary:hover, .task summary:hover { color: var(--accent-pop); }
 
-.scroll-to-top, .answer summary, .task summary, button { -webkit-tap-highlight-color: transparent; }
+.scroll-to-top, .answer summary, .task summary, button, a { -webkit-tap-highlight-color: transparent; }
 
 /* Вставки та розділювачі */
 
@@ -508,7 +510,8 @@ hr {
   border: none;
   border-top: 3px dashed var(--accent);
   margin: 30px auto;
-  max-width: 850px;
+  /* max-width: 850px; */
+  /* width: 100%; */
   opacity: 0.75;
 }
 
@@ -609,7 +612,7 @@ code.nocopy {
 @media (max-width: 649px) {
   body { padding: 10px 0; }
   img { max-width: 100%; }
-  h1 { font-size: 37px; }
+  /* h1 { font-size: 37px; } */
   code { padding: 10px; }
 
   header {
@@ -634,7 +637,6 @@ code.nocopy {
   p, li { text-align: left; }
   .objective { line-height: 1.5; }
   .soft-callout { padding: 10px 15px; }
-  /* .accordion__header { min-height: 70px; } */
 }
 
 /* 12. Власний редактор коду для завдань */
@@ -660,7 +662,7 @@ code.nocopy {
 }
 
 .editor-title {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
   font-size: 11px;
   color: var(--text-soft);
 }
