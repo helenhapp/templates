@@ -634,6 +634,7 @@ code.nocopy {
   p, li { text-align: left; }
   .objective { line-height: 1.5; }
   .soft-callout { padding: 10px 15px; }
+  .accordion__item { margin-bottom: 10px; }
 }
 
 /* 12. Власний редактор коду для завдань */
