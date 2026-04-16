@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навігатор з посиланнями на всі курси" />
+
+    <title>WebUniverse</title>
+
+    <!-- ❗️ Фавіконка (зараз немає) -->
+    <link rel="icon" href="" />
+
+    <!-- Скрипт перемикання теми -->
+    <script>
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <!-- Підключення шрифтів (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Підсвітка коду (Highlight.js) -->
+    <link
+      id="hljs-theme"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="../template_01/style.css" />
+    <link rel="stylesheet" href="./menu.css" />
+    <script src="../template_01/script.js" defer></script>
+    <script src="./menu.js" defer></script>
+  </head>
+
+  <body>
+    <!-- "Завіса", яка плавно зникає при завантаженні сторінки -->
+    <div class="transition-curtain"></div>
+
+    <header>
+      <h1>WebUniverse</h1>
+      <p class="topic">Курси з розробки вебсайтів та відеоігор</p>
+
+      <button id="theme-toggle">Темна тема</button>
+    </header>
+
+    <main>
+      <hr />
+
+      <section class="accordion" id="current-courses-container"></section>
+
+      <section class="accordion" id="old-courses-container"></section>
+    </main>
+
+    <!-- Кнопка для повернення на початок сторінки -->
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Повернутися нагору"
+    >
+      🛸
+    </button>
+
+    <!-- Вікно для вводу пароля (зараз тестовий 1111) -->
+    <dialog id="password-modal">
+      <div class="modal-content">
+        <h2>Щоб відкрити доступ до курсу, введіть пароль:</h2>
+        <input
+          type="password"
+          id="password-input"
+          placeholder="Enter password..."
+        />
+        <p
+          id="password-error"
+          style="color: LightCoral; display: none; margin-top: 10px"
+        >
+          Неправильний пароль!
+        </p>
+
+        <div class="modal-actions">
+          <button id="cancel-btn">Назад</button>
+          <button id="submit-btn">ОК</button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
