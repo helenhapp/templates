@@ -94,7 +94,7 @@
 
       <section class="accordion">
         <!-- 📚 Курс 1 -->
-        <details class="accordion__item" name="accordion">
+        <details class="accordion__item locked-course" name="accordion" data-course-id="html_css">
           <summary class="accordion__header">
             <div>
               <span class="star">✧</span> Курс 1:
@@ -142,7 +142,7 @@
         </details>
 
          <!-- 📚 Курс 2 -->
-        <details class="accordion__item" name="accordion">
+        <details class="accordion__item locked-course" name="accordion" data-course-id="js_new">
           <summary class="accordion__header">
             <div>
               <span class="star">✧</span> Курс 2:
@@ -178,7 +178,7 @@
         </details>
 
          <!-- 📚 Курс 3 -->
-        <details class="accordion__item" name="accordion">
+        <details class="accordion__item locked-course" name="accordion" data-course-id="csharp">
           <summary class="accordion__header">
             <div>
               <span class="star">✧</span> Курс 3:
@@ -214,7 +214,7 @@
         </details>
 
          <!-- 📚 Курс 4 -->
-        <details class="accordion__item" name="accordion">
+        <details class="accordion__item locked-course" name="accordion" data-course-id="godot">
           <summary class="accordion__header">
             <div>
               <span class="star">✧</span> Курс 4:
@@ -325,5 +325,19 @@
 
     <!-- Кнопка для повернення на початок сторінки -->
     <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Повернутися нагору">🛸</button>
+
+    <!-- Вікно для вводу пароля (зараз тестовий 1111) -->
+    <dialog id="password-modal">
+      <div class="modal-content">
+        <h2>Щоб відкрити доступ до курсу, введіть пароль:</h2>
+        <input type="password" id="password-input" placeholder="Enter password..." />
+        <p id="password-error" style="color: LightCoral; display: none; margin-top: 10px;">Неправильний пароль!</p>
+        
+        <div class="modal-actions">
+          <button id="cancel-btn">Назад</button>
+          <button id="submit-btn">ОК</button>
+        </div>
+      </div>
+    </dialog>
   </body>
 </html>

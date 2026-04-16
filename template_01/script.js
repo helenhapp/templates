@@ -121,3 +121,73 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.querySelector('#password-modal');
+  const passwordInput = document.querySelector('#password-input');
+  const errorText = document.querySelector('#password-error');
+  const cancelBtn = document.querySelector('#cancel-btn');
+  const submitBtn = document.querySelector('#submit-btn');
+
+  // ❗️ Словник з (тестовими) паролями для кожного курсу
+  const COURSE_PASSWORDS = {
+    "html_css": "1111",
+    "js_new": "2222",
+    "csharp": "3333",
+    "godot": "4444"
+  };
+
+  let currentTargetCourse = null;
+
+  const lockedSummaries = document.querySelectorAll('.locked-course summary');
+
+  lockedSummaries.forEach(summary => {
+    summary.addEventListener('click', (e) => {
+      const detailsElement = summary.parentElement;
+      const courseId = detailsElement.getAttribute('data-course-id');
+
+      // Перевіряємо, чи курс вже розблоковано раніше
+      if (localStorage.getItem(`unlocked_${courseId}`) === 'true') {
+        return; 
+      }
+
+      // Зупиняємо відкриття і показуємо модальне вікно
+      e.preventDefault();
+      currentTargetCourse = detailsElement;
+      passwordInput.value = ''; 
+      errorText.style.display = 'none';
+      modal.showModal(); 
+    });
+  });
+
+  // Закриття модального вікна
+  cancelBtn.addEventListener('click', () => {
+    modal.close();
+    currentTargetCourse = null;
+  });
+
+  // Логіка перевірки пароля
+  function checkPassword() {
+    const courseId = currentTargetCourse.getAttribute('data-course-id');
+    const correctPasswordForThisCourse = COURSE_PASSWORDS[courseId];
+
+    if (passwordInput.value === correctPasswordForThisCourse) {
+      localStorage.setItem(`unlocked_${courseId}`, 'true');
+      
+      const icon = currentTargetCourse.querySelector('.star');
+      if(icon) icon.textContent = '✧';
+
+      modal.close();
+      currentTargetCourse.open = true; 
+      currentTargetCourse = null;
+    } else {
+      errorText.style.display = 'block';
+    }
+  }
+
+  submitBtn.addEventListener('click', checkPassword);
+  passwordInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') { checkPassword(); }
+  });
+});
