@@ -364,9 +364,9 @@ td code {
   display: inline-block;
   padding: 7px 10px;
   margin: 0;
-  font-size: 13px;
   border-width: 2px;
   box-shadow: none;
+  font-size: 15px;
 }
 
 /* 🌷 9. КОМПОНЕНТИ МАКЕТУ */
@@ -800,7 +800,6 @@ code.nocopy {
   code {
     padding: 10px;
   }
-
   header {
     width: 100%;
     border-radius: 0;
@@ -808,7 +807,6 @@ code.nocopy {
     margin-top: 0;
     background-position: center;
   }
-
   .scroll-to-top {
     bottom: 20px;
     right: 20px;
@@ -837,5 +835,8 @@ code.nocopy {
   }
   .accordion__item {
     margin-bottom: 12px;
+  }
+  td code {
+    font-size: 13px;
   }
 }
