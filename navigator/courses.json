@@ -1,0 +1,159 @@
+{
+    "globalPassword": "1111",
+    "courses": [
+        {
+            "CourseId": "html_css",
+            "CoursePassword": "1111",
+            "CourseTitle": "HTML_CSS",
+            "CourseIndex": 1,
+            "IsOld": false,
+            "Lessons": [
+                {
+                    "Num": "00",
+                    "Title": "Як виглядатиме така довга назва теми (але краще так не називати)",
+                    "Url": ""
+                },
+                {
+                    "Num": "01",
+                    "Title": "Вебсторінка",
+                    "Url": ""
+                },
+                {
+                    "Num": "02",
+                    "Title": "Форматування тексту",
+                    "Url": ""
+                },
+                {
+                    "Num": "05",
+                    "Title": "Введення в форми (частина 1)",
+                    "Url": ""
+                },
+                {
+                    "Num": "10",
+                    "Title": "Назва теми",
+                    "Url": ""
+                }
+            ]
+        },
+        {
+            "CourseId": "js_new",
+            "CoursePassword": "1111",
+            "CourseTitle": "jsNew",
+            "CourseIndex": 2,
+            "IsOld": false,
+            "Lessons": [
+                {
+                    "Num": "01",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "02",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "03",
+                    "Title": "Назва теми",
+                    "Url": ""
+                }
+            ]
+        },
+        {
+            "CourseId": "csharp",
+            "CoursePassword": "1111",
+            "CourseTitle": "C#",
+            "CourseIndex": 3,
+            "IsOld": false,
+            "Lessons": [
+                {
+                    "Num": "01",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "02",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "03",
+                    "Title": "Назва теми",
+                    "Url": ""
+                }
+            ]
+        },
+        {
+            "CourseId": "godot",
+            "CoursePassword": "1111",
+            "CourseTitle": "Godot",
+            "CourseIndex": 4,
+            "IsOld": false,
+            "Lessons": [
+                {
+                    "Num": "01",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "02",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "03",
+                    "Title": "Назва теми",
+                    "Url": ""
+                }
+            ]
+        },
+        {
+            "CourseId": "js_old",
+            "CoursePassword": "1111",
+            "CourseTitle": "js [старий]",
+            "CourseIndex": 5,
+            "IsOld": true,
+            "Lessons": [
+                {
+                    "Num": "01",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "02",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "03",
+                    "Title": "Назва теми",
+                    "Url": ""
+                }
+            ]
+        },
+        {
+            "CourseId": "canvas",
+            "CoursePassword": "1111",
+            "CourseTitle": "canvas",
+            "CourseIndex": 6,
+            "IsOld": true,
+            "Lessons": [
+                {
+                    "Num": "01",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "02",
+                    "Title": "Назва теми",
+                    "Url": ""
+                },
+                {
+                    "Num": "03",
+                    "Title": "Назва теми",
+                    "Url": ""
+                }
+            ]
+        }
+    ]
+}

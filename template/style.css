@@ -28,7 +28,7 @@
   --shadow-accent: rgba(94, 50, 230, 0.4);
   --h1-shadow: 3px 3px 0 var(--title-glow);
   --accordion-shadow: 3px 3px 0 var(--shadow-accent);
-  --code-shadow: 0 0 5px var(--shadow-accent);  
+  --code-shadow: 0 0 5px var(--shadow-accent);
 
   interpolate-size: allow-keywords;
 }
@@ -43,7 +43,7 @@
   --hover-bg: #16327b;
   --code-bg: #0e1a4d;
   --soft-callout: rgba(16, 33, 89, 0.6);
-  --link-bg: rgba(150, 150, 150, 0.05);;
+  --link-bg: rgba(150, 150, 150, 0.05);
 
   /* Текст та посилання */
   --text-main: #d6ecff;
@@ -61,7 +61,7 @@
   --shadow-accent: rgba(79, 167, 255, 0.25);
   --h1-shadow: 3px 3px 0 var(--title-glow);
   --accordion-shadow: 0 0 10px var(--shadow-accent);
-  --code-shadow: 0 0 10px var(--shadow-accent);  
+  --code-shadow: 0 0 10px var(--shadow-accent);
 }
 
 /* 🌿 2. CSS RESET ТА БАЗОВІ СТИЛІ */
@@ -101,7 +101,14 @@ main {
 
 /* 🌸 3. ГЛОБАЛЬНІ АНІМАЦІЇ ПЕРЕХОДІВ */
 
-body, h1, h2, h3, hr, b, .accent, header a {
+body,
+h1,
+h2,
+h3,
+hr,
+b,
+.accent,
+header a {
   transition:
     background-color 0.4s ease,
     color 0.4s ease,
@@ -124,7 +131,8 @@ h1 {
   hyphens: auto;
 }
 
-h2, h3 {
+h2,
+h3 {
   font-family: "Press Start 2P", monospace;
   font-optical-sizing: auto;
   color: var(--accent);
@@ -138,20 +146,26 @@ h2 {
   margin-top: 40px;
 }
 
-h3 { font-size: 14px; }
+h3 {
+  font-size: 14px;
+}
 
 h3:hover {
   filter: brightness(1.5);
   cursor: default;
 }
 
-h4, .task-header {
+h4,
+.task-header {
   margin: 0.7rem 0;
   color: var(--text-soft);
   font-weight: 600;
 }
 
-p, li { text-align: justify; }
+p,
+li {
+  text-align: justify;
+}
 
 p.topic {
   text-align: center;
@@ -160,20 +174,22 @@ p.topic {
   line-height: 1.4;
 }
 
-.accent { 
-  color: var(--accent-pop); 
+.accent {
+  color: var(--accent-pop);
   font-weight: bold;
 }
 
-.accordion__header .accent { font-weight: normal; }
+.accordion__header .accent {
+  font-weight: normal;
+}
 
 .accent-string {
   color: var(--text-soft);
   background-color: var(--panel-alt);
   padding: 5px 7px;
   border-radius: 3px;
-  font-size: .9rem;
-  white-space: pre-wrap; 
+  font-size: 0.9rem;
+  white-space: pre-wrap;
   word-wrap: break-word;
 }
 
@@ -225,7 +241,9 @@ button:hover {
   color: var(--text-soft);
 }
 
-button:active { transform: scale(0.97); }
+button:active {
+  transform: scale(0.97);
+}
 
 #theme-toggle {
   font-size: 10px;
@@ -273,14 +291,19 @@ button:active { transform: scale(0.97); }
 
 /* 🌻 7. СПИСКИ */
 
-ul, ol {
+ul,
+ol {
   padding-left: 10px;
   line-height: 1.6;
 }
 
-ol { margin: 15px; }
+ol {
+  margin: 15px;
+}
 
-li::marker { color: var(--accent); }
+li::marker {
+  color: var(--accent);
+}
 
 li.test {
   list-style-type: none;
@@ -294,7 +317,9 @@ li.test {
   font-size: 18px;
 }
 
-.lesson-links li::marker { color: var(--text-main); }
+.lesson-links li::marker {
+  color: var(--text-main);
+}
 
 .flex-ol {
   display: flex;
@@ -304,7 +329,9 @@ li.test {
 
 /* 🌱 8. ТАБЛИЦІ */
 
-div.tablecontainer { overflow-x: auto; }
+div.tablecontainer {
+  overflow-x: auto;
+}
 
 table {
   width: 100%;
@@ -314,7 +341,8 @@ table {
   box-shadow: var(--accordion-shadow);
 }
 
-th, td {
+th,
+td {
   padding: 15px;
   border: 2px solid var(--accent);
   text-align: left;
@@ -355,7 +383,9 @@ header {
   border-radius: 6px;
 }
 
-header h2 { color: var(--text-main); }
+header h2 {
+  color: var(--text-main);
+}
 
 header .links {
   width: 90%;
@@ -396,42 +426,55 @@ header a {
 
 /*  Випадаючі списки (акордеон) */
 
-.accordion { margin: 30px auto; }
+.accordion {
+  margin: 30px auto;
+}
 
-.accordion p { margin: 10px 0; }
+.accordion p {
+  margin: 10px 0;
+}
 
 .accordion__item {
   margin-bottom: 15px;
   background: var(--panel);
   transition: all 0.4s ease;
-  position: relative; 
+  position: relative;
   border: solid var(--accent);
   border-width: 0 2px;
   border-radius: 0;
   filter: drop-shadow(3px 3px 0 var(--shadow-accent));
 }
 
-.accordion__item::before, .accordion__item::after {
+.accordion__item::before,
+.accordion__item::after {
   content: "";
   position: absolute;
-  left: 0;  
-  right: 0;  
-  height: 2px; 
+  left: 0;
+  right: 0;
+  height: 2px;
   background: var(--accent);
-  transition: background 0.4s ease; 
+  transition: background 0.4s ease;
 }
 
- .accordion__item::before { top: -2px; }
-.accordion__item::after { bottom: -2px; }
+.accordion__item::before {
+  top: -2px;
+}
+.accordion__item::after {
+  bottom: -2px;
+}
 
 .accordion__item::details-content {
   height: 0;
   overflow: hidden;
-  transition: height 0.4s ease-out, content-visibility 0.4s ease-out;
+  transition:
+    height 0.4s ease-out,
+    content-visibility 0.4s ease-out;
   transition-behavior: allow-discrete;
 }
 
-.accordion__item[open]::details-content { height: auto; }
+.accordion__item[open]::details-content {
+  height: auto;
+}
 
 .accordion__header {
   padding: 18px;
@@ -444,62 +487,104 @@ header a {
   justify-content: space-between;
   align-items: center;
   user-select: none;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
   list-style: none;
 }
 
-.accordion__header::-webkit-details-marker { display: none; }
+.accordion__header::-webkit-details-marker {
+  display: none;
+}
 
-.accordion__header:hover { background: var(--hover-bg); }
+.accordion__header:hover {
+  background: var(--hover-bg);
+}
 
-.accordion__header .star { font-size: 18px; }
+.accordion__header .star {
+  font-size: 18px;
+}
 
 .star {
   transform: translateY(-2px);
   text-shadow: none;
 }
 
-.acc-arrow { transition: transform 0.3s ease; }
+.acc-arrow {
+  transition: transform 0.3s ease;
+}
 
-.accordion__item[open] .acc-arrow { transform: rotate(90deg); }
+.accordion__item[open] .acc-arrow {
+  transform: rotate(90deg);
+}
 
 .accordion__content {
   padding: 0 22px;
   line-height: 1.6;
 }
 
-.accordion__content > *:first-child { margin-top: 22px; }
-
-.accordion__content > *:last-child { margin-bottom: 22px; }
-
-.answer { margin-left: 10px; }
-
-details { margin: 10px 0; }
-
-summary:focus { outline: none; }
-
-details.answer summary, details.task summary { list-style: none; }
-details.answer summary::-webkit-details-marker, details.task summary::-webkit-details-marker { display: none; }
-
-details.answer summary::before, details.task summary::before {
-  content: "▶"; 
-  display: inline-block;
-  margin-right: 10px; 
-  font-size: 11px; 
-  color: var(--accent);
-  transition: transform 0.2s ease; 
+.accordion__content > *:first-child {
+  margin-top: 22px;
 }
 
-details.answer[open] summary::before, details.task[open] summary::before { transform: rotate(90deg); }
+.accordion__content > *:last-child {
+  margin-bottom: 22px;
+}
 
-.answer summary, .task summary {
-  cursor: pointer; 
+.answer {
+  margin-left: 10px;
+}
+
+details {
+  margin: 10px 0;
+}
+
+summary:focus {
+  outline: none;
+}
+
+details.answer summary,
+details.task summary {
+  list-style: none;
+}
+details.answer summary::-webkit-details-marker,
+details.task summary::-webkit-details-marker {
+  display: none;
+}
+
+details.answer summary::before,
+details.task summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 11px;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+details.answer[open] summary::before,
+details.task[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.answer summary,
+.task summary {
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.answer summary:hover, .task summary:hover { color: var(--accent-pop); }
+.answer summary:hover,
+.task summary:hover {
+  color: var(--accent-pop);
+}
 
-.scroll-to-top, .answer summary, .task summary, button, a { -webkit-tap-highlight-color: transparent; }
+.scroll-to-top,
+.answer summary,
+.task summary,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* Вставки та розділювачі */
 
@@ -518,7 +603,9 @@ hr {
   opacity: 0.75;
 }
 
-.accordion__content hr { width: 90%; }
+.accordion__content hr {
+  width: 90%;
+}
 
 /* "Завіса" для переходу між сторінками */
 
@@ -533,7 +620,9 @@ hr {
   pointer-events: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+  transition:
+    opacity 1s ease-in-out,
+    visibility 1s ease-in-out;
 }
 
 body.is-loaded .transition-curtain {
@@ -548,7 +637,9 @@ body.is-leaving .transition-curtain {
 
 /* 🍁 10. КОД ТА KLIPSE */
 
-pre { margin: 0; }
+pre {
+  margin: 0;
+}
 
 code {
   display: block;
@@ -571,7 +662,9 @@ code {
   margin: 15px 0;
 }
 
-.code-wrapper code { margin: 0; }
+.code-wrapper code {
+  margin: 0;
+}
 
 .code-wrapper .copy-btn {
   position: absolute;
@@ -582,7 +675,9 @@ code {
   z-index: 10;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
 }
 
 .code-wrapper:hover .copy-btn {
@@ -590,7 +685,9 @@ code {
   visibility: visible;
 }
 
-.code-wrapper .copy-btn:hover { opacity: 1; }
+.code-wrapper .copy-btn:hover {
+  opacity: 1;
+}
 
 .code-wrapper .copy-btn.copied {
   background-color: mediumseagreen;
@@ -601,7 +698,7 @@ code {
 /* Для коду, який не можна копіювати */
 
 .nocopy {
-  -webkit-user-select: none; 
+  -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
@@ -665,16 +762,16 @@ code.nocopy {
   font-size: 14px;
   outline: none;
   line-height: 1.5;
-  resize: none; 
-  white-space: pre; 
+  resize: none;
+  white-space: pre;
   overflow-wrap: normal;
   border: none;
-  padding: 15px 0 15px 15px; 
-  border-right: 15px solid transparent; 
-  background-clip: padding-box; 
-  overflow-y: hidden; 
+  padding: 15px 0 15px 15px;
+  border-right: 15px solid transparent;
+  background-clip: padding-box;
+  overflow-y: hidden;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; 
+  -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
 }
 
@@ -688,15 +785,21 @@ code.nocopy {
   font-size: 14px;
   white-space: pre-wrap;
   word-break: break-all;
-  border-radius: 0; 
+  border-radius: 0;
 }
 
 /* 💐 12. АДАПТИВНІСТЬ */
 
 @media (max-width: 649px) {
-  body { padding: 10px 0; }
-  img { max-width: 100%; }
-  code { padding: 10px; }
+  body {
+    padding: 10px 0;
+  }
+  img {
+    max-width: 100%;
+  }
+  code {
+    padding: 10px;
+  }
 
   header {
     width: 100%;
@@ -716,9 +819,20 @@ code.nocopy {
 }
 
 @media (max-width: 449px) {
-  main { width: 94%; }
-  p, li { text-align: left; }
-  .objective { line-height: 1.5; }
-  .soft-callout { padding: 10px 15px; }
-  .accordion__item { margin-bottom: 12px; }
+  main {
+    width: 94%;
+  }
+  p,
+  li {
+    text-align: left;
+  }
+  .objective {
+    line-height: 1.5;
+  }
+  .soft-callout {
+    padding: 10px 15px;
+  }
+  .accordion__item {
+    margin-bottom: 12px;
+  }
 }

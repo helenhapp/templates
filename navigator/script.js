@@ -1,4 +1,6 @@
-// 1. DATA: Fetching JSON
+// ==========================================
+// 1. Завантаження JSON
+// ==========================================
 async function fetchCourseData() {
   try {
     const response = await fetch("courses.json");
@@ -10,7 +12,9 @@ async function fetchCourseData() {
   }
 }
 
-// 2. TEMPLATING: Building HTML
+// ==========================================
+// 2. Створення HTML
+// ==========================================
 function createLessonsHTML(lessons) {
   return lessons
     .map(
@@ -31,14 +35,14 @@ function createCourseHTML(course) {
 
   const isUnlocked =
     localStorage.getItem(`unlocked_${course.CourseId}`) === "true";
-  const icon = isUnlocked ? "✧" : "🔒"; // Show a lock if it requires a password
+  const icon = isUnlocked ? "✧" : "🔒"; // Показувати замок, якщо потрібен пароль
 
   const headerContent = course.IsOld
     ? `<span class="star">${icon}</span> <span class="accent">${course.CourseTitle}</span>`
     : `<span class="star">${icon}</span> Курс ${course.CourseIndex}: <span class="accent">${course.CourseTitle}</span>`;
 
   return `
-    <details class="accordion__item" name="accordion" data-course-id="${course.CourseId}" data-password="${course.CoursePassword}">
+    <details class="accordion__item" name="accordion" data-course-id="${course.CourseId}">
         <summary class="accordion__header">
             <div>${headerContent}</div>
             <span class="acc-arrow">▶</span>
@@ -50,7 +54,9 @@ function createCourseHTML(course) {
   `;
 }
 
-// 3. RENDERING
+// ==========================================
+// 3. Відображення
+// ==========================================
 function renderMenu(courses) {
   const currentContainer = document.querySelector("#current-courses-container");
   const oldContainer = document.querySelector("#old-courses-container");
@@ -65,8 +71,10 @@ function renderMenu(courses) {
   });
 }
 
-// 4. LOGIC: Password Modal Setup
-function setupPasswordModals() {
+// ==========================================
+// 4. Модальні вікна паролів для курсів
+// ==========================================
+function setupPasswordModals(courses) {
   const modal = document.querySelector("#password-modal");
   const passwordInput = document.querySelector("#password-input");
   const errorText = document.querySelector("#password-error");
@@ -105,7 +113,16 @@ function setupPasswordModals() {
     if (!currentTargetCourse) return;
 
     const courseId = currentTargetCourse.getAttribute("data-course-id");
-    const correctPassword = currentTargetCourse.getAttribute("data-password");
+
+    // Знаходимо конкретний курс у масиві JSON за ID
+    const targetCourseData = courses.find((c) => c.CourseId === courseId);
+
+    if (!targetCourseData) {
+      console.error("Курс не знайдено в базі даних!");
+      return;
+    }
+
+    const correctPassword = targetCourseData.CoursePassword;
 
     if (passwordInput.value === correctPassword) {
       localStorage.setItem(`unlocked_${courseId}`, "true");
@@ -127,34 +144,67 @@ function setupPasswordModals() {
   });
 }
 
-// 5. Function that brings it all together
-async function init() {
-  // 1. Global Page Lock Check 
-  const isGlobalUnlocked = localStorage.getItem("global_unlocked");
-  if (!isGlobalUnlocked) {
-    const globalPass = prompt("Введіть загальний пароль сайту:");
-    if (globalPass === "0000") {
+// ==========================================
+// 5. ЛОГІКА: Глобальне модальне вікно
+// ==========================================
+function setupGlobalModal(correctPassword, coursesData) {
+  const globalModal = document.querySelector("#global-password-modal");
+  const globalInput = document.querySelector("#global-password-input");
+  const globalSubmit = document.querySelector("#global-submit-btn");
+  const globalError = document.querySelector("#global-password-error");
+
+  // ВАЖЛИВО: Прибираємо "завісу", щоб вона не перекривала вікно пароля
+  document.body.classList.add("is-loaded");
+
+  globalModal.addEventListener("cancel", (e) => {
+    e.preventDefault();
+  });
+
+  globalModal.showModal();
+
+  function checkGlobalPassword() {
+    if (globalInput.value === correctPassword) {
+      // Використовуйте localStorage, щоб сайт "пам'ятав" вхід
       localStorage.setItem("global_unlocked", "true");
+      globalModal.close();
+      renderMenu(coursesData);
+      setupPasswordModals(coursesData);
     } else {
-      document.body.innerHTML =
-        "<h2 style='text-align:center; margin-top:20vh;'>Доступ заборонено. Оновіть сторінку.</h2>";
-      return;
+      globalError.style.display = "block";
     }
   }
 
-  // 2. Fetch and Render Courses 
-  const courses = await fetchCourseData();
+  globalSubmit.addEventListener("click", checkGlobalPassword);
+  globalInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") checkGlobalPassword();
+  });
+}
 
-  if (courses) {
-    renderMenu(courses);
+// ==========================================
+// 6. ІНІЦІАЛІЗАЦІЯ
+// ==========================================
+async function init() {
+  const data = await fetchCourseData();
 
-    // 3. Attach modal logic AFTER elements exist on the screen 
-    setupPasswordModals();
-  } else {
+  if (!data || !data.courses) {
+    // Якщо дані не завантажились, прибираємо завісу, щоб показати помилку
+    document.body.classList.add("is-loaded");
     document.getElementById("current-courses-container").innerHTML =
-      "<p style='color: red;'>Помилка завантаження курсів.</p>";
+      "<p style='color: red;'>Помилка завантаження бази даних.</p>";
+    return;
+  }
+
+  const isGlobalUnlocked = localStorage.getItem("global_unlocked");
+
+  if (isGlobalUnlocked !== "true") {
+    // Показуємо вікно, якщо раніше не входили
+    setupGlobalModal(data.globalPassword, data.courses);
+  } else {
+    // Вже входили — малюємо меню і прибираємо завісу
+    renderMenu(data.courses);
+    setupPasswordModals(data.courses);
+    document.body.classList.add("is-loaded");
   }
 }
 
-// Start the app
 init();
