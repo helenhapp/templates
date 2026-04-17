@@ -35,7 +35,7 @@ function createCourseHTML(course) {
 
   const isUnlocked =
     localStorage.getItem(`unlocked_${course.CourseId}`) === "true";
-  const icon = isUnlocked ? "✧" : "🔒"; // Показувати замок, якщо потрібен пароль
+  const icon = isUnlocked ? "✦" : "🔒"; // Показувати замок, якщо потрібен пароль
 
   const headerContent = course.IsOld
     ? `<span class="star">${icon}</span> <span class="accent">${course.CourseTitle}</span>`
@@ -128,7 +128,7 @@ function setupPasswordModals(courses) {
       localStorage.setItem(`unlocked_${courseId}`, "true");
 
       const icon = currentTargetCourse.querySelector(".star");
-      if (icon) icon.textContent = "✧";
+      if (icon) icon.textContent = "✦";
 
       modal.close();
       currentTargetCourse.open = true;
