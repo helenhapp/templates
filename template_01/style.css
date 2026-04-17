@@ -817,9 +817,6 @@ code.nocopy {
 }
 
 @media (max-width: 449px) {
-  :root {
-    --h1-shadow: 2px 2px 0 var(--title-glow);
-  }
   main {
     width: 94%;
   }

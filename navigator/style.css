@@ -154,6 +154,9 @@ dialog input:focus {
 }
 
 @media (max-width: 449px) {
+  :root {
+    --h1-shadow: 2px 2px 0 var(--title-glow);
+  }
   header {
     padding: 15px;
     padding-bottom: 0;
