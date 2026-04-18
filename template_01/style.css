@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
 /* 🌼 1. ЗМІННІ ТЕМИ */
 
 /* Світла Тема */
 :root {
+  --brand1: rgb(44, 25, 62);
+  --brand2: rgb(103, 66, 135);
+  --brand3: rgb(226, 63, 5);
+  --brand4: rgb(236, 104, 7);
+
   /* Фони */
   --bg1: #f6ffea;
   --bg2: #e7d9fd;
@@ -12,21 +19,22 @@
   --soft-callout: rgba(255, 255, 255, 0.7);
   --link-bg: rgba(210, 189, 251, 0.15);
 
+  --toggle: var(--brand2);
+
   /* Текст і посилання */
   --text-main: #121709;
   --text-soft: #381b7a;
-  --title: #f9c646;
+  --title: var(--brand2);
   --link-color: #5e32e6;
   --header-link-bg: #ffffff;
 
   /* Рамки та акценти */
   --accent: #5e32e6;
-  --accent-pop: #108238;
+  --accent-pop: var(--brand4);
 
   /* Ефекти та тіні */
-  --title-glow: #2a1163;
   --shadow-accent: rgba(94, 50, 230, 0.4);
-  --h1-shadow: 3px 3px 0 var(--title-glow);
+  --h1-shadow: none;
   --accordion-shadow: 3px 3px 0 var(--shadow-accent);
   --code-shadow: 0 0 5px var(--shadow-accent);
 
@@ -45,21 +53,21 @@
   --soft-callout: rgba(16, 33, 89, 0.6);
   --link-bg: rgba(150, 150, 150, 0.05);
 
+  --toggle: var(--brand4);
+
   /* Текст та посилання */
   --text-main: #d6ecff;
   --text-soft: #a9dcff;
-  --title: #78c7ff;
-  --link-color: var(--accent);
+  --title: var(--brand4);
   --header-link-bg: transparent;
 
   /* Рамки та акценти */
   --accent: #4fa7ff;
-  --accent-pop: #dfb946;
+  --accent-pop: var(--brand4);
 
   /* Ефекти та тіні */
-  --title-glow: #135685;
   --shadow-accent: rgba(79, 167, 255, 0.25);
-  --h1-shadow: 3px 3px 0 var(--title-glow);
+  --h1-shadow: none;
   --accordion-shadow: 0 0 10px var(--shadow-accent);
   --code-shadow: 0 0 10px var(--shadow-accent);
 }
@@ -76,7 +84,7 @@ body {
   color: var(--text-main);
   font-family: Arial, sans-serif;
   min-height: 100dvh;
-  padding-top: 22px;
+  padding-top: 0;
   padding-bottom: 10px;
   background-color: var(--bg1);
 }
@@ -95,7 +103,7 @@ body::before {
 
 main {
   width: 93%;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -120,15 +128,16 @@ header a {
 /* 🍀 4. ТЕКСТ */
 
 h1 {
-  font-family: "Press Start 2P", monospace;
+  font-family: "Nunito", sans-serif;
   margin: 15px 0;
   color: var(--title);
   text-shadow: var(--h1-shadow);
   line-height: 1.5;
-  letter-spacing: 3px;
-  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  letter-spacing: 4px;
+  font-size: clamp(2.5rem, 8.5vw, 4.5rem);
   overflow-wrap: anywhere;
   hyphens: auto;
+  font-weight: 800;
 }
 
 h2,
@@ -172,6 +181,7 @@ p.topic {
   font-size: 12px;
   margin: 0;
   line-height: 1.4;
+  letter-spacing: 1px;
 }
 
 .accent {
@@ -196,14 +206,14 @@ p.topic {
 /* 🌺 5. ПОСИЛАННЯ ТА ЗОБРАЖЕННЯ */
 
 a {
-  color: var(--link-color);
+  color: var(--text-main);
   text-decoration: none;
   transition: color 0.2s ease;
+  letter-spacing: 1px;
 }
 
 a:hover {
-  color: var(--title);
-  text-decoration: underline;
+  color: var(--accent-pop);
 }
 
 a:hover img {
@@ -214,7 +224,7 @@ a:hover img {
 img {
   display: block;
   max-width: 100%;
-  max-height: 350px;
+  max-height: 400px;
   margin: 10px 0;
   border: 2px solid var(--accent-pop);
   transition: transform 0.2s ease;
@@ -245,16 +255,7 @@ button:active {
   transform: scale(0.97);
 }
 
-#theme-toggle {
-  font-size: 10px;
-  padding: 8px 15px;
-  margin-top: 25px;
-  border-radius: 4px;
-  border: none;
-}
-
 /* Кнопка  🛸, що повертає на початок сторінки */
-
 .scroll-to-top {
   position: fixed;
   bottom: 30px;
@@ -359,7 +360,6 @@ th {
   font-size: 11px;
 }
 
-/* Cтилі для коду всередині таблиць */
 td code {
   display: inline-block;
   padding: 7px 10px;
@@ -371,15 +371,108 @@ td code {
 
 /* 🌷 9. КОМПОНЕНТИ МАКЕТУ */
 
-/* Хедер */
+/* Верхня панель (Top Bar) та Логотип */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--soft-callout);
+}
 
+.site-logo {
+  margin: 0;
+  height: 55px;
+  padding: 8px 0;
+  width: auto;
+  object-fit: contain;
+  border: none;
+}
+
+/* Перемикач теми */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 65px;
+  min-width: 65px;
+  height: 32px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--panel);
+  border: 2px solid var(--accent);
+  border-radius: 32px;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--toggle);
+  border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.icon {
+  z-index: 1;
+  user-select: none;
+}
+
+.sun {
+  font-size: 18px;
+  padding-left: 2px;
+  color: gold;
+}
+
+.moon {
+  font-size: 22px;
+  padding-right: 3px;
+  color: goldenrod;
+}
+
+input:checked + .slider {
+  background-color: var(--hover-bg);
+}
+
+input:checked + .slider::before {
+  transform: translate(32px, -50%);
+}
+
+/* Хедер */
 header {
+  padding: 0;
   width: 90%;
   text-align: center;
   font-family: "Press Start 2P", monospace;
   font-optical-sizing: auto;
   margin: 0 auto;
-  max-width: 850px;
+  max-width: 1100px;
   border-radius: 6px;
 }
 
@@ -387,29 +480,8 @@ header h2 {
   color: var(--text-main);
 }
 
-header .links {
-  width: 90%;
-  max-width: 850px;
-  margin: 10px auto 0;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  opacity: 0.8;
-}
-
-header .links .link-prev {
-  grid-column: 1;
-  justify-self: start;
-}
-
-header .links .link-all {
-  grid-column: 2;
-  justify-self: center;
-}
-
-header .links .link-next {
-  grid-column: 3;
-  justify-self: end;
+.link-all {
+  opacity: 0.7;
 }
 
 header a {
@@ -419,13 +491,11 @@ header a {
   text-align: center;
   opacity: 0.75;
   color: var(--text-main);
-  background-color: var(--header-link-bg);
   padding: 6px 3px 3px 3px;
   border-radius: 5px;
 }
 
-/*  Випадаючі списки (акордеон) */
-
+/* Випадаючі списки (акордеон) */
 .accordion {
   margin: 30px auto;
 }
@@ -587,13 +657,16 @@ a {
 }
 
 /* Вставки та розділювачі */
-
 .soft-callout {
   background-color: var(--soft-callout);
   padding: 10px 20px;
   border-radius: 6px;
   line-height: 1.6;
   margin: 20px 0;
+}
+
+.objective {
+  margin: 30px 0;
 }
 
 hr {
@@ -608,7 +681,6 @@ hr {
 }
 
 /* "Завіса" для переходу між сторінками */
-
 .transition-curtain {
   position: fixed;
   top: 0;
@@ -656,7 +728,6 @@ code {
 }
 
 /* Кнопка для копіювання коду */
-
 .code-wrapper {
   position: relative;
   margin: 15px 0;
@@ -696,7 +767,6 @@ code {
 }
 
 /* Для коду, який не можна копіювати */
-
 .nocopy {
   -webkit-user-select: none;
   -ms-user-select: none;

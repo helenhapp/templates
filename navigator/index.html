@@ -52,6 +52,25 @@
     <!-- "Завіса", яка плавно зникає при завантаженні сторінки -->
     <div class="transition-curtain"></div>
 
+    <nav class="top-bar">
+      <div class="logo-container">
+        <img
+          src="../template_01/logo-light.png"
+          alt="WebUniverse Logo"
+          class="site-logo"
+          id="site-logo"
+        />
+      </div>
+
+      <label class="toggle-switch" aria-label="Перемикач теми">
+        <input type="checkbox" id="theme-checkbox" />
+        <span class="slider">
+          <span class="icon sun">☀︎</span>
+          <span class="icon moon">⏾</span>
+        </span>
+      </label>
+    </nav>
+
     <header>
       <!-- Кнопка для тестування паролів -->
       <!-- <button onclick="localStorage.clear(); location.reload();" style="margin: 20px; opacity: 0.5">
@@ -60,8 +79,6 @@
 
       <h1>WebUniverse</h1>
       <p class="topic">Курси з розробки вебсайтів та відеоігор</p>
-
-      <button id="theme-toggle">Темна тема</button>
     </header>
 
     <main>

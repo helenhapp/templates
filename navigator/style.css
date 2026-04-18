@@ -1,5 +1,8 @@
 h1 {
-  font-size: clamp(1.6rem, 6.8vw, 3rem);
+  font-size: clamp(2rem, 8.5vw, 4rem);
+  /* color: var(--brand1); */
+  /* text-shadow: 3px 3px 0 var(--brand2); */
+  text-shadow: none;
 }
 
 nav ul {
@@ -16,6 +19,7 @@ nav ul li a {
   gap: 1em;
   align-items: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-main);
 }
 
 nav ul li a:hover {
@@ -34,6 +38,7 @@ nav ul li a:hover span {
 
 .hollow-text {
   font-family: "Sniglet", system-ui;
+  /* font-family: "Nunito", sans-serif; */
   font-size: 1.5em;
   color: transparent;
   -webkit-text-stroke: 1px var(--accent-pop);

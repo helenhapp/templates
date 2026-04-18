@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Матеріали для заняття з веб-розробки" />
-    
+
     <!-- ❗️ Назва на вкладці -->
-    <title>Тема #</title>
+    <title>Тема 0</title>
 
     <!-- ❗️ Фавіконка (зараз немає) -->
     <link rel="icon" href="" />
@@ -20,11 +20,21 @@
     <!-- Підключення шрифтів (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    />
 
     <!-- Підсвітка коду (Highlight.js) -->
-    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link
+      id="hljs-theme"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
 
     <!-- Власні стилі та скрипти -->
     <link rel="stylesheet" href="./style.css" />
@@ -35,18 +45,31 @@
     <!-- "Завіса", яка плавно зникає при завантаженні сторінки -->
     <div class="transition-curtain"></div>
 
-    <!-- Хедер з назвою теми та посиланнями -->
-    <header>
-      <div class="links">
-        <a href="" class="link-prev">← Тема #</a>
-        <a href="" class="link-all">Всі теми</a>
-        <a href="" class="link-next">Тема # →</a>
+    <nav class="top-bar">
+      <div class="logo-container">
+        <img
+          src="./logo-light.png"
+          alt="WebUniverse Logo"
+          class="site-logo"
+          id="site-logo"
+        />
       </div>
 
-      <h1>Тема #</h1>
-      <p class="topic">Назва теми</p>
+      <a href="" class="link-all">Всі теми курсу</a>
 
-      <button id="theme-toggle">Темна тема</button>
+      <label class="toggle-switch" aria-label="Перемикач теми">
+        <input type="checkbox" id="theme-checkbox" />
+        <span class="slider">
+          <span class="icon sun">☀︎</span>
+          <span class="icon moon">⏾</span>
+        </span>
+      </label>
+    </nav>
+
+    <!-- Хедер з назвою теми та посиланнями -->
+    <header>
+      <h1>Тема 0</h1>
+      <p class="topic">Назва теми</p>
     </header>
 
     <!-- Основний контент -->
@@ -76,7 +99,27 @@
           <div class="accordion__content">
             <!-- 1 -->
             <h3>Чому ми це вчимо?</h3>
-            <p>Тут пояснення і приклади де конкретно це використовується в додатках та іграх.</p>
+            <p>
+              Тут пояснення і приклади де конкретно це використовується в
+              додатках та іграх.
+            </p>
+
+            <p>
+              Так виглядає текст, коли його багато: Lorem, ipsum dolor sit amet
+              consectetur adipisicing elit. Sapiente impedit vero sed explicabo
+              repellat incidunt eius distinctio, voluptatem dignissimos non,
+              recusandae quis, natus fugit. Pariatur officia quae temporibus
+              corrupti autem nihil odio nesciunt at laudantium modi numquam quis
+              optio dolorum iure iste, doloremque quisquam et? Doloribus
+              exercitationem consequuntur perspiciatis magnam tempore numquam
+              placeat repellendus incidunt explicabo facere, repellat distinctio
+              in labore nobis velit tenetur sunt ea eaque! Nihil voluptatum
+              dolorum ducimus, similique dolor quasi ad ipsam! Delectus
+              obcaecati alias, debitis, odit impedit architecto vel sed
+              veritatis explicabo tempora cum eveniet sapiente aliquam odio
+              placeat accusantium voluptatem cumque voluptatibus? Animi,
+              explicabo.
+            </p>
 
             <hr />
 
@@ -84,14 +127,19 @@
             <h3>Приклад HTML коду</h3>
             <p>
               Тут <span class="accent">пояснення</span> матеріалу.
-              <span class="accent">Так</span> виглядають <span class="accent">акценти</span>.
+              <span class="accent">Так</span> виглядають
+              <span class="accent">акценти</span>.
             </p>
 
             <pre><code class="language-html">&lt;!-- приклад HTML коду --&gt;
 &lt;h1&gt;Hello, world!&lt;/h1&gt;</code></pre>
 
-            <p>Так виглядають картинки (мають максимальну висоту 350px). Зазвичай тут має бути скріншот з результатом коду, або ілюстрація/схема для пояснення теми:</p>
-           
+            <p>
+              Так виглядають картинки (мають максимальну висоту 400px). Зазвичай
+              тут має бути скріншот з результатом коду, або ілюстрація/схема для
+              пояснення теми:
+            </p>
+
             <img
               src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="замініть картинку на скріншот результату коду"
@@ -103,7 +151,8 @@
 
             <p>
               Для правильної підсвітки коду бажано додавати до тегу code класи:
-              <span class="accent">language-html</span>, <span class="accent">language-css</span> або
+              <span class="accent">language-html</span>,
+              <span class="accent">language-css</span> або
               <span class="accent">language-javascript</span>.
             </p>
 
@@ -112,21 +161,31 @@
   box-sizing: border-box; 
 }</code></pre>
 
-            <p class="soft-callout">⚡️ <strong>Важливо</strong>: Так можна наголосити на важливій інформації.</p>
-            <p class="soft-callout">✨ <i>Примітка</i>: Так можна написати додаткову інформацію.</p>
-
+            <p class="soft-callout">
+              ⚡️ <strong>Важливо</strong>: Так можна наголосити на важливій
+              інформації.
+            </p>
+            <p class="soft-callout">
+              ✨ <i>Примітка</i>: Так можна написати додаткову інформацію.
+            </p>
 
             <hr />
 
             <h3>Приклад JS коду</h3>
 
-            <p>Якщо дадати до тегу code клас <span class="accent">nocopy</span>, код не можна буде виділити і скопіювати (щоб учні переписували його самі).</p>
+            <p>
+              Якщо дадати до тегу code клас <span class="accent">nocopy</span>,
+              код не можна буде виділити і скопіювати (щоб учні переписували
+              його самі).
+            </p>
 
             <pre><code class="nocopy language-javascript">// приклад JS коду (який не можна копіювати)
 console.log("Hello, world!");</code></pre>
 
-            <pre class="accent-string">Hello, world!
-Тут текст з прикладу, який можна скопіювати.</pre>
+            <pre class="accent-string">
+Hello, world!
+Тут текст з прикладу, який можна скопіювати.</pre
+            >
 
             <hr />
 
@@ -149,7 +208,7 @@ console.log("Hello, world!");</code></pre>
               </details>
             </div>
 
-            <hr>
+            <hr />
 
             <h3>Завдання</h3>
 
@@ -160,14 +219,20 @@ console.log("Hello, world!");</code></pre>
                 <span class="editor-title">JavaScript</span>
                 <button class="run-btn">▶️</button>
               </div>
-              
-              <textarea class="custom-editor-input" spellcheck="false" name="custom-editor">const numbers = [1, 3, 5];
+
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="custom-editor"
+              >
+const numbers = [1, 3, 5];
 let result = 0;
 for (let number of numbers) {
   result += number;
 }
-console.log(`Результат: ${result}`);</textarea>
-              
+console.log(`Результат: ${result}`);</textarea
+              >
+
               <pre class="custom-editor-output">Очікування запуску...</pre>
             </div>
           </div>
@@ -176,15 +241,15 @@ console.log(`Результат: ${result}`);</textarea>
         <!-- 📝 Завдання 1 -->
         <details class="accordion__item" name="accordion">
           <summary class="accordion__header">
-            <div>
-              <span class="star">✦</span> Практика 1
-            </div>
+            <div><span class="star">✦</span> Практика 1</div>
             <span class="acc-arrow">▶</span>
           </summary>
 
           <div class="accordion__content">
             <h3>Тематика практики</h3>
-            <p>Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").</p>
+            <p>
+              Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").
+            </p>
 
             <hr />
 
@@ -192,7 +257,13 @@ console.log(`Результат: ${result}`);</textarea>
               <summary class="task-header">Завдання 1</summary>
 
               <ol>
-                <li>Виведи в консоль: <span class="accent-string">Так виглядає текст, який можна скопіювати для завдання</span>.</li>
+                <li>
+                  Виведи в консоль:
+                  <span class="accent-string"
+                    >Так виглядає текст, який можна скопіювати для
+                    завдання</span
+                  >.
+                </li>
                 <li>Зроби...</li>
                 <li>Напиши...</li>
                 <li>Зміни...</li>
@@ -215,13 +286,16 @@ console.log(`Результат: ${result}`);</textarea>
               <ol>
                 <li>...</li>
               </ol>
-            </details>  
+            </details>
 
             <hr />
 
             <h3>Очікуваний результат:</h3>
 
-            <p>Тут мають бути скріншоти з результатами завдання (що має бути в консолі або на сторінці), щоб діти могли порівняти.</p>
+            <p>
+              Тут мають бути скріншоти з результатами завдання (що має бути в
+              консолі або на сторінці), щоб діти могли порівняти.
+            </p>
 
             <img
               src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -247,7 +321,10 @@ console.log(`Результат: ${result}`);</textarea>
           <div class="accordion__content">
             <!-- 1 -->
             <h3>Чому ми це вчимо?</h3>
-            <p>Тут пояснення і приклади де конкретно це використовується в додатках та іграх.</p>
+            <p>
+              Тут пояснення і приклади де конкретно це використовується в
+              додатках та іграх.
+            </p>
 
             <hr />
 
@@ -281,15 +358,15 @@ console.log(`Результат: ${result}`);</textarea>
         <!-- 📝 Завдання 2 -->
         <details class="accordion__item" name="accordion">
           <summary class="accordion__header">
-            <div>
-              <span class="star">✦</span> Практика 2
-            </div>
+            <div><span class="star">✦</span> Практика 2</div>
             <span class="acc-arrow">▶</span>
           </summary>
 
           <div class="accordion__content">
             <h3>Тематика практики</h3>
-            <p>Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").</p>
+            <p>
+              Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").
+            </p>
 
             <hr />
 
@@ -337,7 +414,10 @@ console.log(`Результат: ${result}`);</textarea>
           <div class="accordion__content">
             <!-- 1 -->
             <h3>Чому ми це вчимо?</h3>
-            <p>Тут пояснення і приклади де конкретно це використовується в додатках та іграх.</p>
+            <p>
+              Тут пояснення і приклади де конкретно це використовується в
+              додатках та іграх.
+            </p>
 
             <hr />
 
@@ -371,15 +451,15 @@ console.log(`Результат: ${result}`);</textarea>
         <!-- 📝 Завдання 3 -->
         <details class="accordion__item" name="accordion">
           <summary class="accordion__header">
-            <div>
-              <span class="star">✦</span> Практика 3
-            </div>
+            <div><span class="star">✦</span> Практика 3</div>
             <span class="acc-arrow">▶</span>
           </summary>
 
           <div class="accordion__content">
             <h3>Тематика практики</h3>
-            <p>Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").</p>
+            <p>
+              Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").
+            </p>
 
             <hr />
 
@@ -457,6 +537,12 @@ console.log(`Результат: ${result}`);</textarea>
     </main>
 
     <!-- Кнопка для повернення на початок сторінки -->
-    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Повернутися нагору">🛸</button>
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Повернутися нагору"
+    >
+      🛸
+    </button>
   </body>
 </html>
