@@ -8,7 +8,7 @@ hljs.highlightAll();
 document.addEventListener("DOMContentLoaded", () => {
   const themeCheckbox = document.getElementById("theme-checkbox");
   const hljsThemeLink = document.getElementById("hljs-theme");
-  const siteLogo = document.getElementById("site-logo");
+  // const siteLogo = document.getElementById("site-logo");
 
   // Отримуємо збережену тему з локального сховища або встановлюємо 'light' за замовчуванням
   let currentTheme = localStorage.getItem("theme") || "light";
@@ -23,14 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (theme === "dark") {
       // Налаштування для ТЕМНОЇ теми
       if (themeCheckbox) themeCheckbox.checked = true;
-      if (siteLogo) siteLogo.src = "../template_01/logo-dark.svg";
+      // if (siteLogo) siteLogo.src = "../template_01/logo-dark.svg";
       if (hljsThemeLink)
         hljsThemeLink.href =
           "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css";
     } else {
       // Налаштування для СВІТЛОЇ теми
       if (themeCheckbox) themeCheckbox.checked = false;
-      if (siteLogo) siteLogo.src = "../template_01/logo-light.svg";
+      // if (siteLogo) siteLogo.src = "../template_01/logo-light.svg";
       if (hljsThemeLink)
         hljsThemeLink.href =
           "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";

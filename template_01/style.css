@@ -407,6 +407,9 @@ td code {
 
 .logo-container {
   justify-self: start;
+  position: relative; /* Acts as the anchor for the absolute image */
+  display: flex;
+  align-items: center;
 }
 
 .site-logo {
@@ -416,6 +419,31 @@ td code {
   width: auto;
   object-fit: contain;
   border: none;
+  /* Adds a smooth 0.4s fade that matches your other theme transitions */
+  transition: opacity 0.4s ease; 
+}
+
+/* The light logo sits normally in the layout */
+.logo-light {
+  position: relative;
+  opacity: 1;
+}
+
+/* The dark logo sits absolutely directly on top of the light logo */
+.logo-dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Hidden by default */
+}
+
+/* 🌙 When dark theme is active, swap the opacities! */
+[data-theme="dark"] .logo-light {
+  opacity: 0;
+}
+
+[data-theme="dark"] .logo-dark {
+  opacity: 1;
 }
 
 .link-all {
