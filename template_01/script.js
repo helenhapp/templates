@@ -23,14 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (theme === "dark") {
       // Налаштування для ТЕМНОЇ теми
       if (themeCheckbox) themeCheckbox.checked = true;
-      if (siteLogo) siteLogo.src = "../template_01/logo-dark.png";
+      if (siteLogo) siteLogo.src = "../template_01/logo-dark.svg";
       if (hljsThemeLink)
         hljsThemeLink.href =
           "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css";
     } else {
       // Налаштування для СВІТЛОЇ теми
       if (themeCheckbox) themeCheckbox.checked = false;
-      if (siteLogo) siteLogo.src = "../template_01/logo-light.png";
+      if (siteLogo) siteLogo.src = "../template_01/logo-light.svg";
       if (hljsThemeLink)
         hljsThemeLink.href =
           "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";

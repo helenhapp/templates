@@ -404,6 +404,7 @@ td code {
   border: none;
 }
 
+
 .link-all {
   font-family: "Press Start 2P", monospace;
   font-size: 9px;
@@ -467,7 +468,7 @@ td code {
 
 .sun {
   padding-left: 2px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .moon {
@@ -485,7 +486,7 @@ input:checked + .slider::before {
 
 /* Хедер */
 header {
-  padding: 0;
+  padding: 15px;
   width: 90%;
   text-align: center;
   font-family: "Press Start 2P", monospace;
