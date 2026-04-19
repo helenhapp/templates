@@ -15,7 +15,8 @@
   --panel-alt: #ede0ff;
   --hover-bg: #d2bdfb;
   --code-bg: #ffffff;
-  --soft-callout: rgba(255, 255, 255, 0.7);
+  /* --soft-callout: rgba(255, 255, 255, 0.7); */
+  --soft-callout: rgba(236, 104, 7, 0.06);
   --link-bg: rgba(236, 104, 7, 0.05);
 
   --toggle: var(--brand2);
@@ -52,7 +53,7 @@
   --panel-alt: var(--brand1);
   --hover-bg: #3d2459;
   --code-bg: #140b24;
-  --soft-callout: rgba(103, 66, 135, 0.3);
+  --soft-callout: rgba(103, 66, 135, 0.15);
   --link-bg: rgba(192, 159, 203, 0.05);
 
   --toggle: var(--brand5);
@@ -233,8 +234,9 @@ img {
   display: block;
   max-width: 100%;
   max-height: 400px;
-  margin: 10px 0;
+  margin: 20px auto;
   border: 2px solid var(--accent-pop);
+  border-radius: 6px;
   transition: transform 0.2s ease;
 }
 
