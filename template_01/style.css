@@ -2,80 +2,90 @@
 
 /* 🌼 1. ЗМІННІ ТЕМИ */
 
+/* 🌼 1. ЗМІННІ ТЕМИ */
+
 /* Світла Тема */
 :root {
   --brand1: rgb(44, 25, 62);
   --brand2: rgb(103, 66, 135);
   --brand3: rgb(226, 63, 5);
   --brand4: rgb(236, 104, 7);
+  --brand5: rgb(192, 159, 203);
 
   /* Фони */
-  --bg1: #f6ffea;
-  --bg2: #e7d9fd;
-  --panel: #f4f9ec;
+  /* --bg1: #f6ffea; */
+  /* --bg1: #f0ffec; */
+  --bg1: #fff2ea;
+  /* --bg2: #e7d9fd; */
+  --bg2: #e4d4ff;
+  /* --panel: #f4f9ec; */
+  --panel: #fdede5;
   --panel-alt: #ede0ff;
   --hover-bg: #d2bdfb;
   --code-bg: #ffffff;
   --soft-callout: rgba(255, 255, 255, 0.7);
-  --link-bg: rgba(210, 189, 251, 0.15);
+  --link-bg: rgba(236, 104, 7, 0.05); /* Using brand5 with opacity */
 
   --toggle: var(--brand2);
   --toggle2: var(--bg1);
   --toggle-border: var(--accent-pop);
 
   /* Текст і посилання */
-  /* --text-main: #121709; */
   --text-main: var(--brand1);
   --text-soft: #381b7a;
   --title: var(--brand2);
-  --link-color: #5e32e6;
+  --link-color: var(--brand2); /* Aligned to brand2 */
   --header-link-bg: #ffffff;
 
   /* Рамки та акценти */
-  /* --accent: #5e32e6; */
   --accent: var(--brand2);
   --accent-pop: var(--brand4);
 
   /* Ефекти та тіні */
-  --shadow-accent: rgba(94, 50, 230, 0.4);
-  --h1-shadow: none;
+  --shadow-accent: rgba(103, 66, 135, 0.4); /* Aligned to brand2 RGB */
+  /* --h1-shadow: none; */
+  --title-shadow: 3px 3px 0 var(--brand5);
   --accordion-shadow: 3px 3px 0 var(--shadow-accent);
   --code-shadow: 0 0 5px var(--shadow-accent);
+  --accordion-drop-shadow: 3px 3px 0 var(--brand5);
 
   interpolate-size: allow-keywords;
 }
 
 /* Перевизначення для темної теми */
 [data-theme="dark"] {
-  /* Фони */
-  --bg1: #0a1030;
-  --bg2: #102159;
-  --panel: #0d1440;
-  --panel-alt: #102159;
-  --hover-bg: #16327b;
-  --code-bg: #0e1a4d;
-  --soft-callout: rgba(16, 33, 89, 0.6);
-  --link-bg: rgba(150, 150, 150, 0.05);
+  /* Фони (Shifted from Blue to Deep Purple) */
+  --bg1: #1a0f2e; /* Very dark, rich purple */
+  --bg2: var(--brand1); /* rgb(44, 25, 62) */
+  --panel: #241434; /* Slightly lighter than bg1 */
+  --panel-alt: var(--brand1);
+  --hover-bg: #3d2459; /* Brightened purple for hover states */
+  --code-bg: #140b24; /* Deepest purple for code blocks */
+  --soft-callout: rgba(103, 66, 135, 0.3); /* Brand2 with opacity */
+  --link-bg: rgba(192, 159, 203, 0.05); /* Brand5 with opacity */
 
-  --toggle: var(--brand2);
+  --toggle: var(--brand5);
   --toggle2: var(--brand4);
   --toggle-border: var(--accent);
 
   /* Текст та посилання */
-  --text-main: #d6ecff;
-  --text-soft: #a9dcff;
+  --text-main: #f0e6f5; /* Very pale lilac/white for readability */
+  --text-soft: var(--brand5); /* Light lilac for secondary text */
+  /* --title: var(--brand4);  */
   --title: var(--brand4);
   --header-link-bg: transparent;
 
   /* Рамки та акценти */
-  --accent: #4fa7ff;
+  --accent: var(--brand5); /* Light lilac for visibility on dark backgrounds */
   --accent-pop: var(--brand4);
 
   /* Ефекти та тіні */
-  --shadow-accent: rgba(79, 167, 255, 0.25);
-  --h1-shadow: none;
+  --shadow-accent: rgba(192, 159, 203, 0.25); /* Brand5 RGB for glow effects */
+  /* --h1-shadow: none; */
+  --title-shadow: 0 0 3px var(--brand3);
   --accordion-shadow: 0 0 10px var(--shadow-accent);
   --code-shadow: 0 0 10px var(--shadow-accent);
+  --accordion-drop-shadow: 0 0 3px var(--brand5);
 }
 
 /* 🌿 2. CSS RESET ТА БАЗОВІ СТИЛІ */
@@ -138,7 +148,7 @@ h1 {
   font-family: "Press Start 2P", monospace;
   margin: 15px 0;
   color: var(--title);
-  text-shadow: var(--h1-shadow);
+  text-shadow: var(--title-shadow);
   line-height: 1.5;
   letter-spacing: 4px;
   /* font-size: clamp(2.5rem, 8.5vw, 4.5rem); */
@@ -186,7 +196,7 @@ li {
 
 p.topic {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0;
   line-height: 1.4;
   letter-spacing: 1px;
@@ -206,9 +216,12 @@ p.topic {
   background-color: var(--panel-alt);
   padding: 5px 7px;
   border-radius: 3px;
-  font-size: 0.9rem;
+}
+
+pre .accent-string {
   white-space: pre-wrap;
   word-wrap: break-word;
+  font-size: 0.9rem;
 }
 
 /* 🌺 5. ПОСИЛАННЯ ТА ЗОБРАЖЕННЯ */
@@ -388,7 +401,8 @@ td code {
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--soft-callout);
+  /* background-color: var(--soft-callout); */
+  background-color: var(--panel-alt);
 }
 
 .logo-container {
@@ -403,7 +417,6 @@ td code {
   object-fit: contain;
   border: none;
 }
-
 
 .link-all {
   font-family: "Press Start 2P", monospace;
@@ -528,7 +541,7 @@ header a {
   border: solid var(--accent);
   border-width: 0 2px;
   border-radius: 0;
-  filter: drop-shadow(3px 3px 0 var(--shadow-accent));
+  filter: drop-shadow(var(--accordion-drop-shadow));
 }
 
 .accordion__item::before,
@@ -690,7 +703,7 @@ hr {
   border: none;
   border-top: 3px dashed var(--accent);
   margin: 30px auto;
-  opacity: 0.75;
+  opacity: 0.7;
 }
 
 .accordion__content hr {
