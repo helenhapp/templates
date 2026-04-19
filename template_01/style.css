@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"); */
 
 /* 🌼 1. ЗМІННІ ТЕМИ */
 
@@ -24,14 +24,16 @@
   --toggle-border: var(--accent-pop);
 
   /* Текст і посилання */
-  --text-main: #121709;
+  /* --text-main: #121709; */
+  --text-main: var(--brand1);
   --text-soft: #381b7a;
   --title: var(--brand2);
   --link-color: #5e32e6;
   --header-link-bg: #ffffff;
 
   /* Рамки та акценти */
-  --accent: #5e32e6;
+  /* --accent: #5e32e6; */
+  --accent: var(--brand2);
   --accent-pop: var(--brand4);
 
   /* Ефекти та тіні */
@@ -403,7 +405,9 @@ td code {
 }
 
 .link-all {
-  opacity: 0.7;
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  /* opacity: 0.7; */
   justify-self: center; 
   white-space: nowrap; 
 }
@@ -459,7 +463,7 @@ td code {
 .icon {
   z-index: 1;
   user-select: none;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .sun {
