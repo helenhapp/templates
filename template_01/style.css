@@ -392,7 +392,7 @@ td code {
 }
 
 .logo-container {
-  justify-self: start; 
+  justify-self: start;
 }
 
 .site-logo {
@@ -408,13 +408,13 @@ td code {
   font-family: "Press Start 2P", monospace;
   font-size: 9px;
   /* opacity: 0.7; */
-  justify-self: center; 
-  white-space: nowrap; 
+  justify-self: center;
+  white-space: nowrap;
 }
 
 /* Перемикач теми */
 .toggle-switch {
-  justify-self: end; 
+  justify-self: end;
   position: relative;
   display: inline-block;
   width: 65px;
@@ -463,15 +463,16 @@ td code {
 .icon {
   z-index: 1;
   user-select: none;
-  font-size: 16px;
 }
 
 .sun {
   padding-left: 2px;
+  font-size: 16px;
 }
 
 .moon {
   padding-right: 3px;
+  font-size: 14px;
 }
 
 input:checked + .slider {
@@ -665,6 +666,7 @@ details.task[open] summary::before {
 .scroll-to-top,
 .answer summary,
 .task summary,
+.toggle-switch,
 button,
 a {
   -webkit-tap-highlight-color: transparent;
