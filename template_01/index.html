@@ -6,7 +6,7 @@
     <meta name="description" content="Матеріали для заняття з веб-розробки" />
 
     <!-- ❗️ Назва на вкладці -->
-    <title>Тема 0</title>
+    <title>Тема #</title>
 
     <!-- ❗️ Фавіконка (зараз немає) -->
     <link rel="icon" href="" />
@@ -43,8 +43,8 @@
     ></script>
 
     <!-- Власні стилі та скрипти -->
-    <link rel="stylesheet" href="./style.css?v=1.1" />
-    <script defer src="./script.js?v=1.1"></script>
+    <link rel="stylesheet" href="./style.css?v=1.2" />
+    <script defer src="./script.js?v=1.2"></script>
   </head>
 
   <body>
@@ -80,20 +80,33 @@
     <header>
       <h1>Тема #</h1>
       <p class="topic">Назва теми</p>
+
+      <!-- Короткий опис теми і мети заняття -->
+      <section class="soft-callout objective">
+        <p>
+          <span class="accent">Мета заняття:</span> Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Rerum molestias eius eos iusto saepe
+          adipisci assumenda beatae, obcaecati voluptatem perspiciatis. Dolores
+          eius facilis similique perspiciatis quisquam numquam suscipit labore
+          ex?
+        </p>
+      </section>
+
+      <hr />
     </header>
 
     <!-- Основний контент -->
     <main>
-      <!-- <hr /> -->
-
-      <!-- Короткий опис теми і мети заняття -->
-      <!-- <section class="soft-callout objective">
-        <p><span class="accent">На цьому занятті ти навчишся:</span> ...</p>
-      </section> -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Частина 1</button>
+        <button class="tab-btn" data-target="part-2">Частина 2</button>
+        <button class="tab-btn" data-target="part-3">Частина 3</button>
+        <button class="tab-btn" data-target="part-4">Д/З</button>
+      </div>
 
       <!-- 🧩 ЧАСТИНА 1 -->
 
-      <section class="accordion">
+      <section id="part-1" class="accordion tab-content active">
         <!-- Якщо дати всім тегам details однаковий name="", можна буде розгортати тільки одну вкладку за раз, а інші автоматично згортатимуться  -->
 
         <!-- 📚 Теорія 1 -->
@@ -323,7 +336,7 @@ console.log(`Результат: ${result}`);</textarea
 
       <!-- 🧩 ЧАСТИНА 2 -->
 
-      <section class="accordion">
+      <section id="part-2" class="accordion tab-content">
         <!-- 📚 Теорія 2 -->
         <details class="accordion__item" name="accordion">
           <summary class="accordion__header">
@@ -416,7 +429,7 @@ console.log(`Результат: ${result}`);</textarea
 
       <!-- 🧩 ЧАСТИНА 3 -->
 
-      <section class="accordion">
+      <section id="part-3" class="accordion tab-content">
         <!-- 📚 Теорія 3 -->
         <details class="accordion__item" name="accordion">
           <summary class="accordion__header">
@@ -509,7 +522,7 @@ console.log(`Результат: ${result}`);</textarea
 
       <!-- 🧩 ТАБЛИЦЯ -->
 
-      <!-- <section class="accordion">
+      <section id="part-4" class="accordion tab-content">
         <details class="accordion__item" name="accordion">
           <summary class="accordion__header">
             <div><span class="star">✧</span> Таблиця</div>
@@ -549,7 +562,7 @@ console.log(`Результат: ${result}`);</textarea
             </div>
           </div>
         </details>
-      </section> -->
+      </section>
     </main>
 
     <footer>

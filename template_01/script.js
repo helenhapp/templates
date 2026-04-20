@@ -224,3 +224,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+/* 🗂 7. ТАБИ (ВКЛАДКИ) ДЛЯ ЧАСТИН УРОКУ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Якщо користувач клікнув на вже активну вкладку — нічого не робимо
+      if (button.classList.contains("active")) return;
+
+      const targetId = button.getAttribute("data-target");
+      const currentActiveContent = document.querySelector(
+        ".tab-content.active",
+      );
+      const currentActiveBtn = document.querySelector(".tab-btn.active");
+
+      // 1. Миттєво перемикаємо візуальний стан кнопок (щоб інтерфейс відчувався швидким)
+      if (currentActiveBtn) currentActiveBtn.classList.remove("active");
+      button.classList.add("active");
+
+      // 2. Якщо є відкрита секція, плавно її ховаємо
+      if (currentActiveContent) {
+        // Знімаємо статус активної і запускаємо анімацію зникнення
+        currentActiveContent.classList.remove("active");
+        currentActiveContent.classList.add("fading-out");
+
+        // Чекаємо 300 мілісекунд (поки закінчиться fadeOutTab в CSS)
+        setTimeout(() => {
+          // Остаточно ховаємо стару секцію і показуємо нову
+          currentActiveContent.classList.remove("fading-out");
+          document.getElementById(targetId).classList.add("active");
+        }, 300);
+      } else {
+        // Запобіжник: якщо активної секції немає, просто показуємо нову
+        document.getElementById(targetId).classList.add("active");
+      }
+    });
+  });
+});

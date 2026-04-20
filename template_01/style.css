@@ -319,6 +319,74 @@ button:active {
   transform: translateY(-5px);
 }
 
+/* 🗂 Вкладки (Таби) для частин уроку */
+
+.tabs-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 11px;
+  border-style: outset;
+  opacity: 0.7;
+}
+
+.tab-btn:hover {
+  opacity: 0.9;
+}
+
+/* Активна кнопка (виділена) */
+.tab-btn.active {
+  border-style: inset;
+  transform: scale(0.97);
+  opacity: 0.9;
+  background-color: var(--hover-bg);
+  color: #fff;
+  pointer-events: none;
+}
+
+/* Логіка приховування контенту */
+.tab-content {
+  display: none;
+  opacity: 0;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeInTab 1.5s ease-in-out forwards;
+}
+
+.tab-content.fading-out {
+  display: block;
+  animation: fadeOutTab 1.5s ease-in-out forwards;
+}
+
+/* Анімація появи */
+@keyframes fadeInTab {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Анімація зникнення */
+@keyframes fadeOutTab {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* 🌻 7. СПИСКИ */
 
 ul,
@@ -409,7 +477,7 @@ td code {
   padding: 0 20px;
   margin: 0 auto;
   width: 100%;
-  height: 52px;
+  height: 54px;
   box-sizing: border-box;
   background-color: var(--panel);
 }
@@ -423,7 +491,7 @@ td code {
 
 .site-logo {
   margin: 0;
-  height: 52px;
+  height: 54px;
   padding: 8px 0;
   width: auto;
   object-fit: contain;
@@ -501,7 +569,6 @@ td code {
   top: 50%;
   transform: translateY(-50%);
   background-color: var(--toggle2);
-  /* background-color: var(--accent-pop); */
   border-radius: 50%;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
@@ -532,7 +599,8 @@ input:checked + .slider::before {
 
 /* Хедер */
 header {
-  padding: 15px;
+  padding: 15px 0;
+  padding-bottom: 0;
   width: 90%;
   text-align: center;
   font-family: "Press Start 2P", monospace;
@@ -724,6 +792,7 @@ a {
 
 /* Вставки та розділювачі */
 .soft-callout {
+  color: var(--text-soft);
   background-color: var(--soft-callout);
   padding: 10px 20px;
   border-radius: 6px;
@@ -732,7 +801,12 @@ a {
 }
 
 .objective {
-  margin: 30px 0;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.soft-callout.objective {
+  margin-top: 30px;
 }
 
 hr {
@@ -935,7 +1009,7 @@ pre:has(code.nocopy) {
 /* 🛸 13. ФУТЕР (FOOTER) */
 
 footer {
-  height: 52px;
+  height: 54px;
   background-color: var(--panel);
   display: flex;
   justify-content: center;
@@ -986,8 +1060,10 @@ footer p {
 @media (max-width: 449px) {
   :root {
     --title-shadow: 2px 2px 0 var(--brand5);
+    --accordion-drop-shadow: 2px 2px 0 var(--brand5);
   }
   [data-theme="dark"] {
+    --accordion-drop-shadow: 2px 2px 0 var(--brand2);
     --title-shadow: 2px 2px 0 var(--brand2);
   }
   main {
