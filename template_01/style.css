@@ -47,58 +47,41 @@
 /* Темна тема */
 [data-theme="dark"] {
   /* Фони */
-  /* --bg1: #1a0f2e;
-  --bg2: var(--brand1); */
-  /* --bg1: #9683ec;
-  --bg2: #725fc7; */
-  --bg1: #211832;
-  --bg2: #211832;
+  --bg1: #1f0c4f;
+  /* --bg2: #211832; */
+  --bg2: var(--brand1);;
+  
+  /* --panel-alt: #2c1973; */
+  --panel-alt: #371f4c;
+  /* --panel: #21115b; */
+  --panel: var(--brand1);
 
-  /* --panel: #241434;
-  --panel-alt: var(--brand1); */
-  /* --panel: #2f0856; */
-  /* --panel-alt: #5d16a6;
-  --panel: #2f0856; */
-
-  --panel-alt: #55378c;
-  --panel: #412b6b;
-
-  /* --hover-bg: #32459; */
-  --hover-bg: #542d80;
+  --hover-bg: rgb(71, 35, 113);
   --code-bg: #140b24;
   --soft-callout: rgba(103, 66, 135, 0.15);
   --link-bg: rgba(192, 159, 203, 0.05);
 
-  --toggle: var(--brand5);
-  --toggle2: var(--brand4);
+  --toggle: var(--panel-alt);
+  --toggle2: var(--accent-pop);
   --toggle-border: var(--accent);
 
   /* Текст та посилання */
   --text-main: #f0e6f5;
-  /* --text-soft: var(--brand5); */
   --text-soft: #d3c1f3;
-  /* --title: var(--brand4); */
-  /* --title: #f35b04; */
-  --title: #e34e09;
+  --title: var(--brand5);
   --header-link-bg: transparent;
 
   /* Рамки та акценти */
   /* --accent: var(--brand5); */
-  --accent: #9f72f3;
-  /* --accent-pop: var(--brand4); */
-  /* --accent-pop: #f18701; */
-  --accent-pop: #ea6121;
+  --accent: #3a1c81;
+  --accent-pop: #d4adfc;
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
-  --title-shadow: 0 0 4px var(--brand3);
-  /* --title-shadow: 0 0 3px var(--title); */
+  --title-shadow: 0 0 4px var(--brand2);
   --accordion-shadow: 0 0 10px var(--shadow-accent);
-  /* --accordion-shadow: none; */
   --code-shadow: 0 0 10px var(--shadow-accent);
-  /* --accordion-drop-shadow: 0 0 3px var(--brand5); */
-  --accordion-drop-shadow: 0 0 1px var(--text-soft);
-  /* --accordion-drop-shadow: none; */
+  --accordion-drop-shadow: 0 0 2px #482c9e;
 }
 
 /* 🌿 2. CSS RESET ТА БАЗОВІ СТИЛІ */
@@ -492,8 +475,8 @@ td code {
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: var(--toggle); */
-  background-color: var(--panel-alt);
+  background-color: var(--toggle);
+  /* background-color: var(--panel-alt); */
   border: 2px solid var(--toggle-border);
   border-radius: 32px;
   transition: all 0.4s ease;
@@ -512,8 +495,8 @@ td code {
   left: 3px;
   top: 50%;
   transform: translateY(-50%);
-  /* background-color: var(--toggle2); */
-  background-color: var(--accent-pop);
+  background-color: var(--toggle2);
+  /* background-color: var(--accent-pop); */
   border-radius: 50%;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
