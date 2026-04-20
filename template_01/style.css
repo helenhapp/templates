@@ -1054,7 +1054,8 @@ footer p {
     --accordion-drop-shadow: 2px 2px 0 var(--brand2);
     --title-shadow: 2px 2px 0 var(--brand2);
   }
-  main {
+  main,
+  header {
     width: 94%;
   }
   p,
