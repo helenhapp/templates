@@ -15,7 +15,6 @@
   --panel-alt: #ede0ff;
   --hover-bg: #d2bdfb;
   --code-bg: #ffffff;
-  /* --soft-callout: rgba(255, 255, 255, 0.7); */
   --soft-callout: rgba(236, 104, 7, 0.06);
   --link-bg: rgba(236, 104, 7, 0.05);
 
@@ -33,6 +32,7 @@
   /* Рамки та акценти */
   --accent: var(--brand2);
   --accent-pop: var(--brand4);
+  --accordion-border: var(--brand2);
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(103, 66, 135, 0.4);
@@ -48,19 +48,15 @@
 [data-theme="dark"] {
   /* Фони */
   --bg1: #1f0c4f;
-  /* --bg2: #211832; */
   --bg2: var(--brand1);;
-  
-  /* --panel-alt: #2c1973; */
-  --panel-alt: #371f4c;
-  /* --panel: #21115b; */
-  --panel: var(--brand1);
-
-  --hover-bg: rgb(71, 35, 113);
+  --panel-alt: #240046;
+  --panel: #1a0032;
+  --hover-bg: #2f005b;
   --code-bg: #140b24;
-  --soft-callout: rgba(103, 66, 135, 0.15);
+  --soft-callout: rgba(36, 0, 70, 0.7);
   --link-bg: rgba(192, 159, 203, 0.05);
 
+  /* theme switch/toggle */
   --toggle: var(--panel-alt);
   --toggle2: var(--accent-pop);
   --toggle-border: var(--accent);
@@ -72,16 +68,17 @@
   --header-link-bg: transparent;
 
   /* Рамки та акценти */
-  /* --accent: var(--brand5); */
   --accent: #3a1c81;
-  --accent-pop: #d4adfc;
+  --accent-pop: rgb(239, 125, 43);
+  --accordion-border: #462167;
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
-  --title-shadow: 0 0 4px var(--brand2);
+  --title-shadow: 3px 3px 0 var(--brand2);
   --accordion-shadow: 0 0 10px var(--shadow-accent);
   --code-shadow: 0 0 10px var(--shadow-accent);
-  --accordion-drop-shadow: 0 0 2px #482c9e;
+  /* --accordion-drop-shadow: 3px 3px 0 #482c9e; */
+  --accordion-drop-shadow: 3px 3px 0 var(--brand2);
 }
 
 /* 🌿 2. CSS RESET ТА БАЗОВІ СТИЛІ */
@@ -97,10 +94,8 @@ body {
   font-family: Arial, sans-serif;
   min-height: 100dvh;
   padding-top: 0;
-  /* padding-bottom: 10px; */
   background-color: var(--bg1);
   font-size: 17px;
-
   display: flex;
   flex-direction: column;
 }
@@ -152,7 +147,7 @@ h1 {
   text-shadow: var(--title-shadow);
   line-height: 1.5;
   letter-spacing: 4px;
-  font-size: clamp(2.5rem, 7.5vw, 3.8rem);
+  font-size: clamp(2.5rem, 7.2vw, 3.5rem);
   overflow-wrap: anywhere;
   hyphens: auto;
   font-weight: 800;
@@ -220,7 +215,7 @@ p.topic {
   border-radius: 3px;
 }
 
-pre .accent-string {
+pre.accent-string {
   white-space: pre-wrap;
   word-wrap: break-word;
   font-size: 0.9rem;
@@ -404,6 +399,7 @@ td code {
   padding: 0 20px;
   margin: 0 auto;
   width: 100%;
+  height: 52px;
   box-sizing: border-box;
   background-color: var(--panel);
 }
@@ -417,7 +413,7 @@ td code {
 
 .site-logo {
   margin: 0;
-  height: 55px;
+  height: 52px;
   padding: 8px 0;
   width: auto;
   object-fit: contain;
@@ -476,7 +472,6 @@ td code {
   right: 0;
   bottom: 0;
   background-color: var(--toggle);
-  /* background-color: var(--panel-alt); */
   border: 2px solid var(--toggle-border);
   border-radius: 32px;
   transition: all 0.4s ease;
@@ -566,7 +561,7 @@ header a {
   background: var(--panel);
   transition: all 0.4s ease;
   position: relative;
-  border: solid var(--accent);
+  border: solid var(--accordion-border);
   border-width: 0 2px;
   border-radius: 0;
   filter: drop-shadow(var(--accordion-drop-shadow));
@@ -579,7 +574,8 @@ header a {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--accent);
+  /* background: var(--accent); */
+  background: var(--accordion-border);
   transition: background 0.4s ease;
 }
 
@@ -731,10 +727,15 @@ a {
 
 hr {
   border: none;
-  border-top: 3px dashed var(--accent);
+  border-top: 3px dashed var(--accent-pop);
   margin: 30px auto;
-  opacity: 0.7;
+  opacity: 0.85;
 }
+
+[data-theme="dark"] hr,
+[data-theme="dark"] .accordion__content hr {
+    opacity: 0.65;
+  }
 
 .accordion__content hr {
   width: 90%;
@@ -846,7 +847,6 @@ code.nocopy {
   flex-direction: column;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: var(--code-shadow);
   border: 2px solid var(--accent);
   background: var(--code-bg);
 }
@@ -922,10 +922,12 @@ code.nocopy {
 /* 🛸 13. ФУТЕР (FOOTER) */
 
 footer {
-  /* margin-top: 16px; */
-  /* padding: 15px 0 20px; */
-  padding-bottom: 25px;
-  text-align: center;
+  height: 52px;
+  background-color: var(--panel);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 footer p {
@@ -973,7 +975,7 @@ footer p {
     --title-shadow: 2px 2px 0 var(--brand5);
   }
   [data-theme="dark"] {
-    --title-shadow: 0 0 4px var(--brand3);
+    --title-shadow: 2px 2px 0 var(--brand2);
   }
   main {
     width: 94%;
