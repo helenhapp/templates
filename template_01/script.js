@@ -229,11 +229,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const tabButtons = document.querySelectorAll(".tab-btn");
+  let isAnimating = false; // Запобіжник: чи йде зараз анімація?
+
+  // Якщо в HTML забули додати клас show для першої вкладки, скрипт це виправить
+  const initialActive = document.querySelector(".tab-content.active");
+  if (initialActive) initialActive.classList.add("show");
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      // Якщо користувач клікнув на вже активну вкладку — нічого не робимо
-      if (button.classList.contains("active")) return;
+      // Ігноруємо клік, якщо це активна вкладка АБО якщо зараз грає анімація
+      if (button.classList.contains("active") || isAnimating) return;
+
+      isAnimating = true; // Блокуємо інші кліки, поки йде перехід
 
       const targetId = button.getAttribute("data-target");
       const currentActiveContent = document.querySelector(
@@ -241,25 +248,37 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       const currentActiveBtn = document.querySelector(".tab-btn.active");
 
-      // 1. Миттєво перемикаємо візуальний стан кнопок (щоб інтерфейс відчувався швидким)
+      // Миттєво перемикаємо візуальний стан кнопок
       if (currentActiveBtn) currentActiveBtn.classList.remove("active");
       button.classList.add("active");
 
-      // 2. Якщо є відкрита секція, плавно її ховаємо
       if (currentActiveContent) {
-        // Знімаємо статус активної і запускаємо анімацію зникнення
-        currentActiveContent.classList.remove("active");
-        currentActiveContent.classList.add("fading-out");
+        // ЕТАП 1: Починаємо плавне розчинення старого контенту
+        currentActiveContent.classList.remove("show");
 
-        // Чекаємо 300 мілісекунд (поки закінчиться fadeOutTab в CSS)
+        // Чекаємо 300мс (поки відпрацює CSS transition: opacity)
         setTimeout(() => {
-          // Остаточно ховаємо стару секцію і показуємо нову
-          currentActiveContent.classList.remove("fading-out");
-          document.getElementById(targetId).classList.add("active");
+          // ЕТАП 2: Ховаємо старий блок повністю і дістаємо новий
+          currentActiveContent.classList.remove("active"); // display: none
+
+          const newContent = document.getElementById(targetId);
+          newContent.classList.add("active"); // display: block
+
+          // Даємо браузеру 20 мілісекунд, щоб він встиг відрендерити display: block
+          // перед тим, як ми запустимо анімацію появи
+          setTimeout(() => {
+            newContent.classList.add("show"); // плавна поява
+            isAnimating = false; // Розблоковуємо кліки
+          },  20);
         }, 300);
       } else {
-        // Запобіжник: якщо активної секції немає, просто показуємо нову
-        document.getElementById(targetId).classList.add("active");
+        // Запобіжник на випадок відсутності відкритої секції
+        const newContent = document.getElementById(targetId);
+        newContent.classList.add("active");
+        setTimeout(() => {
+          newContent.classList.add("show");
+          isAnimating = false;
+        }, 20);
       }
     });
   });

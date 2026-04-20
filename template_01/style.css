@@ -352,39 +352,21 @@ button:active {
 }
 
 /* Логіка приховування контенту */
+/* 🗂 Логіка приховування та анімації контенту */
 .tab-content {
-  display: none;
+  display: none; 
   opacity: 0;
+  transition: opacity 0.3s ease; /* Надійний перехід прозорості */
 }
 
+/* Стан 1: Вкладка присутня в документі (але ще прозора) */
 .tab-content.active {
-  display: block;
-  animation: fadeInTab 1.5s ease-in-out forwards;
+  display: block; 
 }
 
-.tab-content.fading-out {
-  display: block;
-  animation: fadeOutTab 1.5s ease-in-out forwards;
-}
-
-/* Анімація появи */
-@keyframes fadeInTab {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Анімація зникнення */
-@keyframes fadeOutTab {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+/* Стан 2: Вкладка плавно стає видимою */
+.tab-content.show {
+  opacity: 1;
 }
 
 /* 🌻 7. СПИСКИ */
