@@ -41,6 +41,11 @@
   --code-shadow: 0 0 5px var(--shadow-accent);
   --accordion-drop-shadow: 3px 3px 0 var(--brand5);
 
+  /* Скролбари */
+  --scrollbar-track: var(--panel-alt);
+  --scrollbar-thumb: var(--brand5);
+  --scrollbar-thumb-hover: var(--brand2);
+
   interpolate-size: allow-keywords;
 }
 
@@ -48,13 +53,13 @@
 [data-theme="dark"] {
   /* Фони */
   --bg1: #1f0c4f;
-  --bg2: var(--brand1);;
+  --bg2: var(--brand1);
   --panel-alt: #240046;
   --panel: #1a0032;
   --hover-bg: #2f005b;
   --code-bg: #140b24;
   --soft-callout: rgba(36, 0, 70, 0.7);
-  --link-bg: rgba(192, 159, 203, 0.05);
+  --link-bg: rgb(36, 0, 70, 0.5);
 
   /* theme switch/toggle */
   --toggle: var(--panel-alt);
@@ -68,7 +73,7 @@
   --header-link-bg: transparent;
 
   /* Рамки та акценти */
-  --accent: #3a1c81;
+  --accent: #462167;
   --accent-pop: rgb(239, 125, 43);
   --accordion-border: #462167;
 
@@ -77,8 +82,12 @@
   --title-shadow: 3px 3px 0 var(--brand2);
   --accordion-shadow: 0 0 10px var(--shadow-accent);
   --code-shadow: 0 0 10px var(--shadow-accent);
-  /* --accordion-drop-shadow: 3px 3px 0 #482c9e; */
   --accordion-drop-shadow: 3px 3px 0 var(--brand2);
+
+  /* Скролбари */
+  --scrollbar-track: var(--bg1);
+  --scrollbar-thumb: var(--accent);
+  --scrollbar-thumb-hover: var(--brand5);
 }
 
 /* 🌿 2. CSS RESET ТА БАЗОВІ СТИЛІ */
@@ -219,6 +228,7 @@ pre.accent-string {
   white-space: pre-wrap;
   word-wrap: break-word;
   font-size: 0.9rem;
+  padding: 10px 20px;
 }
 
 /* 🌺 5. ПОСИЛАННЯ ТА ЗОБРАЖЕННЯ */
@@ -734,8 +744,8 @@ hr {
 
 [data-theme="dark"] hr,
 [data-theme="dark"] .accordion__content hr {
-    opacity: 0.65;
-  }
+  opacity: 0.65;
+}
 
 .accordion__content hr {
   width: 90%;
@@ -768,34 +778,37 @@ body.is-leaving .transition-curtain {
   visibility: visible;
 }
 
-/* 🍁 10. КОД ТА KLIPSE */
+/* 🍁 10. КОД */
 
-pre {
-  margin: 0;
-}
-
-code {
-  display: block;
-  padding: 16px;
+pre:has(code) {
   margin: 15px 0;
   background-color: var(--code-bg);
   border: 3px solid var(--accent);
   border-radius: 6px;
-  font-family: "Fira Code", monospace;
-  color: var(--text-main);
-  white-space: pre;
-  overflow-y: auto;
+  overflow-x: auto;
   transition: all 0.4s ease;
 }
 
-/* Кнопка для копіювання коду */
+code {
+  display: inline-block;
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+  color: var(--text-main);
+  white-space: pre;
+  background: transparent;
+  border: none;
+}
+
+/* Обгортка для кнопки копіювання */
 .code-wrapper {
-  background-color: var(--code-bg);
   position: relative;
   margin: 15px 0;
 }
 
-.code-wrapper code {
+.code-wrapper pre {
   margin: 0;
 }
 
@@ -835,7 +848,7 @@ code {
   user-select: none;
 }
 
-code.nocopy {
+pre:has(code.nocopy) {
   border-radius: 6px 0;
 }
 
@@ -1000,4 +1013,44 @@ footer p {
     font-size: 12px;
     padding: 0 5px;
   }
+}
+
+/* 🛼 14. СКРОЛБАРИ */
+
+/* 1. Стандарт для Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* 2. Стилізація для Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 3px solid var(--scrollbar-track);
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+pre::-webkit-scrollbar,
+.custom-editor-input::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+pre::-webkit-scrollbar-thumb,
+.custom-editor-input::-webkit-scrollbar-thumb {
+  border-width: 2px;
 }

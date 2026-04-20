@@ -24,7 +24,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: var(--accent);
+  color: var(--text-main);
   text-decoration: none;
   transform: translateY(-2px);
 }
