@@ -47,11 +47,24 @@
 /* Темна тема */
 [data-theme="dark"] {
   /* Фони */
-  --bg1: #1a0f2e;
-  --bg2: var(--brand1);
-  --panel: #241434;
-  --panel-alt: var(--brand1);
-  --hover-bg: #3d2459;
+  /* --bg1: #1a0f2e;
+  --bg2: var(--brand1); */
+  /* --bg1: #9683ec;
+  --bg2: #725fc7; */
+  --bg1: #211832;
+  --bg2: #211832;
+
+  /* --panel: #241434;
+  --panel-alt: var(--brand1); */
+  /* --panel: #2f0856; */
+  /* --panel-alt: #5d16a6;
+  --panel: #2f0856; */
+
+  --panel-alt: #5c3e94;
+  --panel: #412b6b;
+
+  /* --hover-bg: #32459; */
+  --hover-bg: #542d80;
   --code-bg: #140b24;
   --soft-callout: rgba(103, 66, 135, 0.15);
   --link-bg: rgba(192, 159, 203, 0.05);
@@ -62,20 +75,30 @@
 
   /* Текст та посилання */
   --text-main: #f0e6f5;
-  --text-soft: var(--brand5);
-  --title: var(--brand4);
+  /* --text-soft: var(--brand5); */
+  --text-soft: #d3c1f3;
+  /* --title: var(--brand4); */
+  /* --title: #f35b04; */
+  --title: #e34e09;
   --header-link-bg: transparent;
 
   /* Рамки та акценти */
-  --accent: var(--brand5);
-  --accent-pop: var(--brand4);
+  /* --accent: var(--brand5); */
+  --accent: #9f72f3;
+  /* --accent-pop: var(--brand4); */
+  /* --accent-pop: #f18701; */
+  --accent-pop: #ea6121;
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
-  --title-shadow: 0 0 3px var(--brand3);
+  --title-shadow: 0 0 4px var(--brand3);
+  /* --title-shadow: 0 0 3px var(--title); */
   --accordion-shadow: 0 0 10px var(--shadow-accent);
+  /* --accordion-shadow: none; */
   --code-shadow: 0 0 10px var(--shadow-accent);
-  --accordion-drop-shadow: 0 0 3px var(--brand5);
+  /* --accordion-drop-shadow: 0 0 3px var(--brand5); */
+  --accordion-drop-shadow: 0 0 2px var(--text-soft);
+  /* --accordion-drop-shadow: none; */
 }
 
 /* 🌿 2. CSS RESET ТА БАЗОВІ СТИЛІ */
@@ -156,7 +179,6 @@ h2,
 h3 {
   font-family: "Press Start 2P", monospace;
   font-optical-sizing: auto;
-  color: var(--accent);
   margin-bottom: 10px;
   letter-spacing: 1px;
   line-height: 1.4;
@@ -165,10 +187,12 @@ h3 {
 h2 {
   font-size: 16px;
   margin-top: 40px;
+  color: var(--accent);
 }
 
 h3 {
   font-size: 14px;
+  color: var(--text-soft);
 }
 
 h3:hover {
@@ -194,6 +218,7 @@ p.topic {
   margin: 0;
   line-height: 1.4;
   letter-spacing: 1px;
+  color: var(--text-soft);
 }
 
 .accent {
@@ -390,14 +415,14 @@ td code {
 /* Верхня панель (Top Bar) та Логотип */
 .top-bar {
   display: grid;
-  grid-template-columns: 1fr auto auto; 
-  gap: 25px; 
+  grid-template-columns: 1fr auto auto;
+  gap: 25px;
   align-items: center;
   padding: 0 20px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--panel-alt);
+  background-color: var(--panel);
 }
 
 .logo-container {
@@ -922,7 +947,7 @@ footer p {
   text-align: center;
   color: var(--text-soft);
   font-size: 13px;
-  opacity: 0.8; 
+  opacity: 0.8;
   letter-spacing: 0.5px;
 }
 
@@ -930,11 +955,11 @@ footer p {
 
 @media (max-width: 649px) {
   .top-bar {
-    grid-template-columns: 1fr auto 1fr; 
-    gap: 0; 
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
   }
   .link-all {
-    justify-self: center; 
+    justify-self: center;
   }
   img {
     max-width: 100%;
