@@ -60,7 +60,7 @@
   /* --panel-alt: #5d16a6;
   --panel: #2f0856; */
 
-  --panel-alt: #5c3e94;
+  --panel-alt: #55378c;
   --panel: #412b6b;
 
   /* --hover-bg: #32459; */
@@ -97,7 +97,7 @@
   /* --accordion-shadow: none; */
   --code-shadow: 0 0 10px var(--shadow-accent);
   /* --accordion-drop-shadow: 0 0 3px var(--brand5); */
-  --accordion-drop-shadow: 0 0 2px var(--text-soft);
+  --accordion-drop-shadow: 0 0 1px var(--text-soft);
   /* --accordion-drop-shadow: none; */
 }
 
@@ -492,7 +492,8 @@ td code {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--toggle);
+  /* background-color: var(--toggle); */
+  background-color: var(--panel-alt);
   border: 2px solid var(--toggle-border);
   border-radius: 32px;
   transition: all 0.4s ease;
@@ -511,7 +512,8 @@ td code {
   left: 3px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--toggle2);
+  /* background-color: var(--toggle2); */
+  background-color: var(--accent-pop);
   border-radius: 50%;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
