@@ -1090,10 +1090,14 @@ footer p {
     left: 0;
     width: 100%;
     gap: 0;
-    background-color: var(--panel-alt);
+    background-color: var(--panel);
     border-top: 3px dashed var(--accordion-border);
     flex-direction: column;
     z-index: 100;
+    box-shadow: 0 5px 0 var(--panel-alt);
+  }
+  [data-theme="dark"] .nav-links {
+    background-color: var(--panel-alt);
     box-shadow: 0 5px 0 var(--panel);
   }
   .nav-links.open {
