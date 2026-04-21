@@ -9,15 +9,39 @@
   --brand5: rgb(192, 159, 203);
 
   /* Фони */
-  --bg1: #fff2ea;
-  --bg2: #e4d4ff;
-  --panel: #fdede5;
-  --panel-alt: #ede0ff;
-  --hover-bg: #d2bdfb;
+  /* --bg1: #fff2ea;
+  --bg2: #e4d4ff; */
+  /* --bg1: #f6e1cd; */
+  /* --bg2: #f9ddca; */
+  /* --bg2: #febdc7; */
+  /* --bg2: #ffcfd5; */
+  /* --bg2: rgba(236, 104, 7, 0.2); */
+  /* --bg2: #d9d3ff; */
+  /* --bg1: #f3ceff; */
+  /* --bg1: #fcceff; */
+  /* --panel: #fdede5; */
+  /* --panel: #fed4c6; */
+  /* --panel: #feded4; */
+  /* --panel: #e3d0fd; */
+  /* --panel-alt: #ede0ff; */
+
+  --bg1: #f3f1fd;
+  --bg2: #ede3fa;
+  --panel: #ebd9fc;
+  --panel-alt: #e7d0fd;
+  /* --hover-bg: #d2bdfb; */
+  --hover-bg: #e0c2fc;
+
   --code-bg: #ffffff;
   --soft-callout: rgba(236, 104, 7, 0.06);
+  /* --soft-callout: rgba(255, 207, 213, 0.7); */
   --link-bg: rgba(236, 104, 7, 0.05);
+  --bar-bg: #e5d6f8;
 
+  /* --panel: rgb(246, 220, 253);
+  --panel-alt: #f0cafd; */
+
+  /* theme switch/toggle */
   --toggle: var(--brand2);
   --toggle2: var(--bg1);
   --toggle-border: var(--accent-pop);
@@ -61,6 +85,7 @@
   --code-bg: #140b24;
   --soft-callout: rgba(36, 0, 70, 0.7);
   --link-bg: rgb(36, 0, 70, 0.5);
+  --bar-bg: var(--panel);
 
   /* theme switch/toggle */
   --toggle: var(--panel-alt);
@@ -325,13 +350,13 @@ button:active {
 
 .tabs-nav {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   margin-bottom: 30px;
 }
 
 .tab-btn {
-  width: 100%; 
+  width: 100%;
   padding: 12px 20px;
   font-size: 10px;
   border: 2px outset var(--tab-border);
@@ -470,7 +495,7 @@ td code {
   width: 100%;
   height: 54px;
   box-sizing: border-box;
-  background-color: var(--panel);
+  background-color: var(--bar-bg);
 }
 
 .logo-container {
@@ -622,7 +647,7 @@ header a {
 }
 
 .accordion p {
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 .accordion__item {
@@ -712,7 +737,7 @@ header a {
 }
 
 .accordion__content {
-  padding: 0 22px;
+  padding: 0 28px;
   line-height: 1.6;
 }
 
@@ -1001,7 +1026,7 @@ pre:has(code.nocopy) {
 
 footer {
   height: 54px;
-  background-color: var(--panel);
+  background-color: var(--bar-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1021,7 +1046,7 @@ footer p {
 /* Tablet / Smaller Screens (Switch to 2x2 Grid) */
 @media (max-width: 700px) {
   .tabs-nav {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1036,6 +1061,9 @@ footer p {
   main,
   header {
     width: 93%;
+  }
+  .accordion__content {
+    padding: 0 22px;
   }
   .top-bar {
     grid-template-columns: 1fr auto 1fr;
