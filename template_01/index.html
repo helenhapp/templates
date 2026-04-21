@@ -21,13 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
 
@@ -65,15 +59,23 @@
         />
       </div>
 
-      <a href="" class="link-all">Всі теми курсу</a>
+      <div class="top-bar__controls">
+        <div class="nav-links">
+          <a href="" class="nav-link">Навігатор</a>
+          <a href="" class="nav-link">JavaScript</a>
+          <a href="" class="nav-link">Редактор</a>
+        </div>
 
-      <label class="toggle-switch" aria-label="Перемикач теми">
-        <input type="checkbox" id="theme-checkbox" />
-        <span class="slider">
-          <span class="icon sun">☀️</span>
-          <span class="icon moon">🌙</span>
-        </span>
-      </label>
+        <label class="toggle-switch" aria-label="Перемикач теми">
+          <input type="checkbox" id="theme-checkbox" />
+          <span class="slider">
+            <span class="icon sun">☀️</span>
+            <span class="icon moon">🌙</span>
+          </span>
+        </label>
+
+        <button class="hamburger-btn" aria-label="Відкрити меню">🍔</button>
+      </div>
     </nav>
 
     <!-- Хедер з назвою теми та посиланнями -->
@@ -83,13 +85,18 @@
 
       <!-- Короткий опис теми і мети заняття -->
       <section class="soft-callout objective">
-        <p>
-          <span class="accent">Мета заняття:</span> Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Rerum molestias eius eos iusto saepe
-          adipisci assumenda beatae, obcaecati voluptatem perspiciatis. Dolores
-          eius facilis similique perspiciatis quisquam numquam suscipit labore
-          ex?
-        </p>
+        <span class="accent">Мета заняття:</span>
+        <ul>
+          <li>Lorem ipsum dolor sit amet.</li>
+          <li>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit,
+            porro deleniti neque dolores autem similique.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque,
+            quo?
+          </li>
+        </ul>
       </section>
 
       <hr />

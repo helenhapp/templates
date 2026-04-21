@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // hljsThemeLink.href =
         //   "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
         hljsThemeLink.href =
-          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css";
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nnfx-light.min.css";
     }
   }
 
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             newContent.classList.add("show"); // плавна поява
             isAnimating = false; // Розблоковуємо кліки
-          },  20);
+          }, 20);
         }, 400);
       } else {
         // Запобіжник на випадок відсутності відкритої секції
@@ -284,4 +284,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+});
+
+/* 🍔 8. МОБІЛЬНЕ МЕНЮ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerBtn = document.querySelector(".hamburger-btn");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (hamburgerBtn && navLinks) {
+    // 1. Відкриття/закриття по кліку на сам гамбургер
+    hamburgerBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    // 2. Закриття по кліку будь-де поза меню
+    document.addEventListener("click", (event) => {
+      const isOpen = navLinks.classList.contains("open");
+
+      const clickedOutside =
+        !hamburgerBtn.contains(event.target) &&
+        !navLinks.contains(event.target);
+
+      if (isOpen && clickedOutside) {
+        navLinks.classList.remove("open");
+      }
+    });
+  }
 });
