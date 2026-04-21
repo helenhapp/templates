@@ -33,6 +33,7 @@
   --accent: var(--brand2);
   --accent-pop: var(--brand4);
   --accordion-border: var(--brand2);
+  --tab-border: #462167;
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(103, 66, 135, 0.4);
@@ -76,6 +77,7 @@
   --accent: #462167;
   --accent-pop: rgb(239, 125, 43);
   --accordion-border: #462167;
+  --tab-border: #462167;
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
@@ -333,13 +335,18 @@ button:active {
   flex: 1;
   padding: 12px 20px;
   font-size: 10px;
-  border-style: outset;
+  border: 2px outset var(--tab-border);
   opacity: 0.7;
   min-width: 145px;
 }
 
 .tab-btn:hover {
   opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.tab-btn:active {
+  transform: scale(0.95);
 }
 
 /* Активна кнопка (виділена) */
@@ -348,7 +355,7 @@ button:active {
   transform: scale(0.97);
   opacity: 0.9;
   background-color: var(--hover-bg);
-  color: #fff;
+  color: var(--text-main);
   pointer-events: none;
 }
 
