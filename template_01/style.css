@@ -87,7 +87,7 @@
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
   --title-shadow: 3px 3px 0 var(--brand2);
-  --accordion-shadow: 3px 3px 0 var(--accordion-border);
+  --accordion-shadow: 0 0 3px var(--code-border);
   --code-shadow: 0 0 10px var(--shadow-accent);
   --accordion-drop-shadow: 3px 3px 0 var(--brand2);
 
@@ -505,7 +505,6 @@ td code {
   padding: 11px 20px;
   text-align: center;
   border-radius: 32px;
-  /* margin: 0 5px; */
   opacity: 0.75;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -1082,7 +1081,7 @@ footer p {
 /* Мобільна навігація (Ховаємо посилання, показуємо 🍔) */
 @media (max-width: 750px) {
   .hamburger-btn {
-    display: block; /* З'являється 🍔 */
+    display: block; 
   }
   .nav-links {
     display: none;
@@ -1093,9 +1092,9 @@ footer p {
     gap: 0;
     background-color: var(--panel-alt);
     border-top: 3px dashed var(--accordion-border);
-    border-bottom: 3px dashed var(--accordion-border);
     flex-direction: column;
     z-index: 100;
+    box-shadow: 0 5px 0 var(--panel);
   }
   .nav-links.open {
     display: flex;
@@ -1105,6 +1104,7 @@ footer p {
     width: 100%;
     padding: 20px;
     border-radius: 0;
+    border-bottom: 3px dashed var(--accordion-border);
   }
 }
 
