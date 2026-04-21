@@ -85,7 +85,7 @@
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
   --title-shadow: 3px 3px 0 var(--brand2);
-  --accordion-shadow: 3px 3px 0 var(--bar-bg);
+  --accordion-shadow: 3px 3px 0 var(--accordion-border);
   --code-shadow: 0 0 10px var(--shadow-accent);
   --accordion-drop-shadow: 3px 3px 0 var(--brand2);
 
