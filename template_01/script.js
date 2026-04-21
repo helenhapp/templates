@@ -231,20 +231,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const tabButtons = document.querySelectorAll(".tab-btn");
-  let isAnimating = false; // Запобіжник: чи йде зараз анімація?
+  let isAnimating = false; // Запобіжник
 
-  // Якщо в HTML забули додати клас show для першої вкладки, скрипт це виправить
-  const initialActive = document.querySelector(".tab-content.active");
-  if (initialActive) initialActive.classList.add("show");
+  // 1. ПЕРЕВІРЯЄМО LOCALSTORAGE ПРИ ЗАВАНТАЖЕННІ
+  const savedTabId = localStorage.getItem("activeTab");
 
+  if (savedTabId) {
+    // Шукаємо кнопку і контент для збереженої вкладки
+    const savedBtn = document.querySelector(
+      `.tab-btn[data-target="${savedTabId}"]`,
+    );
+    const savedContent = document.getElementById(savedTabId);
+
+    if (savedBtn && savedContent) {
+      // Спочатку прибираємо класи 'active' та 'show', які могли бути прописані в HTML за замовчуванням
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach((content) => {
+        content.classList.remove("active", "show");
+      });
+
+      // Миттєво робимо активною збережену вкладку
+      savedBtn.classList.add("active");
+      savedContent.classList.add("active", "show");
+    }
+  } else {
+    // Якщо нічого не збережено, показуємо вкладку за замовчуванням
+    const initialActive = document.querySelector(".tab-content.active");
+    if (initialActive) initialActive.classList.add("show");
+  }
+
+  // 2. ЛОГІКА ПЕРЕМИКАННЯ ТА ЗБЕРЕЖЕННЯ
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      // Ігноруємо клік, якщо це активна вкладка АБО якщо зараз грає анімація
+      // Ігноруємо клік, якщо це активна вкладка або йде анімація
       if (button.classList.contains("active") || isAnimating) return;
 
-      isAnimating = true; // Блокуємо інші кліки, поки йде перехід
+      isAnimating = true;
 
       const targetId = button.getAttribute("data-target");
+
+      // Зберігаємо вибір користувача в localStorage!
+      localStorage.setItem("activeTab", targetId);
+
       const currentActiveContent = document.querySelector(
         ".tab-content.active",
       );
@@ -258,19 +286,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // ЕТАП 1: Починаємо плавне розчинення старого контенту
         currentActiveContent.classList.remove("show");
 
-        // Чекаємо 300мс (поки відпрацює CSS transition: opacity)
+        // Чекаємо 400мс (поки відпрацює CSS transition)
         setTimeout(() => {
-          // ЕТАП 2: Ховаємо старий блок повністю і дістаємо новий
-          currentActiveContent.classList.remove("active"); // display: none
+          // ЕТАП 2: Ховаємо старий блок і дістаємо новий
+          currentActiveContent.classList.remove("active");
 
           const newContent = document.getElementById(targetId);
-          newContent.classList.add("active"); // display: block
+          newContent.classList.add("active");
 
-          // Даємо браузеру 20 мілісекунд, щоб він встиг відрендерити display: block
-          // перед тим, як ми запустимо анімацію появи
+          // Даємо браузеру 20мс на рендер перед появою
           setTimeout(() => {
-            newContent.classList.add("show"); // плавна поява
-            isAnimating = false; // Розблоковуємо кліки
+            newContent.classList.add("show");
+            isAnimating = false;
           }, 20);
         }, 400);
       } else {
