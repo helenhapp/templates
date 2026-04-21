@@ -11,18 +11,11 @@
   /* Фони */
   --bg1: #f3f1fd;
   --bg2: #e6d9f6;
-  /* --panel: #f1effd; */
-  /* --panel: #fdf5ef; */
-  /* --panel: #fff1f3; */
-  /* --panel: #ffe5d3; */
-  /* --panel: #f3f1fd; */
-  --panel: #f1e5fb;
+  --panel: #f9f3fe;
   --panel-alt: #e7d0fd;
   --hover-bg: #dcbbfb;
   --code-bg: #ffffff;
-  --soft-callout: rgba(236, 104, 7, 0.06);
-  /* --link-bg: rgba(236, 104, 7, 0.05); */
-  /* --link-bg: rgba(227, 221, 252, 0.22); */
+  --soft-callout: rgba(231, 208, 253, 0.24);
   --link-bg: rgba(231, 208, 253, 0.3);
   --bar-bg: #e3d3f8;
 

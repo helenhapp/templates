@@ -32,8 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (themeCheckbox) themeCheckbox.checked = false;
       // if (siteLogo) siteLogo.src = "../template_01/logo-light.svg";
       if (hljsThemeLink)
+        // hljsThemeLink.href =
+        //   "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
         hljsThemeLink.href =
-          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css";
     }
   }
 
