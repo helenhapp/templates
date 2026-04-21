@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newContent.classList.add("show"); // плавна поява
             isAnimating = false; // Розблоковуємо кліки
           },  20);
-        }, 300);
+        }, 400);
       } else {
         // Запобіжник на випадок відсутності відкритої секції
         const newContent = document.getElementById(targetId);
