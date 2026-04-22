@@ -11,7 +11,7 @@
                 {
                     "Num": "00",
                     "Title": "ШАБЛОН",
-                    "Url": "https://helenhapp.github.io/templates/template_01/index.html"
+                    "Url": "../template_01/index.html"
                 },
                 {
                     "Num": "01",

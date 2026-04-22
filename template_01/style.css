@@ -162,7 +162,7 @@ h1 {
   color: var(--title);
   text-shadow: var(--title-shadow);
   line-height: 1.5;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   font-size: clamp(2.5rem, 7.2vw, 3.5rem);
   overflow-wrap: anywhere;
   hyphens: auto;
@@ -1218,6 +1218,9 @@ footer p {
   .objective {
     text-align: left;
     line-height: 1.5;
+  }
+  h1 {
+    letter-spacing: 2px;
   }
   p,
   li {
