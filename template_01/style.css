@@ -154,6 +154,17 @@ header a {
     text-shadow 0.4s ease;
 }
 
+.scroll-to-top,
+.answer summary,
+.task summary,
+.toggle-switch,
+.hamburger-btn,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
 /* 🍀 4. ТЕКСТ */
 
 h1 {
@@ -336,7 +347,7 @@ button:active {
 }
 
 .tab-btn {
-  flex: 1 1 0%;        
+  flex: 1 1 0%;
   padding: 12px 20px;
   font-size: 10px;
   border: 2px outset var(--tab-border);
@@ -840,15 +851,36 @@ details.task[open] summary::before {
   color: var(--accent-pop);
 }
 
-.scroll-to-top,
-.answer summary,
-.task summary,
-.toggle-switch,
-.hamburger-btn,
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+.task {
+  padding: 5px 15px;
+  border-radius: 8px;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.task[open] {
+  background-color: var(--soft-callout);
+}
+
+.task[open] .task-header {
+  margin-bottom: 15px;
+}
+
+.task::details-content {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    height 0.3s ease-out,
+    opacity 0.3s ease-out,
+    content-visibility 0.3s ease-out;
+  transition-behavior: allow-discrete;
+}
+
+.task[open]::details-content {
+  height: auto;
+  opacity: 1;
 }
 
 /* Вставки та розділювачі */
@@ -1110,9 +1142,9 @@ footer p {
 
 /* 💐 13. АДАПТИВНІСТЬ */
 
-@media (max-width: 740px) {
+@media (max-width: 680px) {
   .tab-btn {
-    flex: 1 1 calc(50% - 15px); 
+    flex: 1 1 calc(50% - 15px);
   }
 }
 @media (max-width: 370px) {
