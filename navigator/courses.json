@@ -10,8 +10,8 @@
             "Lessons": [
                 {
                     "Num": "00",
-                    "Title": "Як виглядатиме така довга назва теми (але краще так не називати)",
-                    "Url": ""
+                    "Title": "ШАБЛОН",
+                    "Url": "https://helenhapp.github.io/templates/template_01/index.html"
                 },
                 {
                     "Num": "01",

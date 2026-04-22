@@ -3,7 +3,7 @@
 // Ініціалізуємо бібліотеку Highlight.js для підсвітки всього коду (<pre><code>) на сторінці
 hljs.highlightAll();
 
-/* 🧩 1.5. ГЕНЕРАТОР НАВІГАЦІЇ (КОМПОНЕНТ) */
+/* 🧩 2. ГЕНЕРАТОР НАВІГАЦІЇ (КОМПОНЕНТ) */
 
 function buildNavigation() {
   const container = document.getElementById("nav-container");
@@ -42,12 +42,11 @@ function buildNavigation() {
   `;
 }
 
-// Викликаємо генератор ПЕРШИМ, щоб інші скрипти знайшли кнопки
 document.addEventListener("DOMContentLoaded", () => {
   buildNavigation();
 });
 
-/* ✨ 2. ЛОГІКА ПЕРЕМИКАННЯ ТЕМИ (Слайдер, Логотип, Підсвітка коду) */
+/* ✨ 3. ЛОГІКА ПЕРЕМИКАННЯ ТЕМИ (Слайдер, Логотип, Підсвітка коду) */
 
 document.addEventListener("DOMContentLoaded", () => {
   const themeCheckbox = document.getElementById("theme-checkbox");
@@ -91,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* ☀️ 3. ПЛАВНІ ПЕРЕХОДИ МІЖ СТОРІНКАМИ */
+/* ☀️ 4. ПЛАВНІ ПЕРЕХОДИ МІЖ СТОРІНКАМИ (curtain) */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Щойно завантажаться всі шрифти, знімаємо анімаційну "завісу" (клас is-loaded)
@@ -125,8 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Запускаємо анімацію зникнення сторінки (через CSS)
       document.body.classList.add("is-leaving");
 
-      // Чекаємо 1 секунду (1000мс), поки відпрацює анімація, і робимо перехід
-      setTimeout(() => (window.location.href = destination), 1000);
+      // Чекаємо, поки відпрацює анімація, і робимо перехід
+      setTimeout(() => (window.location.href = destination), 800);
     });
   });
 });
@@ -140,7 +139,7 @@ window.addEventListener("pageshow", (e) => {
   }
 });
 
-/* 🌙 4. КНОПКА "ПОВЕРНУТИСЯ НАГОРУ" */
+/* 🌙 5. КНОПКА "ПОВЕРНУТИСЯ НАГОРУ" */
 
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
@@ -158,7 +157,7 @@ scrollToTopBtn.addEventListener("click", () =>
   window.scrollTo({ top: 0, behavior: "smooth" }),
 );
 
-/* 🍿 5. КНОПКА "СКОПІЮВАТИ" ДЛЯ КОДУ */
+/* 🍿 6. КНОПКА "СКОПІЮВАТИ" ДЛЯ КОДУ */
 
 document.querySelectorAll("pre code").forEach((codeBlock) => {
   // Якщо блок коду має клас 'nocopy', пропускаємо його
@@ -200,7 +199,7 @@ document.querySelectorAll("pre code").forEach((codeBlock) => {
   });
 });
 
-/* 🍕 6. КАСТОМНИЙ РЕДАКТОР КОДУ (CUSTOM EDITOR) */
+/* 🍕 7. КАСТОМНИЙ РЕДАКТОР КОДУ (CUSTOM EDITOR) */
 
 document.addEventListener("DOMContentLoaded", () => {
   const editors = document.querySelectorAll(".custom-editor-wrapper");
@@ -279,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* 🗂 7. ТАБИ (ВКЛАДКИ) ДЛЯ ЧАСТИН УРОКУ */
+/* 🗂 8. ТАБИ (ВКЛАДКИ) ДЛЯ ЧАСТИН УРОКУ */
 
 document.addEventListener("DOMContentLoaded", () => {
   const tabButtons = document.querySelectorAll(".tab-btn");
@@ -365,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* 🍔 8. МОБІЛЬНЕ МЕНЮ */
+/* 🍔 9. МОБІЛЬНЕ МЕНЮ */
 
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerBtn = document.querySelector(".hamburger-btn");
@@ -392,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* 📑 9. ЗБЕРЕЖЕННЯ СТАНУ АКОРДЕОНІВ */
+/* 📑 10. ЗБЕРЕЖЕННЯ СТАНУ АКОРДЕОНІВ */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Знаходимо абсолютно всі теги <details> на сторінці (і головні, і внутрішні завдання)

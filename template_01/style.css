@@ -4,7 +4,7 @@
 :root {
   --brand1: rgb(44, 25, 62);
   --brand2: rgb(103, 66, 135);
-  --brand3: rgb(226, 63, 5);
+  /* --brand3: rgb(226, 63, 5); */
   --brand4: rgb(236, 104, 7);
   --brand5: rgb(192, 159, 203);
 
@@ -62,7 +62,7 @@
   --panel: #1a0032;
   --hover-bg: #2f005b;
   --code-bg: #140b24;
-  --soft-callout: rgba(36, 0, 70, 0.75);
+  --soft-callout: rgba(36, 0, 70, 0.85);
   --link-bg: rgb(36, 0, 70, 0.5);
   --bar-bg: var(--panel);
 
@@ -436,14 +436,14 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
   background-color: var(--soft-callout);
-  /* box-shadow: var(--accordion-shadow); */
 }
 
 tr:hover {
   background-color: var(--hover-bg);
 }
 
-tr:hover td pre:has(code) {
+tr:hover td pre:has(code),
+tr:hover td code {
   border-color: var(--accent-pop);
 }
 

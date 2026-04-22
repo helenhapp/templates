@@ -15,6 +15,15 @@
     <script>
       const savedTheme = localStorage.getItem("theme") || "light";
       document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.write(
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
     </script>
 
     <!-- Підключення шрифтів (Google Fonts) -->
@@ -26,11 +35,6 @@
     />
 
     <!-- Підсвітка коду (Highlight.js) -->
-    <link
-      id="hljs-theme"
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
-    />
     <script
       defer
       src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
@@ -48,9 +52,9 @@
     <!-- Панель з навігацією -->
     <script>
       window.pageNavLinks = [
-        { name: "Навігатор", url: "" },
+        { name: "Навігатор", url: "https://helenhapp.github.io/templates/navigator/index.html" },
         { name: "JavaScript", url: "" },
-        { name: "Редактор", url: "" },
+        { name: "Редактор", url: "https://editor.webuniverseua.com" },
       ];
     </script>
     <div id="nav-container"></div>
@@ -226,9 +230,9 @@ seagreen
                 </td>
               </tr>
               <tr>
-                <td>Courier New	</td>
+                <td>Courier New</td>
                 <td>
-                  <span style="font-family: Courier New	">Lorem, ipsum.</span>
+                  <span style="font-family: Courier New">Lorem, ipsum.</span>
                 </td>
               </tr>
             </table>
