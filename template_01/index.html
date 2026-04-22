@@ -37,8 +37,8 @@
     ></script>
 
     <!-- Власні стилі та скрипти -->
-    <link rel="stylesheet" href="./style.css?v=1.6" />
-    <script defer src="./script.js?v=1.6"></script>
+    <link rel="stylesheet" href="./style.css?v=1.7" />
+    <script defer src="./script.js?v=1.7"></script>
   </head>
 
   <body>
@@ -558,7 +558,12 @@ Hello, world!
             <div class="custom-editor-wrapper">
               <div class="editor-header">
                 <span class="editor-title">JavaScript</span>
-                <button class="run-btn">▶️</button>
+                <div class="editor-actions">
+                  <button class="reset-btn" title="Повернути початковий код">
+                    🔄
+                  </button>
+                  <button class="run-btn" title="Запустити код">▶️</button>
+                </div>
               </div>
               <textarea
                 class="custom-editor-input"

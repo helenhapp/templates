@@ -167,8 +167,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   editors.forEach((wrapper) => {
     const runBtn = wrapper.querySelector(".run-btn");
+    const resetBtn = wrapper.querySelector(".reset-btn");
     const codeInput = wrapper.querySelector(".custom-editor-input");
     const outputDisplay = wrapper.querySelector(".custom-editor-output");
+
+    const initialCode = codeInput.value;
 
     // Функція, яка автоматично змінює висоту поля вводу (textarea) під розмір тексту
     const adjustHeight = () => {
@@ -181,6 +184,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Підлаштовуємо висоту при завантаженні (з нульовою затримкою для правильного рендеру)
     setTimeout(adjustHeight, 0);
+
+     // Логіка виконання коду при натисканні кнопки "Скинути"
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        codeInput.value = initialCode; // Повертаємо оригінальний текст
+        adjustHeight(); // Перераховуємо висоту поля
+        outputDisplay.textContent = "Очікування запуску..."; // Очищаємо консоль виводу
+      });
+    }
 
     // Логіка виконання коду при натисканні кнопки "Запустити"
     runBtn.addEventListener("click", () => {
@@ -234,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let isAnimating = false; // Запобіжник
 
   // 1. ПЕРЕВІРЯЄМО LOCALSTORAGE ПРИ ЗАВАНТАЖЕННІ
-  const savedTabId = localStorage.getItem("activeTab");
+  const savedTabId = sessionStorage.getItem("activeTab");
 
   if (savedTabId) {
     // Шукаємо кнопку і контент для збереженої вкладки
@@ -270,8 +282,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const targetId = button.getAttribute("data-target");
 
-      // Зберігаємо вибір користувача в localStorage!
-      localStorage.setItem("activeTab", targetId);
+      // Зберігаємо вибір користувача
+      sessionStorage.setItem("activeTab", targetId);
 
       const currentActiveContent = document.querySelector(
         ".tab-content.active",
@@ -338,4 +350,48 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+});
+
+/* 📑 9. ЗБЕРЕЖЕННЯ СТАНУ АКОРДЕОНІВ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Знаходимо абсолютно всі теги <details> на сторінці (і головні, і внутрішні завдання)
+  const allDetails = document.querySelectorAll("details");
+
+  // 1. Читаємо збережений стан при завантаженні
+  const savedState = sessionStorage.getItem("openAccordions");
+
+  if (savedState) {
+    // Перетворюємо збережений текст назад у масив номерів (наприклад: [0, 3, 5])
+    const openIndices = JSON.parse(savedState);
+
+    allDetails.forEach((detail, index) => {
+      // Якщо номер цього акордеона є в нашому збереженому списку — відкриваємо його
+      if (openIndices.includes(index)) {
+        detail.setAttribute("open", "");
+      } else {
+        // Якщо немає — примусово закриваємо
+        detail.removeAttribute("open");
+      }
+    });
+  }
+
+  // 2. Слухаємо зміни і записуємо їх у пам'ять
+  allDetails.forEach((detail) => {
+    // Подія 'toggle' спрацьовує автоматично, коли <details> відкривається або закривається
+    detail.addEventListener("toggle", () => {
+      // Створюємо порожній список
+      const openIndices = [];
+
+      // Пробігаємося по всіх акордеонах і записуємо номери тих, які зараз відкриті
+      allDetails.forEach((d, i) => {
+        if (d.hasAttribute("open")) {
+          openIndices.push(i);
+        }
+      });
+
+      // Перетворюємо масив у текст і зберігаємо в sessionStorage
+      sessionStorage.setItem("openAccordions", JSON.stringify(openIndices));
+    });
+  });
 });

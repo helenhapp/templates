@@ -349,7 +349,7 @@ button:active {
 }
 
 .tab-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.93);
 }
 
 /* Активна кнопка (виділена) */
@@ -442,6 +442,10 @@ table {
 
 tr:hover {
   background-color: var(--hover-bg);
+}
+
+tr:hover td pre:has(code) {
+  border-color: var(--accent-pop);
 }
 
 th,
@@ -1004,7 +1008,36 @@ pre:has(code.nocopy) {
   color: var(--text-soft);
 }
 
-.run-btn {
+.editor-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.run-btn,
+.reset-btn {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.run-btn:hover,
+.reset-btn:hover {
+  background: transparent;
+  transform: scale(1.1);
+}
+
+.run-btn:active,
+.reset-btn:active {
+  background: transparent;
+  transform: scale(0.9);
+}
+
+/* .run-btn {
   margin: 0;
   padding: 0;
   font-size: 27px;
@@ -1020,7 +1053,7 @@ pre:has(code.nocopy) {
 .run-btn:active {
   background: transparent;
   transform: scale(0.95);
-}
+} */
 
 .custom-editor-input {
   width: 100%;
@@ -1081,7 +1114,7 @@ footer p {
 /* Мобільна навігація (Ховаємо посилання, показуємо 🍔) */
 @media (max-width: 750px) {
   .hamburger-btn {
-    display: block; 
+    display: block;
   }
   .nav-links {
     display: none;
