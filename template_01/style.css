@@ -436,7 +436,7 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
   background-color: var(--soft-callout);
-  box-shadow: var(--accordion-shadow);
+  /* box-shadow: var(--accordion-shadow); */
 }
 
 tr:hover {
