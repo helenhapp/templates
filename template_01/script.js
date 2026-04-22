@@ -14,7 +14,10 @@ function buildNavigation() {
   // 1. Формуємо HTML тільки для кнопок-посилань
   const linksHTML = window.pageNavLinks
     .map((link) => {
-      return `<a href="${link.url}" class="nav-link">${link.name}</a>`;
+      // Перевіряємо, чи є в налаштуваннях вказівка відкрити в новій вкладці
+      const targetAttr = link.newTab ? ' target="_blank"' : "";
+
+      return `<a href="${link.url}" class="nav-link"${targetAttr}>${link.name}</a>`;
     })
     .join("");
 
@@ -90,50 +93,50 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* ☀️ 4. ПЛАВНІ ПЕРЕХОДИ МІЖ СТОРІНКАМИ (curtain) */
+/* ☀️ 4. ПЛАВНІ ПЕРЕХОДИ МІЖ СТОРІНКАМИ (Оновлено для динамічного контенту) */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Щойно завантажаться всі шрифти, знімаємо анімаційну "завісу" (клас is-loaded)
+  // Знімаємо "завісу" після завантаження шрифтів
   document.fonts.ready.then(() => document.body.classList.add("is-loaded"));
-
-  const links = document.querySelectorAll("a");
-
-  links.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      // Ігноруємо перехоплення кліку, якщо:
-      // - посилання відкривається в новій вкладці (_blank)
-      // - затиснуті клавіші Ctrl, Meta, Shift або Alt (кастомні кліки користувача)
-      // - це посилання на інший домен (не наш сайт)
-      // - це якірне посилання (скрол до елемента на поточній сторінці)
-      if (
-        link.target === "_blank" ||
-        e.ctrlKey ||
-        e.metaKey ||
-        e.shiftKey ||
-        e.altKey ||
-        link.origin !== window.location.origin ||
-        link.hash
-      ) {
-        return;
-      }
-
-      // Скасовуємо стандартний миттєвий перехід
-      e.preventDefault();
-      const destination = link.href;
-
-      // Запускаємо анімацію зникнення сторінки (через CSS)
-      document.body.classList.add("is-leaving");
-
-      // Чекаємо, поки відпрацює анімація, і робимо перехід
-      setTimeout(() => (window.location.href = destination), 800);
-    });
-  });
 });
 
-// Вирішуємо проблему з кешем (bfcache), коли користувач тисне кнопку "Назад" у браузері
+// Вішаємо слухача на документ
+document.addEventListener("click", (e) => {
+  // Знаходимо найближчий тег <a> (навіть якщо клікнули на текст чи іконку всередині посилання)
+  const link = e.target.closest("a");
+
+  // Якщо клік був не по посиланню (або посилання немає) — ігноруємо
+  if (!link) return;
+
+  // Ігноруємо перехоплення кліку у стандартних виключеннях:
+  if (
+    link.target === "_blank" ||
+    e.ctrlKey ||
+    e.metaKey ||
+    e.shiftKey ||
+    e.altKey ||
+    link.origin !== window.location.origin ||
+    link.hash ||
+    link.getAttribute("href") === "" || // Якщо посилання порожнє (урок в розробці)
+    link.getAttribute("href") === "#"
+  ) {
+    return;
+  }
+
+  // Скасовуємо стандартний миттєвий перехід
+  e.preventDefault();
+  const destination = link.href;
+
+  // Запускаємо анімацію зникнення сторінки
+  document.body.classList.add("is-leaving");
+
+  // Чекаємо (800мс), поки відпрацює CSS анімація, і робимо перехід
+  setTimeout(() => (window.location.href = destination), 700);
+});
+
+// Вирішуємо проблему з кешем (bfcache) при кліку "Назад" у браузері
 window.addEventListener("pageshow", (e) => {
   if (e.persisted) {
-    // Якщо сторінка дістається з кешу, знімаємо стан "виходу" та показуємо її
     document.body.classList.remove("is-leaving");
     document.body.classList.add("is-loaded");
   }

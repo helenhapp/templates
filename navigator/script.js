@@ -101,6 +101,7 @@ function setupPasswordModals(courses) {
       passwordInput.value = "";
       errorText.style.display = "none";
       modal.showModal();
+      passwordInput.focus();
     });
   });
 
@@ -161,6 +162,7 @@ function setupGlobalModal(correctPassword, coursesData) {
   });
 
   globalModal.showModal();
+  globalInput.focus();
 
   function checkGlobalPassword() {
     if (globalInput.value === correctPassword) {
