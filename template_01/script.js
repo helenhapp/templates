@@ -199,7 +199,7 @@ document.querySelectorAll("pre code").forEach((codeBlock) => {
   });
 });
 
-/* 🍕 7. КАСТОМНИЙ РЕДАКТОР КОДУ (CUSTOM EDITOR) */
+/* 🍕 7.1 КАСТОМНИЙ РЕДАКТОР КОДУ (CUSTOM EDITOR) */
 
 document.addEventListener("DOMContentLoaded", () => {
   const editors = document.querySelectorAll(".custom-editor-wrapper");
@@ -223,6 +223,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Підлаштовуємо висоту при завантаженні (з нульовою затримкою для правильного рендеру)
     setTimeout(adjustHeight, 0);
+
+    // Перехоплення Tab тут:
+    codeInput.addEventListener("keydown", function (e) {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const start = this.selectionStart;
+        const end = this.selectionEnd;
+        const indentation = "  ";
+        this.value =
+          this.value.substring(0, start) +
+          indentation +
+          this.value.substring(end);
+        this.selectionStart = this.selectionEnd = start + indentation.length;
+        this.dispatchEvent(new Event("input"));
+      }
+    });
+
+    // Спостерігач за видимістю - автоматично перераховує висоту щойно редактор стає видимим (при відкритті вкладки чи акордеона)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          adjustHeight();
+        }
+      });
+    });
+    // Починаємо стежити за головним контейнером редактора
+    observer.observe(wrapper);
 
     // Логіка виконання коду при натисканні кнопки "Скинути"
     if (resetBtn) {
@@ -275,6 +302,63 @@ document.addEventListener("DOMContentLoaded", () => {
       // Відображаємо результат в інтерфейсі (прибираємо зайві пробіли на кінці)
       outputDisplay.textContent = simulatedOutput.trim();
     });
+  });
+});
+
+/* 🎨 7.2 HTML РЕДАКТОР ПРЕВ'Ю СТОРІНКИ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const htmlEditors = document.querySelectorAll(".html-editor-wrapper");
+
+  htmlEditors.forEach((wrapper) => {
+    const runBtn = wrapper.querySelector(".run-btn");
+    const resetBtn = wrapper.querySelector(".reset-btn");
+    const codeInput = wrapper.querySelector(".custom-editor-input");
+    const iframeOutput = wrapper.querySelector(".html-editor-output");
+
+    const initialCode = codeInput.value;
+
+    // Авто-висота для поля вводу
+    const adjustHeight = () => {
+      codeInput.style.height = "auto";
+      codeInput.style.height = codeInput.scrollHeight + "px";
+    };
+
+    codeInput.addEventListener("input", adjustHeight);
+    setTimeout(adjustHeight, 0);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          adjustHeight();
+        }
+      });
+    });
+    observer.observe(wrapper);
+
+    // Логіка оновлення iframe
+    const updatePreview = (code) => {
+      // srcdoc - це сучасний атрибут, який миттєво рендерить рядок коду всередині iframe
+      iframeOutput.srcdoc = code;
+    };
+
+    // Опціонально: Показати результат одразу при завантаженні сторінки
+    updatePreview(initialCode);
+
+    // Логіка виконання при натисканні "Запустити" (▶️)
+    runBtn.addEventListener("click", () => {
+      updatePreview(codeInput.value);
+    });
+
+    // Логіка виконання при натисканні "Скинути" (🔄)
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        codeInput.value = initialCode;
+        adjustHeight();
+        // iframeOutput.srcdoc = "";
+        updatePreview(initialCode);
+      });
+    }
   });
 });
 

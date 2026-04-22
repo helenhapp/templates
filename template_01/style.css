@@ -1089,6 +1089,16 @@ pre:has(code.nocopy) {
   border-radius: 0;
 }
 
+/* Вікно попереднього перегляду для HTML */
+.html-editor-output {
+  width: 100%;
+  min-height: 200px;
+  background-color: #ffffff;
+  border: none;
+  border-top: 2px dashed var(--accent);
+  display: block;
+}
+
 /* 🛸 13. ФУТЕР (FOOTER) */
 
 footer {

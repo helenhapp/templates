@@ -52,7 +52,10 @@
     <!-- Панель з навігацією -->
     <script>
       window.pageNavLinks = [
-        { name: "Навігатор", url: "https://helenhapp.github.io/templates/navigator/index.html" },
+        {
+          name: "Навігатор",
+          url: "https://helenhapp.github.io/templates/navigator/index.html",
+        },
         { name: "JavaScript", url: "" },
         { name: "Редактор", url: "https://editor.webuniverseua.com" },
       ];
@@ -567,7 +570,46 @@ seagreen
           </summary>
 
           <div class="accordion__content">
-            <h3>Практичне завдання</h3>
+            <h3>Практичне завдання (для HTML/CSS курсу)</h3>
+
+            <p>Зміни колір тексту заголовка на фіолетовий (purple) і шрифт на Arial.</p>
+
+            <div class="custom-editor-wrapper html-editor-wrapper">
+              <div class="editor-header">
+                <span class="editor-title">HTML / CSS</span>
+                <div class="editor-actions">
+                  <button class="reset-btn" title="Повернути початковий код">
+                    🔄
+                  </button>
+                  <button class="run-btn" title="Показати результат">▶️</button>
+                </div>
+              </div>
+
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="html-editor"
+              >
+<html>
+<head>
+</head>
+
+<body>
+  <h1>Привіт, світе!</h1>
+</body>
+</html></textarea
+              >
+
+              <iframe
+                class="html-editor-output"
+                title="HTML Preview"
+                sandbox="allow-scripts"
+              ></iframe>
+            </div>
+
+            <hr />
+
+            <h3>Практичне завдання (для JS курсу)</h3>
 
             <p>Зроби замість обчислення суми — множення:</p>
 
