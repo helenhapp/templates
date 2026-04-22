@@ -186,7 +186,8 @@ h2 {
 
 h3 {
   font-size: 14px;
-  color: var(--text-soft);
+  /* color: var(--text-soft); */
+  color: var(--brand2);
 }
 
 h3:hover {
@@ -328,18 +329,19 @@ button:active {
 /* 🗂 Вкладки (Таби) для частин уроку */
 
 .tabs-nav {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 30px;
 }
 
 .tab-btn {
-  width: 100%;
+  flex: 1 1 0%;        
   padding: 12px 20px;
   font-size: 10px;
   border: 2px outset var(--tab-border);
   opacity: 0.7;
+  text-align: center;
 }
 
 .tab-btn:hover {
@@ -732,7 +734,8 @@ header a {
 .accordion__header {
   padding: 18px;
   background: var(--panel-alt);
-  color: var(--text-soft);
+  /* color: var(--text-soft); */
+  color: var(--brand2);
   font-family: "Press Start 2P", monospace;
   font-size: 13px;
   cursor: pointer;
@@ -744,6 +747,11 @@ header a {
     background 0.4s ease,
     color 0.4s ease;
   list-style: none;
+}
+
+[data-theme="dark"] h3,
+[data-theme="dark"] .accordion__header {
+  color: var(--brand5);
 }
 
 .accordion__header::-webkit-details-marker {
@@ -1036,24 +1044,6 @@ pre:has(code.nocopy) {
   transform: scale(0.9);
 }
 
-/* .run-btn {
-  margin: 0;
-  padding: 0;
-  font-size: 27px;
-  background: transparent;
-  border: none;
-}
-
-.run-btn:hover {
-  background: transparent;
-  transform: scale(1.05);
-}
-
-.run-btn:active {
-  background: transparent;
-  transform: scale(0.95);
-} */
-
 .custom-editor-input {
   width: 100%;
   min-height: 150px;
@@ -1120,6 +1110,17 @@ footer p {
 
 /* 💐 13. АДАПТИВНІСТЬ */
 
+@media (max-width: 650px) {
+  .tab-btn {
+    flex: 1 1 calc(50% - 15px); 
+  }
+}
+@media (max-width: 370px) {
+  .tab-btn {
+    flex: 1 1 100%;
+  }
+}
+
 /* Мобільна навігація (Ховаємо посилання, показуємо 🍔) */
 @media (max-width: 750px) {
   .hamburger-btn {
@@ -1163,20 +1164,6 @@ footer p {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Tablet / Smaller Screens (Switch to 2x2 Grid) */
-@media (max-width: 700px) {
-  .tabs-nav {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Very Narrow Phones (Switch to 1 Column) */
-@media (max-width: 340px) {
-  .tabs-nav {
-    grid-template-columns: 1fr;
   }
 }
 
