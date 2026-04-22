@@ -52,30 +52,11 @@
     <!-- "Завіса", яка плавно зникає при завантаженні сторінки -->
     <div class="transition-curtain"></div>
 
-    <nav class="top-bar">
-      <div class="logo-container">
-        <img
-          src="../template_01/logo-light.svg"
-          alt="WebUniverse Logo"
-          class="site-logo logo-light"
-        />
-        <img
-          src="../template_01/logo-dark.svg"
-          alt="WebUniverse Logo"
-          class="site-logo logo-dark"
-        />
-      </div>
-
-      <div></div>
-
-      <label class="toggle-switch" aria-label="Перемикач теми">
-        <input type="checkbox" id="theme-checkbox" />
-        <span class="slider">
-          <span class="icon sun">☀️</span>
-          <span class="icon moon">🌙</span>
-        </span>
-      </label>
-    </nav>
+    <!-- Панель з навігацією -->
+    <script>
+      window.pageNavLinks = [{ name: "Редактор", url: "editor.html" }];
+    </script>
+    <div id="nav-container"></div>
 
     <header>
       <!-- Кнопка для тестування паролів -->
@@ -88,7 +69,6 @@
     </header>
 
     <main>
-      <!-- <hr /> -->
 
       <section class="accordion" id="current-courses-container"></section>
 

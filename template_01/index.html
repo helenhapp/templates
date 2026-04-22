@@ -45,38 +45,15 @@
     <!-- "Завіса", яка плавно зникає при завантаженні сторінки -->
     <div class="transition-curtain"></div>
 
-    <nav class="top-bar">
-      <div class="logo-container">
-        <img
-          src="./logo-light.svg"
-          alt="WebUniverse Logo"
-          class="site-logo logo-light"
-        />
-        <img
-          src="./logo-dark.svg"
-          alt="WebUniverse Logo"
-          class="site-logo logo-dark"
-        />
-      </div>
-
-      <div class="top-bar__controls">
-        <div class="nav-links">
-          <a href="" class="nav-link">Навігатор</a>
-          <a href="" class="nav-link">JavaScript</a>
-          <a href="" class="nav-link">Редактор</a>
-        </div>
-
-        <label class="toggle-switch" aria-label="Перемикач теми">
-          <input type="checkbox" id="theme-checkbox" />
-          <span class="slider">
-            <span class="icon sun">☀️</span>
-            <span class="icon moon">🌙</span>
-          </span>
-        </label>
-
-        <button class="hamburger-btn" aria-label="Відкрити меню">🍔</button>
-      </div>
-    </nav>
+    <!-- Панель з навігацією -->
+    <script>
+      window.pageNavLinks = [
+        { name: "Навігатор", url: "" },
+        { name: "JavaScript", url: "" },
+        { name: "Редактор", url: "" },
+      ];
+    </script>
+    <div id="nav-container"></div>
 
     <!-- Хедер з назвою теми та посиланнями -->
     <header>
@@ -141,18 +118,9 @@
             </p>
 
             <pre><code class="language-html">&lt;!-- приклад HTML коду --&gt;
-&lt;h1&gt;Hello, world!&lt;/h1&gt;</code></pre>
+&lt;h1 id="title"&gt;Hello, world!&lt;/h1&gt;</code></pre>
 
-            <p>
-              Так виглядають картинки (мають максимальну висоту 400px). Зазвичай
-              тут має бути скріншот з результатом коду, або ілюстрація/схема для
-              пояснення теми:
-            </p>
-
-            <img
-              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="замініть картинку на скріншот результату коду"
-            />
+            <img src="./images/example1.jpeg" alt="" />
 
             <hr />
 
@@ -166,9 +134,12 @@
             </p>
 
             <pre><code class="language-css">/* приклад CSS коду */
-* { 
-  box-sizing: border-box; 
+h1 { 
+  font-family: monospace;
+  font-weight: normal;
 }</code></pre>
+
+            <img src="./images/example2.jpeg" alt="" />
 
             <p class="soft-callout">
               ⚡️ <strong>Важливо</strong>: Так можна наголосити на важливій
@@ -189,19 +160,18 @@
             </p>
 
             <pre><code class="nocopy language-javascript">// приклад JS коду (який не можна копіювати)
-console.log("Hello, world!");
+const pageTitle = document.querySelector("#title");
 
-const name = "Steve";
-alert(`Hello, ${name}!`);
+title.textContent = "My first webpage";
+title.style.color = "seagreen";</code></pre>
 
-function add(a, b) {
-  return a + b;
-}
-add(2, 2);</code></pre>
+            <img src="./images/example3.jpeg" alt="" />
 
             <pre class="accent-string">
-Hello, world!
-Тут текст з прикладу, який можна скопіювати.</pre
+title
+My first webpage
+seagreen
+(тут текст з прикладу, який можна скопіювати)</pre
             >
 
             <p>
@@ -223,7 +193,49 @@ Hello, world!
 
             <hr />
 
-            <h3>Тести</h3>
+            <h3>Приклади таблиць</h3>
+
+            <p>Для кольорів:</p>
+
+            <table>
+              <tr>
+                <th>Назва кольору</th>
+                <th>Результат</th>
+              </tr>
+              <tr>
+                <td>green</td>
+                <td><span style="color: green">Зелений</span></td>
+              </tr>
+              <tr>
+                <td>blue</td>
+                <td><span style="color: blue">Синій</span></td>
+              </tr>
+            </table>
+
+            <p>Для шрифтів:</p>
+
+            <table>
+              <tr>
+                <th>Назва шрифту</th>
+                <th>Результат</th>
+              </tr>
+              <tr>
+                <td>Comic Sans MS</td>
+                <td>
+                  <span style="font-family: Comic Sans MS">Lorem, ipsum.</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Courier New	</td>
+                <td>
+                  <span style="font-family: Courier New	">Lorem, ipsum.</span>
+                </td>
+              </tr>
+            </table>
+
+            <hr />
+
+            <!-- <h3>Тести</h3> -->
 
             <div class="soft-callout">
               <h4>🧩 Перевір свої знання</h4>

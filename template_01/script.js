@@ -3,6 +3,50 @@
 // Ініціалізуємо бібліотеку Highlight.js для підсвітки всього коду (<pre><code>) на сторінці
 hljs.highlightAll();
 
+/* 🧩 1.5. ГЕНЕРАТОР НАВІГАЦІЇ (КОМПОНЕНТ) */
+
+function buildNavigation() {
+  const container = document.getElementById("nav-container");
+
+  // Якщо на сторінці немає контейнера або посилань, нічого не робимо
+  if (!container || !window.pageNavLinks) return;
+
+  // 1. Формуємо HTML тільки для кнопок-посилань
+  const linksHTML = window.pageNavLinks
+    .map((link) => {
+      return `<a href="${link.url}" class="nav-link">${link.name}</a>`;
+    })
+    .join("");
+
+  // 2. Вставляємо повний шаблон панелі у контейнер
+  container.innerHTML = `
+    <nav class="top-bar">
+      <div class="logo-container">
+        <img src="./logo-light.svg" alt="WebUniverse Logo" class="site-logo logo-light" />
+        <img src="./logo-dark.svg" alt="WebUniverse Logo" class="site-logo logo-dark" />
+      </div>
+      <div class="top-bar__controls">
+        <div class="nav-links">
+          ${linksHTML}
+        </div>
+        <label class="toggle-switch" aria-label="Перемикач теми">
+          <input type="checkbox" id="theme-checkbox" />
+          <span class="slider">
+            <span class="icon sun">☀️</span>
+            <span class="icon moon">🌙</span>
+          </span>
+        </label>
+        <button class="hamburger-btn" aria-label="Відкрити меню">🍔</button>
+      </div>
+    </nav>
+  `;
+}
+
+// Викликаємо генератор ПЕРШИМ, щоб інші скрипти знайшли кнопки
+document.addEventListener("DOMContentLoaded", () => {
+  buildNavigation();
+});
+
 /* ✨ 2. ЛОГІКА ПЕРЕМИКАННЯ ТЕМИ (Слайдер, Логотип, Підсвітка коду) */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,19 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (theme === "dark") {
       // Налаштування для ТЕМНОЇ теми
       if (themeCheckbox) themeCheckbox.checked = true;
-      // if (siteLogo) siteLogo.src = "../template_01/logo-dark.svg";
       if (hljsThemeLink)
         hljsThemeLink.href =
           "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css";
     } else {
       // Налаштування для СВІТЛОЇ теми
       if (themeCheckbox) themeCheckbox.checked = false;
-      // if (siteLogo) siteLogo.src = "../template_01/logo-light.svg";
       if (hljsThemeLink)
-        // hljsThemeLink.href =
-        //   "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
         hljsThemeLink.href =
-          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nnfx-light.min.css";
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
     }
   }
 
@@ -185,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Підлаштовуємо висоту при завантаженні (з нульовою затримкою для правильного рендеру)
     setTimeout(adjustHeight, 0);
 
-     // Логіка виконання коду при натисканні кнопки "Скинути"
+    // Логіка виконання коду при натисканні кнопки "Скинути"
     if (resetBtn) {
       resetBtn.addEventListener("click", () => {
         codeInput.value = initialCode; // Повертаємо оригінальний текст
