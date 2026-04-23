@@ -39,6 +39,7 @@ function buildNavigation() {
             <span class="icon moon">🌙</span>
           </span>
         </label>
+        <button id="wide-mode-btn" class="wide-toggle" title="Широкий екран">🖥️</button>
         <button class="hamburger-btn" aria-label="Відкрити меню">🍔</button>
       </div>
     </nav>
@@ -57,14 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // const siteLogo = document.getElementById("site-logo");
 
   // Отримуємо збережену тему з локального сховища або встановлюємо 'light' за замовчуванням
-  let currentTheme = localStorage.getItem("theme") || "light";
+  let currentTheme = localStorage.getItem("wu_theme") || "light";
 
   // Універсальна функція для застосування теми до ВСІХ елементів сайту
   function applyTheme(theme) {
     // 1. Змінюємо атрибут для CSS
     document.documentElement.setAttribute("data-theme", theme);
     // 2. Зберігаємо вибір користувача
-    localStorage.setItem("theme", theme);
+    localStorage.setItem("wu_theme", theme);
 
     if (theme === "dark") {
       // Налаштування для ТЕМНОЇ теми
@@ -537,6 +538,30 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // Якщо повернулися на самий верх
       navContainer.classList.remove("scrolled");
+    }
+  });
+});
+
+/* 🖥️ 12. ШИРОКИЙ ЕКРАН (WIDE MODE) */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Відновлюємо стан при завантаженні сторінки
+  if (localStorage.getItem("wu_wideMode") === "true") {
+    document.body.classList.add("wide-mode");
+  }
+
+  // 2. Слухаємо кліки по кнопці
+  document.addEventListener("click", (e) => {
+    const wideBtn = e.target.closest("#wide-mode-btn");
+
+    if (wideBtn) {
+      // Перемикаємо клас і зберігаємо стан
+      const isNowWide = document.body.classList.toggle("wide-mode");
+      localStorage.setItem("wu_wideMode", isNowWide);
+
+      // Анімація "натискання"
+      wideBtn.style.transform = "scale(0.85)";
+      setTimeout(() => (wideBtn.style.transform = ""), 150);
     }
   });
 });
