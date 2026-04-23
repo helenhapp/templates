@@ -521,3 +521,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+/* 🌤️ 11. ТІНЬ ПАНЕЛІ ПРИ СКРОЛІ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navContainer = document.getElementById("nav-container");
+
+  // Якщо контейнера немає, код не виконується
+  if (!navContainer) return;
+
+  window.addEventListener("scroll", () => {
+    // Якщо проскролили більше ніж на 10 пікселів вниз
+    if (window.scrollY > 10) {
+      navContainer.classList.add("scrolled");
+    } else {
+      // Якщо повернулися на самий верх
+      navContainer.classList.remove("scrolled");
+    }
+  });
+});
