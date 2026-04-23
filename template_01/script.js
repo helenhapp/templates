@@ -565,3 +565,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+/* 🖼️ 14. ЗБІЛЬШЕННЯ КАРТИНОК ПО КЛІКУ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Знаходимо всі картинки, яким ви дали клас zoomable
+  const zoomableImages = document.querySelectorAll("img.zoomable");
+
+  zoomableImages.forEach((img) => {
+    img.addEventListener("click", () => {
+      // При кліку додаємо або забираємо клас 'expanded'
+      img.classList.toggle("expanded");
+    });
+  });
+});
