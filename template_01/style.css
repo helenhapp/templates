@@ -15,7 +15,7 @@
   --panel-alt: #e7d0fd;
   --hover-bg: #dcbbfb;
   --code-bg: #ffffff;
-  --soft-callout: rgba(231, 208, 253, 0.5);
+  --soft-callout: rgba(231, 208, 253, 0.45);
   --link-bg: rgba(231, 208, 253, 0.3);
   --bar-bg: #e3d3f8;
 
@@ -111,7 +111,7 @@ body {
   min-height: 100dvh;
   padding-top: 0;
   background-color: var(--bg1);
-  font-size: 16px;
+  font-size: 17px;
   display: flex;
   flex-direction: column;
 }
@@ -128,11 +128,14 @@ body::before {
   z-index: -1;
 }
 
-main {
+main,
+header {
   width: 93%;
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 1200px;
+}
 
+main {
+  margin: 0 auto;
   flex-grow: 1;
 }
 
@@ -237,16 +240,21 @@ p.topic {
 }
 
 .accent-string {
-  color: var(--text-soft);
-  background-color: var(--panel-alt);
-  padding: 5px 7px;
-  border-radius: 3px;
+  /* color: var(--accent-pop); */
+  /* font-family: "Neucha", cursive; */
+  /* font-size: 19px; */
+  background-color: var(--soft-callout);
+  padding: 2px 4px;
+  /* color: white; */
 }
 
 pre.accent-string {
+  background-color: var(--panel-alt);
+  padding: 5px 7px;
+  border-radius: 3px;
   white-space: pre-wrap;
   word-wrap: break-word;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
   padding: 10px 20px;
 }
 
@@ -405,11 +413,13 @@ ol {
 
 ul li::marker,
 ol li::marker {
-  color: var(--accent-pop);
+  color: var(--text-soft);
+  font-weight: bold;
 }
 
-ol {
-  margin: 15px;
+ol,
+ul {
+  margin: 0 10px;
 }
 
 li::marker {
@@ -665,12 +675,10 @@ input:checked + .slider::before {
 header {
   padding: 15px 0;
   padding-bottom: 0;
-  width: 90%;
   text-align: center;
   font-family: "Press Start 2P", monospace;
   font-optical-sizing: auto;
   margin: 0 auto;
-  max-width: 1100px;
   border-radius: 6px;
 }
 
@@ -716,7 +724,6 @@ header a {
   left: 0;
   right: 0;
   height: 2px;
-  /* background: var(--accent); */
   background: var(--accordion-border);
   transition: background 0.4s ease;
 }
@@ -851,20 +858,9 @@ details.task[open] summary::before {
   color: var(--accent-pop);
 }
 
-.task {
-  padding: 5px 15px;
-  border-radius: 8px;
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.task[open] {
-  background-color: var(--soft-callout);
-}
-
-.task[open] .task-header {
-  margin-bottom: 15px;
+.task ol,
+.task ul {
+  margin-top: 0;
 }
 
 .task::details-content {
@@ -883,14 +879,41 @@ details.task[open] summary::before {
   opacity: 1;
 }
 
+.task {
+  background-color: var(--soft-callout);
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.task li {
+  margin: 5px 0;
+}
+
+.task-img {
+  max-height: none;
+}
+
+.task:not([open]):hover {
+  background-color: var(--hover-bg);
+}
+
+.task[open] summary:hover {
+  color: var(--text-soft);
+}
+
 /* Вставки та розділювачі */
 .soft-callout {
   color: var(--text-soft);
   background-color: var(--soft-callout);
-  padding: 10px 20px;
+  padding: 20px;
   border-radius: 6px;
   line-height: 1.6;
   margin: 20px 0;
+}
+
+.soft-callout h4 {
+  margin: 0;
 }
 
 .objective {
@@ -1140,7 +1163,7 @@ footer p {
   letter-spacing: 0.5px;
 }
 
-/* 💐 13. АДАПТИВНІСТЬ */
+/* 💐 14. АДАПТИВНІСТЬ */
 
 @media (max-width: 680px) {
   .tab-btn {
@@ -1285,7 +1308,7 @@ footer p {
   }
 }
 
-/* 🛼 14. СКРОЛБАРИ */
+/* 🛼 15. СКРОЛБАРИ */
 
 /* 1. Стандарт для Firefox */
 html {

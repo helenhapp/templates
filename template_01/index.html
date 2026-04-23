@@ -33,6 +33,12 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neucha&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Підсвітка коду (Highlight.js) -->
     <script
@@ -41,8 +47,8 @@
     ></script>
 
     <!-- Власні стилі та скрипти -->
-    <link rel="stylesheet" href="./style.css?v=1.9" />
-    <script defer src="./script.js?v=1.9"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
   </head>
 
   <body>
@@ -98,8 +104,6 @@
       <!-- 🧩 ЧАСТИНА 1 -->
 
       <section id="part-1" class="accordion tab-content active show">
-        <!-- Якщо дати всім тегам details однаковий name="", можна буде розгортати тільки одну вкладку за раз, а інші автоматично згортатимуться  -->
-
         <!-- 📚 Теорія 1 -->
         <details class="accordion__item" name="section1">
           <summary class="accordion__header">
@@ -173,10 +177,8 @@ h1 {
             <pre><code class="nocopy language-javascript">// приклад JS коду (який не можна копіювати)
 const pageTitle = document.querySelector("#title");
 
-title.textContent = "My first webpage";
-title.style.color = "seagreen";</code></pre>
-
-            <img src="./images/example3.jpeg" alt="" />
+pageTitle.textContent = "My first webpage";
+pageTitle.style.color = "seagreen";</code></pre>
 
             <pre class="accent-string">
 title
@@ -184,6 +186,8 @@ My first webpage
 seagreen
 (тут текст з прикладу, який можна скопіювати)</pre
             >
+
+            <img src="./images/example3.jpeg" alt="" />
 
             <p>
               Так виглядає текст, коли його багато: Lorem, ipsum dolor sit amet
@@ -291,94 +295,40 @@ seagreen
 
             <hr />
 
-            <p>Приклад завдання із теми 7 з курсу jsNew:</p>
+            <details class="task" name="task1" open>
+              <summary class="accent">Завдання 1</summary>
+
+              <ol>
+                <li>
+                  Створи масив
+                  <span class="accent">colors</span> з елементами:
+                  <span class="accent">orange, cyan, purple</span>.
+                </li>
+                <li>
+                  Використовуючи індекс, виведи у консоль
+                  <span class="accent">другий</span> елемент масиву.
+                </li>
+                <li>...</li>
+              </ol>
+            </details>
 
             <details class="task" name="task1" open>
-              <summary class="task-header">Завдання 1</summary>
+              <summary class="accent">Завдання 2</summary>
 
               <ol>
-                <li>
-                  Створи масив
-                  <span class="accent">numbers</span> з такими елементами:
-                  <span class="accent">10, 20, 30, 40, 50</span>.
-                </li>
-                <li>
-                  Використовуючи індекс, виведи у консоль
-                  <span class="accent">третій</span> елемент масиву.
-                </li>
-                <li>
-                  Використовуючи індекс, заміни
-                  <span class="accent">другий</span> елемент масиву на
-                  <span class="accent">2</span>.
-                </li>
-                <li>
-                  Використавши правильний метод,
-                  <span class="accent">видали</span> з масиву останній елемент.
-                </li>
-                <li>
-                  Використавши правильний метод,
-                  <span class="accent">додай</span> в кінець масиву число
-                  <span class="accent">100</span>.
-                </li>
-                <li>
-                  Виведи у консоль <span class="accent">довжину</span> цього
-                  масиву.
-                </li>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
               </ol>
             </details>
-
-            <details class="task" name="task1">
-              <summary class="task-header">Завдання 2</summary>
-
-              <ol>
-                <li>
-                  Створи масив
-                  <span class="accent">fruits</span> з такими елементами:
-                  <span class="accent">...</span>.
-                </li>
-                <li>
-                  Використовуючи індекс, виведи у консоль
-                  <span class="accent">n-й</span> елемент масиву.
-                </li>
-                <li>
-                  Використовуючи індекс, заміни
-                  <span class="accent">n-й</span> елемент масиву на
-                  <span class="accent">...</span>.
-                </li>
-                <li>
-                  Використавши правильний метод,
-                  <span class="accent">видали</span> з масиву останній елемент.
-                </li>
-                <li>
-                  Використавши правильний метод,
-                  <span class="accent">додай</span> в кінець масиву текстовий
-                  рядок <span class="accent">...</span>.
-                </li>
-                <li>
-                  Виведи у консоль <span class="accent">довжину</span> цього
-                  масиву.
-                </li>
-              </ol>
-            </details>
-
-            <p>
-              Тоді в Частині 2 можуть бути завдання з ітерації по масиву, а в
-              Частині 3, наприклад, практика складніших методів типу forEach()
-              та splice().
-            </p>
 
             <hr />
 
             <h3>Очікуваний результат:</h3>
 
-            <p>
-              Тут мають бути скріншоти з результатами завдання (що має бути в
-              консолі або на сторінці), щоб діти могли порівняти.
-            </p>
-
             <img
-              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="заміни це на скріншот результатів виконаного завдання"
+              src=""
+              alt="скріншот з результатами виконаних завдань в консолі або на сторінці"
             />
           </div>
         </details>
@@ -445,44 +395,86 @@ seagreen
 
           <div class="accordion__content">
             <h3>Завдання</h3>
-            <p>Відтвори сайт як на картинці:</p>
-
             <img
-              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="заміни це на скріншот результатів виконаного завдання"
+              class="task-img"
+              src="./images/marion-task.jpg"
+              alt="скріншот вебсайту, який учні мають створити в цьому завданні"
             />
 
             <hr />
 
-            <p>Приклад завдання 1 із теми 16 з курсу HTML_CSS:</p>
+            <h3>Матеріали до завдання</h3>
 
-            <details class="task" name="task2" open>
-              <summary class="task-header">Частина 1: HTML</summary>
+            <details class="task" name="task2">
+              <summary class="accent">Текст для копіювання</summary>
 
-              <ol>
-                <li>...</li>
-              </ol>
+              <div>
+                <h4>Маріо</h4>
+                <pre><code>Маріо — відважний сантехнік, який завжди рятує принцесу. 
+Він стрибає по блоках і перемагає ворогів у грибному королівстві.</code></pre>
+
+                <h4>Луїджі</h4>
+                <pre><code>...</code></pre>
+              </div>
             </details>
 
             <details class="task" name="task2">
-              <summary class="task-header">Частина 2: CSS</summary>
+              <summary class="accent">Посилання на картинки</summary>
 
-              <ol>
-                <li>...</li>
-              </ol>
+              <div>
+                <h4>Маріо</h4>
+                <pre><code>https://upload.wikimedia.org/wikipedia/en/5/5c/Mario_by_Shigehisa_Nakaue.png
+</code></pre>
+
+                <h4>Луїджі</h4>
+                <pre><code>...</code></pre>
+              </div>
             </details>
 
-            <p>
-              Правила виконання завдання: спершу додають HTML теги, і після
-              кожної зміни дивляться на результат в браузері. Далі починають
-              стилізувати додані теги, і також одразу перевіряють результат
-              кожного рядка/блоку коду. (А не так, як зараз роблять деякі учні:
-              спочатку написали/скопіювали весь CSS як він описаний в завданні,
-              потім весь HTML, і тільки тоді відкривають сторінку в браузері.
-              Так вони просто всліпу пишуть код і не зрозуміють нормально як він
-              працює). Може краще взагалі опис завдання сприймати радше як
-              підказку, а дивитися більше на картинку (очікуваний результат).
-            </p>
+            <hr />
+
+            <h3>Чекліст</h3>
+
+            <details class="task" name="task2">
+              <summary class="accent">HTML</summary>
+
+              <div>
+                <p>На сторінці мають бути такі теги:</p>
+                <ul>
+                  <li>Заголовок <span class="accent">h1</span> "Світ Маріо"</li>
+                  <li>
+                    Параграф <span class="accent">p</span> з id="menu" із
+                    посиланнями <span class="accent">а</span> всередині:
+                    <ul>
+                      <li>"Маріо" (з id="mario")</li>
+                      <li>"Луїджі" (з id="luigi")</li>
+                      <li>...</li>
+                    </ul>
+                  </li>
+                  <li>...</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="task" name="task2">
+              <summary class="accent">CSS</summary>
+
+              <div>
+                <p>Для тегів мають бути написані такі стилі:</p>
+
+                <ul>
+                  <li>
+                    <span class="accent">body</span>: фон сторінки:
+                    background.jpg; розмір фону: cover; шрифт: Comic Sans MS;
+                  </li>
+                  <li>
+                    <span class="accent">h1</span>: колір тексту: red; розмір
+                    тексту: 38px;
+                  </li>
+                  <li>...</li>
+                </ul>
+              </div>
+            </details>
           </div>
         </details>
       </section>
@@ -540,20 +532,15 @@ seagreen
         <!-- 📝 Завдання 3 -->
         <details class="accordion__item" name="section3">
           <summary class="accordion__header">
-            <div><span class="star">✦</span> Практика 3</div>
+            <div><span class="star">✦</span> Практика 3 (Приклад для C#)</div>
             <span class="acc-arrow">▶</span>
           </summary>
 
           <div class="accordion__content">
-            <h3>Тематика практики</h3>
-            <p>
-              Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").
-            </p>
-
-            <hr />
+            <h3>Завдання</h3>
 
             <details class="task" name="task3" open>
-              <summary class="task-header">Завдання 1</summary>
+              <summary class="accent">Прості</summary>
 
               <ol>
                 <li>...</li>
@@ -561,21 +548,20 @@ seagreen
             </details>
 
             <details class="task" name="task3">
-              <summary class="task-header">Завдання 2</summary>
+              <summary class="accent">Середні</summary>
 
               <ol>
                 <li>...</li>
               </ol>
             </details>
 
-            <hr />
+            <details class="task" name="task3">
+              <summary class="accent">Складні</summary>
 
-            <h3>Очікуваний результат:</h3>
-
-            <img
-              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="заміни це на скріншот результатів виконаного завдання"
-            />
+              <ol>
+                <li>...</li>
+              </ol>
+            </details>
           </div>
         </details>
       </section>
