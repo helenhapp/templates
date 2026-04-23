@@ -1270,7 +1270,7 @@ footer p {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 20px;
   padding: 0;
   margin: 0;
   transition: all 0.4s ease;
@@ -1286,6 +1286,7 @@ body.wide-mode .wide-toggle {
   background-color: var(--hover-bg);
   border-color: var(--accent);
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--toggle-border);
 }
 
 @media (min-width: 751px) {
