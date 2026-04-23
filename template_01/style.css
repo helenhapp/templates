@@ -131,7 +131,7 @@ body::before {
 main,
 header {
   width: 93%;
-  max-width: 1200px;
+  max-width: 1000px;
 }
 
 main {
@@ -200,7 +200,6 @@ h2 {
 
 h3 {
   font-size: 14px;
-  /* color: var(--text-soft); */
   color: var(--brand2);
 }
 
@@ -209,8 +208,7 @@ h3:hover {
   cursor: default;
 }
 
-h4,
-.task-header {
+h4 {
   margin: 0.7rem 0;
   color: var(--text-soft);
   font-weight: 600;
