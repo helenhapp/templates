@@ -136,17 +136,18 @@ dialog input:focus {
   background-color: var(--accent-pop);
 }
 
-#global-password-modal h2,
-#global-password-modal .modal-description {
-  text-align: center;
-}
-
 #global-password-modal .modal-description {
   margin-bottom: 15px;
 }
 
 #global-password-modal .modal-actions {
   justify-content: center;
+}
+
+#global-submit-btn {
+  width: 30%;
+  min-width: 100px;
+  border-radius: 5px;
 }
 
 .error-text {
@@ -166,4 +167,36 @@ dialog input:focus {
   nav ul li a {
     font-size: 14px;
   }
+}
+
+/* 🦅 СТИЛІ ДЛЯ ПОСИЛАННЯ НА ОКРЕМИЙ КУРС */
+
+.course-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  margin-left: -8px; 
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.course-link:hover {
+  background-color: var(--hover-bg);
+  transform: translateY(-3px); 
+}
+
+.course-link .fly-icon {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: all 0.3s ease;
+  filter: grayscale(100%); 
+}
+
+.course-link:hover .fly-icon {
+  opacity: 1;
+  transform: translateX(0);
+  filter: grayscale(0%);
 }

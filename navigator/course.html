@@ -47,7 +47,13 @@
     <link rel="stylesheet" href="../template_01/style.css?v=2.0" />
     <link rel="stylesheet" href="./style.css?v=2.0" />
     <script src="../template_01/script.js?v=2.0" defer></script>
-    <script src="./script.js?v=2.0" defer></script>
+    <script src="./course.js" defer></script>
+
+    <style>
+        #single-course-container {
+            padding: 20px;
+        }
+    </style>
   </head>
 
   <body>
@@ -58,6 +64,10 @@
     <script>
       window.pageNavLinks = [
         {
+          name: "Навігатор",
+          url: "./index.html",
+        },
+        {
           name: "Редактор",
           url: "https://editor.webuniverseua.com",
           newTab: true,
@@ -67,19 +77,12 @@
     <div id="nav-container"></div>
 
     <header>
-      <!-- Кнопка для тестування паролів -->
-      <!-- <button onclick="localStorage.clear(); location.reload();" style="margin: 20px; opacity: 0.5">
-        Скинути всі паролі (для тестів)
-      </button> -->
-
-      <h1>WebUniverse</h1>
-      <p class="topic">Курси з розробки вебсайтів та відеоігор</p>
+      <h1>Назва курсу</h1>
+      <!-- <p class="topic">Курс з ...</p> -->
     </header>
 
     <main>
-      <section class="accordion" id="current-courses-container"></section>
-
-      <section class="accordion" id="old-courses-container"></section>
+      <section class="accordion__item" id="single-course-container"></section>
     </main>
 
     <footer>
@@ -94,45 +97,5 @@
     >
       🛸
     </button>
-
-    <!-- Вікно для вводу пароля для сайту (зараз тестовий 1111) -->
-    <dialog id="global-password-modal">
-      <div class="modal-content">
-        <h2>Вхід у WebUniverse</h2>
-        <p class="modal-description">
-          Введіть пароль для доступу до сайту:
-        </p>
-        <input
-          type="password"
-          id="global-password-input"
-          placeholder="Введіть пароль сайту..."
-        />
-        <p id="global-password-error" class="error-text">
-          Неправильний пароль!
-        </p>
-
-        <div class="modal-actions">
-          <button id="global-submit-btn">Увійти</button>
-        </div>
-      </div>
-    </dialog>
-
-    <!-- Вікно для вводу паролів для курсів (зараз тестовий 1111) -->
-    <dialog id="password-modal">
-      <div class="modal-content">
-        <h2>Щоб відкрити доступ до курсу, введіть пароль:</h2>
-        <input
-          type="password"
-          id="password-input"
-          placeholder="Введіть пароль..."
-        />
-        <p id="password-error" class="error-text">Неправильний пароль!</p>
-
-        <div class="modal-actions">
-          <button id="cancel-btn">Назад</button>
-          <button id="submit-btn">ОК</button>
-        </div>
-      </div>
-    </dialog>
   </body>
 </html>

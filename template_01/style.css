@@ -203,10 +203,10 @@ h3 {
   color: var(--brand2);
 }
 
-h3:hover {
+/* h3:hover {
   filter: brightness(1.5);
   cursor: default;
-}
+} */
 
 h4 {
   margin: 0.7rem 0;
@@ -964,6 +964,7 @@ details.task[open] summary::before {
   background-color: var(--soft-callout);
   border-radius: 6px;
   margin: 20px 0;
+  transition: background 0.4s ease;
 }
 
 .task summary {

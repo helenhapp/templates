@@ -35,11 +35,22 @@ function createCourseHTML(course) {
 
   const isUnlocked =
     localStorage.getItem(`unlocked_${course.CourseId}`) === "true";
-  const icon = isUnlocked ? "✦" : "🔒"; // Показувати замок, якщо потрібен пароль
+  const icon = isUnlocked ? "✦" : "🔒";
+
+  // Логіка: якщо розблоковано, робимо назву курсу посиланням
+  let titleSpan = `<span class="accent">${course.CourseTitle}</span>`;
+
+  if (isUnlocked) {
+    // Додаємо onClick="event.stopPropagation()", щоб клік по посиланню не згортав акордеон
+    titleSpan = `
+      <a href="course.html?id=${course.CourseId}" target="_blank" rel="noopener noreferrer" class="course-link" title="Відкрити на окремій сторінці" onclick="event.stopPropagation()">
+        ${titleSpan} <span class="fly-icon">↗️</span>
+      </a>`;
+  }
 
   const headerContent = course.IsOld
-    ? `<span class="star">${icon}</span> <span class="accent">${course.CourseTitle}</span>`
-    : `<span class="star">${icon}</span> Курс ${course.CourseIndex}: <span class="accent">${course.CourseTitle}</span>`;
+    ? `<span class="star">${icon}</span> ${titleSpan}`
+    : `<span class="star">${icon}</span> Курс ${course.CourseIndex}: ${titleSpan}`;
 
   return `
     <details class="accordion__item" name="accordion" data-course-id="${course.CourseId}">
@@ -130,6 +141,24 @@ function setupPasswordModals(courses) {
 
       const icon = currentTargetCourse.querySelector(".star");
       if (icon) icon.textContent = "✦";
+
+      // МИТТЄВЕ ДОДАВАННЯ ПОСИЛАННЯ:
+      const accentSpan = currentTargetCourse.querySelector(".accent");
+      if (
+        accentSpan &&
+        !accentSpan.parentElement.classList.contains("course-link")
+      ) {
+        const link = document.createElement("a");
+        link.href = `course.html?id=${courseId}`;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.className = "course-link";
+        link.title = "Відкрити на окремій сторінці";
+        link.onclick = (e) => e.stopPropagation();
+        link.innerHTML =
+          accentSpan.outerHTML + ' <span class="fly-icon">↗️</span>';
+        accentSpan.replaceWith(link);
+      }
 
       modal.close();
       currentTargetCourse.open = true;
