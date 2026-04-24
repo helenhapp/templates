@@ -641,7 +641,6 @@ document.addEventListener("click", async (e) => {
   }
 });
 
-// ---------------
 /* 🚀 ОНОВЛЕНИЙ РЕДАКТОР CODEMIRROR ДЛЯ ВСІХ ЗАВДАНЬ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -659,7 +658,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Ініціалізуємо CodeMirror поверх textarea
     const cm = CodeMirror.fromTextArea(codeInput, {
       mode: editorMode,
-      theme: "dracula", // Можна змінювати залежно від вашої теми
+      theme: "dracula",
       lineNumbers: true,
       tabSize: 2,
       lineWrapping: true,
@@ -670,51 +669,62 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Щойно редактор з'являється на екрані, змушуємо його перемалювати себе
-          // Невеличка затримка (20мс) потрібна, щоб встигла відпрацювати анімація вкладок
           setTimeout(() => cm.refresh(), 20);
         }
       });
     });
-    observer.observe(wrapper); // Починаємо стежити за редактором
+    observer.observe(wrapper);
 
-    // 3. Логіка для JS консолі
+    // 3. Елементи виводу
     const outputDisplay = wrapper.querySelector(".custom-editor-output");
-
-    // 4. Логіка для HTML прев'ю
     const iframeOutput = wrapper.querySelector(".html-editor-output");
+
     if (isHtmlEditor && iframeOutput) {
       iframeOutput.srcdoc = cm.getValue(); // Початковий рендер
     }
 
     // Кнопка ЗАПУСТИТИ
-    runBtn.addEventListener("click", () => {
-      const code = cm.getValue(); // Отримуємо текст з CodeMirror
+    if (runBtn) {
+      runBtn.addEventListener("click", () => {
+        const code = cm.getValue(); // Отримуємо текст з CodeMirror
 
-      if (isHtmlEditor) {
-        iframeOutput.srcdoc = code;
-      } else {
-        // Ваша існуюча логіка з console.log
-        runJsCode(code, outputDisplay);
-      }
-    });
+        if (isHtmlEditor) {
+          if (iframeOutput) iframeOutput.srcdoc = code;
+        } else {
+          // Якщо це JS редактор
+          if (outputDisplay) {
+            outputDisplay.textContent = "Запуск..."; // Показуємо, що кнопка натиснулась
+
+            // Даємо браузеру 50мс, щоб відмалювати слово "Запуск...", і виконуємо код
+            setTimeout(() => {
+              runJsCode(code, outputDisplay);
+            }, 50);
+          }
+        }
+      });
+    }
 
     // Кнопка СКИНУТИ
     if (resetBtn) {
       const initialValue = codeInput.defaultValue;
       resetBtn.addEventListener("click", () => {
         cm.setValue(initialValue);
-        if (isHtmlEditor) iframeOutput.srcdoc = initialValue;
+        if (isHtmlEditor && iframeOutput) iframeOutput.srcdoc = initialValue;
         if (outputDisplay) outputDisplay.textContent = "Очікування запуску...";
       });
     }
   });
 });
 
-// Винесена функція запуску JS (щоб код був чистішим)
+// Функція запуску JS
 function runJsCode(codeToRun, outputDisplay) {
   let simulatedOutput = "";
+
+  // Зберігаємо оригінальні методи браузера
   const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+  // Перевизначаємо console.log
   console.log = (...args) => {
     simulatedOutput +=
       args
@@ -724,12 +734,257 @@ function runJsCode(codeToRun, outputDisplay) {
         .join(" ") + "\n";
   };
 
+  // Перевизначаємо console.error
+  console.error = (...args) => {
+    simulatedOutput +=
+      "Помилка: " +
+      args
+        .map((arg) =>
+          typeof arg === "object" ? JSON.stringify(arg, null, 2) : String(arg),
+        )
+        .join(" ") +
+      "\n";
+  };
+
   try {
-    new Function(codeToRun)();
+    // Виконуємо код учня
+    const executeCode = new Function(codeToRun);
+    executeCode();
+
+    // Виводимо результат
     outputDisplay.textContent =
-      simulatedOutput.trim() || "Код виконано (немає виводу)";
+      simulatedOutput.trim() || "Код виконано (немає виводу в консоль)";
   } catch (error) {
-    outputDisplay.textContent = "Помилка: " + error.message;
+    // Якщо учень допустив синтаксичну помилку
+    outputDisplay.textContent = "Помилка у коді: " + error.message;
+  } finally {
+    // ОБОВ'ЯЗКОВО повертаємо оригінальні методи на місце
+    console.log = originalConsoleLog;
+    console.error = originalConsoleError;
   }
-  console.log = originalConsoleLog;
 }
+
+/* 📝 18. ЛОГІКА ЗБЕРЕЖЕННЯ ТА ГЕНЕРАЦІЇ ДОМАШНЬОГО ЗАВДАННЯ (.txt) */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hwForm = document.getElementById("homework-form");
+  if (!hwForm) return;
+
+  const studentNameInput = document.getElementById("student-name");
+  const saveBtn = document.getElementById("save-hw-btn");
+  const copyBtn = document.getElementById("copy-hw-btn");
+  const clearBtn = document.getElementById("clear-hw-btn");
+  const errorMsg = document.getElementById("hw-error-msg");
+
+  // --- 1. ВІДНОВЛЕННЯ З ЛОКАЛЬНОГО СХОВИЩА ---
+  const savedFormData = JSON.parse(localStorage.getItem("wu_hw_form") || "{}");
+
+  hwForm
+    .querySelectorAll("input, textarea:not(.custom-editor-input)")
+    .forEach((el) => {
+      if (el.type === "radio" || el.type === "checkbox") {
+        // Відновлюємо галочки
+        if (
+          savedFormData[el.name] &&
+          savedFormData[el.name].includes(el.value)
+        ) {
+          el.checked = true;
+        }
+      } else {
+        // Відновлюємо текст (імена, відкриті питання)
+        if (savedFormData[el.name]) el.value = savedFormData[el.name];
+      }
+    });
+
+  // --- 2. АВТОЗБЕРЕЖЕННЯ ПРИ ВВЕДЕННІ ---
+  hwForm.addEventListener("input", () => {
+    const data = {};
+    // Збираємо радіо та чекбокси
+    hwForm
+      .querySelectorAll(
+        "input[type='radio']:checked, input[type='checkbox']:checked",
+      )
+      .forEach((el) => {
+        if (!data[el.name]) data[el.name] = [];
+        data[el.name].push(el.value);
+      });
+    // Збираємо текст
+    hwForm
+      .querySelectorAll(
+        "textarea:not(.custom-editor-input), input[type='text']",
+      )
+      .forEach((el) => {
+        data[el.name] = el.value;
+      });
+
+    localStorage.setItem("wu_hw_form", JSON.stringify(data));
+
+    // Якщо користувач почав виправляти помилки - ховаємо червоне попередження
+    errorMsg.style.display = "none";
+    hwForm
+      .querySelectorAll(".error-highlight")
+      .forEach((el) => el.classList.remove("error-highlight"));
+  });
+
+  // --- 3. ФУНКЦІЯ ЗБОРУ ТА ПЕРЕВІРКИ ДАНИХ ---
+  function collectAndValidate() {
+    let isValid = true;
+    let outputText = `======================================\n`;
+    outputText += `ДОМАШНЄ ЗАВДАННЯ\n`;
+    outputText += `======================================\n\n`;
+
+    const name = studentNameInput.value.trim();
+    if (!name) {
+      studentNameInput
+        .closest(".test-question")
+        .classList.add("error-highlight");
+      isValid = false;
+    }
+
+    outputText += `Учень: ${name || "[НЕ ВКАЗАНО]"}\n`;
+    const date = new Date();
+    outputText += `Дата здачі: ${date.toLocaleDateString("uk-UA")} о ${date.toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" })}\n\n`;
+    outputText += `--------------------------------------\n\n`;
+
+    // Перебираємо всі блоки з питаннями
+    const questions = hwForm.querySelectorAll(
+      ".test-question:not(.student-info), .custom-editor-wrapper",
+    );
+
+    questions.forEach((qBlock) => {
+      // Витягуємо текст питання
+      let qText = "";
+      const p = qBlock.querySelector("p");
+      if (p) qText = p.textContent.trim();
+      else if (qBlock.querySelector(".editor-title"))
+        qText =
+          "Практичне завдання (" +
+          qBlock.querySelector(".editor-title").textContent +
+          ")";
+
+      let answerText = "";
+      let isAnswered = false;
+
+      // Радіо
+      const checkedRadio = qBlock.querySelector(".test-radio:checked");
+      if (checkedRadio) {
+        answerText = checkedRadio.value;
+        isAnswered = true;
+      }
+
+      // Чекбокси
+      const checkedBoxes = qBlock.querySelectorAll(".test-checkbox:checked");
+      if (checkedBoxes.length > 0) {
+        answerText = Array.from(checkedBoxes)
+          .map((cb) => cb.value)
+          .join(", ");
+        isAnswered = true;
+      }
+
+      // Текстареа (коротка відповідь)
+      const textarea = qBlock.querySelector(".test-textarea");
+      if (textarea && textarea.value.trim() !== "") {
+        answerText = textarea.value.trim();
+        isAnswered = true;
+      }
+
+      // Редактор коду (CodeMirror)
+      if (qBlock.classList.contains("custom-editor-wrapper")) {
+        const cmInstance = qBlock.querySelector(".CodeMirror").CodeMirror;
+        if (cmInstance) {
+          answerText = "\n" + cmInstance.getValue();
+          isAnswered = true;
+        }
+      }
+
+      // Перевірка (валідація)
+      if (!isAnswered && !qBlock.classList.contains("custom-editor-wrapper")) {
+        qBlock.classList.add("error-highlight");
+        isValid = false;
+      }
+
+      if (qText || answerText) {
+        outputText += `❓ Питання: ${qText}\n`;
+        outputText += `📝 Відповідь: ${answerText || "[Немає відповіді]"}\n\n`;
+        outputText += `--------------------------------------\n\n`;
+      }
+    });
+
+    return { isValid, outputText, name };
+  }
+
+  // --- 4. КНОПКА ЗБЕРЕЖЕННЯ ФАЙЛУ (.TXT) ---
+  saveBtn.addEventListener("click", () => {
+    const { isValid, outputText, name } = collectAndValidate();
+
+    if (!isValid) {
+      errorMsg.style.display = "block";
+      // Скролимо до першої помилки
+      document
+        .querySelector(".error-highlight")
+        .scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    // Створюємо Blob файл
+    const blob = new Blob([outputText], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+
+    // Формуємо красиву назву файлу
+    const safeName = name.replace(/[^a-zа-яіїєґ0-9]/gi, "_");
+    a.download = `ДЗ_Тема_${safeName}.txt`; // 'Тема' можна динамічно брати з h1
+
+    a.click();
+    URL.revokeObjectURL(url);
+
+    // Візуальний фідбек
+    const originalText = saveBtn.innerHTML;
+    saveBtn.innerHTML = "✅ Успішно збережено!";
+    saveBtn.style.backgroundColor = "mediumseagreen";
+    saveBtn.style.borderColor = "mediumseagreen";
+    setTimeout(() => {
+      saveBtn.innerHTML = originalText;
+      saveBtn.style.backgroundColor = "";
+      saveBtn.style.borderColor = "";
+    }, 3000);
+  });
+
+  // --- 5. КНОПКА КОПІЮВАННЯ ТЕКСТУ ---
+  copyBtn.addEventListener("click", () => {
+    const { isValid, outputText } = collectAndValidate();
+
+    if (!isValid) {
+      errorMsg.style.display = "block";
+      document
+        .querySelector(".error-highlight")
+        .scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    navigator.clipboard.writeText(outputText).then(() => {
+      const originalText = copyBtn.innerHTML;
+      copyBtn.innerHTML = "✅ Скопійовано!";
+      setTimeout(() => (copyBtn.innerHTML = originalText), 2000);
+    });
+  });
+
+  // --- 6. КНОПКА ОЧИЩЕННЯ ФОРМИ ---
+  clearBtn.addEventListener("click", () => {
+    if (
+      confirm(
+        "Ти впевнений, що хочеш видалити ВСІ свої відповіді і почати заново?",
+      )
+    ) {
+      // Чистимо сховище
+      localStorage.removeItem("wu_hw_form");
+      hwForm.querySelectorAll(".custom-editor-wrapper").forEach((wrapper) => {
+        localStorage.removeItem("wu_code_" + wrapper.id);
+      });
+
+      // Оновлюємо сторінку, щоб повністю обнулити форму і CodeMirror
+      window.location.reload();
+    }
+  });
+});

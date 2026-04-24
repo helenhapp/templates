@@ -727,7 +727,7 @@ function run() {
         </details>
 
         <!-- Завдання -->
-        <details class="accordion__item" name="section4">
+        <!-- <details class="accordion__item" name="section4">
           <summary class="accordion__header">
             <div>
               <span class="star">✦</span> <span class="accent">Завдання</span>
@@ -878,6 +878,258 @@ console.log(`Результат: ${result}`);</textarea
               >
               <pre class="custom-editor-output">Очікування запуску...</pre>
             </div>
+          </div>
+        </details> -->
+
+        <!-- test -->
+        <details class="accordion__item" name="section4" open>
+          <summary class="accordion__header">
+            <div>
+              <span class="star">✦</span>
+              <span class="accent">Домашнє завдання</span>
+            </div>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <form id="homework-form" novalidate>
+              <div class="test-question soft-callout student-info">
+                <label for="student-name">Прізвище та Ім'я:</label>
+                <input
+                  type="text"
+                  id="student-name"
+                  name="student_name"
+                  class="test-textarea"
+                  placeholder="Введи свої прізвище та імʼя"
+                  required
+                />
+              </div>
+
+              <div class="test-question">
+                <p>
+                  1. Який тег використовується для створення найбільшого
+                  заголовка?
+                </p>
+                <label class="test-label">
+                  <input
+                    type="radio"
+                    class="test-radio"
+                    name="q1"
+                    value="<heading>"
+                  />
+                  &lt;heading&gt;
+                </label>
+                <label class="test-label">
+                  <input
+                    type="radio"
+                    class="test-radio"
+                    name="q1"
+                    value="<h1>"
+                  />
+                  &lt;h1&gt;
+                </label>
+                <label class="test-label">
+                  <input
+                    type="radio"
+                    class="test-radio"
+                    name="q1"
+                    value="<header>"
+                  />
+                  &lt;header&gt;
+                </label>
+              </div>
+
+              <div class="test-question">
+                <p>
+                  2. Яким словом в JavaScript оголошується "змінна", значення
+                  якої НЕ можна змінити?
+                </p>
+                <label class="test-label">
+                  <input
+                    type="radio"
+                    class="test-radio"
+                    name="q3"
+                    value="var"
+                  />
+                  var
+                </label>
+                <label class="test-label">
+                  <input
+                    type="radio"
+                    class="test-radio"
+                    name="q3"
+                    value="let"
+                  />
+                  let
+                </label>
+                <label class="test-label">
+                  <input
+                    type="radio"
+                    class="test-radio"
+                    name="q3"
+                    value="const"
+                  />
+                  const
+                </label>
+              </div>
+
+              <div class="test-question">
+                <p>
+                  3. Які з цих типів даних існують у JavaScript? (Обери усі
+                  правильні)
+                </p>
+                <label class="test-label">
+                  <input
+                    type="checkbox"
+                    class="test-checkbox"
+                    name="q2"
+                    value="String (Текстовий)"
+                  />
+                  String (Текстовий)
+                </label>
+                <label class="test-label">
+                  <input
+                    type="checkbox"
+                    class="test-checkbox"
+                    name="q2"
+                    value="Number (Числовий)"
+                  />
+                  Number (Числовий)
+                </label>
+                <label class="test-label">
+                  <input
+                    type="checkbox"
+                    class="test-checkbox"
+                    name="q2"
+                    value="Character (Символьний)"
+                  />
+                  Character (Символьний)
+                </label>
+              </div>
+
+              <div class="test-question">
+                <p>4. Яким буде результат цього коду?</p>
+                <pre><code class="language-javascript">console.log(10 + "5");</code></pre>
+                <textarea
+                  class="test-textarea"
+                  name="q4"
+                  placeholder="Напиши відповідь тут..."
+                ></textarea>
+              </div>
+
+              <div class="test-question">
+                <p>
+                  5. Зміни колір тексту заголовка на фіолетовий (purple) і шрифт
+                  на Arial.
+                </p>
+
+                <div
+                  class="custom-editor-wrapper html-editor-wrapper"
+                  id="hw-html-editor"
+                >
+                  <div class="editor-header">
+                    <span class="editor-title">HTML / CSS</span>
+                    <div class="editor-actions">
+                      <button
+                        type="button"
+                        class="reset-btn"
+                        title="Повернути початковий код"
+                      >
+                        🔄
+                      </button>
+                      <button
+                        type="button"
+                        class="run-btn"
+                        title="Показати результат"
+                      >
+                        ▶️
+                      </button>
+                    </div>
+                  </div>
+                  <textarea
+                    class="custom-editor-input"
+                    spellcheck="false"
+                    name="hw_html_code"
+                  >
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;Привіт, світе!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea
+                  >
+                  <iframe
+                    class="html-editor-output"
+                    title="HTML Preview"
+                    sandbox="allow-scripts"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div class="test-question">
+                <p>6. Зроби замість обчислення суми — множення масиву чисел:</p>
+
+                <div class="custom-editor-wrapper" id="hw-js-editor">
+                  <div class="editor-header">
+                    <span class="editor-title">JavaScript</span>
+                    <div class="editor-actions">
+                      <button
+                        type="button"
+                        class="reset-btn"
+                        title="Повернути початковий код"
+                      >
+                        🔄
+                      </button>
+                      <button
+                        type="button"
+                        class="run-btn"
+                        title="Запустити код"
+                      >
+                        ▶️
+                      </button>
+                    </div>
+                  </div>
+                  <textarea
+                    class="custom-editor-input"
+                    spellcheck="false"
+                    name="hw_js_code"
+                  >
+const numbers = [1, 3, 5];
+let result = 0; 
+
+for (let number of numbers) {
+  result += number; 
+}
+
+console.log(`Результат: ${result}`);</textarea
+                  >
+                  <pre class="custom-editor-output">Очікування запуску...</pre>
+                </div>
+              </div>
+
+              <div class="homework-actions">
+                <button type="button" id="save-hw-btn" class="submit-btn">
+                  Зберегти як .txt
+                </button>
+                <button type="button" id="copy-hw-btn" class="copy-btn">
+                  Скопіювати текст
+                </button>
+                <button
+                  type="button"
+                  id="clear-hw-btn"
+                  class="reset-btn-hw"
+                  title="Видалити всі відповіді"
+                >
+                  Очистити
+                </button>
+              </div>
+
+              <div id="hw-error-msg" class="error-text">
+                Будь ласка, заповни усі питання (виділені червоним)!
+              </div>
+            </form>
           </div>
         </details>
       </section>

@@ -1719,7 +1719,7 @@ pre::-webkit-scrollbar-thumb,
 
 .test-textarea {
   width: 100%;
-  min-height: 80px;
+  min-height: 30px;
   padding: 12px 15px;
   margin-top: 10px;
   background-color: var(--code-bg);
@@ -1755,5 +1755,118 @@ pre::-webkit-scrollbar-thumb,
 @keyframes popInCheck {
   to {
     transform: rotate(45deg) scale(1);
+  }
+}
+
+/* 🎓 СТИЛІ ДОМАШНЬОГО ЗАВДАННЯ */
+
+.student-info {
+  background-color: var(--panel-alt);
+  border-left-color: var(--accent-pop);
+}
+
+.student-info label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  color: var(--title);
+  display: block;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.required {
+  color: var(--brand3);
+  font-size: 16px;
+}
+
+/* Кнопки дій для ДЗ */
+.homework-actions {
+  display: flex;
+  gap: 15px;
+  margin: 30px 0;
+  flex-wrap: wrap; /* Дозволяє кнопкам переноситися на новий рядок */
+}
+
+.homework-actions button {
+  font-size: 14px;
+  padding: 16px 20px;
+  /* Копіювати і Очистити ділять нижній рядок 50/50 */
+  flex: 1 1 calc(50% - 15px);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 1. Головна кнопка (Зберегти) */
+#save-hw-btn {
+  flex-basis: 100%; /* Займає весь верхній рядок */
+  padding: 20px; /* Трохи більша за інші */
+  font-size: 16px;
+  background-color: var(--brand2);
+  color: #ffffff;
+  border-color: var(--brand1);
+}
+
+#save-hw-btn:hover {
+  background-color: var(--brand1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Додаємо тінь для об'єму */
+}
+
+/* 2. Додаткова кнопка (Скопіювати) */
+#copy-hw-btn {
+  background-color: var(--panel-alt);
+}
+
+/* 3. Небезпечна кнопка (Очистити) */
+.reset-btn-hw {
+  background-color: transparent; /* Робимо її прозорою */
+  color: var(--brand3); /* Використовуємо ваш червоно-помаранчевий */
+  border-color: var(--brand3);
+}
+
+.reset-btn-hw:hover {
+  background-color: var(
+    --brand3
+  ); /* Заливається кольором тільки при наведенні */
+  color: #ffffff;
+}
+
+/* Підсвітка помилок (якщо учень щось пропустив) */
+.error-highlight {
+  border-color: var(--brand3) !important;
+  box-shadow: 0 0 10px rgba(226, 63, 5, 0.3) !important;
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+#hw-error-msg {
+  color: var(--brand3);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  display: none;
+}
+
+/* Мобільна адаптація для кнопок ДЗ */
+@media (max-width: 449px) {
+  .homework-actions button {
+    flex: 1 1 100%; /* Використовуємо flex замість flex-basis для надійності */
   }
 }
