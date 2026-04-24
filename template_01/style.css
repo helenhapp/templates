@@ -1273,7 +1273,6 @@ pre:has(code.nocopy) {
 .custom-editor-output {
   background: var(--panel-alt);
   color: var(--text-main);
-  /* border-top: 2px dashed var(--accent); */
   border-top: 2px solid var(--accent);
   margin: 0;
   padding: 15px;
@@ -1290,7 +1289,6 @@ pre:has(code.nocopy) {
   min-height: 200px;
   background-color: #ffffff;
   border: none;
-  /* border-top: 2px dashed var(--accent); */
   border-top: 2px solid var(--accent);
   display: block;
 }
@@ -1599,6 +1597,22 @@ pre::-webkit-scrollbar-thumb,
   font-size: 14px;
   background-color: var(--code-bg) !important;
   color: var(--text-main) !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.CodeMirror-scroll {
+  outline: none !important;
+}
+
+.CodeMirror-lines {
+  padding: 15px 0 !important;
+}
+
+.CodeMirror pre.CodeMirror-line,
+.CodeMirror pre.CodeMirror-line-like {
+  padding: 0 15px !important;
 }
 
 .CodeMirror-gutters {
@@ -1613,4 +1627,133 @@ pre::-webkit-scrollbar-thumb,
 
 .custom-editor-input {
   display: none;
+}
+
+/* 📝 17. ТЕСТИ ТА ФОРМИ */
+
+.test-question p {
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--title);
+}
+
+.test-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.test-label:hover {
+  color: var(--accent-pop);
+}
+
+.test-radio,
+.test-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid var(--accent);
+  background-color: var(--code-bg);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.test-radio {
+  border-radius: 50%;
+}
+
+.test-radio:checked {
+  border-color: var(--accent-pop);
+}
+
+.test-radio:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-pop);
+  border-radius: 50%;
+  animation: popIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.test-checkbox {
+  border-radius: 5px;
+}
+
+.test-checkbox:checked {
+  background-color: var(--accent-pop);
+  border-color: var(--accent-pop);
+}
+
+.test-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  animation: popIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.test-radio:focus-visible,
+.test-checkbox:focus-visible {
+  outline: 2px dashed var(--accent-pop);
+  outline-offset: 3px;
+}
+
+.test-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px 15px;
+  margin-top: 10px;
+  background-color: var(--code-bg);
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.test-textarea::placeholder {
+  color: var(--text-soft);
+  opacity: 0.6;
+}
+
+.test-textarea:focus {
+  outline: none;
+  border-color: var(--accent-pop);
+  box-shadow: 0 0 0 3px rgba(239, 125, 43, 0.2);
+}
+
+@keyframes popIn {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.test-checkbox:checked::after {
+  animation: popInCheck 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes popInCheck {
+  to {
+    transform: rotate(45deg) scale(1);
+  }
 }
