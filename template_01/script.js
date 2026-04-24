@@ -206,166 +206,166 @@ document.querySelectorAll("pre code").forEach((codeBlock) => {
 
 /* 🍕 7.1 КАСТОМНИЙ РЕДАКТОР КОДУ (CUSTOM EDITOR) */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const editors = document.querySelectorAll(".custom-editor-wrapper");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const editors = document.querySelectorAll(".custom-editor-wrapper");
 
-  editors.forEach((wrapper) => {
-    const runBtn = wrapper.querySelector(".run-btn");
-    const resetBtn = wrapper.querySelector(".reset-btn");
-    const codeInput = wrapper.querySelector(".custom-editor-input");
-    const outputDisplay = wrapper.querySelector(".custom-editor-output");
+//   editors.forEach((wrapper) => {
+//     const runBtn = wrapper.querySelector(".run-btn");
+//     const resetBtn = wrapper.querySelector(".reset-btn");
+//     const codeInput = wrapper.querySelector(".custom-editor-input");
+//     const outputDisplay = wrapper.querySelector(".custom-editor-output");
 
-    const initialCode = codeInput.value;
+//     const initialCode = codeInput.value;
 
-    // Функція, яка автоматично змінює висоту поля вводу (textarea) під розмір тексту
-    const adjustHeight = () => {
-      codeInput.style.height = "auto";
-      codeInput.style.height = codeInput.scrollHeight + "px";
-    };
+//     // Функція, яка автоматично змінює висоту поля вводу (textarea) під розмір тексту
+//     const adjustHeight = () => {
+//       codeInput.style.height = "auto";
+//       codeInput.style.height = codeInput.scrollHeight + "px";
+//     };
 
-    // Підлаштовуємо висоту під час набору тексту
-    codeInput.addEventListener("input", adjustHeight);
+//     // Підлаштовуємо висоту під час набору тексту
+//     codeInput.addEventListener("input", adjustHeight);
 
-    // Підлаштовуємо висоту при завантаженні (з нульовою затримкою для правильного рендеру)
-    setTimeout(adjustHeight, 0);
+//     // Підлаштовуємо висоту при завантаженні (з нульовою затримкою для правильного рендеру)
+//     setTimeout(adjustHeight, 0);
 
-    // Перехоплення Tab тут:
-    codeInput.addEventListener("keydown", function (e) {
-      if (e.key === "Tab") {
-        e.preventDefault();
-        const start = this.selectionStart;
-        const end = this.selectionEnd;
-        const indentation = "  ";
-        this.value =
-          this.value.substring(0, start) +
-          indentation +
-          this.value.substring(end);
-        this.selectionStart = this.selectionEnd = start + indentation.length;
-        this.dispatchEvent(new Event("input"));
-      }
-    });
+//     // Перехоплення Tab тут:
+//     codeInput.addEventListener("keydown", function (e) {
+//       if (e.key === "Tab") {
+//         e.preventDefault();
+//         const start = this.selectionStart;
+//         const end = this.selectionEnd;
+//         const indentation = "  ";
+//         this.value =
+//           this.value.substring(0, start) +
+//           indentation +
+//           this.value.substring(end);
+//         this.selectionStart = this.selectionEnd = start + indentation.length;
+//         this.dispatchEvent(new Event("input"));
+//       }
+//     });
 
-    // Спостерігач за видимістю - автоматично перераховує висоту щойно редактор стає видимим (при відкритті вкладки чи акордеона)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          adjustHeight();
-        }
-      });
-    });
-    // Починаємо стежити за головним контейнером редактора
-    observer.observe(wrapper);
+//     // Спостерігач за видимістю - автоматично перераховує висоту щойно редактор стає видимим (при відкритті вкладки чи акордеона)
+//     const observer = new IntersectionObserver((entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           adjustHeight();
+//         }
+//       });
+//     });
+//     // Починаємо стежити за головним контейнером редактора
+//     observer.observe(wrapper);
 
-    // Логіка виконання коду при натисканні кнопки "Скинути"
-    if (resetBtn) {
-      resetBtn.addEventListener("click", () => {
-        codeInput.value = initialCode; // Повертаємо оригінальний текст
-        adjustHeight(); // Перераховуємо висоту поля
-        outputDisplay.textContent = "Очікування запуску..."; // Очищаємо консоль виводу
-      });
-    }
+//     // Логіка виконання коду при натисканні кнопки "Скинути"
+//     if (resetBtn) {
+//       resetBtn.addEventListener("click", () => {
+//         codeInput.value = initialCode; // Повертаємо оригінальний текст
+//         adjustHeight(); // Перераховуємо висоту поля
+//         outputDisplay.textContent = "Очікування запуску..."; // Очищаємо консоль виводу
+//       });
+//     }
 
-    // Логіка виконання коду при натисканні кнопки "Запустити"
-    runBtn.addEventListener("click", () => {
-      const codeToRun = codeInput.value;
-      let simulatedOutput = "";
+//     // Логіка виконання коду при натисканні кнопки "Запустити"
+//     runBtn.addEventListener("click", () => {
+//       const codeToRun = codeInput.value;
+//       let simulatedOutput = "";
 
-      // Зберігаємо оригінальний метод console.log
-      const originalConsoleLog = console.log;
+//       // Зберігаємо оригінальний метод console.log
+//       const originalConsoleLog = console.log;
 
-      // Перевизначаємо console.log, щоб ловити вивід з користувацького коду
-      console.log = function (...args) {
-        const logString = args
-          .map((arg) => {
-            // Форматуємо об'єкти як красивий JSON, а все інше конвертуємо в рядок
-            if (typeof arg === "object") return JSON.stringify(arg, null, 2);
-            return String(arg);
-          })
-          .join(" ");
-        // Додаємо вивід до нашого віртуального логу
-        simulatedOutput += logString + "\n";
-      };
+//       // Перевизначаємо console.log, щоб ловити вивід з користувацького коду
+//       console.log = function (...args) {
+//         const logString = args
+//           .map((arg) => {
+//             // Форматуємо об'єкти як красивий JSON, а все інше конвертуємо в рядок
+//             if (typeof arg === "object") return JSON.stringify(arg, null, 2);
+//             return String(arg);
+//           })
+//           .join(" ");
+//         // Додаємо вивід до нашого віртуального логу
+//         simulatedOutput += logString + "\n";
+//       };
 
-      try {
-        // Створюємо нову функцію з тексту користувача і виконуємо її.
-        // Це трохи безпечніша альтернатива eval()
-        const executeCode = new Function(codeToRun);
-        executeCode();
+//       try {
+//         // Створюємо нову функцію з тексту користувача і виконуємо її.
+//         // Це трохи безпечніша альтернатива eval()
+//         const executeCode = new Function(codeToRun);
+//         executeCode();
 
-        // Якщо код відпрацював, але нічого не вивів
-        if (simulatedOutput === "") {
-          simulatedOutput = "Код виконано (немає виводу в консоль)";
-        }
-      } catch (error) {
-        // Якщо у користувацькому коді є помилка, перехоплюємо її
-        simulatedOutput = "Помилка: " + error.message;
-      }
+//         // Якщо код відпрацював, але нічого не вивів
+//         if (simulatedOutput === "") {
+//           simulatedOutput = "Код виконано (немає виводу в консоль)";
+//         }
+//       } catch (error) {
+//         // Якщо у користувацькому коді є помилка, перехоплюємо її
+//         simulatedOutput = "Помилка: " + error.message;
+//       }
 
-      // Обов'язково повертаємо оригінальний console.log на місце!
-      console.log = originalConsoleLog;
+//       // Обов'язково повертаємо оригінальний console.log на місце!
+//       console.log = originalConsoleLog;
 
-      // Відображаємо результат в інтерфейсі (прибираємо зайві пробіли на кінці)
-      outputDisplay.textContent = simulatedOutput.trim();
-    });
-  });
-});
+//       // Відображаємо результат в інтерфейсі (прибираємо зайві пробіли на кінці)
+//       outputDisplay.textContent = simulatedOutput.trim();
+//     });
+//   });
+// });
 
 /* 🎨 7.2 HTML РЕДАКТОР ПРЕВ'Ю СТОРІНКИ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const htmlEditors = document.querySelectorAll(".html-editor-wrapper");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const htmlEditors = document.querySelectorAll(".html-editor-wrapper");
 
-  htmlEditors.forEach((wrapper) => {
-    const runBtn = wrapper.querySelector(".run-btn");
-    const resetBtn = wrapper.querySelector(".reset-btn");
-    const codeInput = wrapper.querySelector(".custom-editor-input");
-    const iframeOutput = wrapper.querySelector(".html-editor-output");
+//   htmlEditors.forEach((wrapper) => {
+//     const runBtn = wrapper.querySelector(".run-btn");
+//     const resetBtn = wrapper.querySelector(".reset-btn");
+//     const codeInput = wrapper.querySelector(".custom-editor-input");
+//     const iframeOutput = wrapper.querySelector(".html-editor-output");
 
-    const initialCode = codeInput.value;
+//     const initialCode = codeInput.value;
 
-    // Авто-висота для поля вводу
-    const adjustHeight = () => {
-      codeInput.style.height = "auto";
-      codeInput.style.height = codeInput.scrollHeight + "px";
-    };
+//     // Авто-висота для поля вводу
+//     const adjustHeight = () => {
+//       codeInput.style.height = "auto";
+//       codeInput.style.height = codeInput.scrollHeight + "px";
+//     };
 
-    codeInput.addEventListener("input", adjustHeight);
-    setTimeout(adjustHeight, 0);
+//     codeInput.addEventListener("input", adjustHeight);
+//     setTimeout(adjustHeight, 0);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          adjustHeight();
-        }
-      });
-    });
-    observer.observe(wrapper);
+//     const observer = new IntersectionObserver((entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           adjustHeight();
+//         }
+//       });
+//     });
+//     observer.observe(wrapper);
 
-    // Логіка оновлення iframe
-    const updatePreview = (code) => {
-      // srcdoc - це сучасний атрибут, який миттєво рендерить рядок коду всередині iframe
-      iframeOutput.srcdoc = code;
-    };
+//     // Логіка оновлення iframe
+//     const updatePreview = (code) => {
+//       // srcdoc - це сучасний атрибут, який миттєво рендерить рядок коду всередині iframe
+//       iframeOutput.srcdoc = code;
+//     };
 
-    // Опціонально: Показати результат одразу при завантаженні сторінки
-    updatePreview(initialCode);
+//     // Опціонально: Показати результат одразу при завантаженні сторінки
+//     updatePreview(initialCode);
 
-    // Логіка виконання при натисканні "Запустити" (▶️)
-    runBtn.addEventListener("click", () => {
-      updatePreview(codeInput.value);
-    });
+//     // Логіка виконання при натисканні "Запустити" (▶️)
+//     runBtn.addEventListener("click", () => {
+//       updatePreview(codeInput.value);
+//     });
 
-    // Логіка виконання при натисканні "Скинути" (🔄)
-    if (resetBtn) {
-      resetBtn.addEventListener("click", () => {
-        codeInput.value = initialCode;
-        adjustHeight();
-        // iframeOutput.srcdoc = "";
-        updatePreview(initialCode);
-      });
-    }
-  });
-});
+//     // Логіка виконання при натисканні "Скинути" (🔄)
+//     if (resetBtn) {
+//       resetBtn.addEventListener("click", () => {
+//         codeInput.value = initialCode;
+//         adjustHeight();
+//         // iframeOutput.srcdoc = "";
+//         updatePreview(initialCode);
+//       });
+//     }
+//   });
+// });
 
 /* 🗂 8. ТАБИ (ВКЛАДКИ) ДЛЯ ЧАСТИН УРОКУ */
 
@@ -640,3 +640,96 @@ document.addEventListener("click", async (e) => {
     }
   }
 });
+
+// ---------------
+/* 🚀 ОНОВЛЕНИЙ РЕДАКТОР CODEMIRROR ДЛЯ ВСІХ ЗАВДАНЬ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const editors = document.querySelectorAll(".custom-editor-wrapper");
+
+  editors.forEach((wrapper) => {
+    const codeInput = wrapper.querySelector(".custom-editor-input");
+    const runBtn = wrapper.querySelector(".run-btn");
+    const resetBtn = wrapper.querySelector(".reset-btn");
+    const isHtmlEditor = wrapper.classList.contains("html-editor-wrapper");
+
+    // 1. Визначаємо мову
+    const editorMode = isHtmlEditor ? "htmlmixed" : "javascript";
+
+    // 2. Ініціалізуємо CodeMirror поверх textarea
+    const cm = CodeMirror.fromTextArea(codeInput, {
+      mode: editorMode,
+      theme: "dracula", // Можна змінювати залежно від вашої теми
+      lineNumbers: true,
+      tabSize: 2,
+      lineWrapping: true,
+      viewportMargin: Infinity,
+    });
+
+    // 2.5. Виправляємо баг відображення у прихованих вкладках/акордеонах
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Щойно редактор з'являється на екрані, змушуємо його перемалювати себе
+          // Невеличка затримка (20мс) потрібна, щоб встигла відпрацювати анімація вкладок
+          setTimeout(() => cm.refresh(), 20);
+        }
+      });
+    });
+    observer.observe(wrapper); // Починаємо стежити за редактором
+
+    // 3. Логіка для JS консолі
+    const outputDisplay = wrapper.querySelector(".custom-editor-output");
+
+    // 4. Логіка для HTML прев'ю
+    const iframeOutput = wrapper.querySelector(".html-editor-output");
+    if (isHtmlEditor && iframeOutput) {
+      iframeOutput.srcdoc = cm.getValue(); // Початковий рендер
+    }
+
+    // Кнопка ЗАПУСТИТИ
+    runBtn.addEventListener("click", () => {
+      const code = cm.getValue(); // Отримуємо текст з CodeMirror
+
+      if (isHtmlEditor) {
+        iframeOutput.srcdoc = code;
+      } else {
+        // Ваша існуюча логіка з console.log
+        runJsCode(code, outputDisplay);
+      }
+    });
+
+    // Кнопка СКИНУТИ
+    if (resetBtn) {
+      const initialValue = codeInput.defaultValue;
+      resetBtn.addEventListener("click", () => {
+        cm.setValue(initialValue);
+        if (isHtmlEditor) iframeOutput.srcdoc = initialValue;
+        if (outputDisplay) outputDisplay.textContent = "Очікування запуску...";
+      });
+    }
+  });
+});
+
+// Винесена функція запуску JS (щоб код був чистішим)
+function runJsCode(codeToRun, outputDisplay) {
+  let simulatedOutput = "";
+  const originalConsoleLog = console.log;
+  console.log = (...args) => {
+    simulatedOutput +=
+      args
+        .map((arg) =>
+          typeof arg === "object" ? JSON.stringify(arg, null, 2) : String(arg),
+        )
+        .join(" ") + "\n";
+  };
+
+  try {
+    new Function(codeToRun)();
+    outputDisplay.textContent =
+      simulatedOutput.trim() || "Код виконано (немає виводу)";
+  } catch (error) {
+    outputDisplay.textContent = "Помилка: " + error.message;
+  }
+  console.log = originalConsoleLog;
+}

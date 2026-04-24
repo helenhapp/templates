@@ -1209,7 +1209,8 @@ pre:has(code.nocopy) {
   align-items: center;
   background: var(--panel-alt);
   padding: 8px 15px;
-  border-bottom: 2px dashed var(--accent);
+  /* border-bottom: 2px dashed var(--accent); */
+  border-bottom: 2px solid var(--accent);
 }
 
 .editor-title {
@@ -1272,7 +1273,8 @@ pre:has(code.nocopy) {
 .custom-editor-output {
   background: var(--panel-alt);
   color: var(--text-main);
-  border-top: 2px dashed var(--accent);
+  /* border-top: 2px dashed var(--accent); */
+  border-top: 2px solid var(--accent);
   margin: 0;
   padding: 15px;
   font-family: monospace;
@@ -1288,7 +1290,8 @@ pre:has(code.nocopy) {
   min-height: 200px;
   background-color: #ffffff;
   border: none;
-  border-top: 2px dashed var(--accent);
+  /* border-top: 2px dashed var(--accent); */
+  border-top: 2px solid var(--accent);
   display: block;
 }
 
@@ -1585,4 +1588,29 @@ pre::-webkit-scrollbar-thumb,
   height: calc(100% + 2px);
   object-fit: contain;
   outline: none;
+}
+
+/* Стилізація CodeMirror */
+
+.CodeMirror {
+  height: auto;
+  min-height: 150px;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  background-color: var(--code-bg) !important;
+  color: var(--text-main) !important;
+}
+
+.CodeMirror-gutters {
+  background-color: var(--panel-alt) !important;
+  border-right: 1px dashed var(--accent) !important;
+}
+
+.CodeMirror-linenumber {
+  color: var(--brand5) !important;
+  opacity: 0.8;
+}
+
+.custom-editor-input {
+  display: none;
 }
