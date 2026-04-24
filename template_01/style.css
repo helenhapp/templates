@@ -1631,10 +1631,13 @@ pre::-webkit-scrollbar-thumb,
 
 /* 📝 17. ТЕСТИ ТА ФОРМИ */
 
+.test-question {
+  margin: 20px 0;
+}
+
 .test-question p {
   font-weight: 600;
-  margin-top: 0;
-  margin-bottom: 15px;
+  margin: 20px 0;
   color: var(--title);
 }
 
@@ -1740,8 +1743,7 @@ pre::-webkit-scrollbar-thumb,
 
 .test-textarea:focus {
   outline: none;
-  border-color: var(--accent-pop);
-  box-shadow: 0 0 0 3px rgba(239, 125, 43, 0.2);
+  border-color: var(--brand2);
 }
 
 @keyframes popIn {
@@ -1761,17 +1763,20 @@ pre::-webkit-scrollbar-thumb,
 /* 🎓 СТИЛІ ДОМАШНЬОГО ЗАВДАННЯ */
 
 .student-info {
-  background-color: var(--panel-alt);
-  border-left-color: var(--accent-pop);
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.student-info label {
-  font-family: "Press Start 2P", monospace;
-  font-size: 11px;
-  color: var(--title);
-  display: block;
-  margin-bottom: 12px;
-  line-height: 1.5;
+.student-info input {
+  background-color: var(--code-bg);
+  color: var(--text-main);
+  border: 2px solid var(--tab-border);
+  padding: 8px 12px;
+  border-radius: 3px;
+  min-width: 250px;
+  font-size: 14px;
 }
 
 .required {
@@ -1779,18 +1784,16 @@ pre::-webkit-scrollbar-thumb,
   font-size: 16px;
 }
 
-/* Кнопки дій для ДЗ */
 .homework-actions {
   display: flex;
   gap: 15px;
   margin: 30px 0;
-  flex-wrap: wrap; /* Дозволяє кнопкам переноситися на новий рядок */
+  flex-wrap: wrap;
 }
 
 .homework-actions button {
   font-size: 14px;
-  padding: 16px 20px;
-  /* Копіювати і Очистити ділять нижній рядок 50/50 */
+  padding: 10px 20px;
   flex: 1 1 calc(50% - 15px);
   font-family: Arial, sans-serif;
   font-weight: bold;
@@ -1801,10 +1804,9 @@ pre::-webkit-scrollbar-thumb,
   gap: 8px;
 }
 
-/* 1. Головна кнопка (Зберегти) */
 #save-hw-btn {
-  flex-basis: 100%; /* Займає весь верхній рядок */
-  padding: 20px; /* Трохи більша за інші */
+  flex-basis: 100%;
+  padding: 15px;
   font-size: 16px;
   background-color: var(--brand2);
   color: #ffffff;
@@ -1817,30 +1819,35 @@ pre::-webkit-scrollbar-thumb,
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Додаємо тінь для об'єму */
 }
 
-/* 2. Додаткова кнопка (Скопіювати) */
 #copy-hw-btn {
   background-color: var(--panel-alt);
 }
 
-/* 3. Небезпечна кнопка (Очистити) */
+#copy-hw-btn:hover {
+  background-color: var(--hover-bg);
+}
+
 .reset-btn-hw {
-  background-color: transparent; /* Робимо її прозорою */
-  color: var(--brand3); /* Використовуємо ваш червоно-помаранчевий */
+  background-color: transparent;
+  color: var(--brand3);
   border-color: var(--brand3);
 }
 
 .reset-btn-hw:hover {
-  background-color: var(
-    --brand3
-  ); /* Заливається кольором тільки при наведенні */
+  background-color: var(--brand3);
   color: #ffffff;
 }
 
-/* Підсвітка помилок (якщо учень щось пропустив) */
 .error-highlight {
-  border-color: var(--brand3) !important;
-  box-shadow: 0 0 10px rgba(226, 63, 5, 0.3) !important;
   animation: shake 0.4s ease-in-out;
+}
+
+.error-highlight > p,
+.error-highlight.student-info label,
+.error-highlight .editor-title 
+{
+  color: var(--brand3) !important;
+  transition: color 0.3s ease;
 }
 
 @keyframes shake {
@@ -1864,9 +1871,27 @@ pre::-webkit-scrollbar-thumb,
   display: none;
 }
 
-/* Мобільна адаптація для кнопок ДЗ */
+.code-wrapper + .test-textarea {
+  margin-top: 0;
+}
+
+input, .test-textarea {
+  font-family: "Fira Code", monospace;
+  font-size: 15px;
+}
+
 @media (max-width: 449px) {
   .homework-actions button {
-    flex: 1 1 100%; /* Використовуємо flex замість flex-basis для надійності */
+    flex: 1 1 100%;
   }
+}
+
+/*  Фікс для системного фону при автозаповненні (Autofill) */
+.student-name:-webkit-autofill,
+.student-name:-webkit-autofill:hover,
+.student-name:-webkit-autofill:focus,
+.student-name:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 50px var(--code-bg) inset !important;
+  -webkit-text-fill-color: var(--text-main) !important;
+  font-family: inherit !important;
 }

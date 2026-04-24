@@ -836,7 +836,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = studentNameInput.value.trim();
     if (!name) {
       studentNameInput
-        .closest(".test-question")
+        .closest(".student-info")
         .classList.add("error-highlight");
       isValid = false;
     }
@@ -846,33 +846,38 @@ document.addEventListener("DOMContentLoaded", () => {
     outputText += `Дата здачі: ${date.toLocaleDateString("uk-UA")} о ${date.toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" })}\n\n`;
     outputText += `--------------------------------------\n\n`;
 
-    // Перебираємо всі блоки з питаннями
+    // ❗️ ЗМІНА ТУТ: Шукаємо ТІЛЬКИ блоки питань
     const questions = hwForm.querySelectorAll(
-      ".test-question:not(.student-info), .custom-editor-wrapper",
+      ".test-question:not(.student-info)",
     );
 
     questions.forEach((qBlock) => {
-      // Витягуємо текст питання
       let qText = "";
       const p = qBlock.querySelector("p");
-      if (p) qText = p.textContent.trim();
-      else if (qBlock.querySelector(".editor-title"))
+      if (p) {
+        // Очищаємо текст від зайвих переносів рядків та пробілів з HTML
+        qText = p.textContent.replace(/\s+/g, " ").trim();
+      } else if (qBlock.querySelector(".editor-title")) {
         qText =
           "Практичне завдання (" +
-          qBlock.querySelector(".editor-title").textContent +
+          qBlock
+            .querySelector(".editor-title")
+            .textContent.replace(/\s+/g, " ")
+            .trim() +
           ")";
+      }
 
       let answerText = "";
       let isAnswered = false;
 
-      // Радіо
+      // 1. Радіо
       const checkedRadio = qBlock.querySelector(".test-radio:checked");
       if (checkedRadio) {
         answerText = checkedRadio.value;
         isAnswered = true;
       }
 
-      // Чекбокси
+      // 2. Чекбокси
       const checkedBoxes = qBlock.querySelectorAll(".test-checkbox:checked");
       if (checkedBoxes.length > 0) {
         answerText = Array.from(checkedBoxes)
@@ -881,24 +886,30 @@ document.addEventListener("DOMContentLoaded", () => {
         isAnswered = true;
       }
 
-      // Текстареа (коротка відповідь)
+      // 3. Текстареа (коротка відповідь)
       const textarea = qBlock.querySelector(".test-textarea");
       if (textarea && textarea.value.trim() !== "") {
         answerText = textarea.value.trim();
         isAnswered = true;
       }
 
-      // Редактор коду (CodeMirror)
-      if (qBlock.classList.contains("custom-editor-wrapper")) {
-        const cmInstance = qBlock.querySelector(".CodeMirror").CodeMirror;
+      // 4. ❗️ ЗМІНА ТУТ: Шукаємо редактор коду ВСЕРЕДИНІ поточного питання
+      const editorWrapper = qBlock.querySelector(".custom-editor-wrapper");
+      if (editorWrapper) {
+        const cmInstance =
+          editorWrapper.querySelector(".CodeMirror")?.CodeMirror;
         if (cmInstance) {
-          answerText = "\n" + cmInstance.getValue();
-          isAnswered = true;
+          // Якщо код не порожній (і не складається лише з пробілів)
+          const codeValue = cmInstance.getValue();
+          if (codeValue.trim() !== "") {
+            answerText = "\n" + codeValue;
+            isAnswered = true;
+          }
         }
       }
 
       // Перевірка (валідація)
-      if (!isAnswered && !qBlock.classList.contains("custom-editor-wrapper")) {
+      if (!isAnswered) {
         qBlock.classList.add("error-highlight");
         isValid = false;
       }
