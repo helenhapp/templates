@@ -730,15 +730,26 @@ footer {
 .icon {
   z-index: 1;
   user-select: none;
-  font-size: 14px;
+  font-size: 15px;
+  transition: opacity 0.3s ease; 
 }
 
 .sun {
   padding-left: 2px;
+  opacity: 0; 
 }
 
 .moon {
   padding-right: 3px;
+  opacity: 1;
+}
+
+input:checked + .slider .sun {
+  opacity: 1; 
+}
+
+input:checked + .slider .moon {
+  opacity: 0; 
 }
 
 input:checked + .slider {
