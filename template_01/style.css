@@ -130,7 +130,7 @@ body::before {
 
 main,
 header {
-  width: 93%;
+  width: 92%;
   max-width: 1000px;
 }
 
@@ -982,7 +982,7 @@ details.task[open] summary::before {
 
 .task summary h4 {
   display: inline-block;
-  margin: 0; 
+  margin: 0;
   vertical-align: middle;
 }
 
@@ -1292,7 +1292,7 @@ body.wide-mode .wide-toggle {
 @media (min-width: 751px) {
   body.wide-mode main,
   body.wide-mode header {
-    width: 90%;
+    width: 92%;
     max-width: none;
   }
 }
@@ -1325,7 +1325,6 @@ body.wide-mode .wide-toggle {
     width: 100%;
     gap: 0;
     background-color: var(--panel);
-    border-top: 3px dashed var(--accordion-border);
     flex-direction: column;
     z-index: 100;
     box-shadow: 0 5px 0 var(--panel-alt);
@@ -1342,7 +1341,11 @@ body.wide-mode .wide-toggle {
     width: 100%;
     padding: 20px;
     border-radius: 0;
-    border-bottom: 3px dashed var(--accordion-border);
+    border-bottom: 1px solid var(--accordion-border);
+  }
+
+  .nav-link:first-of-type {
+    border-top: 1px solid var(--accordion-border);
   }
 
   .wide-toggle {
