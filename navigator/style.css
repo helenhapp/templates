@@ -136,8 +136,13 @@ dialog input:focus {
   background-color: var(--accent-pop);
 }
 
+#global-password-modal h2 {
+  text-align: center;
+}
+
 #global-password-modal .modal-description {
-  margin-bottom: 15px;
+  margin: 10px 0;
+  text-align: center;
 }
 
 #global-password-modal .modal-actions {

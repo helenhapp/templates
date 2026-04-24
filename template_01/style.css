@@ -731,12 +731,12 @@ footer {
   z-index: 1;
   user-select: none;
   font-size: 15px;
-  transition: opacity 0.3s ease; 
+  transition: opacity 0.3s ease;
 }
 
 .sun {
   padding-left: 2px;
-  opacity: 0; 
+  opacity: 0;
 }
 
 .moon {
@@ -745,11 +745,11 @@ footer {
 }
 
 input:checked + .slider .sun {
-  opacity: 1; 
+  opacity: 1;
 }
 
 input:checked + .slider .moon {
-  opacity: 0; 
+  opacity: 0;
 }
 
 input:checked + .slider {
@@ -1493,6 +1493,11 @@ body.wide-mode .wide-toggle {
   }
   .title-container {
     gap: 15px;
+  }
+  .download-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
 }
 
