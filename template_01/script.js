@@ -111,6 +111,7 @@ document.addEventListener("click", (e) => {
 
   // Ігноруємо перехоплення кліку у стандартних виключеннях:
   if (
+    link.hasAttribute("download") ||
     link.target === "_blank" ||
     e.ctrlKey ||
     e.metaKey ||
@@ -566,7 +567,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* 🖼️ 14. ЗБІЛЬШЕННЯ КАРТИНОК ПО КЛІКУ */
+/* 🖼️ 13. ЗБІЛЬШЕННЯ КАРТИНОК ПО КЛІКУ */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Знаходимо всі картинки, яким ви дали клас zoomable
@@ -578,4 +579,64 @@ document.addEventListener("DOMContentLoaded", () => {
       img.classList.toggle("expanded");
     });
   });
+});
+
+/* 📥 14. РОЗУМНІ ПОСИЛАННЯ ДЛЯ ЗАВАНТАЖЕННЯ */
+
+document.addEventListener("click", async (e) => {
+  // :not([data-temp]), щоб скрипт ігнорував власні штучні кліки
+  const downloadLink = e.target.closest("a[download]:not([data-temp])");
+
+  if (downloadLink) {
+    e.preventDefault(); // Зупиняємо стандартний перехід браузера
+
+    const originalText = downloadLink.innerHTML;
+    const fileUrl = downloadLink.href;
+
+    try {
+      // Робимо кнопку напівпрозорою, поки йде перевірка
+      downloadLink.style.opacity = "0.6";
+      downloadLink.style.pointerEvents = "none";
+
+      // Перевіряємо, чи існує файл
+      const response = await fetch(fileUrl, { method: "HEAD" });
+
+      if (response.ok) {
+        // ФАЙЛ ІСНУЄ!
+        const tempLink = document.createElement("a");
+        tempLink.href = fileUrl;
+        tempLink.download = downloadLink.getAttribute("download") || "";
+
+        // Вішаємо спеціальний бейдж, щоб скрипт пропустив цей клік
+        tempLink.setAttribute("data-temp", "true");
+
+        document.body.appendChild(tempLink);
+        tempLink.click(); // Тепер цей клік успішно завантажить файл
+        document.body.removeChild(tempLink);
+      } else {
+        // ФАЙЛ НЕ ЗНАЙДЕНО (Помилка 404)
+        downloadLink.innerHTML = "❌ Файл не знайдено";
+        downloadLink.style.borderColor = "var(--brand3)";
+        downloadLink.style.color = "var(--brand3)";
+
+        // Повертаємо кнопку до нормального стану через 1 секунду
+        setTimeout(() => {
+          downloadLink.innerHTML = originalText;
+          downloadLink.style.borderColor = "";
+          downloadLink.style.color = "";
+        }, 1000);
+      }
+    } catch (error) {
+      console.error("Помилка перевірки файлу:", error);
+      downloadLink.innerHTML = "⚠️ Помилка з'єднання";
+
+      setTimeout(() => {
+        downloadLink.innerHTML = originalText;
+      }, 3000);
+    } finally {
+      // Повертаємо кнопці клікабельність
+      downloadLink.style.opacity = "1";
+      downloadLink.style.pointerEvents = "auto";
+    }
+  }
 });

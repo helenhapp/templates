@@ -4,7 +4,7 @@
 :root {
   --brand1: rgb(44, 25, 62);
   --brand2: rgb(103, 66, 135);
-  /* --brand3: rgb(226, 63, 5); */
+  --brand3: rgb(226, 63, 5);
   --brand4: rgb(236, 104, 7);
   --brand5: rgb(192, 159, 203);
 
@@ -428,6 +428,44 @@ button:active {
 .tab-content.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Кнопка для завантаження файлів */
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background-color: var(--link-bg);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.download-button:hover {
+  background-color: var(--hover-bg);
+  transform: translateY(-2px);
+  color: var(--text-main);
+  box-shadow: var(--accordion-shadow);
+}
+
+.download-button:active {
+  transform: translateY(2px);
+}
+
+.file-name {
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.download-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
 }
 
 /* 🌻 7. СПИСКИ */
@@ -1074,6 +1112,8 @@ pre:has(code) {
   border: 3px solid var(--code-border);
   border-radius: 6px;
   overflow-x: auto;
+  max-height: 450px;
+  overflow-y: auto;
   transition: all 0.4s ease;
 }
 
@@ -1495,4 +1535,35 @@ pre::-webkit-scrollbar,
 pre::-webkit-scrollbar-thumb,
 .custom-editor-input::-webkit-scrollbar-thumb {
   border-width: 2px;
+}
+
+/* 🎬 КОНТЕЙНЕР ДЛЯ ВІДЕО */
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 711px;
+  aspect-ratio: 16 / 9;
+  margin: 20px 0;
+  border: 3px solid var(--code-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--code-bg);
+  transition: all 0.4s ease;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border: none;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  outline: none;
 }

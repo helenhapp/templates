@@ -134,6 +134,25 @@
 
             <hr />
 
+            <h3>Матеріали до теми</h3>
+
+            <a href="lesson-01.zip" download class="download-button">
+              <span class="download-arrow">📥</span>
+              <span class="file-name">lesson-01.zip</span>
+            </a>
+
+            <a href="file-not-found-test.zip" download class="download-button">
+              <span class="download-arrow">📥</span>
+              <span class="file-name">file-not-found-test.zip</span>
+            </a>
+
+            <a href="many-buttons-example.zip" download class="download-button">
+              <span class="download-arrow">📥</span>
+              <span class="file-name">many-buttons-example.zip</span>
+            </a>
+
+            <hr />
+
             <!-- 2 -->
             <h3>Приклад HTML коду</h3>
             <p>
@@ -371,6 +390,39 @@ seagreen
 
             <hr />
 
+            <h3>Приклад відео</h3>
+
+            <p>Приклад додавання відео з ютубу:</p>
+
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/5QqYgNaBKeQ?rel=0&modestbranding=1"
+                title="YouTube video player"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+
+            <p>Приклад додавання відеофайлу:</p>
+
+            <div class="video-wrapper">
+              <video controls>
+                <source src="./videos/test-video.mp4" type="video/mp4" />
+                Ваший браузер не підтримує відео.
+              </video>
+            </div>
+
+            <hr />
+
             <!-- 2 -->
             <h3>Lorem, ipsum.</h3>
             <p>Тут <span class="accent">пояснення</span> матеріалу.</p>
@@ -382,6 +434,37 @@ seagreen
               src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="замініть картинку на скріншот результату коду"
             />
+
+            <hr />
+
+            <h3>Приклад довгого коду</h3>
+
+            <pre><code class=" language-javascript">const viewDataButton = document.getElementById("viewData");
+const inputArea = document.getElementById("inputArea");
+const outputDiv = document.getElementById("output");
+
+function run() {
+  const jsonData = inputArea.value;
+  try {
+    const data = JSON.parse(jsonData);
+
+    outputDiv.innerHTML = "";
+
+    const pageTitle = document.createElement("h2");
+    pageTitle.textContent = `Page of ${data.name} ${data.surname}`;
+    outputDiv.appendChild(pageTitle);
+
+    const nameLine = document.createElement("p");
+    nameLine.textContent = `Name: ${data.name}`;
+    outputDiv.appendChild(nameLine);
+
+    const surnameLine = document.createElement("p");
+    surnameLine.textContent = `Surname: ${data.surname}`;
+    outputDiv.appendChild(surnameLine);
+  } catch (error) {
+    outputDiv.textContent = "Invalid JSON input. Please enter valid JSON data.";
+  }
+}</code></pre>
 
             <hr />
 
@@ -524,6 +607,7 @@ seagreen
             <pre><code class="nocopy language-javascript">console.log("Hello, world!");</code></pre>
 
             <img
+              class="zoomable"
               src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="замініть картинку на скріншот результату коду"
             />
