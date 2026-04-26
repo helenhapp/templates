@@ -178,7 +178,7 @@ h1 {
   text-shadow: var(--title-shadow);
   line-height: 1.5;
   letter-spacing: 3px;
-  font-size: clamp(1.8rem, 6.8vw, 3rem);
+  font-size: clamp(2rem, 6.8vw, 3rem);
   overflow-wrap: anywhere;
   hyphens: auto;
   font-weight: 800;
