@@ -2,6 +2,8 @@
 
 /* Світла Тема */
 :root {
+  interpolate-size: allow-keywords;
+
   /* Брендові кольори */
   --brand1: rgb(44, 25, 62);
   --brand2: rgb(103, 66, 135);
@@ -19,7 +21,7 @@
 
   /* Напівпрозорі заливки */
   --link-bg: rgba(103, 66, 135, 0.08);
-  --soft-callout: rgba(150, 80, 212, 0.08);
+  --soft-callout: rgba(150, 80, 212, 0.065);
   --bar-bg: #efdffd;
 
   /* Перемикачі */
@@ -44,9 +46,10 @@
   /* Тіні */
   --shadow-accent: rgba(44, 25, 62, 0.12);
   --title-shadow: 2px 2px 0 var(--brand5);
-  --accordion-shadow: 3px 3px 0 var(--shadow-accent);
+  --btn-shadow: 3px 3px 0 var(--shadow-accent);
   --code-shadow: 0 0 5px var(--shadow-accent);
-  --accordion-drop-shadow: 3px 3px 0 var(--brand5);
+  /* --accordion-drop-shadow: 2px 2px 0 var(--brand5); */
+  --accordion-drop-shadow: none;
 
   /* Скролбари */
   --scrollbar-track: var(--panel-alt);
@@ -88,9 +91,10 @@
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
   --title-shadow: 2px 2px 0 var(--brand2);
-  --accordion-shadow: 0 0 3px var(--code-border);
+  --btn-shadow: 0 0 3px var(--code-border);
   --code-shadow: 0 0 10px var(--shadow-accent);
-  --accordion-drop-shadow: 3px 3px 0 var(--brand2);
+  /* --accordion-drop-shadow: 2px 2px 0 var(--brand2); */
+  --accordion-drop-shadow: none;
 
   /* Скролбари */
   --scrollbar-track: var(--bg1);
@@ -347,7 +351,7 @@ button:active {
   border-radius: 50%;
   background-color: var(--panel-alt);
   border: 2px solid var(--accent);
-  box-shadow: var(--accordion-shadow);
+  box-shadow: var(--btn-shadow);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -451,7 +455,7 @@ button:active {
   background-color: var(--hover-bg);
   transform: translateY(-2px);
   color: var(--text-main);
-  box-shadow: var(--accordion-shadow);
+  box-shadow: var(--btn-shadow);
 }
 
 .download-button:active {
