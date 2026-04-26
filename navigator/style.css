@@ -1,3 +1,7 @@
+/* ==================================================================
+   🧩 1. БАЗОВІ СТИЛІ ТА ТИПОГРАФІКА
+================================================================== */
+
 h1 {
   font-size: clamp(1.5rem, 6.3vw, 2.8rem);
 }
@@ -6,30 +10,36 @@ header {
   padding: 20px;
 }
 
-.accordion__content {
-  padding: 10px 15px;
+.hollow-text {
+  font-family: "Sniglet", system-ui;
+  font-size: 1.5em;
+  color: transparent;
+  text-align: center;
+  min-width: 30px;
+  -webkit-text-stroke: 1px var(--accent-pop);
+  /* font-family: "Nunito", sans-serif; */
 }
 
-.accordion__content > *:last-child,
-.accordion__content > *:first-child {
-  margin: 0;
-}
+/* ==================================================================
+   🧭 2. НАВІГАЦІЯ ТА СПИСКИ УРОКІВ
+================================================================== */
 
 nav ul {
-  list-style: none;
+  margin: 0;
   padding-left: 0;
+  list-style: none;
 }
 
 nav ul li a {
-  border-radius: 8px;
-  padding: 8px 12px;
-  background-color: var(--link-bg);
-  margin: 10px 0;
   display: flex;
-  gap: 1em;
   align-items: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 1em;
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: var(--link-bg);
   color: var(--text-main);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 nav ul li a:hover {
@@ -46,28 +56,114 @@ nav ul li a:hover span {
   color: var(--accent-pop);
 }
 
-.hollow-text {
-  font-family: "Sniglet", system-ui;
-  /* font-family: "Nunito", sans-serif; */
-  font-size: 1.5em;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--accent-pop);
-  min-width: 30px;
-  text-align: center;
+/* ==================================================================
+   📂 3. АКОРДЕОНИ (ГОЛОВНІ ТА ВКЛАДЕНІ ЧАСТИНИ)
+================================================================== */
+
+/* --- Головний акордеон --- */
+.accordion__content > *:first-child,
+.accordion__content > *:last-child {
+  margin: 0;
 }
 
+/* --- Вкладені акордеони (Частини) --- */
+.sub-accordion {
+  margin: 0;
+  border-bottom: 1px solid var(--hover-bg);
+}
+
+.sub-accordion:last-child {
+  border-bottom: none;
+}
+
+/* Заголовок частини */
+.sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 15px 0;
+  list-style: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.sub-header::-webkit-details-marker {
+  display: none;
+}
+
+.sub-header:hover .sub-part-title {
+  color: var(--brand5);
+  /* color: var(--accent-pop); */
+}
+
+.sub-part-title {
+  margin: 0;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.75rem;
+  color: var(--title);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Стрілочка частини */
+.sub-header .acc-arrow {
+  order: -1;
+  display: inline-block;
+  font-size: 0.9em;
+  color: var(--accent);
+  transform: rotate(0deg) !important;
+  transition: transform 0.3s ease;
+}
+
+.sub-accordion[open] .sub-header .acc-arrow {
+  transform: rotate(90deg) !important;
+}
+
+/* Відступи списку уроків всередині частини */
+.sub-accordion nav {
+  padding: 0 0 15px 0;
+}
+
+.sub-accordion nav ul {
+  margin: 0;
+}
+
+.sub-accordion nav ul li:first-child a {
+  margin-top: 5px;
+}
+
+.sub-accordion nav ul li:last-child a {
+  margin-bottom: 0;
+}
+
+/* Контейнер для плавної анімації внутрішніх частин */
+.sub-accordion-content {
+  overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+/* ==================================================================
+   🔒 4. МОДАЛЬНІ ВІКНА ТА ПАРОЛІ
+================================================================== */
+
+/* --- Базові стилі вікна --- */
 dialog {
+  width: 90%;
+  max-width: 430px;
   margin: auto;
+  padding: 25px;
   border: 2px solid var(--accent);
   border-radius: 12px;
   background-color: var(--panel);
   color: var(--text-main);
-  padding: 25px;
-  max-width: 430px;
-  width: 90%;
   box-shadow:
     0 15px 40px rgba(0, 0, 0, 0.5),
     var(--accordion-shadow);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.85);
 }
 
 dialog h2 {
@@ -79,27 +175,17 @@ dialog h2 {
   color: var(--text-main);
 }
 
-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.85);
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 25px;
-}
-
+/* --- Поля вводу --- */
 dialog input {
   width: 100%;
-  padding: 12px;
   margin-top: 15px;
-  border-radius: 8px;
+  padding: 12px;
   border: 2px solid var(--hover-bg);
-  font-family: inherit;
-  font-size: 1rem;
+  border-radius: 8px;
   background-color: var(--code-bg);
   color: var(--text-main);
+  font-family: inherit;
+  font-size: 1rem;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
@@ -109,19 +195,28 @@ dialog input:focus {
   border-color: var(--accent);
 }
 
+/* --- Кнопки модального вікна --- */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
 .modal-actions button {
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-family: inherit;
   font-weight: bold;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .modal-actions button:hover {
   transform: translateY(-2px);
 }
+
 .modal-actions button:active {
   transform: translateY(2px);
 }
@@ -145,12 +240,10 @@ dialog input:focus {
   background-color: var(--accent-pop);
 }
 
-#global-password-modal h2 {
-  text-align: center;
-}
-
-#global-password-modal .modal-description {
-  margin: 10px 0;
+/* --- Глобальне вікно доступу до сайту --- */
+#global-password-modal h2,
+#global-password-modal .modal-description,
+#global-password-error {
   text-align: center;
 }
 
@@ -164,20 +257,22 @@ dialog input:focus {
   border-radius: 5px;
 }
 
+/* --- Тексти помилок --- */
 .error-text {
-  color: LightCoral;
   display: none;
   margin-top: 10px;
+  color: LightCoral;
 }
 
-#global-password-error {
-  text-align: center;
-}
+/* ==================================================================
+  📱 5. МЕДІАЗАПИТИ (МОБІЛЬНА АДАПТАЦІЯ)
+================================================================== */
 
 @media (max-width: 449px) {
   :root {
     --h1-shadow: 2px 2px 0 var(--title-glow);
   }
+
   nav ul li a {
     font-size: 14px;
   }

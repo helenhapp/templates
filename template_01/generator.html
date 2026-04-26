@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Генератор зон (Hotspots) для уроку</title>
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --bg: #f3f4f6;
+        --panel: #ffffff;
+      }
+      body {
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg);
+        color: #333;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+      /* Бокова панель керування */
+      .sidebar {
+        width: 350px;
+        background: var(--panel);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      h2 {
+        margin-top: 0;
+        font-size: 1.2rem;
+        color: var(--primary);
+      }
+      .step-box {
+        background: var(--bg);
+        padding: 10px;
+        border-radius: 8px;
+      }
+      label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        resize: none;
+        box-sizing: border-box;
+        background: #fdfdfd;
+      }
+      button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #4338ca;
+      }
+      button.secondary {
+        background: #ef4444;
+        margin-top: 5px;
+      }
+      button.secondary:hover {
+        background: #dc2626;
+      }
+
+      /* Робоча зона з картинкою */
+      .workspace {
+        flex-grow: 1;
+        background: var(--panel);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+        overflow: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      #image-container {
+        position: relative;
+        display: inline-block;
+        cursor: crosshair;
+        user-select: none; /* Щоб картинка не виділялася як текст */
+      }
+      #image-container img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid #ddd;
+      }
+      /* Рамка, яку малює користувач */
+      .selection-box {
+        position: absolute;
+        border: 2px solid #ff007b;
+        background-color: rgba(255, 0, 123, 0.2);
+        pointer-events: none; /* Щоб рамка не заважала мишці */
+        display: none;
+      }
+      .instruction {
+        text-align: center;
+        color: #888;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>🛠 Налаштування</h2>
+
+      <div class="step-box">
+        <label for="upload">1. Завантажте дизайн (картинку):</label>
+        <input type="file" id="upload" accept="image/*" />
+      </div>
+
+      <div class="step-box">
+        <label for="tag-name">2. Який тег буде підказкою?</label>
+        <input
+          type="text"
+          id="tag-name"
+          placeholder="Наприклад: <h1> або <div>"
+          value="<h1>"
+        />
+        <small style="color: #666; font-size: 0.8rem"
+          >Потім просто малюйте мишкою по картинці.</small
+        >
+      </div>
+
+      <div class="step-box" style="flex-grow: 1">
+        <label for="output">3. Ваш згенерований код:</label>
+        <textarea
+          id="output"
+          placeholder="Тут з'являться готові рядки <div class='hotspot'>..."
+        ></textarea>
+        <button class="secondary" id="clear-btn">Очистити код</button>
+      </div>
+    </div>
+
+    <div class="workspace" id="workspace">
+      <div class="instruction" id="instruction">
+        <h3>Спочатку завантажте картинку зліва 👈</h3>
+        <p>
+          Після завантаження ви зможете виділяти на ній зони мишкою, <br />а
+          програма сама вирахує відсотки і створить код.
+        </p>
+      </div>
+      <div id="image-container" style="display: none">
+        <img id="target-image" src="" alt="Макет" draggable="false" />
+        <div id="selection" class="selection-box"></div>
+      </div>
+    </div>
+
+    <script>
+      const upload = document.getElementById("upload");
+      const imgContainer = document.getElementById("image-container");
+      const targetImage = document.getElementById("target-image");
+      const selection = document.getElementById("selection");
+      const tagNameInput = document.getElementById("tag-name");
+      const output = document.getElementById("output");
+      const clearBtn = document.getElementById("clear-btn");
+      const instruction = document.getElementById("instruction");
+
+      // 1. Завантаження картинки
+      upload.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          targetImage.src = event.target.result;
+          imgContainer.style.display = "inline-block";
+          instruction.style.display = "none";
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Змінні для малювання
+      let isDrawing = false;
+      let startX = 0;
+      let startY = 0;
+
+      // 2. Початок малювання (натискання миші)
+      imgContainer.addEventListener("mousedown", function (e) {
+        e.preventDefault();
+        isDrawing = true;
+        const rect = imgContainer.getBoundingClientRect();
+        // Рахуємо координати відносно контейнера картинки
+        startX = e.clientX - rect.left;
+        startY = e.clientY - rect.top;
+
+        selection.style.left = startX + "px";
+        selection.style.top = startY + "px";
+        selection.style.width = "0px";
+        selection.style.height = "0px";
+        selection.style.display = "block";
+      });
+
+      // 3. Процес малювання (рух миші)
+      window.addEventListener("mousemove", function (e) {
+        if (!isDrawing) return;
+        const rect = imgContainer.getBoundingClientRect();
+
+        // Обмежуємо мишку межами картинки
+        let currentX = e.clientX - rect.left;
+        let currentY = e.clientY - rect.top;
+        currentX = Math.max(0, Math.min(currentX, rect.width));
+        currentY = Math.max(0, Math.min(currentY, rect.height));
+
+        // Рахуємо фінальні координати та розміри
+        const left = Math.min(startX, currentX);
+        const top = Math.min(startY, currentY);
+        const width = Math.abs(currentX - startX);
+        const height = Math.abs(currentY - startY);
+
+        selection.style.left = left + "px";
+        selection.style.top = top + "px";
+        selection.style.width = width + "px";
+        selection.style.height = height + "px";
+      });
+
+      // 4. Завершення малювання (відпускання миші)
+      window.addEventListener("mouseup", function (e) {
+        if (!isDrawing) return;
+        isDrawing = false;
+        selection.style.display = "none"; // Ховаємо рамку
+
+        const rect = imgContainer.getBoundingClientRect();
+
+        // Беремо піксельні значення з рамки
+        const leftPx = parseFloat(selection.style.left);
+        const topPx = parseFloat(selection.style.top);
+        const widthPx = parseFloat(selection.style.width);
+        const heightPx = parseFloat(selection.style.height);
+
+        // Якщо клік був випадковим і рамка надто мала - ігноруємо
+        if (widthPx < 10 || heightPx < 10) return;
+
+        // 5. МАГІЯ: Перетворюємо пікселі у відсотки
+        const leftPerc = ((leftPx / rect.width) * 100).toFixed(1);
+        const topPerc = ((topPx / rect.height) * 100).toFixed(1);
+        const widthPerc = ((widthPx / rect.width) * 100).toFixed(1);
+        const heightPerc = ((heightPx / rect.height) * 100).toFixed(1);
+
+        // Готуємо тег (замінюємо лапки, щоб не зламати HTML)
+        let tagValue =
+          tagNameInput.value.replace(/"/g, "&quot;") || "Секретна зона";
+
+        // Формуємо фінальний рядок HTML
+        const htmlCode = `<div class="hotspot" style="top: ${topPerc}%; left: ${leftPerc}%; width: ${widthPerc}%; height: ${heightPerc}%;" data-tag="${tagValue}"></div>\n`;
+
+        // Додаємо в текстове поле
+        output.value += htmlCode;
+        // Прокручуємо текстове поле вниз
+        output.scrollTop = output.scrollHeight;
+      });
+
+      // Кнопка очищення
+      clearBtn.addEventListener("click", () => {
+        output.value = "";
+      });
+    </script>
+  </body>
+</html>
