@@ -1142,9 +1142,15 @@ code {
   margin: 0;
   font-family: "Fira Code", monospace;
   color: var(--text-main);
-  white-space: pre;
-  background: transparent;
+  background: transparent !important;
   border: none;
+  white-space: pre !important;
+}
+
+code.long-code {
+  white-space: pre-wrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
 
 /* Обгортка для кнопки копіювання */
@@ -1908,4 +1914,56 @@ input,
 .test-radio,
 .test-checkbox {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* 🔢 НУМЕРАЦІЯ РЯДКІВ (HIGHLIGHT.JS PLUGIN) */
+
+code:has(.hljs-ln) {
+  padding: 15px 0 !important; 
+}
+
+table.hljs-ln {
+  margin: 0 !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  border-collapse: collapse;
+}
+
+table.hljs-ln tr:hover {
+  background-color: var(--soft-callout) !important;
+}
+
+.hljs-ln td {
+  border: none !important;
+  padding: 0; 
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  line-height: 1.5;
+}
+
+.hljs-ln td.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  text-align: right;
+  color: var(--brand5);
+  border-right: 1px solid var(--brand5) !important;
+  padding-right: 12px !important;
+  padding-left: 10px !important;
+  vertical-align: top;
+  width: 45px !important;
+  min-width: 45px !important;
+  white-space: nowrap !important;
+}
+
+.hljs-ln td.hljs-ln-code {
+  padding-left: 20px !important;
+  white-space: pre !important;
+}
+
+code.long-code .hljs-ln td.hljs-ln-code {
+  white-space: pre-wrap !important;
+  word-break: normal !important;
+  overflow-wrap: anywhere !important;
+  hyphens: none !important;
 }

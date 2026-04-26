@@ -1,5 +1,6 @@
 /* 🎨 1. ПІДСВІТКА СИНТАКСИСУ (Highlight.js) */
 hljs.highlightAll();
+hljs.initLineNumbersOnLoad({ singleLine: true });
 
 /* 🗺️ 2. ГЕНЕРАТОР НАВІГАЦІЇ */
 function buildNavigation() {
