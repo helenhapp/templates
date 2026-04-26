@@ -37,16 +37,7 @@ function createCourseHTML(course) {
     localStorage.getItem(`unlocked_${course.CourseId}`) === "true";
   const icon = isUnlocked ? "✦" : "🔒";
 
-  // Логіка: якщо розблоковано, робимо назву курсу посиланням
-  let titleSpan = `<span class="accent">${course.CourseTitle}</span>`;
-
-  if (isUnlocked) {
-    // Додаємо onClick="event.stopPropagation()", щоб клік по посиланню не згортав акордеон
-    titleSpan = `
-      <a href="course.html?id=${course.CourseId}" target="_blank" rel="noopener noreferrer" class="course-link" title="Відкрити на окремій сторінці" onclick="event.stopPropagation()">
-        ${titleSpan} <span class="fly-icon">↗️</span>
-      </a>`;
-  }
+  const titleSpan = `<span class="accent">${course.CourseTitle}</span>`;
 
   const headerContent = course.IsOld
     ? `<span class="star">${icon}</span> ${titleSpan}`
@@ -139,26 +130,9 @@ function setupPasswordModals(courses) {
     if (passwordInput.value === correctPassword) {
       localStorage.setItem(`unlocked_${courseId}`, "true");
 
+      // Оновлюємо іконку на ✦
       const icon = currentTargetCourse.querySelector(".star");
       if (icon) icon.textContent = "✦";
-
-      // МИТТЄВЕ ДОДАВАННЯ ПОСИЛАННЯ:
-      const accentSpan = currentTargetCourse.querySelector(".accent");
-      if (
-        accentSpan &&
-        !accentSpan.parentElement.classList.contains("course-link")
-      ) {
-        const link = document.createElement("a");
-        link.href = `course.html?id=${courseId}`;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.className = "course-link";
-        link.title = "Відкрити на окремій сторінці";
-        link.onclick = (e) => e.stopPropagation();
-        link.innerHTML =
-          accentSpan.outerHTML + ' <span class="fly-icon">↗️</span>';
-        accentSpan.replaceWith(link);
-      }
 
       modal.close();
       currentTargetCourse.open = true;
@@ -183,7 +157,7 @@ function setupGlobalModal(correctPassword, coursesData) {
   const globalSubmit = document.querySelector("#global-submit-btn");
   const globalError = document.querySelector("#global-password-error");
 
-  // ВАЖЛИВО: Прибираємо "завісу", щоб вона не перекривала вікно пароля
+  // Прибираємо "завісу", щоб вона не перекривала вікно пароля
   document.body.classList.add("is-loaded");
 
   globalModal.addEventListener("cancel", (e) => {
@@ -195,7 +169,6 @@ function setupGlobalModal(correctPassword, coursesData) {
 
   function checkGlobalPassword() {
     if (globalInput.value === correctPassword) {
-      // Використовуйте localStorage, щоб сайт "пам'ятав" вхід
       localStorage.setItem("global_unlocked", "true");
       globalModal.close();
       renderMenu(coursesData);
@@ -218,7 +191,6 @@ async function init() {
   const data = await fetchCourseData();
 
   if (!data || !data.courses) {
-    // Якщо дані не завантажились, прибираємо завісу, щоб показати помилку
     document.body.classList.add("is-loaded");
     document.getElementById("current-courses-container").innerHTML =
       "<p style='color: red;'>Помилка завантаження бази даних.</p>";
@@ -228,10 +200,8 @@ async function init() {
   const isGlobalUnlocked = localStorage.getItem("global_unlocked");
 
   if (isGlobalUnlocked !== "true") {
-    // Показуємо вікно, якщо раніше не входили
     setupGlobalModal(data.globalPassword, data.courses);
   } else {
-    // Вже входили — малюємо меню і прибираємо завісу
     renderMenu(data.courses);
     setupPasswordModals(data.courses);
     document.body.classList.add("is-loaded");

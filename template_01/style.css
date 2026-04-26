@@ -15,12 +15,12 @@
   --bg1: #faf5ff;
   --bg2: #f0e6f9;
   --panel: #ffffff;
-  --panel-alt: #ead8f6;
-  --hover-bg: #dbc3ea;
+  --panel-alt: #efdffd;
+  --hover-bg: #e4cdf8;
   --code-bg: #fcf9ff;
 
   /* Напівпрозорі заливки */
-  --link-bg: rgba(115, 68, 156, 0.1);
+  --link-bg: rgba(239, 223, 253, 0.35);
   --soft-callout: rgba(150, 80, 212, 0.065);
   --bar-bg: #efdffd;
 

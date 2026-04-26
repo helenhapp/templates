@@ -6,6 +6,15 @@ header {
   padding: 20px;
 }
 
+.accordion__content {
+  padding: 10px 15px;
+}
+
+.accordion__content > *:last-child,
+.accordion__content > *:first-child {
+  margin: 0;
+}
+
 nav ul {
   list-style: none;
   padding-left: 0;
@@ -172,36 +181,4 @@ dialog input:focus {
   nav ul li a {
     font-size: 14px;
   }
-}
-
-/* 🦅 СТИЛІ ДЛЯ ПОСИЛАННЯ НА ОКРЕМИЙ КУРС */
-
-.course-link {
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 8px;
-  margin-left: -8px; 
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.course-link:hover {
-  background-color: var(--hover-bg);
-  transform: translateY(-3px); 
-}
-
-.course-link .fly-icon {
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(-15px);
-  transition: all 0.3s ease;
-  filter: grayscale(100%); 
-}
-
-.course-link:hover .fly-icon {
-  opacity: 1;
-  transform: translateX(0);
-  filter: grayscale(0%);
 }
