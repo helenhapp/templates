@@ -1079,6 +1079,10 @@ details.task[open] summary::before {
   background-color: var(--panel-alt);
 }
 
+[data-theme="dark"] .task:not([open]):hover {
+  background-color: var(--hover-bg);
+}
+
 .task[open] summary:hover h4 {
   color: var(--accent-pop);
 }
