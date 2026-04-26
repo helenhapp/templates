@@ -139,6 +139,32 @@ header {
   max-width: 1000px;
 }
 
+/* 🖥 Збільшення ширини для великих моніторів */
+
+/* Для стандартних великих ноутбуків та моніторів */
+@media (min-width: 1440px) {
+  main,
+  header {
+    max-width: 1200px;
+  }
+}
+
+/* Для Full HD моніторів */
+@media (min-width: 1920px) {
+  main,
+  header {
+    max-width: 1400px;
+  }
+}
+
+/* Для величезних моніторів 2K / 4K / Ultrawide */
+@media (min-width: 2560px) {
+  main,
+  header {
+    max-width: 1600px;
+  }
+}
+
 main {
   margin: 0 auto;
   flex-grow: 1;
@@ -1919,7 +1945,7 @@ input,
 /* 🔢 НУМЕРАЦІЯ РЯДКІВ (HIGHLIGHT.JS PLUGIN) */
 
 code:has(.hljs-ln) {
-  padding: 15px 0 !important; 
+  padding: 15px 0 !important;
 }
 
 table.hljs-ln {
@@ -1935,7 +1961,7 @@ table.hljs-ln tr:hover {
 
 .hljs-ln td {
   border: none !important;
-  padding: 0; 
+  padding: 0;
   hyphens: none !important;
   -webkit-hyphens: none !important;
   line-height: 1.5;
