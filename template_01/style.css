@@ -468,7 +468,7 @@ button:active {
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  background-color: var(--link-bg);
+  background-color: var(--panel-alt);
   border: 2px solid var(--accent);
   border-radius: 8px;
   color: var(--text-main);
