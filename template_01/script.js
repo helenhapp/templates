@@ -652,8 +652,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const resetBtn = wrapper.querySelector(".reset-btn");
     const isHtmlEditor = wrapper.classList.contains("html-editor-wrapper");
 
+    const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+
+    const editorId =
+      wrapper.id || "editor-" + Math.random().toString(36).substr(2, 9);
+    const storageKey = "wu_code_" + pageId + "_" + editorId;
+
     // 1. Визначаємо мову
     const editorMode = isHtmlEditor ? "htmlmixed" : "javascript";
+    const defaultCode = codeInput.defaultValue;
+
+    const savedCode = localStorage.getItem(storageKey);
+    const startingCode = savedCode !== null ? savedCode : defaultCode;
 
     // 2. Ініціалізуємо CodeMirror поверх textarea
     const cm = CodeMirror.fromTextArea(codeInput, {
@@ -766,6 +776,8 @@ function runJsCode(codeToRun, outputDisplay) {
 
 /* 📝 18. ЛОГІКА ЗБЕРЕЖЕННЯ ТА ГЕНЕРАЦІЇ ДОМАШНЬОГО ЗАВДАННЯ (.txt) */
 
+/* 📝 18. ЛОГІКА ЗБЕРЕЖЕННЯ ТА ГЕНЕРАЦІЇ ДОМАШНЬОГО ЗАВДАННЯ (.txt) */
+
 document.addEventListener("DOMContentLoaded", () => {
   const hwForm = document.getElementById("homework-form");
   if (!hwForm) return;
@@ -776,14 +788,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.getElementById("clear-hw-btn");
   const errorMsg = document.getElementById("hw-error-msg");
 
+  // 👇 ДОДАНО: Унікальний ключ для форми конкретного уроку
+  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+  const formStorageKey = "wu_hw_form_" + pageId;
+
   // --- 1. ВІДНОВЛЕННЯ З ЛОКАЛЬНОГО СХОВИЩА ---
-  const savedFormData = JSON.parse(localStorage.getItem("wu_hw_form") || "{}");
+  // Використовуємо наш новий унікальний ключ
+  const savedFormData = JSON.parse(
+    localStorage.getItem(formStorageKey) || "{}",
+  );
 
   hwForm
     .querySelectorAll("input, textarea:not(.custom-editor-input)")
     .forEach((el) => {
       if (el.type === "radio" || el.type === "checkbox") {
-        // Відновлюємо галочки
         if (
           savedFormData[el.name] &&
           savedFormData[el.name].includes(el.value)
@@ -791,7 +809,6 @@ document.addEventListener("DOMContentLoaded", () => {
           el.checked = true;
         }
       } else {
-        // Відновлюємо текст (імена, відкриті питання)
         if (savedFormData[el.name]) el.value = savedFormData[el.name];
       }
     });
@@ -799,7 +816,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 2. АВТОЗБЕРЕЖЕННЯ ПРИ ВВЕДЕННІ ---
   hwForm.addEventListener("input", () => {
     const data = {};
-    // Збираємо радіо та чекбокси
     hwForm
       .querySelectorAll(
         "input[type='radio']:checked, input[type='checkbox']:checked",
@@ -808,7 +824,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!data[el.name]) data[el.name] = [];
         data[el.name].push(el.value);
       });
-    // Збираємо текст
     hwForm
       .querySelectorAll(
         "textarea:not(.custom-editor-input), input[type='text']",
@@ -817,9 +832,9 @@ document.addEventListener("DOMContentLoaded", () => {
         data[el.name] = el.value;
       });
 
-    localStorage.setItem("wu_hw_form", JSON.stringify(data));
+    // Зберігаємо за унікальним ключем
+    localStorage.setItem(formStorageKey, JSON.stringify(data));
 
-    // Якщо користувач почав виправляти помилки - ховаємо червоне попередження
     errorMsg.style.display = "none";
     hwForm
       .querySelectorAll(".error-highlight")
@@ -846,7 +861,6 @@ document.addEventListener("DOMContentLoaded", () => {
     outputText += `Дата здачі: ${date.toLocaleDateString("uk-UA")} о ${date.toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" })}\n\n`;
     outputText += `--------------------------------------\n\n`;
 
-    // ❗️ ЗМІНА ТУТ: Шукаємо ТІЛЬКИ блоки питань
     const questions = hwForm.querySelectorAll(
       ".test-question:not(.student-info)",
     );
@@ -855,7 +869,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let qText = "";
       const p = qBlock.querySelector("p");
       if (p) {
-        // Очищаємо текст від зайвих переносів рядків та пробілів з HTML
         qText = p.textContent.replace(/\s+/g, " ").trim();
       } else if (qBlock.querySelector(".editor-title")) {
         qText =
@@ -870,14 +883,12 @@ document.addEventListener("DOMContentLoaded", () => {
       let answerText = "";
       let isAnswered = false;
 
-      // 1. Радіо
       const checkedRadio = qBlock.querySelector(".test-radio:checked");
       if (checkedRadio) {
         answerText = checkedRadio.value;
         isAnswered = true;
       }
 
-      // 2. Чекбокси
       const checkedBoxes = qBlock.querySelectorAll(".test-checkbox:checked");
       if (checkedBoxes.length > 0) {
         answerText = Array.from(checkedBoxes)
@@ -886,20 +897,17 @@ document.addEventListener("DOMContentLoaded", () => {
         isAnswered = true;
       }
 
-      // 3. Текстареа (коротка відповідь)
       const textarea = qBlock.querySelector(".test-textarea");
       if (textarea && textarea.value.trim() !== "") {
         answerText = textarea.value.trim();
         isAnswered = true;
       }
 
-      // 4. ❗️ ЗМІНА ТУТ: Шукаємо редактор коду ВСЕРЕДИНІ поточного питання
       const editorWrapper = qBlock.querySelector(".custom-editor-wrapper");
       if (editorWrapper) {
         const cmInstance =
           editorWrapper.querySelector(".CodeMirror")?.CodeMirror;
         if (cmInstance) {
-          // Якщо код не порожній (і не складається лише з пробілів)
           const codeValue = cmInstance.getValue();
           if (codeValue.trim() !== "") {
             answerText = "\n" + codeValue;
@@ -908,7 +916,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Перевірка (валідація)
       if (!isAnswered) {
         qBlock.classList.add("error-highlight");
         isValid = false;
@@ -930,27 +937,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isValid) {
       errorMsg.style.display = "block";
-      // Скролимо до першої помилки
       document
         .querySelector(".error-highlight")
         .scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
 
-    // Створюємо Blob файл
     const blob = new Blob([outputText], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
 
-    // Формуємо красиву назву файлу
     const safeName = name.replace(/[^a-zа-яіїєґ0-9]/gi, "_");
-    a.download = `ДЗ_Тема_${safeName}.txt`; // 'Тема' можна динамічно брати з h1
+    a.download = `ДЗ_Тема_${safeName}.txt`;
 
     a.click();
     URL.revokeObjectURL(url);
 
-    // Візуальний фідбек
     const originalText = saveBtn.innerHTML;
     saveBtn.innerHTML = "✅ Успішно збережено!";
     saveBtn.style.backgroundColor = "mediumseagreen";
@@ -988,13 +991,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "Ти впевнений, що хочеш видалити ВСІ свої відповіді і почати заново?",
       )
     ) {
-      // Чистимо сховище
-      localStorage.removeItem("wu_hw_form");
+      // 👇 Очищаємо пам'ять ТІЛЬКИ для поточної сторінки
+      localStorage.removeItem(formStorageKey);
+
       hwForm.querySelectorAll(".custom-editor-wrapper").forEach((wrapper) => {
-        localStorage.removeItem("wu_code_" + wrapper.id);
+        localStorage.removeItem("wu_code_" + pageId + "_" + wrapper.id);
       });
 
-      // Оновлюємо сторінку, щоб повністю обнулити форму і CodeMirror
       window.location.reload();
     }
   });

@@ -1844,8 +1844,7 @@ pre::-webkit-scrollbar-thumb,
 
 .error-highlight > p,
 .error-highlight.student-info label,
-.error-highlight .editor-title 
-{
+.error-highlight .editor-title {
   color: var(--brand3) !important;
   transition: color 0.3s ease;
 }
@@ -1875,7 +1874,8 @@ pre::-webkit-scrollbar-thumb,
   margin-top: 0;
 }
 
-input, .test-textarea {
+input,
+.test-textarea {
   font-family: "Fira Code", monospace;
   font-size: 15px;
 }
@@ -1886,12 +1886,19 @@ input, .test-textarea {
   }
 }
 
-/*  Фікс для системного фону при автозаповненні (Autofill) */
-.student-name:-webkit-autofill,
-.student-name:-webkit-autofill:hover,
-.student-name:-webkit-autofill:focus,
-.student-name:-webkit-autofill:active {
+/* Фікс для системного фону при автозаповненні (Autofill) */
+#student-name:-webkit-autofill,
+#student-name:-webkit-autofill:hover,
+#student-name:-webkit-autofill:focus,
+#student-name:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 50px var(--code-bg) inset !important;
   -webkit-text-fill-color: var(--text-main) !important;
   font-family: inherit !important;
+}
+
+/* Прибираємо синє системне блимання при тапі на телефонах */
+.test-label,
+.test-radio,
+.test-checkbox {
+  -webkit-tap-highlight-color: transparent;
 }
