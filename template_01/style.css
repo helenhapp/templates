@@ -2,6 +2,7 @@
 
 /* Світла Тема */
 :root {
+  /* Брендові кольори */
   --brand1: rgb(44, 25, 62);
   --brand2: rgb(103, 66, 135);
   --brand3: rgb(226, 63, 5);
@@ -9,38 +10,40 @@
   --brand5: rgb(192, 159, 203);
 
   /* Фони */
-  --bg1: #f3f1fd;
-  --bg2: #e6d9f6;
-  --panel: #f9f3fe;
-  --panel-alt: #e7d0fd;
-  --hover-bg: #dcbbfb;
-  --code-bg: #fdf6ff;
-  --soft-callout: rgba(231, 208, 253, 0.45);
-  --link-bg: rgba(231, 208, 253, 0.3);
-  --bar-bg: #e3d3f8;
+  --bg1: #faf5ff;
+  --bg2: #f0e6f9;
+  --panel: #ffffff;
+  --panel-alt: #ead8f6;
+  --hover-bg: #dbc3ea;
+  --code-bg: #fcf9ff;
 
-  /* theme switch/toggle */
+  /* Напівпрозорі заливки */
+  --link-bg: rgba(103, 66, 135, 0.08);
+  --soft-callout: rgba(150, 80, 212, 0.08);
+  --bar-bg: #efdffd;
+
+  /* Перемикачі */
   --toggle: var(--brand2);
   --toggle2: var(--bg1);
-  --toggle-border: var(--accent-pop);
+  --toggle-border: var(--brand4);
 
   /* Текст і посилання */
   --text-main: var(--brand1);
-  --text-soft: #381b7a;
+  --text-soft: #6b5284;
   --title: var(--brand2);
-  --link-color: var(--brand2);
+  --link-color: var(--brand4);
   --header-link-bg: #ffffff;
 
-  /* Рамки та акценти */
+  /* Акценти та рамки */
   --accent: var(--brand2);
   --accent-pop: var(--brand4);
   --accordion-border: var(--brand2);
-  --tab-border: #462167;
+  --tab-border: #dfcceb;
   --code-border: var(--hover-bg);
 
-  /* Ефекти та тіні */
-  --shadow-accent: rgba(103, 66, 135, 0.4);
-  --title-shadow: 3px 3px 0 var(--brand5);
+  /* Тіні */
+  --shadow-accent: rgba(44, 25, 62, 0.12);
+  --title-shadow: 2px 2px 0 var(--brand5);
   --accordion-shadow: 3px 3px 0 var(--shadow-accent);
   --code-shadow: 0 0 5px var(--shadow-accent);
   --accordion-drop-shadow: 3px 3px 0 var(--brand5);
@@ -49,8 +52,6 @@
   --scrollbar-track: var(--panel-alt);
   --scrollbar-thumb: var(--brand5);
   --scrollbar-thumb-hover: var(--brand2);
-
-  interpolate-size: allow-keywords;
 }
 
 /* Темна тема */
@@ -62,11 +63,11 @@
   --panel: #1a0032;
   --hover-bg: #2f005b;
   --code-bg: #140b24;
-  --soft-callout: rgba(36, 0, 70, 0.85);
+  --soft-callout: rgba(36, 0, 70, 0.9);
   --link-bg: rgb(36, 0, 70, 0.5);
   --bar-bg: var(--panel);
 
-  /* theme switch/toggle */
+  /* Перемикачі */
   --toggle: var(--panel-alt);
   --toggle2: var(--accent-pop);
   --toggle-border: var(--accent);
@@ -86,7 +87,7 @@
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
-  --title-shadow: 3px 3px 0 var(--brand2);
+  --title-shadow: 2px 2px 0 var(--brand2);
   --accordion-shadow: 0 0 3px var(--code-border);
   --code-shadow: 0 0 10px var(--shadow-accent);
   --accordion-drop-shadow: 3px 3px 0 var(--brand2);
@@ -177,7 +178,7 @@ h1 {
   text-shadow: var(--title-shadow);
   line-height: 1.5;
   letter-spacing: 3px;
-  font-size: clamp(2rem, 7.2vw, 3.5rem);
+  font-size: clamp(1.8rem, 6.8vw, 3rem);
   overflow-wrap: anywhere;
   hyphens: auto;
   font-weight: 800;
@@ -1725,7 +1726,7 @@ pre::-webkit-scrollbar-thumb,
   min-height: 30px;
   padding: 12px 15px;
   margin-top: 10px;
-  background-color: var(--code-bg);
+  background-color: var(--soft-callout);
   border: 2px solid var(--accent);
   border-radius: 6px;
   color: var(--text-main);
