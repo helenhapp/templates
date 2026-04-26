@@ -267,7 +267,10 @@
 
         // Готуємо тег (замінюємо лапки, щоб не зламати HTML)
         let tagValue =
-          tagNameInput.value.replace(/"/g, "&quot;") || "Секретна зона";
+          tagNameInput.value
+            .replace(/"/g, "&quot;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;") || "Секретна зона";
 
         // Формуємо фінальний рядок HTML
         const htmlCode = `<div class="hotspot" style="top: ${topPerc}%; left: ${leftPerc}%; width: ${widthPerc}%; height: ${heightPerc}%;" data-tag="${tagValue}"></div>\n`;

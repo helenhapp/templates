@@ -2039,3 +2039,59 @@ code.long-code .hljs-ln td.hljs-ln-code {
   overflow-wrap: anywhere !important;
   hyphens: none !important;
 }
+
+/* ==========================================================================
+   🎯 ІНТЕРАКТИВНИЙ МАКЕТ (Зони та Підказки)
+   ========================================================================== */
+
+/* --- Контейнер та Зображення --- */
+
+.mockup-container {
+  position: relative;
+  display: inline-block;
+}
+
+.mockup-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --- Інтерактивні зони (Hotspots) --- */
+
+.hotspot {
+  position: absolute;
+  background-color: transparent;
+  border: 2px dashed transparent;
+  cursor: crosshair;
+  transition: all 0.2s ease-in-out;
+}
+
+.hotspot:hover {
+  background-color: rgba(255, 0, 123, 0.1);
+  border-color: #ff007b;
+}
+
+/* --- Підказки (Tooltips) --- */
+
+.hotspot::after {
+  content: attr(data-tag);
+  position: absolute;
+  top: -30px;
+  left: 0;
+  padding: 4px 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 6px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.hotspot:hover::after {
+  opacity: 1;
+}
