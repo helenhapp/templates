@@ -281,9 +281,29 @@ scrollToTopBtn.addEventListener("click", () =>
 /* 🖼️ 11. ЗБІЛЬШЕННЯ КАРТИНОК (Zoom) */
 document.addEventListener("DOMContentLoaded", () => {
   const zoomableImages = document.querySelectorAll("img.zoomable");
-  zoomableImages.forEach((img) => {
+
+  // Створюємо унікальний ключ для цієї сторінки
+  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+  const storageKey = "wu_expanded_img_" + pageId;
+
+  // Відновлення стану після оновлення сторінки
+  const savedImages = JSON.parse(sessionStorage.getItem(storageKey) || "[]");
+
+  zoomableImages.forEach((img, index) => {
+    // Якщо індекс картинки є в пам'яті — розгортаємо її
+    if (savedImages.includes(index)) {
+      img.classList.add("expanded");
+    }
+
     img.addEventListener("click", () => {
       img.classList.toggle("expanded");
+
+      // Оновлюємо пам'ять при кожному кліку
+      const openIndices = [];
+      zoomableImages.forEach((image, i) => {
+        if (image.classList.contains("expanded")) openIndices.push(i);
+      });
+      sessionStorage.setItem(storageKey, JSON.stringify(openIndices));
     });
   });
 });
@@ -292,12 +312,27 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const zoomableVideos = document.querySelectorAll(".video-wrapper.zoomable");
 
-  zoomableVideos.forEach((wrapper) => {
-    // Створюємо кнопку
+  // Створюємо унікальний ключ для цієї сторінки
+  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+  const storageKey = "wu_expanded_vid_" + pageId;
+
+  // Відновлення стану після оновлення сторінки
+  const savedVideos = JSON.parse(sessionStorage.getItem(storageKey) || "[]");
+
+  zoomableVideos.forEach((wrapper, index) => {
     const zoomBtn = document.createElement("button");
     zoomBtn.className = "video-zoom-btn";
-    zoomBtn.innerHTML = "⛶ Розширити";
-    zoomBtn.title = "Розширити відео";
+
+    // Перевіряємо, чи було відео розширене до оновлення, і одразу ставимо правильний текст
+    const isExpanded = savedVideos.includes(index);
+    if (isExpanded) {
+      wrapper.classList.add("expanded");
+      zoomBtn.innerHTML = "✖ Зменшити";
+      zoomBtn.title = "Повернути стандартний розмір";
+    } else {
+      zoomBtn.innerHTML = "⛶ Розширити";
+      zoomBtn.title = "Розширити відео";
+    }
 
     wrapper.appendChild(zoomBtn);
 
@@ -312,6 +347,13 @@ document.addEventListener("DOMContentLoaded", () => {
         zoomBtn.innerHTML = "⛶ Розширити";
         zoomBtn.title = "Розширити відео";
       }
+
+      // Оновлюємо пам'ять при кожному кліку
+      const openIndices = [];
+      zoomableVideos.forEach((vid, i) => {
+        if (vid.classList.contains("expanded")) openIndices.push(i);
+      });
+      sessionStorage.setItem(storageKey, JSON.stringify(openIndices));
     });
   });
 });
