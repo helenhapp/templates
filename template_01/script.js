@@ -1,6 +1,12 @@
 /* 🎨 1. ПІДСВІТКА СИНТАКСИСУ (Highlight.js) */
-hljs.highlightAll();
-hljs.initLineNumbersOnLoad({ singleLine: true });
+if (typeof hljs !== "undefined") {
+  hljs.highlightAll();
+
+  // Перевіряємо, чи підключений плагін нумерації на цій сторінці, щоб скрипт не ламався
+  if (typeof hljs.initLineNumbersOnLoad === "function") {
+    hljs.initLineNumbersOnLoad({ singleLine: true });
+  }
+}
 
 /* 🗺️ 2. ГЕНЕРАТОР НАВІГАЦІЇ */
 function buildNavigation() {
