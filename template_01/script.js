@@ -288,6 +288,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/* 🎬 11.2 ЗБІЛЬШЕННЯ ВІДЕО (Zoom) */
+document.addEventListener("DOMContentLoaded", () => {
+  const zoomableVideos = document.querySelectorAll(".video-wrapper.zoomable");
+
+  zoomableVideos.forEach((wrapper) => {
+    // Створюємо кнопку
+    const zoomBtn = document.createElement("button");
+    zoomBtn.className = "video-zoom-btn";
+    zoomBtn.innerHTML = "⛶ Розширити";
+    zoomBtn.title = "Розширити відео";
+
+    wrapper.appendChild(zoomBtn);
+
+    // Додаємо подію по кліку
+    zoomBtn.addEventListener("click", () => {
+      wrapper.classList.toggle("expanded");
+
+      if (wrapper.classList.contains("expanded")) {
+        zoomBtn.innerHTML = "✖ Зменшити";
+        zoomBtn.title = "Повернути стандартний розмір";
+      } else {
+        zoomBtn.innerHTML = "⛶ Розширити";
+        zoomBtn.title = "Розширити відео";
+      }
+    });
+  });
+});
+
 /* 📥 12. ПЕРЕВІРКА ПОСИЛАНЬ НА ЗАВАНТАЖЕННЯ */
 document.addEventListener("click", async (e) => {
   const downloadLink = e.target.closest("a[download]:not([data-temp])");
