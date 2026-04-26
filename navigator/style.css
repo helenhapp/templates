@@ -17,7 +17,6 @@ header {
   text-align: center;
   min-width: 30px;
   -webkit-text-stroke: 1px var(--accent-pop);
-  /* font-family: "Nunito", sans-serif; */
 }
 
 /* ==================================================================
@@ -94,7 +93,10 @@ nav ul li a:hover span {
 
 .sub-header:hover .sub-part-title {
   color: var(--brand5);
-  /* color: var(--accent-pop); */
+}
+
+[data-theme="dark"] .sub-header:hover .sub-part-title {
+  color: var(--text-main);
 }
 
 .sub-part-title {
