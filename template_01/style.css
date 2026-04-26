@@ -119,6 +119,7 @@ body {
   font-size: 17px;
   display: flex;
   flex-direction: column;
+  line-height: 1.6;
 }
 
 /* Градієнтний фон */
@@ -960,8 +961,7 @@ header a.nav-arrow:hover {
 }
 
 .accordion__content {
-  padding: 0 28px;
-  line-height: 1.6;
+  padding: 10px 25px;
 }
 
 .accordion__content > *:first-child {
@@ -1078,7 +1078,6 @@ details.task[open] summary::before {
 
 /* Вставки та розділювачі */
 .soft-callout {
-  color: var(--text-soft);
   background-color: var(--soft-callout);
   padding: 20px;
   border-radius: 6px;
@@ -1094,6 +1093,7 @@ details.task[open] summary::before {
   text-align: justify;
   font-size: 15px;
   font-family: Arial, sans-serif;
+  color: var(--text-soft);
 }
 
 .objective ul {
