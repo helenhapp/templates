@@ -20,7 +20,7 @@
   --code-bg: #fcf9ff;
 
   /* Напівпрозорі заливки */
-  --link-bg: rgba(103, 66, 135, 0.08);
+  --link-bg: rgba(115, 68, 156, 0.1);
   --soft-callout: rgba(150, 80, 212, 0.065);
   --bar-bg: #efdffd;
 
@@ -448,7 +448,7 @@ button:active {
   color: var(--text-main);
   text-decoration: none;
   transition: all 0.3s ease;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .download-button:hover {
@@ -1503,7 +1503,8 @@ body.wide-mode .wide-toggle {
   .download-button {
     display: flex;
     width: 100%;
-    justify-content: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
   }
 }
 
