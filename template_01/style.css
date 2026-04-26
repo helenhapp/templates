@@ -2086,11 +2086,12 @@ code.long-code .hljs-ln td.hljs-ln-code {
   border: 2px dashed transparent;
   cursor: crosshair;
   transition: all 0.2s ease-in-out;
+  border-radius: 6px;
 }
 
 .hotspot:hover {
-  background-color: rgba(255, 0, 123, 0.1);
-  border-color: #ff007b;
+  background-color: rgba(144, 0, 255, 0.1);
+  border-color: var(--brand3);
 }
 
 /* --- Підказки (Tooltips) --- */
@@ -2101,10 +2102,11 @@ code.long-code .hljs-ln td.hljs-ln-code {
   top: -30px;
   left: 0;
   padding: 4px 10px;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--panel);
+  color: var(--text-main);
+  border: 2px solid var(--brand4);
   border-radius: 6px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Fira Code", monospace;
   font-size: 14px;
   font-weight: bold;
   white-space: nowrap;
