@@ -313,7 +313,7 @@ a:hover img {
 img {
   display: block;
   max-width: 100%;
-  max-height: 400px;
+  max-height: 380px;
   width: auto;
   margin: 15px 0;
   border: 3px solid var(--code-border);
