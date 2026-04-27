@@ -750,8 +750,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
+
+    const titleElement = document.getElementById("lesson-title");
+    const pageTitle = titleElement ? titleElement.textContent.trim() : "Тема";
+
+    // Очищаємо назву теми та ім'я від зайвих символів для безпечного збереження файлу
+    const safeTopic = pageTitle
+      .replace(/\s+/g, "_")
+      .replace(/[^a-zа-яіїєґ0-9_]/gi, "");
     const safeName = name.replace(/[^a-zа-яіїєґ0-9]/gi, "_");
-    a.download = `ДЗ_Тема_${safeName}.txt`;
+
+    // Формуємо фінальну назву: ДЗ_Тема_1_Ім'я.txt
+    a.download = `ДЗ_${safeTopic}_${safeName}.txt`;
+
     a.click();
     URL.revokeObjectURL(url);
 
@@ -798,5 +809,33 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       window.location.reload();
     }
+  });
+});
+
+/* ✅ 18. ЧЕКБОКСИ КАРТОК СТИЛІВ (Збереження стану) */
+document.addEventListener("DOMContentLoaded", () => {
+  const checkboxes = document.querySelectorAll(".style-card-checkbox");
+  if (checkboxes.length === 0) return;
+
+  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+  const storageKey = "wu_stylecards_checked_" + pageId;
+
+  // 1. Відновлюємо стан після оновлення сторінки
+  const savedState = JSON.parse(sessionStorage.getItem(storageKey) || "[]");
+  checkboxes.forEach((cb, index) => {
+    if (savedState.includes(index)) {
+      cb.checked = true;
+    }
+  });
+
+  // 2. Зберігаємо новий стан при кожному кліку
+  checkboxes.forEach((cb) => {
+    cb.addEventListener("change", () => {
+      const checkedIndices = [];
+      checkboxes.forEach((box, i) => {
+        if (box.checked) checkedIndices.push(i);
+      });
+      sessionStorage.setItem(storageKey, JSON.stringify(checkedIndices));
+    });
   });
 });

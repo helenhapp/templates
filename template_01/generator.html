@@ -184,31 +184,67 @@
       const clearBtn = document.getElementById("clear-btn");
       const instruction = document.getElementById("instruction");
 
-      // 1. Завантаження картинки
+      // --- 1. ВІДНОВЛЕННЯ З LOCALSTORAGE ПРИ ЗАВАНТАЖЕННІ ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTag = localStorage.getItem("wu_gen_tag");
+        const savedOutput = localStorage.getItem("wu_gen_output");
+        const savedImage = localStorage.getItem("wu_gen_image");
+
+        if (savedTag) tagNameInput.value = savedTag;
+        if (savedOutput) output.value = savedOutput;
+
+        if (savedImage) {
+          targetImage.src = savedImage;
+          imgContainer.style.display = "inline-block";
+          instruction.style.display = "none";
+        }
+      });
+
+      // Збереження тегу при введенні
+      tagNameInput.addEventListener("input", () => {
+        localStorage.setItem("wu_gen_tag", tagNameInput.value);
+      });
+
+      // Збереження коду при ручному редагуванні (якщо ви щось допишете руками)
+      output.addEventListener("input", () => {
+        localStorage.setItem("wu_gen_output", output.value);
+      });
+
+      // --- 2. ЗАВАНТАЖЕННЯ ТА ЗБЕРЕЖЕННЯ КАРТИНКИ ---
       upload.addEventListener("change", function (e) {
         const file = e.target.files[0];
         if (!file) return;
 
         const reader = new FileReader();
         reader.onload = function (event) {
-          targetImage.src = event.target.result;
+          const imgData = event.target.result;
+          targetImage.src = imgData;
           imgContainer.style.display = "inline-block";
           instruction.style.display = "none";
+
+          // Зберігаємо картинку (try-catch потрібен, бо localStorage має ліміт ~5MB)
+          try {
+            localStorage.setItem("wu_gen_image", imgData);
+          } catch (error) {
+            console.warn(
+              "Картинка занадто велика для збереження в пам'яті браузера.",
+            );
+          }
         };
         reader.readAsDataURL(file);
       });
 
-      // Змінні для малювання
+      // --- 3. ЛОГІКА МАЛЮВАННЯ ---
       let isDrawing = false;
       let startX = 0;
       let startY = 0;
 
-      // 2. Початок малювання (натискання миші)
+      // Початок малювання
       imgContainer.addEventListener("mousedown", function (e) {
         e.preventDefault();
         isDrawing = true;
         const rect = imgContainer.getBoundingClientRect();
-        // Рахуємо координати відносно контейнера картинки
+
         startX = e.clientX - rect.left;
         startY = e.clientY - rect.top;
 
@@ -219,18 +255,16 @@
         selection.style.display = "block";
       });
 
-      // 3. Процес малювання (рух миші)
+      // Процес малювання
       window.addEventListener("mousemove", function (e) {
         if (!isDrawing) return;
         const rect = imgContainer.getBoundingClientRect();
 
-        // Обмежуємо мишку межами картинки
         let currentX = e.clientX - rect.left;
         let currentY = e.clientY - rect.top;
         currentX = Math.max(0, Math.min(currentX, rect.width));
         currentY = Math.max(0, Math.min(currentY, rect.height));
 
-        // Рахуємо фінальні координати та розміри
         const left = Math.min(startX, currentX);
         const top = Math.min(startY, currentY);
         const width = Math.abs(currentX - startX);
@@ -242,48 +276,45 @@
         selection.style.height = height + "px";
       });
 
-      // 4. Завершення малювання (відпускання миші)
+      // Завершення малювання
       window.addEventListener("mouseup", function (e) {
         if (!isDrawing) return;
         isDrawing = false;
-        selection.style.display = "none"; // Ховаємо рамку
+        selection.style.display = "none";
 
         const rect = imgContainer.getBoundingClientRect();
 
-        // Беремо піксельні значення з рамки
         const leftPx = parseFloat(selection.style.left);
         const topPx = parseFloat(selection.style.top);
         const widthPx = parseFloat(selection.style.width);
         const heightPx = parseFloat(selection.style.height);
 
-        // Якщо клік був випадковим і рамка надто мала - ігноруємо
         if (widthPx < 10 || heightPx < 10) return;
 
-        // 5. МАГІЯ: Перетворюємо пікселі у відсотки
         const leftPerc = ((leftPx / rect.width) * 100).toFixed(1);
         const topPerc = ((topPx / rect.height) * 100).toFixed(1);
         const widthPerc = ((widthPx / rect.width) * 100).toFixed(1);
         const heightPerc = ((heightPx / rect.height) * 100).toFixed(1);
 
-        // Готуємо тег (замінюємо лапки, щоб не зламати HTML)
         let tagValue =
           tagNameInput.value
             .replace(/"/g, "&quot;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;") || "Секретна зона";
 
-        // Формуємо фінальний рядок HTML
         const htmlCode = `<div class="hotspot" style="top: ${topPerc}%; left: ${leftPerc}%; width: ${widthPerc}%; height: ${heightPerc}%;" data-tag="${tagValue}"></div>\n`;
 
-        // Додаємо в текстове поле
         output.value += htmlCode;
-        // Прокручуємо текстове поле вниз
         output.scrollTop = output.scrollHeight;
+
+        // ⚡️ ЗБЕРІГАЄМО КОД ПІСЛЯ КОЖНОГО КРОКУ
+        localStorage.setItem("wu_gen_output", output.value);
       });
 
-      // Кнопка очищення
+      // --- 4. ОЧИЩЕННЯ ---
       clearBtn.addEventListener("click", () => {
         output.value = "";
+        localStorage.removeItem("wu_gen_output");
       });
     </script>
   </body>
