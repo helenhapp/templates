@@ -68,7 +68,8 @@
   --panel: #1a0032;
   --hover-bg: #2f005b;
   --code-bg: #140b24;
-  --soft-callout: rgba(36, 0, 70, 0.9);
+  /* --soft-callout: rgba(36, 0, 70, 0.9); */
+  --soft-callout: rgba(36, 0, 70, 0.6);
   --link-bg: rgb(36, 0, 70, 0.5);
   --bar-bg: var(--panel);
 
@@ -427,6 +428,22 @@ button:active {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  margin-bottom: 20px;
+
+  /* border-top: 3px solid var(--accordion-border); */
+  /* padding: 15px 10px 20px; */
+  /* margin-top: 10px; */
+  /* background-color: var(--soft-callout); */
+  /* border-radius: 0 0 8px 8px; */
+
+  /* margin-top: 0; */
+}
+
+.soft-callout.objective {
+  border-radius: 0;
+  border-top: 2px solid var(--accordion-border);
+  border-bottom: 2px solid var(--accordion-border);
+  /* margin-bottom: 0; */
   margin-bottom: 30px;
 }
 
@@ -617,7 +634,7 @@ td code {
 /* Верхня панель та логотип */
 .top-bar,
 footer {
-  height: 50px;
+  height: 52px;
 }
 .top-bar {
   display: flex;
@@ -1042,12 +1059,16 @@ details.task[open] summary::before {
   font-family: Arial, sans-serif;
   color: var(--text-soft);
 }
+.objective {
+  /* background-color: var(--panel-alt); */
+  background-color: var(--soft-callout);
+}
 .objective ul {
   margin: 0 5px;
 }
-.soft-callout.objective {
+/* .soft-callout.objective {
   margin-top: 30px;
-}
+} */
 hr {
   border: none;
   border-top: 3px dashed var(--accent-pop);
@@ -1060,6 +1081,66 @@ hr {
 }
 .accordion__content hr {
   width: 90%;
+}
+hr.divider-pixels {
+  --size: 4px;
+  --gap: 8px;
+  border: none;
+  height: var(--size);
+  width: 100%;
+  margin: 30px auto;
+  opacity: 0.85;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--brand5) 0,
+    var(--brand5) var(--size),
+    transparent var(--size),
+    transparent calc(var(--size) + var(--gap))
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 30px,
+    black calc(100% - 30px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 30px,
+    black calc(100% - 30px),
+    transparent
+  );
+}
+
+/* Ретро-рамка для блоку "Мета заняття" */
+.soft-callout.objective {
+  position: relative;
+  border-radius: 0; /* Прибираємо заокруглення для піксельного стилю */
+  border: solid var(--accordion-border);
+  border-width: 0 2px; /* Робимо рамку тільки ліворуч і праворуч */
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Малюємо верхню та нижню лінії */
+.soft-callout.objective::before,
+.soft-callout.objective::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accordion-border);
+  transition: background 0.4s ease;
+}
+
+.soft-callout.objective::before {
+  top: -2px;
+}
+
+.soft-callout.objective::after {
+  bottom: -2px;
 }
 
 /* "Завіса" для переходу між сторінками */
