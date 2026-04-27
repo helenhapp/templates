@@ -1925,7 +1925,7 @@ pre::-webkit-scrollbar-thumb,
 #save-hw-btn:hover {
   background-color: var(--brand1);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Додаємо тінь для об'єму */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 #copy-hw-btn {
@@ -2178,22 +2178,19 @@ code.long-code .hljs-ln td.hljs-ln-code {
 
 .style-card {
   flex: 1 1 calc(33.333% - 20px);
-  min-width: 280px; /* Картка не стиснеться менше цього значення */
-
+  min-width: 280px; 
   display: flex;
   flex-direction: column;
   border: 2px solid var(--tab-border);
   transition:
+    border-color 0.3s ease,
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  margin: 0 !important; /* Скидаємо марджини soft-callout для сітки */
+  margin: 0 !important; 
 }
 
 .style-card:hover {
-  /* transform: translateY(-5px); */
-  /* box-shadow: 0 8px 15px var(--shadow-accent); */
   border-color: var(--accent);
-  /* transform: scale(1.02); */
 }
 
 .card-header {
