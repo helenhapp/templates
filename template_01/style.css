@@ -47,8 +47,8 @@
 
   /* Акценти та рамки */
   --accent: var(--brand2);
-  /* --accent-pop: var(--brand4); */
-  --accent-pop: rgb(247, 86, 28);
+  --accent-pop: var(--brand4);
+  --accent-pop: rgb(251, 104, 30);
   --accordion-border: var(--tab-border);
   --tab-border: #cfb3e0;
   --code-border: var(--hover-bg);
@@ -943,6 +943,8 @@ header a.nav-arrow:hover {
 }
 .acc-arrow {
   transition: transform 0.3s ease;
+  font-family: monospace;
+  font-size: 15px;
 }
 .accordion__item[open] .acc-arrow {
   transform: rotate(90deg);
@@ -970,6 +972,9 @@ summary:focus {
 details.answer summary,
 details.task summary {
   list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 details.answer summary::-webkit-details-marker,
 details.task summary::-webkit-details-marker {
@@ -979,10 +984,11 @@ details.answer summary::before,
 details.task summary::before {
   content: "▶";
   display: inline-block;
-  margin-right: 10px;
   font-size: 11px;
   color: var(--accent);
   transition: transform 0.2s ease;
+  flex-shrink: 0;     
+  margin-top: 4px;     
 }
 details.answer[open] summary::before,
 details.task[open] summary::before {
@@ -1023,7 +1029,7 @@ details.task[open] summary::before {
 }
 .task summary {
   padding: 15px 20px;
-  display: block;
+  /* display: block; */
 }
 .task > :not(summary) {
   padding: 0 20px 20px 20px;
@@ -1033,9 +1039,10 @@ details.task[open] summary::before {
   margin-left: 10px;
 }
 .task summary h4 {
-  display: inline-block;
+  /* display: inline-block;
+  vertical-align: middle; */
   margin: 0;
-  vertical-align: middle;
+  line-height: 1.4;
 }
 .task:not([open]):hover {
   background-color: var(--panel-alt);
