@@ -445,14 +445,15 @@ button:active {
   padding: 12px 20px;
   font-size: 10px;
   border: 2px outset var(--tab-border);
-  opacity: 0.85;
+  opacity: 0.75;
   text-align: center;
   backface-visibility: hidden;
   transform: translateZ(0);
 }
 
 .tab-btn:hover {
-  opacity: 0.9;
+  background-color: var(--panel-alt);
+  opacity: 1;
   transform: scale(1.02);
 }
 
@@ -1065,9 +1066,9 @@ hr {
   opacity: 0.85;
   border-top: 1px solid var(--accordion-border);
 }
-.accordion__content hr {
+/* .accordion__content hr {
   width: 90%;
-}
+} */
 
 /* "Завіса" для переходу між сторінками */
 .transition-curtain {
