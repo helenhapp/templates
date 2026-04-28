@@ -80,7 +80,7 @@ function createCourseHTML(course) {
   return `
     <details class="accordion__item" name="accordion" data-course-id="${course.CourseId}" ${isCourseOpen}>
         <summary class="accordion__header">
-            <div>${headerContent}</div>
+            <h2>${headerContent}</h2>
             <span class="acc-arrow">▶</span>
         </summary>
         <div class="accordion__content">
