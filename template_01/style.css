@@ -48,7 +48,7 @@
   /* Акценти та рамки */
   --accent: var(--brand2);
   --accent-pop: var(--brand4);
-  --accent-pop: rgb(251, 104, 30);
+  --accent-pop: rgb(253, 110, 44);
   --accordion-border: var(--tab-border);
   --tab-border: #cfb3e0;
   --code-border: var(--hover-bg);
