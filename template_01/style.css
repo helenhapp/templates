@@ -973,7 +973,7 @@ details.answer summary,
 details.task summary {
   list-style: none;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
 }
 details.answer summary::-webkit-details-marker,
@@ -984,11 +984,12 @@ details.answer summary::before,
 details.task summary::before {
   content: "▶";
   display: inline-block;
-  font-size: 11px;
+  font-size: 15px;
+  font-family: monospace;
   color: var(--accent);
   transition: transform 0.2s ease;
   flex-shrink: 0;     
-  margin-top: 4px;     
+  /* margin-top: 4px;      */
 }
 details.answer[open] summary::before,
 details.task[open] summary::before {
