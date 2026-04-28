@@ -41,8 +41,9 @@
   /* Акценти та рамки */
   --accent: var(--brand2);
   --accent-pop: var(--brand4);
-  --accordion-border: var(--brand2);
-  --tab-border: #d8bde8;
+  /* --accordion-border: var(--brand2); */
+  --accordion-border: var(--brand5);
+  --tab-border: #cba9de;
   --code-border: var(--hover-bg);
 
   /* Тіні */
@@ -429,26 +430,6 @@ button:active {
   flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 20px;
-
-  /* border-top: 3px solid var(--accordion-border); */
-  /* padding: 15px 10px 20px; */
-  /* margin-top: 10px; */
-  /* background-color: var(--soft-callout); */
-  /* border-radius: 0 0 8px 8px; */
-
-  /* margin-top: 0; */
-}
-
-.soft-callout.objective {
-  /* border-radius: 0; */
-  /* border-top: 3px solid var(--accordion-border); */
-  /* border-bottom: 2px solid var(--accordion-border); */
-  /* margin-bottom: 0; */
-  /* margin-bottom: 30px; */
-  /* border-radius: 0 0 6px 6px; */
-
-  /* background-color: var(--panel-alt); */
-  border: 1px solid var(--hover-bg);
 }
 
 .tab-btn {
@@ -1062,27 +1043,27 @@ details.task[open] summary::before {
   font-size: 15px;
   font-family: Arial, sans-serif;
   color: var(--text-soft);
-}
-.objective {
-  /* background-color: var(--panel-alt); */
   background-color: var(--soft-callout);
+    border: 1px solid var(--hover-bg);
 }
 .objective ul {
   margin: 0 5px;
 }
-/* .soft-callout.objective {
-  margin-top: 30px;
-} */
 hr {
   border: none;
-  /* border-top: 3px dashed var(--accent-pop); */
   margin: 30px auto;
   opacity: 0.85;
   border-top: 1px solid var(--hover-bg);
 }
 [data-theme="dark"] hr,
-[data-theme="dark"] .accordion__content hr {
-  opacity: 0.65;
+[data-theme="dark"] .objective
+ {
+  border-color: var(--accordion-border);
+}
+ hr,
+.objective
+ {
+  border-color: var(--accordion-border);
 }
 .accordion__content hr {
   width: 90%;
@@ -1117,36 +1098,6 @@ hr.divider-pixels {
     transparent
   );
 }
-
-/* Ретро-рамка для блоку "Мета заняття" */
-/* .soft-callout.objective {
-  position: relative;
-  border-radius: 0;
-  border: solid var(--accordion-border);
-  border-width: 0 2px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-} */
-
-/* Малюємо верхню та нижню лінії */
-/* .soft-callout.objective::before,
-.soft-callout.objective::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--accordion-border);
-  transition: background 0.4s ease;
-} */
-
-/* .soft-callout.objective::before {
-  top: -2px;
-}
-
-.soft-callout.objective::after {
-  bottom: -2px;
-} */
 
 /* "Завіса" для переходу між сторінками */
 .transition-curtain {
