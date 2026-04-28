@@ -1064,36 +1064,6 @@ hr {
 .accordion__content hr {
   width: 90%;
 }
-hr.divider-pixels {
-  --size: 4px;
-  --gap: 8px;
-  border: none;
-  height: var(--size);
-  width: 100%;
-  margin: 30px auto;
-  opacity: 0.85;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--brand5) 0,
-    var(--brand5) var(--size),
-    transparent var(--size),
-    transparent calc(var(--size) + var(--gap))
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 30px,
-    black calc(100% - 30px),
-    transparent
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 30px,
-    black calc(100% - 30px),
-    transparent
-  );
-}
 
 /* "Завіса" для переходу між сторінками */
 .transition-curtain {

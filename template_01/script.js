@@ -1,4 +1,6 @@
-/* 🎨 1. ПІДСВІТКА СИНТАКСИСУ (Highlight.js) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🎨 1. ПІДСВІТКА СИНТАКСИСУ (Highlight.js)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 if (typeof hljs !== "undefined") {
   hljs.highlightAll();
 
@@ -8,7 +10,9 @@ if (typeof hljs !== "undefined") {
   }
 }
 
-/* 🗺️ 2. ГЕНЕРАТОР НАВІГАЦІЇ */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🗺️ 2. ГЕНЕРАТОР НАВІГАЦІЇ
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 function buildNavigation() {
   const container = document.getElementById("nav-container");
   if (!container || !window.pageNavLinks) return;
@@ -46,7 +50,9 @@ function buildNavigation() {
 
 document.addEventListener("DOMContentLoaded", buildNavigation);
 
-/* 🌗 3. ПЕРЕМИКАННЯ ТЕМ (Світла/Темна) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🌗 3. ПЕРЕМИКАННЯ ТЕМ (Світла/Темна)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const themeCheckbox = document.getElementById("theme-checkbox");
   const hljsThemeLink = document.getElementById("hljs-theme");
@@ -78,7 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* 🌬️ 4. ПЛАВНІ ПЕРЕХОДИ МІЖ СТОРІНКАМИ */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🌬️ 4. ПЛАВНІ ПЕРЕХОДИ МІЖ СТОРІНКАМИ
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   document.fonts.ready.then(() => document.body.classList.add("is-loaded"));
 });
@@ -115,7 +123,9 @@ window.addEventListener("pageshow", (e) => {
   }
 });
 
-/* 🍔 5. МОБІЛЬНЕ МЕНЮ */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🍔 5. МОБІЛЬНЕ МЕНЮ
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerBtn = document.querySelector(".hamburger-btn");
   const navLinks = document.querySelector(".nav-links");
@@ -138,7 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* 🗂️ 6. ТАБИ (ВКЛАДКИ) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🗂️ 6. ТАБИ (ВКЛАДКИ)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const tabButtons = document.querySelectorAll(".tab-btn");
   let isAnimating = false;
@@ -205,7 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* 📑 7. АКОРДЕОНИ (Збереження стану) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 📑 7. АКОРДЕОНИ (Збереження стану)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const allDetails = document.querySelectorAll("details");
   const savedState = sessionStorage.getItem("openAccordions");
@@ -232,7 +246,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* 🖥️ 8. ШИРОКИЙ ЕКРАН (Wide Mode) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🖥️ 8. ШИРОКИЙ ЕКРАН (Wide Mode)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("wu_wideMode") === "true") {
     document.body.classList.add("wide-mode");
@@ -249,7 +265,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* 🌤️ 9. ТІНЬ ПАНЕЛІ ПРИ СКРОЛІ */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🌤️ 9. ТІНЬ ПАНЕЛІ ПРИ СКРОЛІ
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const navContainer = document.getElementById("nav-container");
   if (!navContainer) return;
@@ -263,7 +281,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* 🚀 10. КНОПКА "ПОВЕРНУТИСЯ НАГОРУ" */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🚀 10. КНОПКА "ПОВЕРНУТИСЯ НАГОРУ"
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
 window.addEventListener("scroll", () => {
@@ -278,22 +298,21 @@ scrollToTopBtn.addEventListener("click", () =>
   window.scrollTo({ top: 0, behavior: "smooth" }),
 );
 
-/* 🖼️ 11.1 ЗБІЛЬШЕННЯ КАРТИНОК (Zoom) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🖼️ 11. ЗБІЛЬШЕННЯ МЕДІА (Zoom)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
-  // ⚡️ Ігноруємо макети, навіть якщо на них залишився клас zoomable
+  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+
+  // 11.1 Картинки
   const zoomableImages = document.querySelectorAll(
     "img.zoomable:not(.mockup-image)",
   );
-
-  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
-  const storageKey = "wu_expanded_img_" + pageId;
-
-  const savedImages = JSON.parse(sessionStorage.getItem(storageKey) || "[]");
+  const storageKeyImg = "wu_expanded_img_" + pageId;
+  const savedImages = JSON.parse(sessionStorage.getItem(storageKeyImg) || "[]");
 
   zoomableImages.forEach((img, index) => {
-    if (savedImages.includes(index)) {
-      img.classList.add("expanded");
-    }
+    if (savedImages.includes(index)) img.classList.add("expanded");
 
     img.addEventListener("click", () => {
       img.classList.toggle("expanded");
@@ -301,24 +320,20 @@ document.addEventListener("DOMContentLoaded", () => {
       zoomableImages.forEach((image, i) => {
         if (image.classList.contains("expanded")) openIndices.push(i);
       });
-      sessionStorage.setItem(storageKey, JSON.stringify(openIndices));
+      sessionStorage.setItem(storageKeyImg, JSON.stringify(openIndices));
     });
   });
-});
 
-/* 🎬 11.2 ЗБІЛЬШЕННЯ ВІДЕО (Zoom) */
-document.addEventListener("DOMContentLoaded", () => {
+  // 11.2 Відео
   const zoomableVideos = document.querySelectorAll(".video-wrapper.zoomable");
-  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
-  const storageKey = "wu_expanded_vid_" + pageId;
-  const savedVideos = JSON.parse(sessionStorage.getItem(storageKey) || "[]");
+  const storageKeyVid = "wu_expanded_vid_" + pageId;
+  const savedVideos = JSON.parse(sessionStorage.getItem(storageKeyVid) || "[]");
 
   zoomableVideos.forEach((wrapper, index) => {
     const zoomBtn = document.createElement("button");
     zoomBtn.className = "video-zoom-btn";
 
-    const isExpanded = savedVideos.includes(index);
-    if (isExpanded) {
+    if (savedVideos.includes(index)) {
       wrapper.classList.add("expanded");
       zoomBtn.innerHTML = "✖ Зменшити";
       zoomBtn.title = "Повернути стандартний розмір";
@@ -343,29 +358,24 @@ document.addEventListener("DOMContentLoaded", () => {
       zoomableVideos.forEach((vid, i) => {
         if (vid.classList.contains("expanded")) openIndices.push(i);
       });
-      sessionStorage.setItem(storageKey, JSON.stringify(openIndices));
+      sessionStorage.setItem(storageKeyVid, JSON.stringify(openIndices));
     });
   });
-});
 
-/* 🎯 11.3 ЗБІЛЬШЕННЯ МАКЕТІВ (Mockup Zoom) */
-document.addEventListener("DOMContentLoaded", () => {
+  // 11.3 Макети (Mockups)
   const zoomableMockups = document.querySelectorAll(
     ".mockup-container.zoomable",
   );
-  const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
-
-  // Окремий ключ пам'яті для макетів
-  const storageKey = "wu_expanded_mockup_" + pageId;
-  const savedMockups = JSON.parse(sessionStorage.getItem(storageKey) || "[]");
+  const storageKeyMockup = "wu_expanded_mockup_" + pageId;
+  const savedMockups = JSON.parse(
+    sessionStorage.getItem(storageKeyMockup) || "[]",
+  );
 
   zoomableMockups.forEach((wrapper, index) => {
     const zoomBtn = document.createElement("button");
-    // ⚡️ Використовуємо ті самі стилі кнопки, що й для відео!
     zoomBtn.className = "video-zoom-btn";
 
-    const isExpanded = savedMockups.includes(index);
-    if (isExpanded) {
+    if (savedMockups.includes(index)) {
       wrapper.classList.add("expanded");
       zoomBtn.innerHTML = "✖ Зменшити";
       zoomBtn.title = "Повернути стандартний розмір";
@@ -378,7 +388,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     zoomBtn.addEventListener("click", () => {
       wrapper.classList.toggle("expanded");
-
       if (wrapper.classList.contains("expanded")) {
         zoomBtn.innerHTML = "✖ Зменшити";
         zoomBtn.title = "Повернути стандартний розмір";
@@ -391,12 +400,14 @@ document.addEventListener("DOMContentLoaded", () => {
       zoomableMockups.forEach((m, i) => {
         if (m.classList.contains("expanded")) openIndices.push(i);
       });
-      sessionStorage.setItem(storageKey, JSON.stringify(openIndices));
+      sessionStorage.setItem(storageKeyMockup, JSON.stringify(openIndices));
     });
   });
 });
 
-/* 📥 12. ПЕРЕВІРКА ПОСИЛАНЬ НА ЗАВАНТАЖЕННЯ */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 📥 12. ПЕРЕВІРКА ПОСИЛАНЬ НА ЗАВАНТАЖЕННЯ
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("click", async (e) => {
   const downloadLink = e.target.closest("a[download]:not([data-temp])");
 
@@ -444,7 +455,9 @@ document.addEventListener("click", async (e) => {
   }
 });
 
-/* 📋 13. КНОПКА "СКОПІЮВАТИ КОД" */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 📋 13. КНОПКА "СКОПІЮВАТИ КОД"
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.querySelectorAll("pre code").forEach((codeBlock) => {
   if (codeBlock.classList.contains("nocopy")) return;
 
@@ -476,7 +489,9 @@ document.querySelectorAll("pre code").forEach((codeBlock) => {
   });
 });
 
-/* 💻 14. ІНТЕРАКТИВНИЙ РЕДАКТОР КОДУ (CodeMirror) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 💻 14. ІНТЕРАКТИВНИЙ РЕДАКТОР КОДУ (CodeMirror)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const editors = document.querySelectorAll(".custom-editor-wrapper");
 
@@ -589,7 +604,9 @@ function runJsCode(codeToRun, outputDisplay) {
   }
 }
 
-/* 📝 15. ДОМАШНЄ ЗАВДАННЯ (Валідація та збереження) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 📝 15. ДОМАШНЄ ЗАВДАННЯ (Валідація та збереження)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const hwForm = document.getElementById("homework-form");
   if (!hwForm) return;
@@ -754,15 +771,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleElement = document.getElementById("lesson-title");
     const pageTitle = titleElement ? titleElement.textContent.trim() : "Тема";
 
-    // Очищаємо назву теми та ім'я від зайвих символів для безпечного збереження файлу
     const safeTopic = pageTitle
       .replace(/\s+/g, "_")
       .replace(/[^a-zа-яіїєґ0-9_]/gi, "");
     const safeName = name.replace(/[^a-zа-яіїєґ0-9]/gi, "_");
 
-    // Формуємо фінальну назву: ДЗ_Тема_1_Ім'я.txt
     a.download = `ДЗ_${safeTopic}_${safeName}.txt`;
-
     a.click();
     URL.revokeObjectURL(url);
 
@@ -812,7 +826,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* ✅ 18. ЧЕКБОКСИ КАРТОК СТИЛІВ (Збереження стану) */
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// ✅ 16. ЧЕКБОКСИ КАРТОК СТИЛІВ
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const checkboxes = document.querySelectorAll(".style-card-checkbox");
   if (checkboxes.length === 0) return;
