@@ -39,14 +39,16 @@
 
   /* Текст і посилання */
   --text-main: var(--brand1);
-  --text-soft: #6b5284;
+  /* --text-soft: #6b5284; */
+  --text-soft: #5b4077;
   --title: var(--brand2);
   --link-color: var(--brand4);
   --header-link-bg: #ffffff;
 
   /* Акценти та рамки */
   --accent: var(--brand2);
-  --accent-pop: var(--brand4);
+  /* --accent-pop: var(--brand4); */
+  --accent-pop: rgb(243, 79, 19);
   --accordion-border: var(--tab-border);
   --tab-border: #cfb3e0;
   --code-border: var(--hover-bg);
@@ -325,6 +327,8 @@ img {
   max-width: 100%;
   max-height: 380px;
   width: auto;
+  height: auto;
+  object-fit: contain;
   margin: 15px auto;
   border: 3px solid var(--code-border);
   border-radius: 6px;
@@ -441,7 +445,7 @@ button:active {
   padding: 12px 20px;
   font-size: 10px;
   border: 2px outset var(--tab-border);
-  opacity: 0.7;
+  opacity: 0.85;
   text-align: center;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -1816,6 +1820,7 @@ pre::-webkit-scrollbar-thumb,
   display: flex;
   gap: 15px;
   margin: 30px 0;
+  /* margin-bottom: 30px; */
   flex-wrap: wrap;
 }
 
@@ -1871,6 +1876,7 @@ pre::-webkit-scrollbar-thumb,
 }
 
 .error-highlight > p,
+.error-highlight > legend,
 .error-highlight.student-info label,
 .error-highlight .editor-title {
   color: var(--brand3) !important;
@@ -1929,6 +1935,35 @@ input,
 .test-radio,
 .test-checkbox {
   -webkit-tap-highlight-color: transparent;
+}
+
+fieldset.test-question {
+  margin: 20px 0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+fieldset.test-question:has(.custom-editor-wrapper) {
+  margin: 30px 0;
+}
+fieldset.test-question:last-of-type {
+  margin-bottom: 0;
+}
+fieldset.test-question legend {
+  font-weight: 600;
+  color: var(--title);
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+fieldset.error-highlight.test-question {
+  border-color: var(--brand3);
+}
+fieldset.test-question .code-wrapper {
+  margin-top: 0;
+}
+fieldset.test-question .custom-editor-wrapper {
+  margin: 0;
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */

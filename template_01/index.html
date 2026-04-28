@@ -55,12 +55,27 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
 
     <link
       rel="stylesheet"
@@ -68,8 +83,8 @@
     />
 
     <!-- Власні стилі та скрипти -->
-    <link rel="stylesheet" href="./style.css?v=3.2" />
-    <script defer src="./script.js?v=3.2"></script>
+    <link rel="stylesheet" href="./style.css?v=3.3" />
+    <script defer src="./script.js?v=3.3"></script>
   </head>
 
   <body>
@@ -119,7 +134,7 @@
         </ul>
       </section>
 
-      <hr  />
+      <hr />
     </header>
 
     <!-- Основний контент -->
@@ -184,7 +199,7 @@
             <pre><code class="language-html">&lt;!-- приклад HTML коду --&gt;
 &lt;h1 id="title"&gt;Hello, world!&lt;/h1&gt;</code></pre>
 
-            <img src="./images/example1.jpeg" alt="" />
+            <img src="./images/example1.jpeg" alt="Приклад" width="800" height="400" />
 
             <hr />
 
@@ -203,7 +218,7 @@ h1 {
   font-weight: normal;
 }</code></pre>
 
-            <img src="./images/example2.jpeg" alt="" />
+            <img src="./images/example2.jpeg" alt="Приклад" width="800" height="400" />
 
             <p class="soft-callout">
               ⚡️ <strong>Важливо</strong>: Так можна наголосити на важливій
@@ -236,7 +251,7 @@ seagreen
 (тут текст з прикладу, який можна скопіювати)</pre
             >
 
-            <img src="./images/example3.jpeg" alt="" />
+            <img src="./images/example3.jpeg" alt="Приклад" width="800" height="400" />
 
             <p>
               Так виглядає текст, коли його багато: Lorem, ipsum dolor sit amet
@@ -1016,11 +1031,11 @@ function run() {
                 />
               </div>
 
-              <div class="test-question">
-                <p>
+              <fieldset class="test-question">
+                <legend>
                   1. Який тег використовується для створення найбільшого
                   заголовка?
-                </p>
+                </legend>
                 <label class="test-label">
                   <input
                     type="radio"
@@ -1048,13 +1063,13 @@ function run() {
                   />
                   &lt;header&gt;
                 </label>
-              </div>
+              </fieldset>
 
-              <div class="test-question">
-                <p>
+              <fieldset class="test-question">
+                <legend>
                   2. Яким словом в JavaScript оголошується "змінна", значення
                   якої НЕ можна змінити?
-                </p>
+                </legend>
                 <label class="test-label">
                   <input
                     type="radio"
@@ -1082,13 +1097,13 @@ function run() {
                   />
                   const
                 </label>
-              </div>
+              </fieldset>
 
-              <div class="test-question">
-                <p>
+              <fieldset class="test-question">
+                <legend>
                   3. Які з цих типів даних існують у JavaScript? (Обери усі
                   правильні)
-                </p>
+                </legend>
                 <label class="test-label">
                   <input
                     type="checkbox"
@@ -1116,23 +1131,24 @@ function run() {
                   />
                   Character (Символьний)
                 </label>
-              </div>
+              </fieldset>
 
-              <div class="test-question">
-                <p>4. Яким буде результат цього коду?</p>
+              <fieldset class="test-question">
+                <legend>4. Яким буде результат цього коду?</legend>
                 <pre><code class="language-javascript">console.log(10 + "5");</code></pre>
                 <textarea
+                  aria-label="Відповідь на питання 4"
                   class="test-textarea"
                   name="q4"
                   placeholder="Напиши відповідь тут..."
                 ></textarea>
-              </div>
+              </fieldset>
 
-              <div class="test-question">
-                <p>
+              <fieldset class="test-question">
+                <legend>
                   5. Зміни колір тексту заголовка на фіолетовий (purple) і шрифт
                   на Arial.
-                </p>
+                </legend>
 
                 <div
                   class="custom-editor-wrapper html-editor-wrapper"
@@ -1158,6 +1174,7 @@ function run() {
                     </div>
                   </div>
                   <textarea
+                    aria-label="Редактор HTML коду"
                     class="custom-editor-input"
                     spellcheck="false"
                     name="hw_html_code"
@@ -1177,10 +1194,12 @@ function run() {
                     sandbox="allow-scripts"
                   ></iframe>
                 </div>
-              </div>
+              </fieldset>
 
-              <div class="test-question">
-                <p>6. Зроби замість обчислення суми масиву чисел — множення:</p>
+              <fieldset class="test-question">
+                <legend>
+                  6. Зроби замість обчислення суми масиву чисел — множення:
+                </legend>
 
                 <div class="custom-editor-wrapper" id="hw-js-editor">
                   <div class="editor-header">
@@ -1203,6 +1222,7 @@ function run() {
                     </div>
                   </div>
                   <textarea
+                    aria-label="Редактор JS коду"
                     class="custom-editor-input"
                     spellcheck="false"
                     name="hw_js_code"
@@ -1218,7 +1238,7 @@ console.log(`Результат: ${result}`);</textarea
                   >
                   <pre class="custom-editor-output">Очікування запуску...</pre>
                 </div>
-              </div>
+              </fieldset>
 
               <div class="homework-actions">
                 <button type="button" id="save-hw-btn" class="submit-btn">

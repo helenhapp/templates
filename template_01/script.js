@@ -27,8 +27,8 @@ function buildNavigation() {
   container.innerHTML = `
     <nav class="top-bar">
       <div class="logo-container">
-        <img src="./logo-light.svg" alt="WebUniverse Logo" class="site-logo logo-light" />
-        <img src="./logo-dark.svg" alt="WebUniverse Logo" class="site-logo logo-dark" />
+        <img src="./logo-light.svg" alt="WebUniverse Logo" width="150" height="54" class="site-logo logo-light" />
+        <img src="./logo-dark.svg" alt="WebUniverse Logo" width="150" height="54" class="site-logo logo-dark" />
       </div>
       <div class="top-bar__controls">
         <div class="nav-links">
