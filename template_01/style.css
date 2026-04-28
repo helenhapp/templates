@@ -14,22 +14,16 @@
   --brand5: rgb(192, 159, 203);
 
   /* Фони */
-  /* --bg1: #faf5ff;
-  --bg2: #f0e6f9; */
   --bg1: #fbf7ff;
   --bg2: #f5eaff;
   --panel: #ffffff;
-  /* --panel-alt: #efdffd; */
-  /* --hover-bg: #e4cdf8; */
+  --panel-alt: #f3e6fe;
   --hover-bg: #e6d2f9;
   --code-bg: #fcf9ff;
-
-  --panel-alt: #f3e6fe;
 
   /* Напівпрозорі заливки */
   --link-bg: rgba(239, 223, 253, 0.35);
   --soft-callout: rgba(150, 80, 212, 0.065);
-  /* --bar-bg: #efdffd; */
   --bar-bg: #f2e3ff;
 
   /* Перемикачі */
@@ -39,7 +33,6 @@
 
   /* Текст і посилання */
   --text-main: var(--brand1);
-  /* --text-soft: #6b5284; */
   --text-soft: #5b4077;
   --title: var(--brand2);
   --link-color: var(--brand4);
@@ -47,16 +40,13 @@
 
   /* Акценти та рамки */
   --accent: var(--brand2);
-  /* --accent-pop: var(--brand3); */
-  /* --accent-pop: rgb(253, 110, 44); */
-  --accent-pop: rgb(200, 82, 0);
+  --accent-pop: rgb(215, 90, 0);
   --accordion-border: var(--tab-border);
   --tab-border: #cfb3e0;
   --code-border: var(--hover-bg);
 
   /* Тіні */
   --shadow-accent: rgba(44, 25, 62, 0.12);
-  /* --title-shadow: 3px 3px 0 var(--brand5); */
   --title-shadow: 2px 2px 0 var(--brand5);
   --btn-shadow: 3px 3px 0 var(--shadow-accent);
   --code-shadow: 0 0 5px var(--shadow-accent);
@@ -101,7 +91,6 @@
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
-  /* --title-shadow: 3px 3px 0 var(--brand2); */
   --title-shadow: 2px 2px 0 var(--brand2);
   --btn-shadow: 0 0 3px var(--code-border);
   --code-shadow: 0 0 10px var(--shadow-accent);
@@ -153,34 +142,6 @@ main,
 header {
   width: 92%;
   max-width: 1000px;
-}
-
-/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🖥 Різна ширина для різних моніторів */
-/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-
-/* Для стандартних великих ноутбуків та моніторів */
-@media (min-width: 1440px) {
-  main,
-  header {
-    max-width: 1200px;
-  }
-}
-
-/* Для Full HD моніторів */
-@media (min-width: 1920px) {
-  main,
-  header {
-    max-width: 1400px;
-  }
-}
-
-/* Для величезних моніторів 2K / 4K / Ultrawide */
-@media (min-width: 2560px) {
-  main,
-  header {
-    max-width: 1600px;
-  }
 }
 
 main {
@@ -352,24 +313,6 @@ a:hover img.tiny-image {
   border-color: var(--accent-pop);
 }
 
-/* Клас для картинок, які можна збільшувати */
-@media (min-width: 650px) {
-  img.zoomable {
-    cursor: zoom-in;
-  }
-  img.zoomable:hover {
-    border-color: var(--accent-pop);
-    transform: scale(1.02);
-  }
-  img.zoomable.expanded {
-    cursor: zoom-out;
-    width: 100%;
-    max-height: none;
-    height: auto;
-    transform: none;
-  }
-}
-
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 🍃 6. КНОПКИ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
@@ -430,17 +373,13 @@ button:active {
   transform: translateY(-5px);
 }
 
-/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🗂 Вкладки (Таби) для частин уроку */
-/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-
+/* Вкладки (Таби) для частин уроку */
 .tabs-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 20px;
 }
-
 .tab-btn {
   flex: 1 1 0%;
   padding: 12px 20px;
@@ -451,17 +390,14 @@ button:active {
   backface-visibility: hidden;
   transform: translateZ(0);
 }
-
 .tab-btn:hover {
   background-color: var(--panel-alt);
   opacity: 1;
   transform: scale(1.02);
 }
-
 .tab-btn:active {
   transform: scale(0.93);
 }
-
 .tab-btn.active {
   border-style: inset;
   transform: scale(0.97);
@@ -470,7 +406,6 @@ button:active {
   color: var(--text-main);
   pointer-events: none;
 }
-
 .tab-content {
   display: none;
   opacity: 0;
@@ -818,7 +753,6 @@ header h2 {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 25px;
-  /* margin: 15px 0; */
   margin-bottom: 15px;
 }
 .title-container h1 {
@@ -910,12 +844,7 @@ header a.nav-arrow:hover {
     color 0.4s ease;
   list-style: none;
 }
-/* .accordion__header > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-} */
- .accordion__header > h2 {
+.accordion__header > h2 {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -989,8 +918,7 @@ details.task summary::before {
   font-family: monospace;
   color: var(--accent);
   transition: transform 0.2s ease;
-  flex-shrink: 0;     
-  /* margin-top: 4px;      */
+  flex-shrink: 0;
 }
 details.answer[open] summary::before,
 details.task[open] summary::before {
@@ -1031,7 +959,6 @@ details.task[open] summary::before {
 }
 .task summary {
   padding: 15px 20px;
-  /* display: block; */
 }
 .task > :not(summary) {
   padding: 0 20px 20px 20px;
@@ -1041,8 +968,6 @@ details.task[open] summary::before {
   margin-left: 10px;
 }
 .task summary h4 {
-  /* display: inline-block;
-  vertical-align: middle; */
   margin: 0;
   line-height: 1.4;
 }
@@ -1085,9 +1010,6 @@ hr {
   opacity: 0.85;
   border-top: 1px solid var(--accordion-border);
 }
-/* .accordion__content hr {
-  width: 90%;
-} */
 
 /* "Завіса" для переходу між сторінками */
 .transition-curtain {
@@ -1296,7 +1218,7 @@ pre:has(code.nocopy) {
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🛸 13. ФУТЕР */
+/* 🛸 12. ФУТЕР */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 footer {
@@ -1315,7 +1237,7 @@ footer p {
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🖥️ 14. ШИРОКИЙ РЕЖИМ (WIDE MODE) */
+/* 🖥️ 13. ШИРОКИЙ РЕЖИМ (WIDE MODE) */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 .wide-toggle {
@@ -1347,191 +1269,8 @@ body.wide-mode .wide-toggle {
   border: 2px solid var(--toggle-border);
 }
 
-@media (min-width: 751px) {
-  body.wide-mode main,
-  body.wide-mode header {
-    width: 92%;
-    max-width: none;
-  }
-}
-
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 💐 15. АДАПТИВНІСТЬ */
-/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-
-@media (max-width: 680px) {
-  .tab-btn {
-    flex: 1 1 calc(50% - 15px);
-  }
-}
-@media (max-width: 370px) {
-  .tab-btn {
-    flex: 1 1 100%;
-  }
-}
-
-/* Мобільна навігація (Ховаємо посилання, показуємо 🍔)
-+ ховаємо кнопку широкого екрана 🖥️
-*/
-@media (max-width: 750px) {
-  .hamburger-btn {
-    display: block;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    gap: 0;
-    background-color: var(--panel);
-    flex-direction: column;
-    z-index: 100;
-    box-shadow: 0 5px 0 var(--panel-alt);
-  }
-  [data-theme="dark"] .nav-links {
-    background-color: var(--panel-alt);
-    box-shadow: 0 5px 0 var(--panel);
-  }
-  .nav-links.open {
-    display: flex;
-    animation: menuDrop 0.3s ease forwards;
-  }
-  .nav-link {
-    width: 100%;
-    padding: 20px;
-    border-radius: 0;
-    border-bottom: 1px solid var(--accordion-border);
-  }
-  .nav-link:first-of-type {
-    border-top: 1px solid var(--accordion-border);
-  }
-  .wide-toggle {
-    display: none;
-  }
-  .video-zoom-btn {
-    display: none !important;
-  }
-  .video-wrapper.zoomable,
-  .mockup-container.zoomable {
-    margin-bottom: 20px !important;
-  }
-}
-
-/* Анімація випадання меню */
-@keyframes menuDrop {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 649px) {
-  body {
-    font-size: 16px;
-  }
-  main,
-  header {
-    width: 93%;
-  }
-  .accordion__content {
-    padding: 0 22px;
-  }
-  img {
-    max-width: 100%;
-    max-height: none;
-    height: auto;
-  }
-  code {
-    padding: 10px;
-  }
-  header {
-    border-radius: 0;
-    box-shadow: none;
-    margin-top: 0;
-    background-position: center;
-  }
-  .scroll-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 449px) {
-  :root {
-    --title-shadow: 2px 2px 0 var(--brand5);
-    --accordion-drop-shadow: 2px 2px 0 var(--brand5);
-  }
-  [data-theme="dark"] {
-    --accordion-drop-shadow: 2px 2px 0 var(--brand2);
-    --title-shadow: 2px 2px 0 var(--brand2);
-  }
-  body {
-    font-size: 15px;
-  }
-  main,
-  header {
-    width: 94%;
-  }
-  .objective {
-    text-align: left;
-    line-height: 1.5;
-  }
-  h1 {
-    letter-spacing: 2px;
-  }
-  p,
-  li {
-    text-align: left;
-  }
-  .soft-callout {
-    padding: 10px 15px;
-  }
-  .accordion__item {
-    margin-bottom: 12px;
-  }
-  td code {
-    font-size: 13px;
-  }
-  p.topic {
-    font-size: 12px;
-    padding: 0 5px;
-  }
-  .title-container {
-    gap: 15px;
-  }
-  .download-button {
-    display: flex;
-    width: 100%;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-  .hotspot::after {
-    font-size: 12px;
-  }
-}
-
-/* 🛑 ДОСТУПНІСТЬ: Вимкнення анімацій для чутливих користувачів */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🛼 16. СКРОЛБАРИ */
+/* 🛼 14. СКРОЛБАРИ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 html {
@@ -1571,7 +1310,7 @@ pre::-webkit-scrollbar-thumb,
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🎬 17. ВІДЕО */
+/* 🎬 15. ВІДЕО */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 .video-wrapper {
@@ -1638,7 +1377,7 @@ pre::-webkit-scrollbar-thumb,
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 👾 18. CodeMirror */
+/* 👾 16. CodeMirror */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 .CodeMirror {
@@ -1681,7 +1420,7 @@ pre::-webkit-scrollbar-thumb,
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 📝 19. ТЕСТИ ТА ФОРМИ */
+/* 📝 17. ТЕСТИ ТА ФОРМИ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 .test-question {
@@ -1839,7 +1578,6 @@ pre::-webkit-scrollbar-thumb,
   display: flex;
   gap: 15px;
   margin: 30px 0;
-  /* margin-bottom: 30px; */
   flex-wrap: wrap;
 }
 
@@ -1933,12 +1671,6 @@ input,
   font-size: 15px;
 }
 
-@media (max-width: 449px) {
-  .homework-actions button {
-    flex: 1 1 100%;
-  }
-}
-
 /* Фікс для системного фону при автозаповненні (Autofill) */
 #student-name:-webkit-autofill,
 #student-name:-webkit-autofill:hover,
@@ -1986,7 +1718,7 @@ fieldset.test-question .custom-editor-wrapper {
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🔢 20. НУМЕРАЦІЯ РЯДКІВ (HIGHLIGHT.JS PLUGIN) */
+/* 🔢 18. НУМЕРАЦІЯ РЯДКІВ (HIGHLIGHT.JS PLUGIN) */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 code:has(.hljs-ln) {
@@ -2040,7 +1772,7 @@ code.long-code .hljs-ln td.hljs-ln-code {
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🎯 21. ІНТЕРАКТИВНИЙ МАКЕТ (зони та підказки) */
+/* 🎯 19. ІНТЕРАКТИВНИЙ МАКЕТ (зони та підказки) */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 /* Контейнер та зображення */
@@ -2120,14 +1852,9 @@ code.long-code .hljs-ln td.hljs-ln-code {
 .hotspot:hover::after {
   opacity: 1;
 }
-@media (max-width: 449px) {
-  .hotspot::after {
-    font-size: 10px;
-  }
-}
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
-/* 🎨 22. СТИЛІЗАЦІЯ CSS КАРТОК */
+/* 🎨 20. СТИЛІЗАЦІЯ CSS КАРТОК */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 .style-cards-container {
@@ -2217,14 +1944,235 @@ code.long-code .hljs-ln td.hljs-ln-code {
   outline-offset: 2px;
 }
 
-@media (max-width: 900px) {
-  .style-card {
-    flex: 1 1 calc(50% - 20px);
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+/* 💐 21. АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ) */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+
+/* 🖥️ ВЕЛИКІ ЕКРАНИ (min-width) */
+
+/* Адаптація ширини контенту для великих моніторів */
+@media (min-width: 1440px) {
+  main,
+  header {
+    max-width: 1200px;
+  }
+}
+@media (min-width: 1920px) {
+  main,
+  header {
+    max-width: 1400px;
+  }
+}
+@media (min-width: 2560px) {
+  main,
+  header {
+    max-width: 1600px;
   }
 }
 
+/* Широкий режим (Кнопка 🖥️) */
+@media (min-width: 751px) {
+  body.wide-mode main,
+  body.wide-mode header {
+    width: 92%;
+    max-width: none;
+  }
+}
+
+/* Зум картинок працює тільки на великих екранах */
+@media (min-width: 650px) {
+  img.zoomable {
+    cursor: zoom-in;
+  }
+  img.zoomable:hover {
+    border-color: var(--accent-pop);
+    transform: scale(1.02);
+  }
+  img.zoomable.expanded {
+    cursor: zoom-out;
+    width: 100%;
+    max-height: none;
+    height: auto;
+    transform: none;
+  }
+}
+
+/* 📱 ПЛАНШЕТИ ТА СМАРТФОНИ (max-width) */
+
+/* 📱 900px: Планшети */
+@media (max-width: 900px) {
+  .style-card {
+    flex: 1 1 calc(50% - 20px);
+  } /* Картки стилів у 2 колонки */
+}
+
+/* 📱 750px: Мобільне меню та приховування десктопних кнопок */
+@media (max-width: 750px) {
+  .hamburger-btn {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    gap: 0;
+    background-color: var(--panel);
+    flex-direction: column;
+    z-index: 100;
+    box-shadow: 0 5px 0 var(--panel-alt);
+  }
+  [data-theme="dark"] .nav-links {
+    background-color: var(--panel-alt);
+    box-shadow: 0 5px 0 var(--panel);
+  }
+  .nav-links.open {
+    display: flex;
+    animation: menuDrop 0.3s ease forwards;
+  }
+  .nav-link {
+    width: 100%;
+    padding: 20px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--accordion-border);
+  }
+  .nav-link:first-of-type {
+    border-top: 1px solid var(--accordion-border);
+  }
+  .wide-toggle,
+  .video-zoom-btn {
+    display: none !important;
+  }
+  .video-wrapper.zoomable,
+  .mockup-container.zoomable {
+    margin-bottom: 20px !important;
+  }
+}
+
+/* 📱 680px: Вкладки (Таби) */
+@media (max-width: 680px) {
+  .tab-btn {
+    flex: 1 1 calc(50% - 15px);
+  } /* Вкладки у 2 колонки */
+}
+
+/* 📱 649px: Основна адаптація контенту під смартфони */
+@media (max-width: 649px) {
+  body {
+    font-size: 16px;
+  }
+  main,
+  header {
+    width: 93%;
+  }
+  header {
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0;
+  }
+  .accordion__content {
+    padding: 0 22px;
+  }
+  img {
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+  }
+  code {
+    padding: 10px;
+  }
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+/* 📱 600px: Картки стилів */
 @media (max-width: 600px) {
   .style-card {
     flex: 1 1 100%;
+  } /* Картки стилів в 1 колонку */
+}
+
+/* 📱 449px: Маленькі смартфони (Мікро-тюнінг) */
+@media (max-width: 449px) {
+  :root {
+    --title-shadow: 2px 2px 0 var(--brand5);
+    --accordion-drop-shadow: 2px 2px 0 var(--brand5);
+  }
+  [data-theme="dark"] {
+    --accordion-drop-shadow: 2px 2px 0 var(--brand2);
+    --title-shadow: 2px 2px 0 var(--brand2);
+  }
+  body {
+    font-size: 15px;
+  }
+  main,
+  header {
+    width: 94%;
+  }
+  h1 {
+    letter-spacing: 2px;
+  }
+  p,
+  li,
+  .objective {
+    text-align: left;
+  }
+  .objective {
+    line-height: 1.5;
+  }
+  .soft-callout {
+    padding: 10px 15px;
+  }
+  .accordion__item {
+    margin-bottom: 12px;
+  }
+  td code {
+    font-size: 13px;
+  }
+  p.topic {
+    font-size: 12px;
+    padding: 0 5px;
+  }
+  .title-container {
+    gap: 15px;
+  }
+  .hotspot::after {
+    font-size: 10px;
+  }
+  .homework-actions button {
+    flex: 1 1 100%;
+  }
+  .download-button {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
+/* 📱 370px: Дуже вузькі екрани */
+@media (max-width: 370px) {
+  .tab-btn {
+    flex: 1 1 100%;
+  } /* Вкладки в 1 колонку */
+}
+
+/* 🛑 ДОСТУПНІСТЬ (Accessibility) */
+
+/* Вимкнення анімацій для чутливих користувачів */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

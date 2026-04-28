@@ -1,6 +1,6 @@
-/* ==================================================================
-   🧩 1. БАЗОВІ СТИЛІ ТА ТИПОГРАФІКА
-================================================================== */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+/* 🧩 1. БАЗОВІ СТИЛІ ТА ТИПОГРАФІКА */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 h1 {
   font-size: clamp(1.5rem, 6.3vw, 2.8rem);
@@ -19,9 +19,9 @@ header {
   -webkit-text-stroke: 1px var(--accent-pop);
 }
 
-/* ==================================================================
-   🧭 2. НАВІГАЦІЯ ТА СПИСКИ УРОКІВ
-================================================================== */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+/* 🧭 2. НАВІГАЦІЯ ТА СПИСКИ УРОКІВ */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 nav ul {
   margin: 0;
@@ -55,22 +55,21 @@ nav ul li a:hover span {
   color: var(--accent-pop);
 }
 
-/* ==================================================================
-   📂 3. АКОРДЕОНИ (ГОЛОВНІ ТА ВКЛАДЕНІ ЧАСТИНИ)
-================================================================== */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+/* 📂 3. АКОРДЕОНИ (ГОЛОВНІ ТА ВКЛАДЕНІ ЧАСТИНИ) */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
-/* --- Головний акордеон --- */
+/* Головний акордеон */
 .accordion__content > *:first-child,
 .accordion__content > *:last-child {
   margin: 0;
 }
 
-/* --- Вкладені акордеони (Частини) --- */
+/* Вкладені акордеони (Частини) */
 .sub-accordion {
   margin: 0;
   border-bottom: 1px solid var(--hover-bg);
 }
-
 .sub-accordion:last-child {
   border-bottom: none;
 }
@@ -86,19 +85,15 @@ nav ul li a:hover span {
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-
 .sub-header::-webkit-details-marker {
   display: none;
 }
-
 .sub-header:hover .sub-part-title {
   color: var(--brand5);
 }
-
 [data-theme="dark"] .sub-header:hover .sub-part-title {
   color: var(--text-main);
 }
-
 .sub-part-title {
   margin: 0;
   font-family: "Press Start 2P", monospace;
@@ -117,7 +112,6 @@ nav ul li a:hover span {
   transform: rotate(0deg) !important;
   transition: transform 0.3s ease;
 }
-
 .sub-accordion[open] .sub-header .acc-arrow {
   transform: rotate(90deg) !important;
 }
@@ -126,15 +120,12 @@ nav ul li a:hover span {
 .sub-accordion nav {
   padding: 0 0 15px 0;
 }
-
 .sub-accordion nav ul {
   margin: 0;
 }
-
 .sub-accordion nav ul li:first-child a {
   margin-top: 5px;
 }
-
 .sub-accordion nav ul li:last-child a {
   margin-bottom: 0;
 }
@@ -142,14 +133,16 @@ nav ul li a:hover span {
 /* Контейнер для плавної анімації внутрішніх частин */
 .sub-accordion-content {
   overflow: hidden;
-  transition: height 0.3s ease, opacity 0.3s ease;
+  transition:
+    height 0.3s ease,
+    opacity 0.3s ease;
 }
 
-/* ==================================================================
-   🔒 4. МОДАЛЬНІ ВІКНА ТА ПАРОЛІ
-================================================================== */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+/* 🔒 4. МОДАЛЬНІ ВІКНА ТА ПАРОЛІ */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
-/* --- Базові стилі вікна --- */
+/* Базові стилі вікна */
 dialog {
   width: 90%;
   max-width: 430px;
@@ -163,11 +156,9 @@ dialog {
     0 15px 40px rgba(0, 0, 0, 0.5),
     var(--accordion-shadow);
 }
-
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.85);
 }
-
 dialog h2 {
   margin: 0 0 16px 0;
   font-family: system-ui, sans-serif;
@@ -177,7 +168,7 @@ dialog h2 {
   color: var(--text-main);
 }
 
-/* --- Поля вводу --- */
+/* Поля вводу */
 dialog input {
   width: 100%;
   margin-top: 15px;
@@ -191,20 +182,18 @@ dialog input {
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
-
 dialog input:focus {
   outline: none;
   border-color: var(--accent);
 }
 
-/* --- Кнопки модального вікна --- */
+/* Кнопки модального вікна */
 .modal-actions {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
   margin-top: 25px;
 }
-
 .modal-actions button {
   padding: 10px 18px;
   border: none;
@@ -214,61 +203,53 @@ dialog input:focus {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 .modal-actions button:hover {
   transform: translateY(-2px);
 }
-
 .modal-actions button:active {
   transform: translateY(2px);
 }
-
 #cancel-btn {
   background-color: var(--panel-alt);
   color: var(--text-soft);
 }
-
 #cancel-btn:hover {
   background-color: var(--hover-bg);
   color: var(--text-main);
 }
-
 #submit-btn {
   background-color: var(--accent);
   color: #ffffff;
 }
-
 #submit-btn:hover {
   background-color: var(--accent-pop);
 }
 
-/* --- Глобальне вікно доступу до сайту --- */
+/* Глобальне вікно доступу до сайту */
 #global-password-modal h2,
 #global-password-modal .modal-description,
 #global-password-error {
   text-align: center;
 }
-
 #global-password-modal .modal-actions {
   justify-content: center;
 }
-
 #global-submit-btn {
   width: 30%;
   min-width: 100px;
   border-radius: 5px;
 }
 
-/* --- Тексти помилок --- */
+/* Тексти помилок */
 .error-text {
   display: none;
   margin-top: 10px;
   color: LightCoral;
 }
 
-/* ==================================================================
-  📱 5. МЕДІАЗАПИТИ (МОБІЛЬНА АДАПТАЦІЯ)
-================================================================== */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+/* 📱 5. МЕДІАЗАПИТИ (МОБІЛЬНА АДАПТАЦІЯ) */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 @media (max-width: 449px) {
   :root {
