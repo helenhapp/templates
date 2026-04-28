@@ -47,7 +47,7 @@
 
   /* Тіні */
   --shadow-accent: rgba(44, 25, 62, 0.12);
-  --title-shadow: 2px 2px 0 var(--brand5);
+  --title-shadow: 3px 3px 0 var(--brand5);
   --btn-shadow: 3px 3px 0 var(--shadow-accent);
   --code-shadow: 0 0 5px var(--shadow-accent);
   /* --accordion-drop-shadow: 2px 2px 0 var(--brand5); */
@@ -93,7 +93,7 @@
 
   /* Ефекти та тіні */
   --shadow-accent: rgba(192, 159, 203, 0.25);
-  --title-shadow: 2px 2px 0 var(--brand2);
+  --title-shadow: 3px 3px 0 var(--brand2);
   --btn-shadow: 0 0 3px var(--code-border);
   --code-shadow: 0 0 10px var(--shadow-accent);
   /* --accordion-drop-shadow: 2px 2px 0 var(--brand2); */
@@ -440,11 +440,15 @@ button:active {
 }
 
 .soft-callout.objective {
-  border-radius: 0;
-  border-top: 2px solid var(--accordion-border);
-  border-bottom: 2px solid var(--accordion-border);
+  /* border-radius: 0; */
+  /* border-top: 3px solid var(--accordion-border); */
+  /* border-bottom: 2px solid var(--accordion-border); */
   /* margin-bottom: 0; */
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+  /* border-radius: 0 0 6px 6px; */
+
+  /* background-color: var(--panel-alt); */
+  border: 1px solid var(--hover-bg);
 }
 
 .tab-btn {
@@ -1114,17 +1118,17 @@ hr.divider-pixels {
 }
 
 /* Ретро-рамка для блоку "Мета заняття" */
-.soft-callout.objective {
+/* .soft-callout.objective {
   position: relative;
-  border-radius: 0; /* Прибираємо заокруглення для піксельного стилю */
+  border-radius: 0;
   border: solid var(--accordion-border);
-  border-width: 0 2px; /* Робимо рамку тільки ліворуч і праворуч */
+  border-width: 0 2px;
   margin-top: 30px;
   margin-bottom: 30px;
-}
+} */
 
 /* Малюємо верхню та нижню лінії */
-.soft-callout.objective::before,
+/* .soft-callout.objective::before,
 .soft-callout.objective::after {
   content: "";
   position: absolute;
@@ -1133,15 +1137,15 @@ hr.divider-pixels {
   height: 2px;
   background: var(--accordion-border);
   transition: background 0.4s ease;
-}
+} */
 
-.soft-callout.objective::before {
+/* .soft-callout.objective::before {
   top: -2px;
 }
 
 .soft-callout.objective::after {
   bottom: -2px;
-}
+} */
 
 /* "Завіса" для переходу між сторінками */
 .transition-curtain {
