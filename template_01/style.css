@@ -48,7 +48,7 @@
   /* Акценти та рамки */
   --accent: var(--brand2);
   /* --accent-pop: var(--brand4); */
-  --accent-pop: rgb(243, 79, 19);
+  --accent-pop: rgb(247, 86, 28);
   --accordion-border: var(--tab-border);
   --tab-border: #cfb3e0;
   --code-border: var(--hover-bg);
@@ -909,10 +909,20 @@ header a.nav-arrow:hover {
     color 0.4s ease;
   list-style: none;
 }
-.accordion__header > div {
+/* .accordion__header > div {
   display: flex;
   align-items: center;
   gap: 10px;
+} */
+ .accordion__header > h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-weight: normal;
 }
 [data-theme="dark"] h3,
 [data-theme="dark"] .accordion__header {
