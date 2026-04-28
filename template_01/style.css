@@ -1075,9 +1075,10 @@ details.task[open] summary::before {
 } */
 hr {
   border: none;
-  border-top: 3px dashed var(--accent-pop);
+  /* border-top: 3px dashed var(--accent-pop); */
   margin: 30px auto;
   opacity: 0.85;
+  border-top: 1px solid var(--hover-bg);
 }
 [data-theme="dark"] hr,
 [data-theme="dark"] .accordion__content hr {
