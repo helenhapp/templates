@@ -41,9 +41,8 @@
   /* Акценти та рамки */
   --accent: var(--brand2);
   --accent-pop: var(--brand4);
-  /* --accordion-border: var(--brand2); */
   --accordion-border: var(--brand5);
-  --tab-border: #cba9de;
+  --tab-border: #cfb3e0;
   --code-border: var(--hover-bg);
 
   /* Тіні */
@@ -51,8 +50,7 @@
   --title-shadow: 3px 3px 0 var(--brand5);
   --btn-shadow: 3px 3px 0 var(--shadow-accent);
   --code-shadow: 0 0 5px var(--shadow-accent);
-  /* --accordion-drop-shadow: 2px 2px 0 var(--brand5); */
-  --accordion-drop-shadow: none;
+  --accordion-drop-shadow: 2px 2px 0 var(--brand5);
 
   /* Скролбари */
   --scrollbar-track: var(--panel-alt);
@@ -69,7 +67,6 @@
   --panel: #1a0032;
   --hover-bg: #2f005b;
   --code-bg: #140b24;
-  /* --soft-callout: rgba(36, 0, 70, 0.9); */
   --soft-callout: rgba(36, 0, 70, 0.6);
   --link-bg: rgb(36, 0, 70, 0.5);
   --bar-bg: var(--panel);
@@ -97,8 +94,7 @@
   --title-shadow: 3px 3px 0 var(--brand2);
   --btn-shadow: 0 0 3px var(--code-border);
   --code-shadow: 0 0 10px var(--shadow-accent);
-  /* --accordion-drop-shadow: 2px 2px 0 var(--brand2); */
-  --accordion-drop-shadow: none;
+  --accordion-drop-shadow: 2px 2px 0 var(--brand2);
 
   /* Скролбари */
   --scrollbar-track: var(--bg1);
@@ -1044,7 +1040,7 @@ details.task[open] summary::before {
   font-family: Arial, sans-serif;
   color: var(--text-soft);
   background-color: var(--soft-callout);
-    border: 1px solid var(--hover-bg);
+  border: 1px solid var(--accordion-border);
 }
 .objective ul {
   margin: 0 5px;
@@ -1053,17 +1049,7 @@ hr {
   border: none;
   margin: 30px auto;
   opacity: 0.85;
-  border-top: 1px solid var(--hover-bg);
-}
-[data-theme="dark"] hr,
-[data-theme="dark"] .objective
- {
-  border-color: var(--accordion-border);
-}
- hr,
-.objective
- {
-  border-color: var(--accordion-border);
+  border-top: 1px solid var(--accordion-border);
 }
 .accordion__content hr {
   width: 90%;
