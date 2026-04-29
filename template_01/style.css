@@ -1907,6 +1907,7 @@ code.long-code .hljs-ln td.hljs-ln-code {
   gap: 10px;
   cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .style-card-checkbox {
