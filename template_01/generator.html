@@ -145,16 +145,75 @@
           placeholder="Наприклад: <h1> або <div>"
           value="<h1>"
         />
-        <small style="color: #666; font-size: 0.8rem"
+
+        <div
+          style="
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+          "
+        >
+          <label
+            style="
+              font-weight: normal;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <input type="checkbox" id="cb-left-edge" />
+            Додати
+            <code
+              style="
+                background: #e5e7eb;
+                padding: 2px 5px;
+                border-radius: 4px;
+                font-size: 12px;
+              "
+              >left-edge</code
+            >
+          </label>
+          <label
+            style="
+              font-weight: normal;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <input type="checkbox" id="cb-right-edge" />
+            Додати
+            <code
+              style="
+                background: #e5e7eb;
+                padding: 2px 5px;
+                border-radius: 4px;
+                font-size: 12px;
+              "
+              >right-edge</code
+            >
+          </label>
+        </div>
+
+        <small
+          style="
+            color: #666;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 8px;
+          "
           >Потім просто малюйте мишкою по картинці.</small
         >
       </div>
 
       <div class="step-box" style="flex-grow: 1">
-        <label for="output">3. Ваш згенерований код:</label>
+        <label for="output">3. Ваш згенерований код (JS об'єкт):</label>
         <textarea
           id="output"
-          placeholder="Тут з'являться готові рядки <div class='hotspot'>..."
+          placeholder="Тут з'являться готові рядки { top: '...', left: '...' },"
         ></textarea>
         <button class="secondary" id="clear-btn">Очистити код</button>
       </div>
@@ -180,18 +239,24 @@
       const targetImage = document.getElementById("target-image");
       const selection = document.getElementById("selection");
       const tagNameInput = document.getElementById("tag-name");
+      const cbLeftEdge = document.getElementById("cb-left-edge");
+      const cbRightEdge = document.getElementById("cb-right-edge");
       const output = document.getElementById("output");
       const clearBtn = document.getElementById("clear-btn");
       const instruction = document.getElementById("instruction");
 
-      // --- 1. ВІДНОВЛЕННЯ З LOCALSTORAGE ПРИ ЗАВАНТАЖЕННІ ---
+      // --- 1. ВІДНОВЛЕННЯ З SESSIONSTORAGE ПРИ ЗАВАНТАЖЕННІ ---
       document.addEventListener("DOMContentLoaded", () => {
-        const savedTag = localStorage.getItem("wu_gen_tag");
-        const savedOutput = localStorage.getItem("wu_gen_output");
-        const savedImage = localStorage.getItem("wu_gen_image");
+        const savedTag = sessionStorage.getItem("wu_gen_tag");
+        const savedOutput = sessionStorage.getItem("wu_gen_output");
+        const savedImage = sessionStorage.getItem("wu_gen_image");
+        const savedLeftEdge = sessionStorage.getItem("wu_gen_left_edge");
+        const savedRightEdge = sessionStorage.getItem("wu_gen_right_edge");
 
         if (savedTag) tagNameInput.value = savedTag;
         if (savedOutput) output.value = savedOutput;
+        if (savedLeftEdge === "true") cbLeftEdge.checked = true;
+        if (savedRightEdge === "true") cbRightEdge.checked = true;
 
         if (savedImage) {
           targetImage.src = savedImage;
@@ -202,12 +267,29 @@
 
       // Збереження тегу при введенні
       tagNameInput.addEventListener("input", () => {
-        localStorage.setItem("wu_gen_tag", tagNameInput.value);
+        sessionStorage.setItem("wu_gen_tag", tagNameInput.value);
+      });
+
+      // Взаємовиключні чекбокси та їх збереження
+      cbLeftEdge.addEventListener("change", () => {
+        if (cbLeftEdge.checked) {
+          cbRightEdge.checked = false;
+          sessionStorage.setItem("wu_gen_right_edge", "false");
+        }
+        sessionStorage.setItem("wu_gen_left_edge", cbLeftEdge.checked);
+      });
+
+      cbRightEdge.addEventListener("change", () => {
+        if (cbRightEdge.checked) {
+          cbLeftEdge.checked = false;
+          sessionStorage.setItem("wu_gen_left_edge", "false");
+        }
+        sessionStorage.setItem("wu_gen_right_edge", cbRightEdge.checked);
       });
 
       // Збереження коду при ручному редагуванні (якщо ви щось допишете руками)
       output.addEventListener("input", () => {
-        localStorage.setItem("wu_gen_output", output.value);
+        sessionStorage.setItem("wu_gen_output", output.value);
       });
 
       // --- 2. ЗАВАНТАЖЕННЯ ТА ЗБЕРЕЖЕННЯ КАРТИНКИ ---
@@ -222,9 +304,9 @@
           imgContainer.style.display = "inline-block";
           instruction.style.display = "none";
 
-          // Зберігаємо картинку (try-catch потрібен, бо localStorage має ліміт ~5MB)
+          // Зберігаємо картинку (try-catch потрібен, бо sessionStorage має ліміт ~5MB)
           try {
-            localStorage.setItem("wu_gen_image", imgData);
+            sessionStorage.setItem("wu_gen_image", imgData);
           } catch (error) {
             console.warn(
               "Картинка занадто велика для збереження в пам'яті браузера.",
@@ -296,25 +378,33 @@
         const widthPerc = ((widthPx / rect.width) * 100).toFixed(1);
         const heightPerc = ((heightPx / rect.height) * 100).toFixed(1);
 
+        // Екрануємо лише одинарні лапки, оскільки сам JS рядок обгорнутий у ' '
         let tagValue =
-          tagNameInput.value
-            .replace(/"/g, "&quot;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;") || "Секретна зона";
+          tagNameInput.value.replace(/'/g, "\\'") || "Секретна зона";
 
-        const htmlCode = `<div class="hotspot" style="top: ${topPerc}%; left: ${leftPerc}%; width: ${widthPerc}%; height: ${heightPerc}%;" data-tag="${tagValue}"></div>\n`;
+        // Перевіряємо, чи вибраний якийсь із чекбоксів
+        let extraClassStr = "";
+        if (cbLeftEdge.checked) {
+          extraClassStr = `, extraClass: "left-edge"`;
+        } else if (cbRightEdge.checked) {
+          extraClassStr = `, extraClass: "right-edge"`;
+        }
 
-        output.value += htmlCode;
+        // Формуємо об'єкт для масиву
+        const jsCode = `  { top: "${topPerc}%", left: "${leftPerc}%", w: "${widthPerc}%", h: "${heightPerc}%", tag: '${tagValue}'${extraClassStr} },\n`;
+
+        output.value += jsCode;
+
         output.scrollTop = output.scrollHeight;
 
         // ⚡️ ЗБЕРІГАЄМО КОД ПІСЛЯ КОЖНОГО КРОКУ
-        localStorage.setItem("wu_gen_output", output.value);
+        sessionStorage.setItem("wu_gen_output", output.value);
       });
 
       // --- 4. ОЧИЩЕННЯ ---
       clearBtn.addEventListener("click", () => {
         output.value = "";
-        localStorage.removeItem("wu_gen_output");
+        sessionStorage.removeItem("wu_gen_output");
       });
     </script>
   </body>

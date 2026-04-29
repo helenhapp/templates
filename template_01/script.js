@@ -855,3 +855,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🗺️ 17. ІНТЕРАКТИВНІ ЗОНИ (HOTSPOTS)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+document.addEventListener("DOMContentLoaded", () => {
+  // Якщо на цій сторінці немає зон — скрипт просто нічого не робить
+  if (!window.pageHotspots) return;
+
+  // Проходимося по кожному макету (наприклад, "mario-mockup")
+  Object.keys(window.pageHotspots).forEach((mockupId) => {
+    const container = document.getElementById(mockupId);
+
+    // Якщо контейнер з таким ID є на сторінці:
+    if (container) {
+      const hotspotsData = window.pageHotspots[mockupId];
+
+      // Генеруємо div'и
+      hotspotsData.forEach((data) => {
+        const div = document.createElement("div");
+        div.className = "hotspot";
+        if (data.extraClass) {
+          div.classList.add(data.extraClass);
+        }
+
+        div.style.top = data.top;
+        div.style.left = data.left;
+        div.style.width = data.w;
+        div.style.height = data.h;
+        div.setAttribute("data-tag", data.tag);
+
+        container.appendChild(div);
+      });
+    }
+  });
+});

@@ -1,6 +1,6 @@
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 1. Завантаження JSON
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 async function fetchCourseData() {
   try {
     const response = await fetch("courses.json");
@@ -12,9 +12,9 @@ async function fetchCourseData() {
   }
 }
 
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 2. Створення HTML
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 function createLessonsHTML(lessons) {
   if (!lessons) return "";
   return lessons
@@ -90,9 +90,9 @@ function createCourseHTML(course) {
   `;
 }
 
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 3. Відображення
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 function renderMenu(courses) {
   const currentContainer = document.querySelector("#current-courses-container");
   const oldContainer = document.querySelector("#old-courses-container");
@@ -107,9 +107,9 @@ function renderMenu(courses) {
   });
 }
 
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 4. Модальні вікна паролів для курсів
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 function setupPasswordModals(courses) {
   const modal = document.querySelector("#password-modal");
   const passwordInput = document.querySelector("#password-input");
@@ -179,9 +179,9 @@ function setupPasswordModals(courses) {
   });
 }
 
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 5. ЛОГІКА: Глобальне модальне вікно
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 function setupGlobalModal(correctPassword, coursesData) {
   const globalModal = document.querySelector("#global-password-modal");
   const globalInput = document.querySelector("#global-password-input");
@@ -216,9 +216,9 @@ function setupGlobalModal(correctPassword, coursesData) {
   });
 }
 
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 6. Плавна анімація внутрішніх акордеонів
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 function setupSmoothSubAccordions() {
   const subSummaries = document.querySelectorAll(".sub-header");
 
@@ -297,9 +297,9 @@ function setupSmoothSubAccordions() {
   });
 }
 
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 7. Збереження стану головних курсів
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 function setupStateSaving() {
   const outerDetails = document.querySelectorAll(".accordion__item");
   outerDetails.forEach((detail) => {
@@ -318,9 +318,9 @@ function setupStateSaving() {
   });
 }
 
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 // 8. ІНІЦІАЛІЗАЦІЯ
-// ==========================================
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 async function init() {
   const data = await fetchCourseData();
 

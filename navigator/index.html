@@ -20,7 +20,8 @@
           ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
           : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
 
-      document.write(
+      document.head.insertAdjacentHTML(
+        "beforeend",
         `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
       );
     </script>
@@ -44,10 +45,10 @@
     ></script>
 
     <!-- Власні стилі та скрипти -->
-    <link rel="stylesheet" href="../template_01/style.css?v=4.2" />
-    <link rel="stylesheet" href="./style.css?v=4.2" />
-    <script src="../template_01/script.js?v=4.2" defer></script>
-    <script src="./script.js?v=4.2" defer></script>
+    <link rel="stylesheet" href="../template_01/style.css?v=5.0" />
+    <link rel="stylesheet" href="./style.css?v=5.0" />
+    <script src="../template_01/script.js?v=5.0" defer></script>
+    <script src="./script.js?v=5.0" defer></script>
   </head>
 
   <body>
@@ -94,9 +95,7 @@
     <dialog id="global-password-modal">
       <div class="modal-content">
         <h2>Вхід у WebUniverse</h2>
-        <p class="modal-description">
-          Введіть пароль для доступу до сайту:
-        </p>
+        <p class="modal-description">Введіть пароль для доступу до сайту:</p>
         <input
           type="password"
           id="global-password-input"
