@@ -435,18 +435,22 @@ document.addEventListener("click", async (e) => {
         downloadLink.innerHTML = "❌ Файл не знайдено";
         downloadLink.style.borderColor = "var(--brand3)";
         downloadLink.style.color = "var(--brand3)";
+        downloadLink.style.justifyContent = "center";
 
         setTimeout(() => {
           downloadLink.innerHTML = originalText;
           downloadLink.style.borderColor = "";
           downloadLink.style.color = "";
+          downloadLink.style.justifyContent = "";
         }, 1000);
       }
     } catch (error) {
       console.error("Помилка перевірки файлу:", error);
       downloadLink.innerHTML = "⚠️ Помилка з'єднання";
+      downloadLink.style.justifyContent = "center";
       setTimeout(() => {
         downloadLink.innerHTML = originalText;
+        downloadLink.style.justifyContent = "";
       }, 3000);
     } finally {
       downloadLink.style.opacity = "1";
