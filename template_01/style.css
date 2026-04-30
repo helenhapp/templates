@@ -844,14 +844,21 @@ header a.nav-arrow:hover {
   list-style: none;
 }
 .accordion__header > h2 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin: 0;
   font-size: inherit;
   color: inherit;
   font-family: inherit;
   font-weight: normal;
+  line-height: 1.4;
+  transform: translateY(-2px);
+}
+.accordion__header .star {
+  font-size: 20px;
+  display: inline-block;
+}
+.star {
+  transform: translateY(-2px);
+  text-shadow: none;
 }
 [data-theme="dark"] h3,
 [data-theme="dark"] .accordion__header {
@@ -862,13 +869,6 @@ header a.nav-arrow:hover {
 }
 .accordion__header:hover {
   background: var(--hover-bg);
-}
-.accordion__header .star {
-  font-size: 20px;
-}
-.star {
-  transform: translateY(-5px);
-  text-shadow: none;
 }
 .acc-arrow {
   transition: transform 0.3s ease;
