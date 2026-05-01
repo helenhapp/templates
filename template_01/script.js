@@ -478,8 +478,27 @@ document.querySelectorAll("pre code").forEach((codeBlock) => {
   wrapper.appendChild(copyBtn);
 
   copyBtn.addEventListener("click", () => {
+    let textToCopy = "";
+
+    // Шукаємо колонки з кодом, які створює плагін нумерації
+    const codeLines = codeBlock.querySelectorAll(".hljs-ln-code");
+
+    if (codeLines.length > 0) {
+      // Збираємо текст ТІЛЬКИ з колонок із кодом (ігноруючи номери рядків)
+      // і з'єднуємо їх правильним перенесенням рядка
+      textToCopy = Array.from(codeLines)
+        .map((td) => td.textContent)
+        .join("\n");
+    } else {
+      // Якщо нумерації немає, просто беремо чистий текст (textContent надійніший за innerText)
+      textToCopy = codeBlock.textContent;
+    }
+
+    // Додатково очищаємо текст від нерозривних пробілів (які іноді глючать у VS Code)
+    textToCopy = textToCopy.replace(/\u00A0/g, " ");
+
     navigator.clipboard
-      .writeText(codeBlock.innerText)
+      .writeText(textToCopy)
       .then(() => {
         copyBtn.textContent = "Скопійовано";
         copyBtn.classList.add("copied");
