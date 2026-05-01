@@ -237,11 +237,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   allDetails.forEach((detail) => {
     detail.addEventListener("toggle", () => {
+      // Збереження стану (існуючий код)
       const openIndices = [];
       allDetails.forEach((d, i) => {
         if (d.hasAttribute("open")) openIndices.push(i);
       });
       sessionStorage.setItem("openAccordions", JSON.stringify(openIndices));
+
+      // 👇 НОВИЙ КОД: Плавний скрол до відкритої вкладки
+      // Перевіряємо, що вкладка відкрилась і що це саме головна вкладка (а не дрібні тести)
+      if (detail.open && detail.classList.contains("accordion__item")) {
+        // Чекаємо 400мс, поки завершиться CSS-анімація згортання попередньої вкладки
+        setTimeout(() => {
+          // Відступ зверху, щоб липка панель навігації (top-bar) не перекривала заголовок
+          const offset = 75;
+          const y =
+            detail.getBoundingClientRect().top + window.scrollY - offset;
+
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }, 400);
+      }
     });
   });
 });
