@@ -1760,6 +1760,7 @@ table.hljs-ln tr:hover {
 
 .hljs-ln td.hljs-ln-code {
   padding-left: 20px !important;
+  padding-right: 20px !important;
   white-space: pre !important;
 }
 
