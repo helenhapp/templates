@@ -874,6 +874,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
   const storageKey = "wu_stylecards_checked_" + pageId;
 
+  // Функція перевірки, чи виконана вся картка
+  const checkCardCompletion = (card) => {
+    const cardCheckboxes = card.querySelectorAll(".style-card-checkbox");
+    // Перевіряємо, чи всі чекбокси всередині цієї картки відмічені
+    const allChecked = Array.from(cardCheckboxes).every((cb) => cb.checked);
+
+    if (allChecked && cardCheckboxes.length > 0) {
+      card.classList.add("completed");
+    } else {
+      card.classList.remove("completed");
+    }
+  };
+
   // 1. Відновлюємо стан після оновлення сторінки
   const savedState = JSON.parse(sessionStorage.getItem(storageKey) || "[]");
   checkboxes.forEach((cb, index) => {
@@ -882,7 +895,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2. Зберігаємо новий стан при кожному кліку
+  // Перевіряємо всі картки відразу після завантаження сторінки
+  const allCards = document.querySelectorAll(".style-card");
+  allCards.forEach(checkCardCompletion);
+
+  // 2. Зберігаємо новий стан при кожному кліку та оновлюємо вигляд
   checkboxes.forEach((cb) => {
     cb.addEventListener("change", () => {
       const checkedIndices = [];
@@ -890,6 +907,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (box.checked) checkedIndices.push(i);
       });
       sessionStorage.setItem(storageKey, JSON.stringify(checkedIndices));
+
+      // Оновлюємо дизайн лише тієї картки, в якій ми щойно клікнули
+      const parentCard = cb.closest(".style-card");
+      if (parentCard) checkCardCompletion(parentCard);
     });
   });
 });

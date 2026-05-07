@@ -1908,16 +1908,17 @@ code.long-code .hljs-ln td.hljs-ln-code {
   min-width: 280px;
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--tab-border);
+  border: 2px solid var(--brand3);
   transition:
     border-color 0.3s ease,
     transform 0.3s ease,
     box-shadow 0.3s ease;
   margin: 0 !important;
+  transition: all .3s ease;
 }
 
-.style-card:hover {
-  border-color: var(--accent);
+[data-theme="dark"] .style-card {
+  border-color: var(--shadow-accent);
 }
 
 .card-header {
@@ -1982,6 +1983,19 @@ code.long-code .hljs-ln td.hljs-ln-code {
   outline: 2px dashed var(--accent-pop);
   outline-offset: 2px;
 }
+
+/* Дизайн повністю виконаної картки */
+.style-card.completed {
+  border-color: var(--hover-bg);
+  
+}
+ [data-theme="dark"] .style-card.completed {
+  border-color: var(--tab-border);
+}
+/*
+[data-theme="dark"] .style-card.completed .card-header {
+  color: #10b981;
+} */
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 💐 21. АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ) */
