@@ -928,3 +928,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+// 🗺️ 18. АВТОГЕНЕРАЦІЯ НАВІГАЦІЇ (TOC)
+// ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Знаходимо всі блоки контенту (акордеони або звичайні секції)
+  const contentBlocks = document.querySelectorAll(
+    ".accordion__content, .lesson-content",
+  );
+
+  contentBlocks.forEach((block) => {
+    // 2. Шукаємо всі <h3> з id всередині поточного блоку
+    const headers = block.querySelectorAll("h3[id]");
+
+    // 3. Якщо заголовки знайдено — створюємо меню
+    if (headers.length > 0) {
+      const tocBox = document.createElement("div");
+      tocBox.className = "toc-box";
+
+      const tocTitle = document.createElement("h4");
+      tocTitle.className = "toc-title";
+      tocTitle.textContent = "Навігація";
+      tocBox.appendChild(tocTitle);
+
+      const nav = document.createElement("nav");
+      nav.className = "subsection-nav";
+      const ul = document.createElement("ul");
+
+      headers.forEach((header) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = "#" + header.id;
+        a.textContent = header.textContent.trim();
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      nav.appendChild(ul);
+      tocBox.appendChild(nav);
+
+      // 4. Вставляємо меню перед найпершим заголовком у блоці
+      const firstHeader = headers[0];
+      firstHeader.parentNode.insertBefore(tocBox, firstHeader);
+
+      // 5. ⚡️ ДОДАЄМО РОЗДІЛЮВАЧ (hr) ПІСЛЯ МЕНЮ
+      const separator = document.createElement("hr");
+      // Вставляємо hr відразу після tocBox
+      tocBox.parentNode.insertBefore(separator, tocBox.nextSibling);
+    }
+  });
+});

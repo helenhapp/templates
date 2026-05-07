@@ -270,54 +270,31 @@ pre.accent-string {
 /* Віджет швидкого переходу (Table of Contents) */
 .toc-box {
   background-color: var(--soft-callout);
-  border: 1px solid var(--accordion-border);
   border-radius: 6px;
   padding: 15px 20px;
   margin: 20px 0;
 }
 
 .toc-title {
-  font-size: 12px;
-  color: var(--text-soft);
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
+  margin: 0;
 }
 
 .subsection-nav ul {
-  list-style: none;
+  list-style-type: square;
   padding-left: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.subsection-nav li {
-  display: block;
+  margin: 5px 15px;
+  line-height: 1.6;
 }
 
 .subsection-nav li a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  background-color: var(--soft-callout);
   color: var(--text-main);
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  border: 1px solid var(--accordion-border);
-  transition: all 0.3s ease;
+  width: 100%;
+  display: block;
 }
 
 .subsection-nav li a:hover {
-  background-color: var(--hover-bg);
-  color: var(--text-main);
+  color: var(--accent-pop);
+  text-decoration: underline;
 }
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
@@ -570,12 +547,12 @@ li.test {
 
 div.tablecontainer {
   overflow-x: auto;
+  margin-bottom: 20px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
   background-color: var(--soft-callout);
 }
 
@@ -1011,6 +988,7 @@ details.task[open] summary::before {
 }
 .task {
   background-color: var(--soft-callout);
+  border: 1px solid var(--accordion-border);
   border-radius: 6px;
   margin: 20px 0;
   transition: background 0.4s ease;
@@ -1334,6 +1312,7 @@ body.wide-mode .wide-toggle {
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -2108,10 +2087,6 @@ code.long-code .hljs-ln td.hljs-ln-code {
   .mockup-container.zoomable {
     margin-bottom: 20px !important;
   }
-
-  .subsection-nav ul {
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшеті */
-  }
 }
 
 /* 📱 680px: Вкладки (Таби) */
@@ -2152,10 +2127,6 @@ code.long-code .hljs-ln td.hljs-ln-code {
     width: 45px;
     height: 45px;
     font-size: 20px;
-  }
-
-  .subsection-nav ul {
-    grid-template-columns: 1fr; /* 1 кнопка на весь рядок на мобільному */
   }
 }
 
