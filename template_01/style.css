@@ -569,7 +569,7 @@ tr:hover td code {
 th,
 td {
   padding: 15px;
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   text-align: left;
   line-height: 1.6;
   hyphens: auto;
