@@ -269,9 +269,8 @@ pre.accent-string {
 
 /* Віджет швидкого переходу (Table of Contents) */
 .toc-box {
-  background-color: var(--code-bg);
-  border: 2px solid var(--hover-bg);
-  /* border-left: 4px solid var(--hover-bg); */
+  background-color: var(--soft-callout);
+  border: 1px solid var(--accordion-border);
   border-radius: 6px;
   padding: 15px 20px;
   margin: 20px 0;
@@ -291,12 +290,12 @@ pre.accent-string {
   padding-left: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 🖥️ 3 однакові колонки на ПК */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 10px;
 }
 
 .subsection-nav li {
-  display: block; /* Щоб лішка тягнулася на всю комірку грід-сітки */
+  display: block;
 }
 
 .subsection-nav li a {
@@ -305,11 +304,11 @@ pre.accent-string {
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 100%; /* Всі кнопки в ряду матимуть однакову висоту */
+  height: 100%; 
   box-sizing: border-box;
-  background-color: var(--panel);
+  background-color: var(--soft-callout);
   color: var(--text-main);
-  padding: 10px 14px; /* Трохи збільшив відступ для клікабельності */
+  padding: 10px 14px; 
   border-radius: 6px;
   font-size: 13px;
   border: 1px solid var(--accordion-border);
@@ -319,7 +318,6 @@ pre.accent-string {
 .subsection-nav li a:hover {
   background-color: var(--panel-alt);
   border-color: var(--accent-pop);
-  /* transform: translateY(-2px); */
   color: var(--text-main);
 }
 
