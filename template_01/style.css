@@ -556,9 +556,9 @@ table {
   background-color: var(--soft-callout);
 }
 
-tr:hover {
+/* tr:hover {
   background-color: var(--hover-bg);
-}
+} */
 
 tr:hover td pre:has(code),
 tr:hover td code {
