@@ -149,6 +149,14 @@ main {
   flex-grow: 1;
 }
 
+code,
+pre,
+.custom-editor-input,
+.custom-editor-output,
+textarea {
+  font-variant-ligatures: none;
+}
+
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 🌸 3. ГЛОБАЛЬНІ АНІМАЦІЇ ПЕРЕХОДІВ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
@@ -1916,7 +1924,7 @@ code.long-code .hljs-ln td.hljs-ln-code {
     transform 0.3s ease,
     box-shadow 0.3s ease;
   margin: 0 !important;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 [data-theme="dark"] .style-card {
@@ -1989,15 +1997,10 @@ code.long-code .hljs-ln td.hljs-ln-code {
 /* Дизайн повністю виконаної картки */
 .style-card.completed {
   border-color: var(--hover-bg);
-  
 }
- [data-theme="dark"] .style-card.completed {
+[data-theme="dark"] .style-card.completed {
   border-color: var(--tab-border);
 }
-/*
-[data-theme="dark"] .style-card.completed .card-header {
-  color: #10b981;
-} */
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 💐 21. АДАПТИВНІСТЬ (МЕДІА-ЗАПИТИ) */
