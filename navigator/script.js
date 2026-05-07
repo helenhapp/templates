@@ -204,7 +204,7 @@ function setupGlobalModal(correctPassword, coursesData) {
       renderMenu(coursesData);
       setupPasswordModals(coursesData);
       setupSmoothSubAccordions();
-      setupStateSaving(); 
+      setupStateSaving();
     } else {
       globalError.style.display = "block";
     }
@@ -291,7 +291,13 @@ function setupSmoothSubAccordions() {
         setTimeout(() => {
           content.style.height = "";
           content.style.opacity = "";
-        }, 300);
+
+          // ⚡️ Плавний скрол після розгортання вкладеної частини
+          const offset = 75; // Висота вашої верхньої панелі навігації
+          const y =
+            currentDetail.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }, 300); // 300мс — це час нашої CSS-анімації висоти
       }
     });
   });
@@ -303,13 +309,19 @@ function setupSmoothSubAccordions() {
 function setupStateSaving() {
   const outerDetails = document.querySelectorAll(".accordion__item");
   outerDetails.forEach((detail) => {
-    // Подія "toggle" спрацьовує, коли <details> відкривається або закривається
     detail.addEventListener("toggle", () => {
       const courseId = detail.getAttribute("data-course-id");
       if (detail.open) {
         sessionStorage.setItem("openCourse", courseId);
+
+        // ⚡️ Плавний скрол для головного курсу
+        setTimeout(() => {
+          const offset = 75;
+          const y =
+            detail.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }, 400);
       } else {
-        // Видаляємо з пам'яті лише якщо закрився саме той курс, який ми запам'ятали
         if (sessionStorage.getItem("openCourse") === courseId) {
           sessionStorage.removeItem("openCourse");
         }
@@ -339,7 +351,7 @@ async function init() {
     renderMenu(data.courses);
     setupPasswordModals(data.courses);
     setupSmoothSubAccordions();
-    setupStateSaving(); 
+    setupStateSaving();
     document.body.classList.add("is-loaded");
   }
 }
