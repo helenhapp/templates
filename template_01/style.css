@@ -270,6 +270,7 @@ pre.accent-string {
 /* Віджет швидкого переходу (Table of Contents) */
 .toc-box {
   background-color: var(--soft-callout);
+  border: 1px solid var(--accordion-border);
   border-radius: 6px;
   padding: 15px 20px;
   margin: 20px 0;
@@ -568,7 +569,7 @@ tr:hover td code {
 th,
 td {
   padding: 15px;
-  border: 2px solid var(--accent);
+  border: 1px solid var(--accent);
   text-align: left;
   line-height: 1.6;
   hyphens: auto;
