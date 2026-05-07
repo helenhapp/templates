@@ -183,6 +183,10 @@ a {
 /* 🍀 4. ТЕКСТ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
+[id] {
+  scroll-margin-top: 80px; /* 52px (висота меню) + 28px вільного простору */
+}
+
 h1 {
   font-family: "Press Start 2P", monospace;
   margin: 15px 0;
