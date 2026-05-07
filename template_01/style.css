@@ -318,7 +318,7 @@ pre.accent-string {
 .subsection-nav li a:hover {
   background-color: var(--panel-alt);
   border-color: var(--accent-pop);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
   color: var(--text-main);
 }
 
