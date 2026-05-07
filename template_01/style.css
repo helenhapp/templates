@@ -994,7 +994,7 @@ details.task[open] summary::before {
   transition: background 0.4s ease;
 }
 .task summary {
-  padding: 15px 20px;
+  padding: 17px 20px;
 }
 .task > :not(summary) {
   padding: 0 20px 20px 20px;
@@ -1020,6 +1020,7 @@ details.task[open] summary::before {
 /* Вставки та розділювачі */
 .soft-callout {
   background-color: var(--soft-callout);
+  border: 1px solid var(--accordion-border);
   padding: 20px;
   border-radius: 6px;
   line-height: 1.6;
@@ -1918,7 +1919,7 @@ code.long-code .hljs-ln td.hljs-ln-code {
 }
 
 [data-theme="dark"] .style-card {
-  border-color: var(--shadow-accent);
+  border-color: var(--accent-pop);
 }
 
 .card-header {
