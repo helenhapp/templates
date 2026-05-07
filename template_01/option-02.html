@@ -84,8 +84,26 @@
     />
 
     <!-- Власні стилі та скрипти -->
-    <link rel="stylesheet" href="./style.css?v=5.5" />
-    <script defer src="./script.js?v=5.5"></script>
+    <link rel="stylesheet" href="./style.css?v=5.4" />
+    <script defer src="./script.js?v=5.4"></script>
+
+    <style>
+      .lesson-content {
+        border: 1px solid var(--accordion-border);
+        background-color: white;
+        padding: 30px;
+        border-radius: 6px;
+        margin: 30px 0;
+      }
+
+      h2 {
+        margin: 15px 0;
+      }
+
+      .soft-callout, .task {
+        border: 1px solid var(--accordion-border);
+      }
+    </style>
   </head>
 
   <body>
@@ -149,275 +167,258 @@
 
       <!-- 🧩 ЧАСТИНА 1 -->
 
-      <section id="part-1" class="accordion tab-content active show">
+      <section id="part-1" class="lesson-content tab-content active show">
         <!-- 📚 Теорія 1 -->
-        <details class="accordion__item" name="section1">
-          <summary class="accordion__header">
-            <h2>
-              <span class="star">✧</span> Теорія:
-              <span class="accent">Lorem, ipsum dolor.</span>
-            </h2>
-            <span class="acc-arrow">▶</span>
-          </summary>
+        <!-- <h2>
+          <span class="star">✧</span> Теорія:
+          <span class="accent">Lorem, ipsum dolor.</span>
+        </h2> -->
+        <!-- <span class="acc-arrow">▶</span> -->
 
-          <div class="accordion__content">
-            <!-- 1 -->
-            <h3>Чому ми це вчимо?</h3>
-            <p>
-              Тут пояснення і приклади де конкретно це використовується в
-              додатках та іграх.
-            </p>
+        <!-- 1 -->
+        <h2>Чому ми це вчимо?</h2>
+        <p>
+          Тут пояснення і приклади де конкретно це використовується в додатках
+          та іграх.
+        </p>
 
-            <hr />
+        <hr />
 
-            <h3>Матеріали до теми</h3>
+        <h2>Матеріали до теми</h2>
 
-            <a href="lesson-01.zip" download class="download-button">
-              <span class="download-arrow">📥</span>
-              <span class="file-name">lesson-01.zip</span>
-            </a>
+        <a href="lesson-01.zip" download class="download-button">
+          <span class="download-arrow">📥</span>
+          <span class="file-name">lesson-01.zip</span>
+        </a>
 
-            <a href="file-not-found-test.zip" download class="download-button">
-              <span class="download-arrow">📥</span>
-              <span class="file-name">file-not-found-test.zip</span>
-            </a>
+        <a href="file-not-found-test.zip" download class="download-button">
+          <span class="download-arrow">📥</span>
+          <span class="file-name">file-not-found-test.zip</span>
+        </a>
 
-            <a href="many-buttons-example.zip" download class="download-button">
-              <span class="download-arrow">📥</span>
-              <span class="file-name">many-buttons-example.zip</span>
-            </a>
+        <a href="many-buttons-example.zip" download class="download-button">
+          <span class="download-arrow">📥</span>
+          <span class="file-name">many-buttons-example.zip</span>
+        </a>
 
-            <hr />
+        <hr />
 
-            <!-- 2 -->
-            <h3>Приклад HTML коду</h3>
-            <p>
-              Тут <span class="accent">пояснення</span> матеріалу.
-              <span class="accent">Так</span> виглядають
-              <span class="accent">акценти</span>.
-            </p>
+        <!-- 2 -->
+        <h2>Приклад HTML коду</h2>
+        <p>
+          Тут <span class="accent">пояснення</span> матеріалу.
+          <span class="accent">Так</span> виглядають
+          <span class="accent">акценти</span>.
+        </p>
 
-            <pre><code class="language-html">&lt;!-- приклад HTML коду --&gt;
+        <pre><code class="language-html">&lt;!-- приклад HTML коду --&gt;
 &lt;h1 id="title"&gt;Hello, world!&lt;/h1&gt;</code></pre>
 
-            <img
-              src="./images/example1.jpeg"
-              alt="Приклад"
-              width="800"
-              height="400"
-            />
+        <img
+          src="./images/example1.jpeg"
+          alt="Приклад"
+          width="800"
+          height="400"
+        />
 
-            <hr />
+        <hr />
 
-            <h3>Приклад CSS коду</h3>
+        <h2>Приклад CSS коду</h2>
 
-            <p>
-              Для правильної підсвітки коду бажано додавати до тегу code класи:
-              <span class="accent">language-html</span>,
-              <span class="accent">language-css</span> або
-              <span class="accent">language-javascript</span>.
-            </p>
+        <p>
+          Для правильної підсвітки коду бажано додавати до тегу code класи:
+          <span class="accent">language-html</span>,
+          <span class="accent">language-css</span> або
+          <span class="accent">language-javascript</span>.
+        </p>
 
-            <pre><code class="language-css">/* приклад CSS коду */
+        <pre><code class="language-css">/* приклад CSS коду */
 h1 { 
   font-family: monospace;
   font-weight: normal;
 }</code></pre>
 
-            <img
-              src="./images/example2.jpeg"
-              alt="Приклад"
-              width="800"
-              height="400"
-            />
+        <img
+          src="./images/example2.jpeg"
+          alt="Приклад"
+          width="800"
+          height="400"
+        />
 
-            <p class="soft-callout">
-              ⚡️ <strong>Важливо</strong>: Так можна наголосити на важливій
-              інформації.
-            </p>
-            <p class="soft-callout">
-              ✨ <i>Примітка</i>: Так можна написати додаткову інформацію.
-            </p>
+        <p class="soft-callout">
+          ⚡️ <strong>Важливо</strong>: Так можна наголосити на важливій
+          інформації.
+        </p>
+        <p class="soft-callout">
+          ✨ <i>Примітка</i>: Так можна написати додаткову інформацію.
+        </p>
 
-            <hr />
+        <hr />
 
-            <h3>Приклад JS коду</h3>
+        <h2>Приклад JS коду</h2>
 
-            <p>
-              Якщо дадати до тегу code клас <span class="accent">nocopy</span>,
-              код не можна буде виділити і скопіювати (щоб учні переписували
-              його самі).
-            </p>
+        <p>
+          Якщо дадати до тегу code клас <span class="accent">nocopy</span>, код
+          не можна буде виділити і скопіювати (щоб учні переписували його самі).
+        </p>
 
-            <pre><code class="nocopy language-javascript">// приклад JS коду (який не можна копіювати)
+        <pre><code class="nocopy language-javascript">// приклад JS коду (який не можна копіювати)
 const pageTitle = document.querySelector("#title");
 
 pageTitle.textContent = "My first webpage";
 pageTitle.style.color = "seagreen";</code></pre>
 
-            <pre class="accent-string">
+        <pre class="accent-string">
 title
 My first webpage
 seagreen
 (тут текст з прикладу, який можна скопіювати)</pre
-            >
+        >
 
-            <img
-              src="./images/example3.jpeg"
-              alt="Приклад"
-              width="800"
-              height="400"
-            />
+        <img
+          src="./images/example3.jpeg"
+          alt="Приклад"
+          width="800"
+          height="400"
+        />
 
-            <p>
-              Так виглядає текст, коли його багато: Lorem, ipsum dolor sit amet
-              consectetur adipisicing elit. Sapiente impedit vero sed explicabo
-              repellat incidunt eius distinctio, voluptatem dignissimos non,
-              recusandae quis, natus fugit. Pariatur officia quae temporibus
-              corrupti autem nihil odio nesciunt at laudantium modi numquam quis
-              optio dolorum iure iste, doloremque quisquam et? Doloribus
-              exercitationem consequuntur perspiciatis magnam tempore numquam
-              placeat repellendus incidunt explicabo facere, repellat distinctio
-              in labore nobis velit tenetur sunt ea eaque! Nihil voluptatum
-              dolorum ducimus, similique dolor quasi ad ipsam! Delectus
-              obcaecati alias, debitis, odit impedit architecto vel sed
-              veritatis explicabo tempora cum eveniet sapiente aliquam odio
-              placeat accusantium voluptatem cumque voluptatibus? Animi,
-              explicabo.
-            </p>
+        <p>
+          Так виглядає текст, коли його багато: Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Sapiente impedit vero sed explicabo
+          repellat incidunt eius distinctio, voluptatem dignissimos non,
+          recusandae quis, natus fugit. Pariatur officia quae temporibus
+          corrupti autem nihil odio nesciunt at laudantium modi numquam quis
+          optio dolorum iure iste, doloremque quisquam et? Doloribus
+          exercitationem consequuntur perspiciatis magnam tempore numquam
+          placeat repellendus incidunt explicabo facere, repellat distinctio in
+          labore nobis velit tenetur sunt ea eaque! Nihil voluptatum dolorum
+          ducimus, similique dolor quasi ad ipsam! Delectus obcaecati alias,
+          debitis, odit impedit architecto vel sed veritatis explicabo tempora
+          cum eveniet sapiente aliquam odio placeat accusantium voluptatem
+          cumque voluptatibus? Animi, explicabo.
+        </p>
 
-            <hr />
+        <hr />
 
-            <h3>Приклади таблиць</h3>
+        <h2>Приклади таблиць</h2>
 
-            <p>Для кольорів:</p>
+        <p>Для кольорів:</p>
 
-            <div class="tablecontainer">
-              <table>
-                <tr>
-                  <th>Назва кольору</th>
-                  <th>Переклад</th>
-                  <th>Результат</th>
-                </tr>
-                <tr>
-                  <td>skyblue</td>
-                  <td>небесно-блакитний</td>
-                  <td style="background-color: skyblue"></td>
-                </tr>
-                <tr>
-                  <td>gold</td>
-                  <td>золотий</td>
-                  <td style="background-color: gold"></td>
-                </tr>
-              </table>
-            </div>
+        <div class="tablecontainer">
+          <table>
+            <tr>
+              <th>Назва кольору</th>
+              <th>Переклад</th>
+              <th>Результат</th>
+            </tr>
+            <tr>
+              <td>skyblue</td>
+              <td>небесно-блакитний</td>
+              <td style="background-color: skyblue"></td>
+            </tr>
+            <tr>
+              <td>gold</td>
+              <td>золотий</td>
+              <td style="background-color: gold"></td>
+            </tr>
+          </table>
+        </div>
 
-            <p>Для шрифтів:</p>
+        <p>Для шрифтів:</p>
 
-            <div class="tablecontainer">
-              <table>
-                <tr>
-                  <th>Назва шрифту</th>
-                  <th>Результат</th>
-                </tr>
-                <tr>
-                  <td>Comic Sans MS</td>
-                  <td>
-                    <span style="font-family: Comic Sans MS"
-                      >Lorem, ipsum.</span
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td>Courier New</td>
-                  <td>
-                    <span style="font-family: Courier New">Lorem, ipsum.</span>
-                  </td>
-                </tr>
-              </table>
-            </div>
+        <div class="tablecontainer">
+          <table>
+            <tr>
+              <th>Назва шрифту</th>
+              <th>Результат</th>
+            </tr>
+            <tr>
+              <td>Comic Sans MS</td>
+              <td>
+                <span style="font-family: Comic Sans MS">Lorem, ipsum.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Courier New</td>
+              <td>
+                <span style="font-family: Courier New">Lorem, ipsum.</span>
+              </td>
+            </tr>
+          </table>
+        </div>
 
-            <hr />
+        <hr />
 
-            <!-- <h3>Тести</h3> -->
+        <!-- <h3>Тести</h3> -->
 
-            <div class="soft-callout">
-              <h4>🧩 Перевір свої знання</h4>
-              <p>1. Яким буде резутьтат цього коду?</p>
-              <pre><code class="language-javascript">console.log("Привіт");</code></pre>
-              <details class="answer">
-                <summary>Відповідь</summary>
-                <p class="accent">Виведеться слово "Привіт" в консолі.</p>
-              </details>
+        <div class="soft-callout">
+          <h4>🧩 Перевір свої знання</h4>
+          <p>1. Яким буде резутьтат цього коду?</p>
+          <pre><code class="language-javascript">console.log("Привіт");</code></pre>
+          <details class="answer">
+            <summary>Відповідь</summary>
+            <p class="accent">Виведеться слово "Привіт" в консолі.</p>
+          </details>
 
-              <p>2. Чому цей код не працює?</p>
-              <pre><code class="language-javascript">document.body.backgroundColor = "blue";</code></pre>
-              <details class="answer">
-                <summary>Відповідь</summary>
-                <p class="accent">Пропущено .style перед .backgroundColor.</p>
-              </details>
-            </div>
-          </div>
-        </details>
+          <p>2. Чому цей код не працює?</p>
+          <pre><code class="language-javascript">document.body.backgroundColor = "blue";</code></pre>
+          <details class="answer">
+            <summary>Відповідь</summary>
+            <p class="accent">Пропущено .style перед .backgroundColor.</p>
+          </details>
+        </div>
 
         <!-- 📝 Завдання 1 -->
-        <details class="accordion__item" name="section1">
-          <summary class="accordion__header">
-            <h2><span class="star">✦</span> Практика 1 (Приклад для JS)</h2>
-            <span class="acc-arrow">▶</span>
-          </summary>
+        <!-- <h2><span class="star">✦</span> Практика 1 (Приклад для JS)</h2> -->
+        <!-- <span class="acc-arrow">▶</span> -->
 
-          <div class="accordion__content">
-            <h3>Тематика практики</h3>
-            <p>
-              Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").
-            </p>
+        <h3>Тематика практики</h3>
+        <p>Короткий опис ("Уяви, що розробляєш додаток/гру де треба...").</p>
 
-            <hr />
+        <hr />
 
-            <details class="task" name="task1" open>
-              <summary><h4>Завдання 1</h4></summary>
+        <details class="task" name="task1" open>
+          <summary><h4>Завдання 1</h4></summary>
 
-              <div>
-                <ol>
-                  <li>
-                    Створи масив
-                    <span class="accent">inventory</span> з елементами:
-                    <span class="accent">🗡️, 🍕, 🛡️</span>.
-                  </li>
-                  <li>
-                    Використовуючи індекс, виведи у консоль елемент масиву зі
-                    значенням 🍕.
-                  </li>
-                  <li>...</li>
-                </ol>
-              </div>
-            </details>
-
-            <details class="task" name="task1" open>
-              <summary><h4>Завдання 2</h4></summary>
-
-              <div>
-                <ol>
-                  <li>Створи масив ...</li>
-                  <li>...</li>
-                  <li>...</li>
-                </ol>
-              </div>
-            </details>
-
-            <hr />
-
-            <h3>Очікуваний результат:</h3>
-
-            <img
-              src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="скріншот з результатами виконаних завдань в консолі або на сторінці"
-              width="800"
-              height="400"
-            />
+          <div>
+            <ol>
+              <li>
+                Створи масив
+                <span class="accent">inventory</span> з елементами:
+                <span class="accent">🗡️, 🍕, 🛡️</span>.
+              </li>
+              <li>
+                Використовуючи індекс, виведи у консоль елемент масиву зі
+                значенням 🍕.
+              </li>
+              <li>...</li>
+            </ol>
           </div>
         </details>
+
+        <details class="task" name="task1" open>
+          <summary><h4>Завдання 2</h4></summary>
+
+          <div>
+            <ol>
+              <li>Створи масив ...</li>
+              <li>...</li>
+              <li>...</li>
+            </ol>
+          </div>
+        </details>
+
+        <hr />
+
+        <h3>Очікуваний результат:</h3>
+
+        <img
+        class="zoomable"
+          src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="скріншот з результатами виконаних завдань в консолі або на сторінці"
+          width="800"
+          height="400"
+        />
       </section>
 
       <!-- 🧩 ЧАСТИНА 2 -->
