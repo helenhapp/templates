@@ -1370,6 +1370,7 @@ pre::-webkit-scrollbar-thumb,
   border-radius: 6px;
   background-color: var(--code-bg);
   transition: all 0.4s ease;
+  overflow: hidden;
 }
 
 .video-wrapper iframe,
@@ -1382,7 +1383,6 @@ pre::-webkit-scrollbar-thumb,
   border: none;
   object-fit: contain;
   outline: none;
-  border-radius: 3px;
 }
 
 .video-wrapper.expanded {
