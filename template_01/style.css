@@ -202,7 +202,7 @@ h1 {
   text-shadow: var(--title-shadow);
   line-height: 1.5;
   letter-spacing: 3px;
-  font-size: clamp(2rem, 6.8vw, 3rem);
+  font-size: clamp(2rem, 6.7vw, 3rem);
   overflow-wrap: anywhere;
   hyphens: auto;
   font-weight: 800;
@@ -336,7 +336,7 @@ img {
   margin: 15px auto;
   border: 3px solid var(--code-border);
   border-radius: 6px;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, border-color 0.4s ease; 
 }
 
 /* Маленькі картинки (для завдань) */
