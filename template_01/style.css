@@ -202,7 +202,7 @@ h1 {
   text-shadow: var(--title-shadow);
   line-height: 1.5;
   letter-spacing: 3px;
-  font-size: clamp(2rem, 6.7vw, 3rem);
+  font-size: clamp(2rem, 6.7vw, 2.8rem);
   overflow-wrap: anywhere;
   hyphens: auto;
   font-weight: 800;
