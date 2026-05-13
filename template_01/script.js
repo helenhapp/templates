@@ -244,9 +244,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       sessionStorage.setItem("openAccordions", JSON.stringify(openIndices));
 
-      // 👇 НОВИЙ КОД: Плавний скрол до відкритої вкладки
-      // Перевіряємо, що вкладка відкрилась і що це саме головна вкладка (а не дрібні тести)
-      if (detail.open && detail.classList.contains("accordion__item")) {
+      // Плавний скрол до відкритої вкладки
+      // Перевіряємо, що вкладка відкрилась і що це головна вкладка АБО завдання
+      if (
+        detail.open &&
+        (detail.classList.contains("accordion__item") ||
+          detail.classList.contains("task"))
+      ) {
         // Чекаємо 400мс, поки завершиться CSS-анімація згортання попередньої вкладки
         setTimeout(() => {
           // Відступ зверху, щоб липка панель навігації (top-bar) не перекривала заголовок
