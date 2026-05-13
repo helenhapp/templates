@@ -557,6 +557,12 @@ document.addEventListener("DOMContentLoaded", () => {
       tabSize: 2,
       lineWrapping: true,
       viewportMargin: Infinity,
+      extraKeys: {
+        Tab: function (cm) {
+          let spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+          cm.replaceSelection(spaces);
+        },
+      },
     });
 
     const observer = new IntersectionObserver((entries) => {
@@ -785,6 +791,9 @@ document.addEventListener("DOMContentLoaded", () => {
         outputText += `❓ Питання: ${qText}\n📝 Відповідь: ${answerText || "[Немає відповіді]"}\n\n--------------------------------------\n\n`;
       }
     });
+
+    // Очищаємо всі таби та нерозривні пробіли у фінальному тексті
+    outputText = outputText.replace(/\t/g, "  ").replace(/\u00A0/g, " ");
 
     return { isValid, outputText, name };
   }
