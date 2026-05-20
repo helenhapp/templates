@@ -41,7 +41,7 @@
 
   /* Акценти та рамки */
   --accent: #dee2e6;
-  --accent-pop: var(--brand2);
+  --accent-pop: var(--brand4);
   --tab-border: #dee2e6;
   --code-border: #e9ecef;
 
@@ -84,7 +84,7 @@
 
   /* Рамки та акценти */
   --accent: #343a40;
-  --accent-pop: #9b72e5; /* A lighter purple for better contrast on dark bg */
+  --accent-pop: #f46f10; /* A lighter purple for better contrast on dark bg */
   --tab-border: #343a40;
   --code-border: #2b2b2b;
 
