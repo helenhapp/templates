@@ -26,11 +26,6 @@
   --soft-callout: rgba(111, 66, 193, 0.05);
   --bar-bg: #ffffff;
 
-  /* Перемикачі */
-  --toggle: var(--brand5);
-  --toggle2: #ffffff;
-  --toggle-border: var(--brand1);
-
   /* Текст і посилання */
   --text-main: #1a1a1a;
   --text-soft: #495057;
@@ -44,6 +39,11 @@
   --accent-pop: var(--brand4);
   --tab-border: #dee2e6;
   --code-border: #e9ecef;
+
+  /* Перемикачі */
+  --toggle: #adb5bd; /* A solid medium grey so the yellow moon pops */
+  --toggle2: #ffffff; /* The white knob */
+  --toggle-border: #868e96;
 
   /* Тіні */
   --shadow-accent: rgba(0, 0, 0, 0.05);
