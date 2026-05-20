@@ -238,10 +238,10 @@ h5 {
   font-size: 15px;
 }
 
-p,
+/* p,
 li {
   text-align: justify;
-}
+} */
 
 p.topic {
   text-align: center;
@@ -1044,7 +1044,7 @@ details.task[open] summary::before {
   margin: 0;
 }
 .objective {
-  text-align: justify;
+  /* text-align: justify; */
   font-size: 15px;
   font-family: Arial, sans-serif;
   color: var(--text-soft);

@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Матеріали для заняття з веб-розробки" />
+
+    <!-- ❗️ Назва на вкладці -->
+    <title>Тема 0</title>
+
+    <!-- ❗️ Фавіконка (зараз немає) -->
+    <link rel="icon" href="" />
+
+    <!-- Скрипт перемикання теми -->
+    <script>
+      const savedTheme = localStorage.getItem("wu_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <!-- Підключення шрифтів (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Підсвітка коду (Highlight.js) -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <!-- CodeMirror -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <!-- Власні стилі та скрипти -->
+    <link rel="stylesheet" href="./style.css?v=8.0" />
+    <script defer src="./script.js?v=8.0"></script>
+  </head>
+
+  <body>
+    <!-- "Завіса", яка плавно зникає при завантаженні сторінки -->
+    <div class="transition-curtain"></div>
+
+    <!-- Панель з навігацією -->
+    <script>
+      window.pageNavLinks = [
+        {
+          name: "Навігатор",
+          url: "../navigator/index.html",
+        },
+        {
+          name: "Редактор",
+          url: "https://editor.webuniverseua.com",
+          newTab: true,
+        },
+      ];
+    </script>
+    <div id="nav-container"></div>
+
+    <!-- Хедер з назвою теми та посиланнями -->
+    <header>
+      <div class="title-container">
+        <a href="#" class="nav-arrow prev-arrow" title="Попередній урок">⬅️</a>
+
+        <h1 id="lesson-title">Тема 10</h1>
+
+        <a href="#" class="nav-arrow next-arrow" title="Наступний урок">➡️</a>
+      </div>
+
+      <p class="topic">Назва теми</p>
+
+      <!-- Короткий опис теми і мети заняття -->
+      <!-- <section class="soft-callout objective">
+        <span class="accent">Зміст уроку:</span>
+        <ul>
+          <li>Частина 1: Lorem ipsum dolor sit amet.</li>
+          <li>
+            Частина 2: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Officiis, quasi!
+          </li>
+          <li>
+            Частина 3: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </li>
+        </ul>
+      </section> -->
+
+      <hr />
+    </header>
+
+    <!-- Основний контент -->
+    <main>
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Частина 1</button>
+        <button class="tab-btn" data-target="part-2">Частина 2</button>
+        <button class="tab-btn" data-target="part-3">Частина 3</button>
+        <button class="tab-btn" data-target="part-4">Завдання</button>
+      </div>
+
+      <!-- 🧩 ЧАСТИНА 1 -->
+
+      <section id="part-1" class="theory-block tab-content active show">
+        <div class="theory-header">
+          <span class="star">✧</span>
+          <h2>
+            Теорія:
+            <span class="accent">Підтема 1</span>
+          </h2>
+          <span class="star">✧</span>
+        </div>
+
+        <div class="theory-content">
+          <!-- 1 -->
+          <h3 id="p1-why">Чому ми це вчимо?</h3>
+          <p>
+            Тут пояснення і приклади де конкретно це використовується в додатках
+            та іграх.
+          </p>
+
+          <hr />
+
+          <!-- 2 -->
+          <h3 id="p1-html">Приклад HTML коду</h3>
+          <p>
+            Тут <span class="accent">пояснення</span> матеріалу.
+            <span class="accent">Так</span> виглядають
+            <span class="accent">акценти</span>.
+          </p>
+
+          <pre><code class="language-html">&lt;!-- приклад HTML коду --&gt;
+&lt;h1 id="title"&gt;Hello, world!&lt;/h1&gt;</code></pre>
+
+          <img
+            src="./images/example1.jpeg"
+            alt="Приклад"
+            width="800"
+            height="400"
+          />
+
+          <hr />
+
+          <h3 id="p1-css">Приклад CSS коду</h3>
+
+          <p>
+            Для правильної підсвітки коду бажано додавати до тегу code класи:
+            <span class="accent">language-html</span>,
+            <span class="accent">language-css</span> або
+            <span class="accent">language-javascript</span>.
+          </p>
+
+          <pre><code class="language-css">/* приклад CSS коду */
+h1 { 
+  font-family: monospace;
+  font-weight: normal;
+}</code></pre>
+
+          <img
+            src="./images/example2.jpeg"
+            alt="Приклад"
+            width="800"
+            height="400"
+          />
+
+          <p class="soft-callout">
+            ⚡️ <strong>Важливо</strong>: Так можна наголосити на важливій
+            інформації.
+          </p>
+          <p class="soft-callout">
+            ✨ <i>Примітка</i>: Так можна написати додаткову інформацію.
+          </p>
+
+          <hr />
+
+          <h3 id="p1-js">Приклад JS коду</h3>
+
+          <p>
+            Якщо дадати до тегу code клас <span class="accent">nocopy</span>,
+            код не можна буде виділити і скопіювати (щоб учні переписували його
+            самі).
+          </p>
+
+          <pre><code class="nocopy language-javascript">// приклад JS коду (який не можна копіювати)
+const pageTitle = document.querySelector("#title");
+
+pageTitle.textContent = "My first webpage";
+pageTitle.style.color = "seagreen";</code></pre>
+
+          <pre class="accent-string">
+title
+My first webpage
+seagreen
+(тут текст з прикладу, який можна скопіювати)</pre
+          >
+
+          <img
+            src="./images/example3.jpeg"
+            alt="Приклад"
+            width="800"
+            height="400"
+          />
+
+          <p>
+            Так виглядає текст, коли його багато: Lorem, ipsum dolor sit amet
+            consectetur adipisicing elit. Sapiente impedit vero sed explicabo
+            repellat incidunt eius distinctio, voluptatem dignissimos non,
+            recusandae quis, natus fugit. Pariatur officia quae temporibus
+            corrupti autem nihil odio nesciunt at laudantium modi numquam quis
+            optio dolorum iure iste, doloremque quisquam et? Doloribus
+            exercitationem consequuntur perspiciatis magnam tempore numquam
+            placeat repellendus incidunt explicabo facere, repellat distinctio
+            in labore nobis velit tenetur sunt ea eaque! Nihil voluptatum
+            dolorum ducimus, similique dolor quasi ad ipsam! Delectus obcaecati
+            alias, debitis, odit impedit architecto vel sed veritatis explicabo
+            tempora cum eveniet sapiente aliquam odio placeat accusantium
+            voluptatem cumque voluptatibus? Animi, explicabo.
+          </p>
+
+          <hr />
+
+          <h3 id="p1-tables">Приклад таблиць</h3>
+
+          <p>Для кольорів:</p>
+
+          <div class="tablecontainer">
+            <table>
+              <tr>
+                <th>Назва кольору</th>
+                <th>Переклад</th>
+                <th>Результат</th>
+              </tr>
+              <tr>
+                <td>skyblue</td>
+                <td>небесно-блакитний</td>
+                <td style="background-color: skyblue"></td>
+              </tr>
+              <tr>
+                <td>gold</td>
+                <td>золотий</td>
+                <td style="background-color: gold"></td>
+              </tr>
+            </table>
+          </div>
+
+          <p>Для шрифтів:</p>
+
+          <div class="tablecontainer">
+            <table>
+              <tr>
+                <th>Назва шрифту</th>
+                <th>Результат</th>
+              </tr>
+              <tr>
+                <td>Comic Sans MS</td>
+                <td>
+                  <span style="font-family: Comic Sans MS">Lorem, ipsum.</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Courier New</td>
+                <td>
+                  <span style="font-family: Courier New">Lorem, ipsum.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <hr />
+
+          <h3 id="p1-test">Тести</h3>
+
+          <div class="soft-callout">
+            <h4>Перевір свої знання</h4>
+            <p>1. Яким буде резутьтат цього коду?</p>
+            <pre><code class="language-javascript">console.log("Привіт");</code></pre>
+            <details class="answer">
+              <summary>Відповідь</summary>
+              <p class="accent">Виведеться слово "Привіт" в консолі.</p>
+            </details>
+
+            <p>2. Чому цей код не працює?</p>
+            <pre><code class="language-javascript">document.body.backgroundColor = "blue";</code></pre>
+            <details class="answer">
+              <summary>Відповідь</summary>
+              <p class="accent">Пропущено .style перед .backgroundColor.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🧩 ЧАСТИНА 2 -->
+
+      <section id="part-2" class="theory-block tab-content">
+        <div class="theory-header">
+          <span class="star">✧</span>
+          <h2>
+            Теорія:
+            <span class="accent">Підтема 2</span>
+          </h2>
+          <span class="star">✧</span>
+        </div>
+
+        <div class="theory-content">
+          <!-- 1 -->
+          <h3 id="p2-why">Чому ми це вчимо?</h3>
+          <p>
+            Тут пояснення і приклади де конкретно це використовується в додатках
+            та іграх.
+          </p>
+
+          <hr />
+
+          <h3 id="p1-materials">Матеріали до теми</h3>
+
+          <div class="download-buttons">
+            <a href="lesson-01.zip" download class="download-button">
+              <span class="download-arrow">📥</span>
+              <span class="file-name">lesson-01.zip</span>
+            </a>
+
+            <a href="file-not-found-test.zip" download class="download-button">
+              <span class="download-arrow">📥</span>
+              <span class="file-name">file-not-found-test.zip</span>
+            </a>
+          </div>
+
+          <hr />
+
+          <h3 id="p2-video">Приклад відео</h3>
+
+          <p>Приклад додавання відео з ютубу:</p>
+
+          <div class="video-wrapper zoomable">
+            <iframe
+              loading="lazy"
+              src="https://www.youtube.com/embed/v1dgJ2uE6b4?rel=0&modestbranding=1"
+              title="YouTube video player"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+
+          <p>Приклад додавання відеофайлу:</p>
+
+          <div class="video-wrapper zoomable">
+            <video controls>
+              <source src="./videos/test-video.mp4" type="video/mp4" />
+              Ваший браузер не підтримує відео.
+            </video>
+          </div>
+
+          <hr />
+
+          <h3 id="p2-long-code">Приклад довгого коду</h3>
+
+          <pre><code class="language-javascript long-code">const viewDataButton = document.getElementById("viewData");
+const inputArea = document.getElementById("inputArea");
+const outputDiv = document.getElementById("output");
+
+function run() {
+  const jsonData = inputArea.value;
+  try {
+    const data = JSON.parse(jsonData);
+
+    outputDiv.innerHTML = "";
+
+    const pageTitle = document.createElement("h2");
+    pageTitle.textContent = `Page of ${data.name} ${data.surname}`;
+    outputDiv.appendChild(pageTitle);
+
+    const nameLine = document.createElement("p");
+    nameLine.textContent = `Name: ${data.name}`;
+    outputDiv.appendChild(nameLine);
+
+    const surnameLine = document.createElement("p");
+    surnameLine.textContent = `Surname: ${data.surname}`;
+    outputDiv.appendChild(surnameLine);
+  } catch (error) {
+    outputDiv.textContent = "Invalid JSON input. Please enter valid JSON data.";
+  }
+}</code></pre>
+
+          <hr />
+
+          <h3 id="p2-test">Тести</h3>
+
+          <div class="soft-callout">
+            <h4>Перевір свої знання</h4>
+            <p>1. Чому...?</p>
+            <pre><code class="language-javascript">// код</code></pre>
+            <details class="answer">
+              <summary>Відповідь</summary>
+              <p class="accent">...</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🧩 ЧАСТИНА 3 -->
+
+      <section id="part-3" class="theory-block tab-content">
+        <div class="theory-header">
+          <span class="star">✧</span>
+          <h2>
+            Теорія:
+            <span class="accent">Підтема 3</span>
+          </h2>
+          <span class="star">✧</span>
+        </div>
+
+        <div class="theory-content">
+          <!-- 1 -->
+          <h3 id="p3-why">Чому ми це вчимо?</h3>
+          <p>
+            Тут пояснення і приклади де конкретно це використовується в додатках
+            та іграх.
+          </p>
+
+          <hr />
+
+          <!-- 2 -->
+          <h3 id="p3-lorem">Lorem, ipsum.</h3>
+          <p>Тут <span class="accent">пояснення</span> матеріалу.</p>
+
+          <pre><code class="nocopy language-javascript">console.log("Hello, world!");</code></pre>
+
+          <img
+            class="zoomable"
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="замініть картинку на скріншот результату коду"
+            width="800"
+            height="400"
+          />
+
+          <hr />
+
+          <h3 id="p3-test">Тести</h3>
+
+          <div class="soft-callout">
+            <h4>Перевір свої знання</h4>
+            <p>1. Чому...?</p>
+            <pre><code class="language-javascript">// код</code></pre>
+            <details class="answer">
+              <summary>Відповідь</summary>
+              <p class="accent">...</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🧩 ЧАСТИНА 4 -->
+
+      <section id="part-4" class="theory-block tab-content">
+        <div class="theory-header">
+          <span class="star">✦</span>
+          <h2>Завдання (C#)</h2>
+          <span class="star">✦</span>
+        </div>
+
+        <div class="theory-content">
+          <h3>Завдання</h3>
+
+          <details class="task" name="task3" open>
+            <summary><h4>Прості</h4></summary>
+
+            <ol>
+              <li>...</li>
+            </ol>
+          </details>
+
+          <details class="task" name="task3">
+            <summary><h4>Середні</h4></summary>
+
+            <ol>
+              <li>...</li>
+            </ol>
+          </details>
+
+          <details class="task" name="task3">
+            <summary><h4>Складні</h4></summary>
+
+            <ol>
+              <li>...</li>
+            </ol>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 WebUniverse — Усі права захищені.</p>
+    </footer>
+
+    <!-- Кнопка для повернення на початок сторінки -->
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Повернутися нагору"
+    >
+      🛸
+    </button>
+  </body>
+</html>
