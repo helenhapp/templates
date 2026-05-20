@@ -35,7 +35,8 @@
   --header-link-bg: #ffffff;
 
   /* Акценти та рамки */
-  --accent: #dee2e6;
+  /* --accent: #dee2e6; */
+  --accent: #d2d9e0;
   --accent-pop: var(--brand4);
   --tab-border: #dee2e6;
   --code-border: #e9ecef;
