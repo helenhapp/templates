@@ -1044,7 +1044,7 @@ details.task[open] summary::before {
   margin: 0;
 }
 .objective {
-  /* text-align: justify; */
+  text-align: left;
   font-size: 15px;
   font-family: Arial, sans-serif;
   color: var(--text-soft);
