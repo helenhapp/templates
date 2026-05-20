@@ -690,9 +690,9 @@ footer {
 }
 .nav-link {
   font-family: "Cousine", monospace;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-main);
-  padding: 11px 20px;
+  padding: 8px 16px;
   text-align: center;
   border-radius: 32px;
   opacity: 0.75;
@@ -1080,7 +1080,7 @@ code.long-code {
   top: 12px;
   right: 12px;
   padding: 6px 10px;
-  font-size: 8px;
+  font-size: 12px;
   z-index: 10;
   opacity: 0;
   visibility: hidden;
