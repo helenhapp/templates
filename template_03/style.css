@@ -208,33 +208,46 @@ h4 {
   font-weight: 700;
 }
 
+p {
+  margin: 15px 0;
+}
+
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 🌸 3. ГЛОБАЛЬНІ АНІМАЦІЇ ПЕРЕХОДІВ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
-/* body,
+/* Всі елементи, які змінюють колір при зміні теми */
+body,
 h1,
 h2,
 h3,
+h4,
+h5,
 hr,
 b,
 .accent,
-header a {
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease,
-    border-color 0.4s ease,
-    box-shadow 0.4s ease,
-    text-shadow 0.4s ease;
-} */
-
-/* Всі елементи, які змінюють колір при зміні теми */
-body, h1, h2, h3, h4, h5, hr, b, .accent, header a,
-.theory-block, .theory-header, .top-bar, footer,
-.nav-link, button, .task, .soft-callout, .toc-box,
-pre, code, .custom-editor-wrapper, .editor-header,
-.custom-editor-input, .custom-editor-output,
-th, td, input, textarea, .test-textarea, .style-card {
+header a,
+.theory-block,
+.theory-header,
+.top-bar,
+footer,
+.nav-link,
+button,
+.task,
+.soft-callout,
+.toc-box,
+pre,
+code,
+.custom-editor-wrapper,
+.editor-header,
+.custom-editor-input,
+.custom-editor-output,
+th,
+td,
+input,
+textarea,
+.test-textarea,
+.style-card {
   transition:
     background-color 0.4s ease,
     color 0.4s ease,
@@ -1010,8 +1023,7 @@ details.task[open] summary::before {
   margin: 20px 0;
 }
 .soft-callout h4 {
-  margin: 0;
-  margin-bottom: 15px;
+  margin: 10px 0;
 }
 .objective {
   text-align: left;
@@ -1345,7 +1357,7 @@ pre::-webkit-scrollbar-thumb,
   background-color: var(--code-bg);
   transition: all 0.4s ease;
   /* Змінено з hidden на visible, щоб кнопка не обрізалася */
-  overflow: visible; 
+  overflow: visible;
 }
 
 .video-wrapper iframe,
@@ -1359,7 +1371,7 @@ pre::-webkit-scrollbar-thumb,
   object-fit: contain;
   outline: none;
   /* Додаємо заокруглення для самого відео, бо overflow більше його не тримає */
-  border-radius: 4px; 
+  border-radius: 4px;
 }
 
 .video-wrapper.expanded {
