@@ -178,9 +178,10 @@ h5,
 h1 {
   margin: 15px 0;
   color: var(--title);
-  font-size: clamp(1.8rem, 6.5vw, 3rem);
-  font-weight: 700;
+  font-size: clamp(1.8rem, 6.5vw, 3.2rem);
+  font-weight: 600;
   text-align: center;
+  letter-spacing: 2px;
 }
 
 h2 {
