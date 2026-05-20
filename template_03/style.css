@@ -178,7 +178,7 @@ h5,
 h1 {
   margin: 15px 0;
   color: var(--title);
-  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-size: clamp(1.8rem, 6.5vw, 3rem);
   font-weight: 700;
   text-align: center;
 }
@@ -191,9 +191,10 @@ h2 {
 }
 
 h3 {
-  font-size: 16px;
+  font-size: 20px;
   color: var(--brand2);
   font-weight: 700;
+  margin-bottom: 15px;
 }
 
 h4 {
@@ -639,7 +640,7 @@ th {
   background-color: var(--panel-alt);
   color: var(--text-soft);
   font-family: "Cousine", monospace;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 td code {
@@ -989,6 +990,7 @@ details.task[open] summary::before {
 }
 .soft-callout h4 {
   margin: 0;
+  margin-bottom: 15px;
 }
 .objective {
   text-align: left;
