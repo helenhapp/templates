@@ -23,7 +23,7 @@
 
   /* Напівпрозорі заливки */
   --link-bg: rgba(111, 66, 193, 0.1);
-  --soft-callout: rgba(111, 66, 193, 0.05);
+  --soft-callout: rgba(111, 66, 193, 0.06);
   --bar-bg: #ffffff;
 
   /* Перемикачі */
@@ -67,7 +67,7 @@
   --hover-bg: #2d2d2d;
   --code-bg: #181818;
 
-  --soft-callout: rgba(111, 66, 193, 0.1);
+  --soft-callout: rgba(111, 66, 193, 0.06);
   --link-bg: rgba(111, 66, 193, 0.2);
   --bar-bg: #1e1e1e;
 
@@ -403,7 +403,8 @@ img {
   height: auto;
   object-fit: contain;
   margin: 15px auto;
-  border: 3px solid var(--code-border);
+  /* border: 3px solid var(--code-border); */
+  border: 1px solid lightgray;
   border-radius: 6px;
   transition:
     transform 0.4s ease,
