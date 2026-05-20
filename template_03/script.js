@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", buildNavigation);
 // ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦
 document.addEventListener("DOMContentLoaded", () => {
   const themeCheckbox = document.getElementById("theme-checkbox");
-  const hljsThemeLink = document.getElementById("hljs-theme");
+  const hljsLight = document.getElementById("hljs-light");
+  const hljsDark = document.getElementById("hljs-dark");
   let currentTheme = localStorage.getItem("wu_theme") || "light";
 
   function applyTheme(theme) {
@@ -64,14 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (theme === "dark") {
       if (themeCheckbox) themeCheckbox.checked = true;
-      if (hljsThemeLink)
-        hljsThemeLink.href =
-          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css";
+      if (hljsLight) hljsLight.disabled = true;
+      if (hljsDark) hljsDark.disabled = false;
     } else {
       if (themeCheckbox) themeCheckbox.checked = false;
-      if (hljsThemeLink)
-        hljsThemeLink.href =
-          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+      if (hljsLight) hljsLight.disabled = false;
+      if (hljsDark) hljsDark.disabled = true;
     }
   }
 
