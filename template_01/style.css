@@ -1161,9 +1161,9 @@ code.long-code {
   -ms-user-select: none;
   user-select: none;
 }
-pre:has(code.nocopy) {
+/* pre:has(code.nocopy) {
   border-radius: 6px 0;
-}
+} */
 
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 🍙 11. Міні редактори коду для завдань */
