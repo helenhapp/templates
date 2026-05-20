@@ -23,7 +23,7 @@
 
   /* Напівпрозорі заливки */
   --link-bg: rgba(111, 66, 193, 0.1);
-  --soft-callout: rgba(111, 66, 193, 0.06);
+  --soft-callout: rgba(111, 66, 193, 0.05);
   --bar-bg: #ffffff;
 
   /* Перемикачі */
@@ -2174,7 +2174,7 @@ code.long-code .hljs-ln td.hljs-ln-code {
     font-size: 13px;
   }
   p.topic {
-    font-size: 12px;
+    /* font-size: 12px; */
     padding: 0 5px;
   }
   .title-container {
