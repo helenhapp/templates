@@ -178,7 +178,7 @@ h5,
 h1 {
   margin: 15px 0;
   color: var(--title);
-  font-size: clamp(2rem, 6.5vw, 3.2rem);
+  font-size: clamp(2.3rem, 6.5vw, 3.2rem);
   font-weight: 600;
   text-align: center;
   letter-spacing: 2px;
