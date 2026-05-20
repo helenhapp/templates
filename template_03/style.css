@@ -27,7 +27,7 @@
   --bar-bg: #ffffff;
 
   /* Перемикачі */
-  --toggle: var(--brand2);
+  --toggle: var(--brand5);
   --toggle2: #ffffff;
   --toggle-border: var(--brand1);
 
@@ -80,7 +80,7 @@
   --text-main: #f8f9fa;
   --text-soft: #adb5bd;
   /* --title: #ffffff;\ */
-  --title: var(--brand2);
+  --title: var(--brand5);
 
   /* Рамки та акценти */
   --accent: #343a40;
